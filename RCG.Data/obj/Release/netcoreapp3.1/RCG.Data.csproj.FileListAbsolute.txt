@@ -1,0 +1,17 @@
+D:\Applications\RCGProductManager\RCG.Data\bin\Release\netcoreapp3.1\RCG.Data.deps.json
+D:\Applications\RCGProductManager\RCG.Data\bin\Release\netcoreapp3.1\RCG.Data.runtimeconfig.json
+D:\Applications\RCGProductManager\RCG.Data\bin\Release\netcoreapp3.1\RCG.Data.runtimeconfig.dev.json
+D:\Applications\RCGProductManager\RCG.Data\bin\Release\netcoreapp3.1\RCG.Data.dll
+D:\Applications\RCGProductManager\RCG.Data\bin\Release\netcoreapp3.1\RCG.Data.pdb
+D:\Applications\RCGProductManager\RCG.Data\bin\Release\netcoreapp3.1\RCG.CoreApp.dll
+D:\Applications\RCGProductManager\RCG.Data\bin\Release\netcoreapp3.1\RCG.Domain.dll
+D:\Applications\RCGProductManager\RCG.Data\bin\Release\netcoreapp3.1\RCG.CoreApp.pdb
+D:\Applications\RCGProductManager\RCG.Data\bin\Release\netcoreapp3.1\RCG.Domain.pdb
+D:\Applications\RCGProductManager\RCG.Data\obj\Release\netcoreapp3.1\RCG.Data.csprojAssemblyReference.cache
+D:\Applications\RCGProductManager\RCG.Data\obj\Release\netcoreapp3.1\RCG.Data.AssemblyInfoInputs.cache
+D:\Applications\RCGProductManager\RCG.Data\obj\Release\netcoreapp3.1\RCG.Data.AssemblyInfo.cs
+D:\Applications\RCGProductManager\RCG.Data\obj\Release\netcoreapp3.1\RCG.Data.csproj.CoreCompileInputs.cache
+D:\Applications\RCGProductManager\RCG.Data\obj\Release\netcoreapp3.1\RCG.Data.csproj.CopyComplete
+D:\Applications\RCGProductManager\RCG.Data\obj\Release\netcoreapp3.1\RCG.Data.dll
+D:\Applications\RCGProductManager\RCG.Data\obj\Release\netcoreapp3.1\RCG.Data.pdb
+D:\Applications\RCGProductManager\RCG.Data\obj\Release\netcoreapp3.1\RCG.Data.genruntimeconfig.cache

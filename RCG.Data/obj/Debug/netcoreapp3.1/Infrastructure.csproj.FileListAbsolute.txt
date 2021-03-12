@@ -1,0 +1,17 @@
+D:\Applications\Quiet\ToolsUI\Infrastructure\bin\Debug\netcoreapp3.1\Infrastructure.deps.json
+D:\Applications\Quiet\ToolsUI\Infrastructure\bin\Debug\netcoreapp3.1\Infrastructure.runtimeconfig.json
+D:\Applications\Quiet\ToolsUI\Infrastructure\bin\Debug\netcoreapp3.1\Infrastructure.runtimeconfig.dev.json
+D:\Applications\Quiet\ToolsUI\Infrastructure\bin\Debug\netcoreapp3.1\Infrastructure.dll
+D:\Applications\Quiet\ToolsUI\Infrastructure\bin\Debug\netcoreapp3.1\Infrastructure.pdb
+D:\Applications\Quiet\ToolsUI\Infrastructure\bin\Debug\netcoreapp3.1\Application.dll
+D:\Applications\Quiet\ToolsUI\Infrastructure\bin\Debug\netcoreapp3.1\Domain.dll
+D:\Applications\Quiet\ToolsUI\Infrastructure\bin\Debug\netcoreapp3.1\Application.pdb
+D:\Applications\Quiet\ToolsUI\Infrastructure\bin\Debug\netcoreapp3.1\Domain.pdb
+D:\Applications\Quiet\ToolsUI\Infrastructure\obj\Debug\netcoreapp3.1\Infrastructure.csprojAssemblyReference.cache
+D:\Applications\Quiet\ToolsUI\Infrastructure\obj\Debug\netcoreapp3.1\Infrastructure.AssemblyInfoInputs.cache
+D:\Applications\Quiet\ToolsUI\Infrastructure\obj\Debug\netcoreapp3.1\Infrastructure.AssemblyInfo.cs
+D:\Applications\Quiet\ToolsUI\Infrastructure\obj\Debug\netcoreapp3.1\Infrastructure.csproj.CoreCompileInputs.cache
+D:\Applications\Quiet\ToolsUI\Infrastructure\obj\Debug\netcoreapp3.1\Infrastructure.csproj.CopyComplete
+D:\Applications\Quiet\ToolsUI\Infrastructure\obj\Debug\netcoreapp3.1\Infrastructure.dll
+D:\Applications\Quiet\ToolsUI\Infrastructure\obj\Debug\netcoreapp3.1\Infrastructure.pdb
+D:\Applications\Quiet\ToolsUI\Infrastructure\obj\Debug\netcoreapp3.1\Infrastructure.genruntimeconfig.cache

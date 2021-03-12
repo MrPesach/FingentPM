@@ -1,0 +1,12 @@
+D:\Applications\RCGProductManager\RCG.CoreApp\bin\Release\netstandard2.1\RCG.CoreApp.deps.json
+D:\Applications\RCGProductManager\RCG.CoreApp\bin\Release\netstandard2.1\RCG.CoreApp.dll
+D:\Applications\RCGProductManager\RCG.CoreApp\bin\Release\netstandard2.1\RCG.CoreApp.pdb
+D:\Applications\RCGProductManager\RCG.CoreApp\bin\Release\netstandard2.1\RCG.Domain.dll
+D:\Applications\RCGProductManager\RCG.CoreApp\bin\Release\netstandard2.1\RCG.Domain.pdb
+D:\Applications\RCGProductManager\RCG.CoreApp\obj\Release\netstandard2.1\RCG.CoreApp.csprojAssemblyReference.cache
+D:\Applications\RCGProductManager\RCG.CoreApp\obj\Release\netstandard2.1\RCG.CoreApp.AssemblyInfoInputs.cache
+D:\Applications\RCGProductManager\RCG.CoreApp\obj\Release\netstandard2.1\RCG.CoreApp.AssemblyInfo.cs
+D:\Applications\RCGProductManager\RCG.CoreApp\obj\Release\netstandard2.1\RCG.CoreApp.csproj.CoreCompileInputs.cache
+D:\Applications\RCGProductManager\RCG.CoreApp\obj\Release\netstandard2.1\RCG.CoreApp.csproj.CopyComplete
+D:\Applications\RCGProductManager\RCG.CoreApp\obj\Release\netstandard2.1\RCG.CoreApp.dll
+D:\Applications\RCGProductManager\RCG.CoreApp\obj\Release\netstandard2.1\RCG.CoreApp.pdb
