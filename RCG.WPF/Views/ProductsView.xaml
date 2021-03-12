@@ -15,8 +15,8 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0"
-                HorizontalAlignment="Center"
-                FontSize="48"
+                HorizontalAlignment="Left"
+                FontSize="25"
                 Text="Products" />
 
     </Grid>
