@@ -11,5 +11,7 @@ namespace RCG.CoreApp.Interfaces.DbContexts
         DbSet<Users> Users { get; set; }
 
         DbSet<ProductMain> ProductMain { get; set; }
+
+        DbSet<Products> Products { get; set; }
     }
 }

@@ -124,9 +124,9 @@ D:\Applications\RCGProductManager\RCG.WPF\obj\Debug\netcoreapp3.1\RCG.WPF.pdb
 D:\Applications\RCGProductManager\RCG.WPF\obj\Debug\netcoreapp3.1\RCG.WPF.genruntimeconfig.cache
 D:\Applications\RCGProductManager\RCG.WPF\bin\Debug\netcoreapp3.1\AutoMapper.dll
 D:\Applications\RCGProductManager\RCG.WPF\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
-D:\Applications\RCGProductManager\RCG.WPF\bin\Debug\netcoreapp3.1\AppData\Data\RCG.db
 D:\Applications\RCGProductManager\RCG.WPF\bin\Debug\netcoreapp3.1\appsettings.json
 D:\Applications\RCGProductManager\RCG.WPF\obj\Debug\netcoreapp3.1\Views\RegisterView.g.cs
 D:\Applications\RCGProductManager\RCG.WPF\obj\Debug\netcoreapp3.1\Views\RegisterView.baml
 D:\Applications\RCGProductManager\RCG.WPF\obj\Debug\netcoreapp3.1\Styles\Common.baml
 D:\Applications\RCGProductManager\RCG.WPF\obj\Debug\netcoreapp3.1\Styles\NavigationBar.baml
+D:\Applications\RCGProductManager\RCG.WPF\bin\Debug\netcoreapp3.1\AppData\Data\RCG.db

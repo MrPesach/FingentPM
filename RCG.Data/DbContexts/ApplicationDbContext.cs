@@ -16,6 +16,8 @@ namespace RCG.Data.DbContexts
 
         public DbSet<ProductMain> ProductMain { get; set; }
 
+        public DbSet<Products> Products { get; set; }
+
         public IDbConnection Connection => Database.GetDbConnection();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

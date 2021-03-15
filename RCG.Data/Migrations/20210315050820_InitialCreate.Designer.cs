@@ -9,7 +9,7 @@ using RCG.Data.DbContexts;
 namespace RCG.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210312055120_InitialCreate")]
+    [Migration("20210315050820_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -49,6 +49,47 @@ namespace RCG.Data.Migrations
                     b.ToTable("ProductMain");
                 });
 
+            modelBuilder.Entity("RCG.Domain.Entities.Products", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("TEXT");
+
+                    b.Property<decimal>("Length")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<long?>("ProductMainId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Sku")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<decimal>("Weight")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductMainId");
+
+                    b.ToTable("Products");
+                });
+
             modelBuilder.Entity("RCG.Domain.Entities.Users", b =>
                 {
                     b.Property<long>("Id")
@@ -71,12 +112,15 @@ namespace RCG.Data.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("PasswordHash")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Username")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -87,12 +131,19 @@ namespace RCG.Data.Migrations
                         new
                         {
                             Id = 1L,
-                            CreatedOn = new DateTime(2021, 3, 12, 5, 51, 20, 196, DateTimeKind.Utc).AddTicks(414),
+                            CreatedOn = new DateTime(2021, 3, 15, 5, 8, 19, 980, DateTimeKind.Utc).AddTicks(8923),
                             IsAdmin = true,
                             Name = "Super Admin",
                             PasswordHash = "SwxrqFTghcosbgFO5GEAAYfG2cKPvfyWrXsgP4zE5r8=",
                             Username = "superadmin"
                         });
+                });
+
+            modelBuilder.Entity("RCG.Domain.Entities.Products", b =>
+                {
+                    b.HasOne("RCG.Domain.Entities.ProductMain", "ProductMain")
+                        .WithMany()
+                        .HasForeignKey("ProductMainId");
                 });
 #pragma warning restore 612, 618
         }
