@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RCG.Domain.Entities
@@ -23,6 +24,10 @@ namespace RCG.Domain.Entities
         [ForeignKey("ProductMain")]
         public long? ProductMainId { get; set; }
 
+        public bool IsDeleted { get; set; }
+
+        public string DeletedBy { get; set; }
+        public DateTime? DeletedOn { get; set; }
 
         public virtual ProductMain ProductMain { get; set; }
     }

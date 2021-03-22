@@ -18,6 +18,8 @@ namespace RCG.Data.DbContexts
 
         public DbSet<Products> Products { get; set; }
 
+        public DbSet<ApplConfigs> ApplConfigs { get; set; }
+
         public IDbConnection Connection => Database.GetDbConnection();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -35,6 +37,18 @@ namespace RCG.Data.DbContexts
                     IsAdmin = true,
                     CreatedOn = DateTime.UtcNow
 
+                }
+               );
+
+            modelBuilder.Entity<ApplConfigs>().HasData(
+                new ApplConfigs
+                {
+                   Id=1,
+                   Name="IndesignIndexFileSavePath",
+                   DisplayName= "Indesign Index File Save Path",
+                   Value ="C:\\Indesign\\IndexFiles\\",
+                   ShowtoUser=true,
+                   CreatedOn = DateTime.UtcNow
                 }
                );
         }
