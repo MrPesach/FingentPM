@@ -128,3 +128,5 @@ D:\Applications\RCGProductManager\RCG.WPF\obj\Release\netcoreapp3.1\RCG.WPF.cspr
 D:\Applications\RCGProductManager\RCG.WPF\obj\Release\netcoreapp3.1\RCG.WPF.dll
 D:\Applications\RCGProductManager\RCG.WPF\obj\Release\netcoreapp3.1\RCG.WPF.pdb
 D:\Applications\RCGProductManager\RCG.WPF\obj\Release\netcoreapp3.1\RCG.WPF.genruntimeconfig.cache
+D:\Applications\RCGProductManager\RCG.WPF\obj\Release\netcoreapp3.1\Styles\Common.baml
+D:\Applications\RCGProductManager\RCG.WPF\obj\Release\netcoreapp3.1\Styles\NavigationBar.baml

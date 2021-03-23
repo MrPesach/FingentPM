@@ -27,6 +27,7 @@ namespace RCG.WPF.ViewModels
             _authenticator.StateChanged += Authenticator_StateChanged;
 
             UpdateCurrentViewModelCommand = new UpdateCurrentViewModelCommand(navigator, _viewModelFactory);
+            //UpdateCurrentViewModelCommand.Execute(ViewType.Login);
             UpdateCurrentViewModelCommand.Execute(ViewType.Login);
         }
 

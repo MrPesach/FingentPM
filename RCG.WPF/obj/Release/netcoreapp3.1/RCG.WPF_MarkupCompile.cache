@@ -10,11 +10,11 @@ none
 false
 TRACE;RELEASE;NETCOREAPP;NETCOREAPP3_1;
 D:\Applications\RCGProductManager\RCG.WPF\App.xaml
-5908448092
+7-1659699099
 
-31-1829854794
+321809249126
 2611364596424
-Controls\NavigationBar.xaml;MainWindow.xaml;Views\LoginView.xaml;Views\ProductsView.xaml;Views\RegisterView.xaml;
+Controls\NavigationBar.xaml;MainWindow.xaml;Styles\Common.xaml;Styles\NavigationBar.xaml;Views\LoginView.xaml;Views\ProductsView.xaml;Views\RegisterView.xaml;
 
 False
 
