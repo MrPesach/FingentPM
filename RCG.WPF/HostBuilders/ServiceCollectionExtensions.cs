@@ -36,7 +36,9 @@ namespace RCG.WPF.HostBuilders
             host.ConfigureServices((context, services) =>
             {
                 string connectionString = context.Configuration.GetConnectionString("DefaultConnection");
-                Action<DbContextOptionsBuilder> configureDbContext = o => o.UseSqlite(connectionString);
+               
+                ////Action<DbContextOptionsBuilder> configureDbContext = o => o.UseSqlite(connectionString);
+                Action<DbContextOptionsBuilder> configureDbContext = o => o.UseSqlite("Data Source=RCG.db");
 
                 services.AddDbContext<ApplicationDbContext>(configureDbContext);
             });
@@ -67,6 +69,7 @@ namespace RCG.WPF.HostBuilders
                 services.AddSingleton<IUnitOfWork, UnitOfWork>();
                 services.AddSingleton<IAuthService, AuthService>();
                 services.AddSingleton<IUserRepository, UserRepository>();
+                services.AddTransient<IUnitOfWork, UnitOfWork>();
             });
 
             return host;
