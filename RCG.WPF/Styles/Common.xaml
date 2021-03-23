@@ -4,11 +4,11 @@
     <!--Colors-->
     <Color x:Key="ColorBlack">#000</Color>
     <Color x:Key="ColorBlue">#105EEB</Color>
-    
+
     <!--Brushes-->
     <SolidColorBrush x:Key="BrushBlack" Color="{StaticResource ColorBlack}"/>
     <SolidColorBrush x:Key="BrushBlue" Color="{StaticResource ColorBlue}"/>
-    
+
     <!--Text Boxes-->
     <Style x:Key="TextBoxBase" TargetType="Control">
         <Setter Property="VerticalContentAlignment" Value="Center"/>
@@ -24,16 +24,29 @@
         </Setter>
     </Style>
 
-    <Style TargetType="TextBox" BasedOn="{StaticResource TextBoxBase}"/>
-    <Style TargetType="PasswordBox" BasedOn="{StaticResource TextBoxBase}"/>
-    
-    <!--Buttons-->
+    <Style TargetType="TextBox" BasedOn="{StaticResource TextBoxBase}">
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Margin" Value="0 8 0 0"/>
+    </Style>
+    <Style TargetType="PasswordBox" BasedOn="{StaticResource TextBoxBase}">
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Margin" Value="0 8 0 0"/>
+    </Style>
+
+    <Style TargetType="TextBlock">
+        <Setter Property="Margin" Value="0 10 0 0"/>
+    </Style>
+
+        <!--Buttons-->
     <Style TargetType="Button">
         <Setter Property="Background" Value="{StaticResource BrushBlue}"/>
         <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Height" Value="50"/>
         <Setter Property="Cursor" Value="Hand"/>
-        <Setter Property="Padding" Value="10 5"/>
-        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Padding" Value="20 3"/>
+        <Setter Property="HorizontalAlignment" Value="Right"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="0 10 0 0"></Setter>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
@@ -45,7 +58,7 @@
         </Setter>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="{StaticResource BrushBlack}"/>
+                <Setter Property="Background" Value="{StaticResource BrushBlue}"/>
             </Trigger>
             <Trigger Property="IsEnabled" Value="False">
                 <Setter Property="Opacity" Value="0.5"/>

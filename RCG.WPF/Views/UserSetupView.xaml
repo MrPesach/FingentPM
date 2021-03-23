@@ -49,20 +49,19 @@
             <TextBox Grid.Row="1" Margin="0 10 0 0"
                         Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" />
 
-            <TextBlock Grid.Row="2" Text="Username"  Margin="0 10 0 0"/>
-            <TextBox Grid.Row="3" Margin="0 10 0 0"
+            <TextBlock Grid.Row="2" Text="Username"/>
+            <TextBox Grid.Row="3"
                         Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}" />
 
-            <TextBlock Grid.Row="4" Text="Password"  Margin="0 10 0 0"/>
-            <components:BindablePasswordBox Grid.Row="5" Margin="0 10 0 0"
+            <TextBlock Grid.Row="4" Text="Password"/>
+            <components:BindablePasswordBox Grid.Row="5"
                         Password="{Binding Password}" />
 
-            <TextBlock Grid.Row="6" Text="Confirm Password"  Margin="0 10 0 0"/>
-            <components:BindablePasswordBox Grid.Row="7" Margin="0 10 0 0"
+            <TextBlock Grid.Row="6" Text="Confirm Password"/>
+            <components:BindablePasswordBox Grid.Row="7"
                         Password="{Binding ConfirmPassword}" />
 
-            <Button Grid.Row="8" Margin="0 10 0 0"
-                    HorizontalAlignment="Right"
+            <Button Grid.Row="8"
                     Command="{Binding RegisterCommand}"
                     Content="Create Account"
                     IsDefault="True" />
