@@ -24,7 +24,7 @@ namespace RCG.WPF
         public static IHostBuilder CreateHostBuilder(string[] args = null)
         {
             return Host.CreateDefaultBuilder(args)
-                .AddConfiguration()
+                ////.AddConfiguration()
                 .AddDbContext()
                 .AddServices()
                 .AddStores()

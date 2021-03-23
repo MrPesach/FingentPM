@@ -20,25 +20,26 @@ namespace RCG.WPF.HostBuilders
 {
     public static class ServiceCollectionExtensions
     {
-        public static IHostBuilder AddConfiguration(this IHostBuilder host)
-        {
-            host.ConfigureAppConfiguration(c =>
-            {
-                c.AddJsonFile("appsettings.json");
-                c.AddEnvironmentVariables();
-            });
+        ////public static IHostBuilder AddConfiguration(this IHostBuilder host)
+        ////{
+        ////    host.ConfigureAppConfiguration(c =>
+        ////    {
+        ////        c.AddJsonFile("appsettings.json");
+        ////        c.AddEnvironmentVariables();
+        ////    });
 
-            return host;
-        }
+        ////    return host;
+        ////}
 
         public static IHostBuilder AddDbContext(this IHostBuilder host)
         {
             host.ConfigureServices((context, services) =>
             {
-                string connectionString = context.Configuration.GetConnectionString("DefaultConnection");
+                ////string connectionString = context.Configuration.GetConnectionString("DefaultConnection");
                
                 ////Action<DbContextOptionsBuilder> configureDbContext = o => o.UseSqlite(connectionString);
-                Action<DbContextOptionsBuilder> configureDbContext = o => o.UseSqlite("Data Source=RCG.db");
+                ////Action<DbContextOptionsBuilder> configureDbContext = o => o.UseSqlite("Data Source=RCG.db");
+                Action<DbContextOptionsBuilder> configureDbContext = o => o.UseSqlite("Data Source=./AppData/Data/RCG.db");
 
                 services.AddDbContext<ApplicationDbContext>(configureDbContext);
             });
@@ -69,7 +70,6 @@ namespace RCG.WPF.HostBuilders
                 services.AddSingleton<IUnitOfWork, UnitOfWork>();
                 services.AddSingleton<IAuthService, AuthService>();
                 services.AddSingleton<IUserRepository, UserRepository>();
-                services.AddTransient<IUnitOfWork, UnitOfWork>();
             });
 
             return host;

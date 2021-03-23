@@ -11,12 +11,17 @@
 	</PropertyGroup>
 	<PropertyGroup>
 		<PublishReadyToRun>true</PublishReadyToRun>
+		<ApplicationIcon>app-icon.ico</ApplicationIcon>
 	</PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Images\app-header.png" />
+    <None Remove="Resources\Images\app-icon.ico" />
     <None Remove="Resources\Images\App-top-bg.png" />
     <None Remove="Resources\Images\check-green.png" />
+    <None Remove="Resources\Images\login-banner.png" />
     <None Remove="Resources\Images\Login-box-bg.png" />
+    <None Remove="Resources\Images\royal_chain_white_logo.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -38,22 +43,31 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Resources\Images\app-header.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\app-icon.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resources\Images\App-top-bg.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Images\check-green.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Resources\Images\login-banner.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resources\Images\Login-box-bg.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\royal_chain_white_logo.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
 
   <ItemGroup>
     <None Update="AppData\Data\RCG.db">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="appsettings.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

@@ -15,7 +15,7 @@
     </UserControl.Resources>
 
 
-    <Grid ShowGridLines="True">
+    <Grid ShowGridLines="False">
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
@@ -23,9 +23,14 @@
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <Image Source="/Resources/images/Login-box-bg.png" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Stretch="Fill"></Image>
+        
+        <Grid Grid.Row="0" Grid.Column="0" Width="780">
+            <Grid.Background>
+                <ImageBrush ImageSource="/Resources/images/login-banner.png" Stretch="Fill"/>
+            </Grid.Background>
+        </Grid>
 
-        <Grid Grid.Row="0" Grid.Column="1" Margin="35 100 35 20">
+        <Grid Grid.Row="0" Grid.Column="1" Margin="20 100 20 20" Width="492">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
