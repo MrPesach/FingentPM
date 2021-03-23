@@ -267,3 +267,15 @@ D:\Mehaboob\Works\RCG\RCG.WPF\obj\Debug\netcoreapp3.1\RCG.WPF.AssemblyInfo.cs
 D:\Mehaboob\Works\RCG\RCG.WPF\obj\Debug\netcoreapp3.1\RCG.WPF.csproj.CoreCompileInputs.cache
 D:\Mehaboob\Works\RCG\RCG.WPF\obj\Debug\netcoreapp3.1\RCG.WPF.csproj.CopyComplete
 D:\Mehaboob\Works\RCG\RCG.WPF\obj\Debug\netcoreapp3.1\RCG.WPF.genruntimeconfig.cache
+D:\Mehaboob\Works\RCG\RCG.WPF\bin\Debug\netcoreapp3.1\EntityFramework.SqlServer.dll
+D:\Mehaboob\Works\RCG\RCG.WPF\bin\Debug\netcoreapp3.1\EntityFramework.dll
+D:\Mehaboob\Works\RCG\RCG.WPF\bin\Debug\netcoreapp3.1\LinqKit.dll
+D:\Mehaboob\Works\RCG\RCG.WPF\bin\Debug\netcoreapp3.1\Microsoft.Xaml.Behaviors.dll
+D:\Mehaboob\Works\RCG\RCG.WPF\bin\Debug\netcoreapp3.1\System.Data.SqlClient.dll
+D:\Mehaboob\Works\RCG\RCG.WPF\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
+D:\Mehaboob\Works\RCG\RCG.WPF\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
+D:\Mehaboob\Works\RCG\RCG.WPF\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
+D:\Mehaboob\Works\RCG\RCG.WPF\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+D:\Mehaboob\Works\RCG\RCG.WPF\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+D:\Mehaboob\Works\RCG\RCG.WPF\obj\Debug\netcoreapp3.1\Views\AddProductView.g.cs
+D:\Mehaboob\Works\RCG\RCG.WPF\obj\Debug\netcoreapp3.1\Views\AddProductView.baml

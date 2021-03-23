@@ -138,15 +138,15 @@ namespace RCG.WPF.ViewModels
             {
                 productMainDto.Username = _userStore.IsAuth.Username;
                 var productMain = await this._productService.AddProductMainAsync(productMainDto);
-                productMainDto.ProductMainId = productMain.Id;
-
                 double i = 0;
                 var productList = new List<Products>();
                 foreach (var item in priceList)
                 {
                     var value = i / (double)priceList.Count * 100;
                     this.ProgressBarValue = value;
-                    var product = await this._productService.SetProductModelAsync(item, productMainDto);
+                    item.User = _userStore.IsAuth.Username;
+                    item.ProductMainId = productMain.Id;
+                    var product = await this._productService.SetProductModelAsync(item);
                     if (product != null)
                     {
                         productList.Add(product);
@@ -159,7 +159,7 @@ namespace RCG.WPF.ViewModels
                     i++;
                 }
 
-                success = await this._productService.AddProductAsync(productList);
+                success = await this._productService.AddProductBulkAsync(productList);
             }
 
             return success;

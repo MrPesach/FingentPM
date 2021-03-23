@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
 D:\Mehaboob\Works\RCG\RCG.WPF\App.xaml
-9687709501
+10-89205328
 
-44440448822
-262610527710
-Controls\NavigationBar.xaml;MainWindow.xaml;Styles\Common.xaml;Styles\NavigationBar.xaml;Views\DialogWindow.xaml;Views\ImportPriceListView.xaml;Views\LoginView.xaml;Views\ProductsView.xaml;Views\RegisterView.xaml;
+46-1590821897
+267-194670560
+Controls\NavigationBar.xaml;MainWindow.xaml;Styles\Common.xaml;Styles\NavigationBar.xaml;Views\AddProductView.xaml;Views\DialogWindow.xaml;Views\ImportPriceListView.xaml;Views\LoginView.xaml;Views\ProductsView.xaml;Views\RegisterView.xaml;
 
-False
+True
 

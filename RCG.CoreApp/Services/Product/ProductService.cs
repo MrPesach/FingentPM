@@ -1,6 +1,7 @@
 ﻿namespace RCG.CoreApp.Services.Product
 {
     using CsvHelper;
+    using LinqKit;
     using RCG.CoreApp.DTO;
     using RCG.CoreApp.DTO.Mapper;
     using RCG.CoreApp.Interfaces.Product;
@@ -12,6 +13,7 @@
     using System.Globalization;
     using System.IO;
     using System.Linq;
+    using System.Linq.Expressions;
     using System.Text.RegularExpressions;
     using System.Threading.Tasks;
     using static System.Net.Mime.MediaTypeNames;
@@ -27,10 +29,23 @@
             _dateTimeService = dateTimeService;
         }
 
-        public async Task<List<Products>> GetPagedProductList(int pageNumber, int pageSize)
+        public async Task<List<AddProductDto>> GetPagedProductList(int pageNumber, int pageSize, string search = null)
         {
-            var productList = await _productRepository.GetPagedListAsync(pageNumber, pageSize);
-            return productList;
+            search = search ?? string.Empty;
+            var predicate = this.BuildFilter(search.ToLower());
+            var productList = await _productRepository.GetPagedListAsync(pageNumber, pageSize, predicate);
+            var productListDto = productList.Select(a => new AddProductDto
+            {
+                ProductId = a.Id,
+                Style = a.Sku,
+                AvailableLength = a.Length.ToString(),
+                AvrageWeight = a.Weight.ToString(),
+                Price = a.Price.ToString(),
+                UpdatedOn = a.LastModifiedOn.Value.ToString("MM/dd/yyyy")
+
+            }).ToList();
+
+            return productListDto;
         }
 
         public async Task<ProductMain> AddProductMainAsync(ProductMainDto productMainDto)
@@ -80,7 +95,7 @@
             return roductMainDto;
         }
 
-        public async Task<Products> SetProductModelAsync(PriceListDto item, ProductMainDto productMainDto)
+        public async Task<Products> SetProductModelAsync(PriceListDto item)
         {
             Products product = null;
             await Task.Run(() =>
@@ -93,21 +108,33 @@
                         Length = this.ConvertToDecimal(item.AvailableLength),
                         Weight = this.ConvertToDecimal(item.AvrageWeight),
                         Price = this.ConvertToDecimal(item.Price),
-                        CreatedBy = productMainDto.Username,
+                        CreatedBy = item.User,
                         CreatedOn = _dateTimeService.NowUtc,
-                        LastModifiedBy = productMainDto.Username,
+                        LastModifiedBy = item.User,
                         LastModifiedOn = _dateTimeService.NowUtc,
-                        ProductMainId = productMainDto.ProductMainId,
+                        ProductMainId = item.ProductMainId,
                     };
+
+                    if (item.ProductId > 0)
+                    {
+                        product.Id = item.ProductId;
+                    }
                 }
             });
 
             return product;
         }
 
-        public async Task<bool> AddProductAsync(List<Products> productList)
+        public async Task<bool> AddProductBulkAsync(List<Products> productList)
         {
-            var success = await this._productRepository.AddProductAsync(productList);
+            var success = await this._productRepository.AddProductBulkAsync(productList);
+            return success;
+        }
+
+        public async Task<bool> AddProductAsync(PriceListDto priceListDto)
+        {
+            var product = await this.SetProductModelAsync(priceListDto);
+            var success = await this._productRepository.AddProductAsync(product);
             return success;
         }
 
@@ -124,7 +151,7 @@
             return isValid;
         }
 
-        private bool IsNumber(string value)
+        public bool IsNumber(string value)
         {
             value = Regex.Replace(value, "[^a-zA-Z0-9_.]+", "", RegexOptions.Compiled);
             var isNumber = decimal.TryParse(value, out decimal result);
@@ -136,6 +163,18 @@
             value = Regex.Replace(value, "[^a-zA-Z0-9_.]+", "", RegexOptions.Compiled);
             decimal.TryParse(value, out decimal result);
             return result;
+        }
+
+        private Expression<Func<Products, bool>> BuildFilter(string search)
+        {
+            var predicate = PredicateBuilder.New<Products>();
+            if (!string.IsNullOrEmpty(search))
+            {
+                predicate = predicate.Or(x => x.Sku.ToLower().Contains(search));
+            }
+
+            predicate.And(a => !string.IsNullOrEmpty(a.Sku));
+            return predicate;
         }
     }
 }

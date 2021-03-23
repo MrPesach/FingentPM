@@ -21,6 +21,12 @@
             <DataTemplate DataType="{x:Type viewmodels:RegisterViewModel}">
                 <views:RegisterView />
             </DataTemplate>
+            <DataTemplate DataType="{x:Type viewmodels:ImportPriceListViewModel}">
+                <views:ImportPriceList />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewmodels:AddProductViewModel}">
+                <views:AddProductView />
+            </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

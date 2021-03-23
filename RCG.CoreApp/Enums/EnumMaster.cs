@@ -1,4 +1,6 @@
-﻿namespace RCG.CoreApp.Enums
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace RCG.CoreApp.Enums
 {
     public static class EnumMaster
     {
@@ -12,7 +14,9 @@
         {
             Unidefined,
             Yes,
-            No
+            No,
+            Success,
+            Cancelled,
         }
     }
 }

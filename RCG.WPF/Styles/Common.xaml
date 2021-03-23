@@ -19,7 +19,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Control">
-                    <Border BorderThickness="1" BorderBrush="Gray" CornerRadius="3">
+                    <Border BorderThickness="1" BorderBrush="#BCBFC6" CornerRadius="1">
                         <ScrollViewer x:Name="PART_ContentHost"/>
                     </Border>
                 </ControlTemplate>
@@ -135,7 +135,7 @@
 
     <Style TargetType="Button" BasedOn="{StaticResource btn}" x:Key="LightButton">
         <Setter Property="Background" Value="{StaticResource BrushWhite}"/>
-        <Setter Property="Foreground" Value="#434445"/>
+        <Setter Property="Foreground" Value="#4E4C4C"/>
         <Setter Property="BorderBrush" Value="#D2D2D2"/>
 
         <Style.Triggers>
@@ -299,7 +299,7 @@
         <Setter Property="FontWeight" Value="Regular"></Setter>
         <Setter Property="VerticalAlignment" Value="Center"></Setter>
         <Setter Property="HorizontalAlignment" Value="Center"></Setter>
-        <Setter Property="Foreground" Value="#434445"></Setter>
+        <Setter Property="Foreground" Value="#706E6E"></Setter>
         <Setter Property="Margin" Value="10"></Setter>
     </Style>
 
@@ -324,5 +324,16 @@
         <Setter Property="Background" Value="#EBEDF0"/>
         <Setter Property="Margin" Value="10"/>
         <Setter Property="Foreground" Value="#105EEB"/>
+    </Style>
+
+    <Style TargetType="TextBox" x:Key="FormControl" BasedOn="{StaticResource TextBoxBase}">
+        <Setter Property="Width" Value="400"/>
+        <Setter Property="Height" Value="40"/>
+    </Style>
+
+    <Style TargetType="TextBlock" x:Key="ErrorText">
+        <Setter Property="FontFamily" Value="{StaticResource SegoeUI}"/>
+        <Setter Property="FontSize" Value="13"/>
+        <Setter Property="Foreground" Value="#ff0000"/>
     </Style>
 </ResourceDictionary>

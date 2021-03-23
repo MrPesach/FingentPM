@@ -57,6 +57,10 @@
               "target": "Package",
               "version": "[26.0.1, )"
             },
+            "LinqKit": {
+              "target": "Package",
+              "version": "[1.1.24, )"
+            },
             "Microsoft.AspNetCore.Cryptography.KeyDerivation": {
               "target": "Package",
               "version": "[3.1.13, )"

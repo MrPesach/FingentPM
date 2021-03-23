@@ -7,14 +7,18 @@ namespace RCG.CoreApp.Interfaces.Product
 {
     public interface IProductService
     {
-        Task<List<Products>> GetPagedProductList(int pageNumber, int pageSize);
+        Task<List<AddProductDto>> GetPagedProductList(int pageNumber, int pageSize, string search = null);
 
         Task<ProductMainDto> ImportPriceListAsync(string filePath);
 
-        Task<Products> SetProductModelAsync(PriceListDto item, ProductMainDto productMainDto);
+        Task<Products> SetProductModelAsync(PriceListDto item);
 
         Task<ProductMain> AddProductMainAsync(ProductMainDto productMainDto);
 
-        Task<bool> AddProductAsync(List<Products> productList);
+        Task<bool> AddProductBulkAsync(List<Products> productList);
+
+        Task<bool> AddProductAsync(PriceListDto priceListDto);
+
+        bool IsNumber(string value);
     }
 }

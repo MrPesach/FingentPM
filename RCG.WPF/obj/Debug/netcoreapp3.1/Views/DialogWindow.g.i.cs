@@ -53,7 +53,7 @@ namespace RCG.WPF.Views {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/RCG.WPF;V1.0.0.0;component/views/dialogwindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/RCG.WPF;component/views/dialogwindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Views\DialogWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
