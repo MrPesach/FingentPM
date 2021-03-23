@@ -12,7 +12,7 @@ namespace RCG.WPF.State.Authenticators
 
         Task Login(string username, string password);
 
-        Task<RegistrationResult> Register(string name, string username, string password, string confirmPassword);
+        Task<UserSetupResult> UserSetup(string name, string username, string password, string confirmPassword);
 
         void Logout();
     }

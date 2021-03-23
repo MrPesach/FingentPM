@@ -28,7 +28,7 @@
     <Page Update="Views\LoginView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\RegisterView.xaml">
+    <Page Update="Views\UserSetupView.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

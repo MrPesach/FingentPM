@@ -3,11 +3,11 @@
 namespace RCG.WPF.Views
 {
     /// <summary>
-    /// Interaction logic for RegisterView.xaml
+    /// Interaction logic for UserSetupView.xaml
     /// </summary>
-    public partial class RegisterView : UserControl
+    public partial class UserSetupView : UserControl
     {
-        public RegisterView()
+        public UserSetupView()
         {
             InitializeComponent();
         }

@@ -4,7 +4,7 @@ using RCG.Domain.Entities;
 
 namespace RCG.CoreApp.Interfaces.Auth
 {
-    public enum RegistrationResult
+    public enum UserSetupResult
     {
         Success,
         PasswordsDoNotMatch,
@@ -17,6 +17,6 @@ namespace RCG.CoreApp.Interfaces.Auth
         Task<List<Users>> GetNonAdminListAsync();
         Task<Users> Login(string username, string password);
 
-        Task<RegistrationResult> Register(string name, string username, string password, string confirmPassword);
+        Task<UserSetupResult> UserSetup(string name, string username, string password, string confirmPassword);
     }
 }

@@ -19,13 +19,13 @@ namespace RCG.WPF.HostBuilders
 
                 services.AddSingleton<CreateViewModel<ProductsViewModel>>(services => () => services.GetRequiredService<ProductsViewModel>());
                 services.AddSingleton<CreateViewModel<LoginViewModel>>(services => () => CreateLoginViewModel(services));
-                services.AddSingleton<CreateViewModel<RegisterViewModel>>(services => () => CreateRegisterViewModel(services));
+                services.AddSingleton<CreateViewModel<UserSetupViewModel>>(services => () => CreateRegisterViewModel(services));
 
                 services.AddSingleton<IProductManagerViewModelFactory, ProductManagerViewModelFactory>();
 
                 services.AddSingleton<ViewModelDelegateRenavigator<ProductsViewModel>>();
                 services.AddSingleton<ViewModelDelegateRenavigator<LoginViewModel>>();
-                services.AddSingleton<ViewModelDelegateRenavigator<RegisterViewModel>>();
+                services.AddSingleton<ViewModelDelegateRenavigator<UserSetupViewModel>>();
             });
 
             return host;
@@ -36,12 +36,12 @@ namespace RCG.WPF.HostBuilders
             return new LoginViewModel(
                 services.GetRequiredService<IAuthenticator>(),
                 services.GetRequiredService<ViewModelDelegateRenavigator<ProductsViewModel>>(),
-                services.GetRequiredService<ViewModelDelegateRenavigator<RegisterViewModel>>());
+                services.GetRequiredService<ViewModelDelegateRenavigator<UserSetupViewModel>>());
         }
 
-        private static RegisterViewModel CreateRegisterViewModel(IServiceProvider services)
+        private static UserSetupViewModel CreateRegisterViewModel(IServiceProvider services)
         {
-            return new RegisterViewModel(
+            return new UserSetupViewModel(
                 services.GetRequiredService<IAuthenticator>(),
                 services.GetRequiredService<ViewModelDelegateRenavigator<LoginViewModel>>(),
                 services.GetRequiredService<ViewModelDelegateRenavigator<LoginViewModel>>());

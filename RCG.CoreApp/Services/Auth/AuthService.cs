@@ -44,22 +44,22 @@ namespace RCG.CoreApp.Services.Auth
             return userAccount;
         }
 
-        public async Task<RegistrationResult> Register(string name, string username, string password, string confirmPassword)
+        public async Task<UserSetupResult> UserSetup(string name, string username, string password, string confirmPassword)
         {
-            RegistrationResult result = RegistrationResult.Success;
+            UserSetupResult result = UserSetupResult.Success;
 
             if (password != confirmPassword)
             {
-                result = RegistrationResult.PasswordsDoNotMatch;
+                result = UserSetupResult.PasswordsDoNotMatch;
             }
 
             Users usernameAccount = await _userRepository.GetByUsernameAsync(username);
             if (usernameAccount != null)
             {
-                result = RegistrationResult.UsernameAlreadyExists;
+                result = UserSetupResult.UsernameAlreadyExists;
             }
 
-            if (result == RegistrationResult.Success)
+            if (result == UserSetupResult.Success)
             {
                 string hashedPassword = SecurityHelper.HashPassword(password);
 

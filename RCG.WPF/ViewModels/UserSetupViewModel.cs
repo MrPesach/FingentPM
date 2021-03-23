@@ -5,7 +5,7 @@ using RCG.WPF.State.Navigators;
 
 namespace RCG.WPF.ViewModels
 {
-    public class RegisterViewModel : ViewModelBase
+    public class UserSetupViewModel : ViewModelBase
     {
         private string _name;
         public string Name
@@ -83,11 +83,11 @@ namespace RCG.WPF.ViewModels
             set => ErrorMessageViewModel.Message = value;
         }
 
-        public RegisterViewModel(IAuthenticator authenticator, IRenavigator registerRenavigator, IRenavigator loginRenavigator)
+        public UserSetupViewModel(IAuthenticator authenticator, IRenavigator registerRenavigator, IRenavigator loginRenavigator)
         {
             ErrorMessageViewModel = new MessageViewModel();
 
-            RegisterCommand = new RegisterCommand(this, authenticator, registerRenavigator);
+            RegisterCommand = new UserSetupCommand(this, authenticator, registerRenavigator);
             ViewLoginCommand = new RenavigateCommand(loginRenavigator);
         }
 

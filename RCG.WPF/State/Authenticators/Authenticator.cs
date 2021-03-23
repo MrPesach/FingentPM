@@ -44,9 +44,9 @@ namespace RCG.WPF.State.Authenticators
             IsAuthenticated = null;
         }
 
-        public async Task<RegistrationResult> Register(string name, string username, string password, string confirmPassword)
+        public async Task<UserSetupResult> UserSetup(string name, string username, string password, string confirmPassword)
         {
-            return await _authenticationService.Register(name, username, password, confirmPassword);
+            return await _authenticationService.UserSetup(name, username, password, confirmPassword);
         }
     }
 }
