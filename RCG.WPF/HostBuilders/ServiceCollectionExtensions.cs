@@ -20,26 +20,11 @@ namespace RCG.WPF.HostBuilders
 {
     public static class ServiceCollectionExtensions
     {
-        ////public static IHostBuilder AddConfiguration(this IHostBuilder host)
-        ////{
-        ////    host.ConfigureAppConfiguration(c =>
-        ////    {
-        ////        c.AddJsonFile("appsettings.json");
-        ////        c.AddEnvironmentVariables();
-        ////    });
-
-        ////    return host;
-        ////}
-
         public static IHostBuilder AddDbContext(this IHostBuilder host)
         {
             host.ConfigureServices((context, services) =>
             {
-                ////string connectionString = context.Configuration.GetConnectionString("DefaultConnection");
-               
-                ////Action<DbContextOptionsBuilder> configureDbContext = o => o.UseSqlite(connectionString);
-                ////Action<DbContextOptionsBuilder> configureDbContext = o => o.UseSqlite("Data Source=RCG.db");
-                Action<DbContextOptionsBuilder> configureDbContext = o => o.UseSqlite("Data Source=./AppData/Data/RCG.db");
+                Action<DbContextOptionsBuilder> configureDbContext = o => o.UseSqlite("Data Source="+ @"AppData/data/rcg.db");
 
                 services.AddDbContext<ApplicationDbContext>(configureDbContext);
             });

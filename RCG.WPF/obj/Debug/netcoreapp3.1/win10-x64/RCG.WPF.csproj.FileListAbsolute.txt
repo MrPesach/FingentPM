@@ -599,3 +599,6 @@ D:\Applications\RCGProductManager\RCG.WPF\obj\Debug\netcoreapp3.1\win10-x64\RCG.
 D:\Applications\RCGProductManager\RCG.WPF\obj\Debug\netcoreapp3.1\win10-x64\RCG.WPF.dll
 D:\Applications\RCGProductManager\RCG.WPF\obj\Debug\netcoreapp3.1\win10-x64\RCG.WPF.pdb
 D:\Applications\RCGProductManager\RCG.WPF\obj\Debug\netcoreapp3.1\win10-x64\RCG.WPF.genruntimeconfig.cache
+D:\Applications\RCGProductManager\RCG.WPF\bin\Debug\netcoreapp3.1\win10-x64\Serilog.dll
+D:\Applications\RCGProductManager\RCG.WPF\bin\Debug\netcoreapp3.1\win10-x64\Serilog.Extensions.Logging.dll
+D:\Applications\RCGProductManager\RCG.WPF\bin\Debug\netcoreapp3.1\win10-x64\Serilog.Sinks.File.dll

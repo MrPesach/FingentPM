@@ -1,5 +1,4 @@
 D:\Applications\RCGProductManager\RCG.WPF\bin\Release\netcoreapp3.1\win10-x64\AppData\Data\RCG.db
-D:\Applications\RCGProductManager\RCG.WPF\bin\Release\netcoreapp3.1\win10-x64\appsettings.json
 D:\Applications\RCGProductManager\RCG.WPF\bin\Release\netcoreapp3.1\win10-x64\RCG.WPF.exe
 D:\Applications\RCGProductManager\RCG.WPF\bin\Release\netcoreapp3.1\win10-x64\RCG.WPF.deps.json
 D:\Applications\RCGProductManager\RCG.WPF\bin\Release\netcoreapp3.1\win10-x64\RCG.WPF.runtimeconfig.json
@@ -600,3 +599,6 @@ D:\Applications\RCGProductManager\RCG.WPF\obj\Release\netcoreapp3.1\win10-x64\RC
 D:\Applications\RCGProductManager\RCG.WPF\obj\Release\netcoreapp3.1\win10-x64\RCG.WPF.dll
 D:\Applications\RCGProductManager\RCG.WPF\obj\Release\netcoreapp3.1\win10-x64\RCG.WPF.pdb
 D:\Applications\RCGProductManager\RCG.WPF\obj\Release\netcoreapp3.1\win10-x64\RCG.WPF.genruntimeconfig.cache
+D:\Applications\RCGProductManager\RCG.WPF\bin\Release\netcoreapp3.1\win10-x64\Serilog.dll
+D:\Applications\RCGProductManager\RCG.WPF\bin\Release\netcoreapp3.1\win10-x64\Serilog.Extensions.Logging.dll
+D:\Applications\RCGProductManager\RCG.WPF\bin\Release\netcoreapp3.1\win10-x64\Serilog.Sinks.File.dll

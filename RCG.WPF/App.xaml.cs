@@ -6,6 +6,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using RCG.Data.DbContexts;
 using RCG.WPF.HostBuilders;
+using Serilog;
 
 namespace RCG.WPF
 {
@@ -24,7 +25,6 @@ namespace RCG.WPF
         public static IHostBuilder CreateHostBuilder(string[] args = null)
         {
             return Host.CreateDefaultBuilder(args)
-                ////.AddConfiguration()
                 .AddDbContext()
                 .AddServices()
                 .AddStores()
@@ -34,26 +34,31 @@ namespace RCG.WPF
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            using (var scope = _host.Services.CreateScope())
+            Log.Logger = new LoggerConfiguration()
+                     .MinimumLevel.Debug()
+                     .WriteTo.File(@"AppData\logs\Log-.txt", rollingInterval: RollingInterval.Day, rollOnFileSizeLimit: true, fileSizeLimitBytes: 100000)
+                    .CreateLogger();
+            Log.Information("Product Manager Started");
+
+            using var scope = _host.Services.CreateScope();
+            var services = scope.ServiceProvider;
+
+            try
             {
-                var services = scope.ServiceProvider;
-
-                try
-                {
-                    var context = services.GetRequiredService<ApplicationDbContext>();
-                    context.Database.Migrate(); // apply all migrations
-                }
-                catch (Exception)
-                {
-                    throw;
-                }
-
-                _host.Start();
-                Window window = _host.Services.GetRequiredService<MainWindow>();
-                window.Show();
-
-                base.OnStartup(e);
+                var context = services.GetRequiredService<ApplicationDbContext>();
+                context.Database.Migrate(); // apply all migrations
             }
+            catch (Exception ex)
+            {
+                Log.Information("OnStartup " + ex.Message);
+                throw;
+            }
+
+            _host.Start();
+            Window window = _host.Services.GetRequiredService<MainWindow>();
+            window.Show();
+
+            base.OnStartup(e);
         }
 
         protected override async void OnExit(ExitEventArgs e)

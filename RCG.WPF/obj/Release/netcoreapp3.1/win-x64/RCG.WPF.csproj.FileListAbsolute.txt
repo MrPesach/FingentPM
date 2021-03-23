@@ -1,5 +1,4 @@
 D:\Applications\RCGProductManager\RCG.WPF\bin\Release\netcoreapp3.1\win-x64\AppData\Data\RCG.db
-D:\Applications\RCGProductManager\RCG.WPF\bin\Release\netcoreapp3.1\win-x64\appsettings.json
 D:\Applications\RCGProductManager\RCG.WPF\bin\Release\netcoreapp3.1\win-x64\RCG.WPF.exe
 D:\Applications\RCGProductManager\RCG.WPF\bin\Release\netcoreapp3.1\win-x64\RCG.WPF.deps.json
 D:\Applications\RCGProductManager\RCG.WPF\bin\Release\netcoreapp3.1\win-x64\RCG.WPF.runtimeconfig.json
@@ -579,7 +578,6 @@ D:\Applications\RCGProductManager\RCG.WPF\obj\Release\netcoreapp3.1\win-x64\Cont
 D:\Applications\RCGProductManager\RCG.WPF\obj\Release\netcoreapp3.1\win-x64\MainWindow.g.cs
 D:\Applications\RCGProductManager\RCG.WPF\obj\Release\netcoreapp3.1\win-x64\Views\LoginView.g.cs
 D:\Applications\RCGProductManager\RCG.WPF\obj\Release\netcoreapp3.1\win-x64\Views\ProductsView.g.cs
-D:\Applications\RCGProductManager\RCG.WPF\obj\Release\netcoreapp3.1\win-x64\Views\RegisterView.g.cs
 D:\Applications\RCGProductManager\RCG.WPF\obj\Release\netcoreapp3.1\win-x64\App.g.cs
 D:\Applications\RCGProductManager\RCG.WPF\obj\Release\netcoreapp3.1\win-x64\GeneratedInternalTypeHelper.g.cs
 D:\Applications\RCGProductManager\RCG.WPF\obj\Release\netcoreapp3.1\win-x64\RCG.WPF_MarkupCompile.cache
@@ -591,7 +589,6 @@ D:\Applications\RCGProductManager\RCG.WPF\obj\Release\netcoreapp3.1\win-x64\Styl
 D:\Applications\RCGProductManager\RCG.WPF\obj\Release\netcoreapp3.1\win-x64\Styles\NavigationBar.baml
 D:\Applications\RCGProductManager\RCG.WPF\obj\Release\netcoreapp3.1\win-x64\Views\LoginView.baml
 D:\Applications\RCGProductManager\RCG.WPF\obj\Release\netcoreapp3.1\win-x64\Views\ProductsView.baml
-D:\Applications\RCGProductManager\RCG.WPF\obj\Release\netcoreapp3.1\win-x64\Views\RegisterView.baml
 D:\Applications\RCGProductManager\RCG.WPF\obj\Release\netcoreapp3.1\win-x64\RCG.WPF.g.resources
 D:\Applications\RCGProductManager\RCG.WPF\obj\Release\netcoreapp3.1\win-x64\RCG.WPF.AssemblyInfoInputs.cache
 D:\Applications\RCGProductManager\RCG.WPF\obj\Release\netcoreapp3.1\win-x64\RCG.WPF.AssemblyInfo.cs
@@ -600,3 +597,8 @@ D:\Applications\RCGProductManager\RCG.WPF\obj\Release\netcoreapp3.1\win-x64\RCG.
 D:\Applications\RCGProductManager\RCG.WPF\obj\Release\netcoreapp3.1\win-x64\RCG.WPF.dll
 D:\Applications\RCGProductManager\RCG.WPF\obj\Release\netcoreapp3.1\win-x64\RCG.WPF.pdb
 D:\Applications\RCGProductManager\RCG.WPF\obj\Release\netcoreapp3.1\win-x64\RCG.WPF.genruntimeconfig.cache
+D:\Applications\RCGProductManager\RCG.WPF\obj\Release\netcoreapp3.1\win-x64\Views\UserSetupView.g.cs
+D:\Applications\RCGProductManager\RCG.WPF\obj\Release\netcoreapp3.1\win-x64\Views\UserSetupView.baml
+D:\Applications\RCGProductManager\RCG.WPF\bin\Release\netcoreapp3.1\win-x64\Serilog.dll
+D:\Applications\RCGProductManager\RCG.WPF\bin\Release\netcoreapp3.1\win-x64\Serilog.Extensions.Logging.dll
+D:\Applications\RCGProductManager\RCG.WPF\bin\Release\netcoreapp3.1\win-x64\Serilog.Sinks.File.dll

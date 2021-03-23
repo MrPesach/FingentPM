@@ -1,4 +1,4 @@
-﻿D:\Applications\RCGProductManager\RCG.WPF\obj\Release\netcoreapp3.1\win-x64\GeneratedInternalTypeHelper.g.cs
+﻿
 FD:\Applications\RCGProductManager\RCG.WPF\App.xaml;;
 FD:\Applications\RCGProductManager\RCG.WPF\Controls\NavigationBar.xaml;;
 FD:\Applications\RCGProductManager\RCG.WPF\MainWindow.xaml;;
@@ -6,5 +6,5 @@ FD:\Applications\RCGProductManager\RCG.WPF\Styles\Common.xaml;;
 FD:\Applications\RCGProductManager\RCG.WPF\Styles\NavigationBar.xaml;;
 FD:\Applications\RCGProductManager\RCG.WPF\Views\LoginView.xaml;;
 FD:\Applications\RCGProductManager\RCG.WPF\Views\ProductsView.xaml;;
-FD:\Applications\RCGProductManager\RCG.WPF\Views\RegisterView.xaml;;
+FD:\Applications\RCGProductManager\RCG.WPF\Views\UserSetupView.xaml;;
 
