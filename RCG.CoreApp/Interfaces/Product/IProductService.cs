@@ -20,5 +20,7 @@ namespace RCG.CoreApp.Interfaces.Product
         Task<bool> AddProductAsync(PriceListDto priceListDto);
 
         bool IsNumber(string value);
+
+        bool IsProductExist(string styleName);
     }
 }

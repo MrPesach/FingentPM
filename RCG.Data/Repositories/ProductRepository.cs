@@ -53,5 +53,11 @@
 
             return true;
         }
+
+        public bool IsProductExist(string styleName)
+        {
+            var isProductExist =this._productRepository.Entities.Any(a => a.Sku.ToLower() == styleName.ToLower());
+            return isProductExist;
+        }
     }
 }

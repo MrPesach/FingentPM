@@ -138,6 +138,12 @@
             return success;
         }
 
+        public bool IsProductExist(string styleName)
+        {
+            var isProductExist = this._productRepository.IsProductExist(styleName);
+            return isProductExist;
+        }
+
         private bool ValidatePriceList(PriceListDto priceListDto)
         {
             bool isValid = true;

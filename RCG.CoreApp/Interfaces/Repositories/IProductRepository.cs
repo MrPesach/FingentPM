@@ -16,5 +16,6 @@ namespace RCG.CoreApp.Interfaces.Repositories
 
         Task<bool> AddProductBulkAsync(List<Products> productList);
         Task<bool> AddProductAsync(Products product);
+        bool IsProductExist(string styleName);
     }
 }

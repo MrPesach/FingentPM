@@ -90,6 +90,13 @@ namespace RCG.WPF.ViewModels
                 this.SetErrorMessage("Please enter Style Name");
                 isValid = false;
             }
+            else if (!string.IsNullOrEmpty(this.AddProduct.Style) &&
+                this.AddProduct.ProductId == 0 &&
+                _productService.IsProductExist(this.AddProduct.Style))
+            {
+                this.SetErrorMessage("Style Name already exist");
+                isValid = false;
+            }
             else if (!string.IsNullOrEmpty(this.AddProduct.AvailableLength)
                 && !_productService.IsNumber(this.AddProduct.AvailableLength))
             {

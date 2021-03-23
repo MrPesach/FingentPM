@@ -22,6 +22,8 @@ namespace RCG.WPF.ViewModels
 
         private readonly AddProductViewModel _addProductViewModel;
 
+        private readonly AlertViewModel _alertViewModel;
+
         public ICommand ImportPriceListCommand { get; }
         public ICommand SearchCommand { get; }
         public ICommand PaginationCommand { get; }
@@ -32,11 +34,13 @@ namespace RCG.WPF.ViewModels
             IProductService productService,
             ImportPriceListViewModel importPriceListViewModel,
             IDialogService dialogService,
-            AddProductViewModel addProductViewModel)
+            AddProductViewModel addProductViewModel,
+            AlertViewModel alertViewModel)
         {
             this._productService = productService;
             this._dialogService = dialogService;
             this._addProductViewModel = addProductViewModel;
+            this._alertViewModel = alertViewModel;
             this.ImportPriceListCommand = new ImportPriceListCommand(this, _productService, dialogService, importPriceListViewModel);
             this.SearchCommand = new RelayCommand(obj => this.GetProducts(), obj => true);
             this.PaginationCommand = new RelayCommand(obj => this.PaginationClick(obj), obj => true);
@@ -88,7 +92,7 @@ namespace RCG.WPF.ViewModels
 
         private async Task GetProducts()
         {
-            var productList = await this._productService.GetPagedProductList(this.PageNumber, 100, this.SearchText);
+            var productList = await this._productService.GetPagedProductList(this.PageNumber, 10, this.SearchText);
             this.ProductList = new ObservableCollection<AddProductDto>(productList);
         }
 
@@ -115,6 +119,9 @@ namespace RCG.WPF.ViewModels
             if (result == EnumMaster.DialogResults.Success.ToString())
             {
                 this.InitialLoad();
+                _alertViewModel.Title = "Add Product";
+                _alertViewModel.Message = "Product Saved Successfully";
+                this._dialogService.OpenDialog(_alertViewModel);
             }
         }
 
@@ -122,7 +129,7 @@ namespace RCG.WPF.ViewModels
         {
             if (obj != null)
             {
-                var addProductDto =  (AddProductDto)obj;
+                var addProductDto = (AddProductDto)obj;
                 this._addProductViewModel.AddProduct = new AddProductDto
                 {
                     ProductId = addProductDto.ProductId,
@@ -136,6 +143,9 @@ namespace RCG.WPF.ViewModels
                 if (result == EnumMaster.DialogResults.Success.ToString())
                 {
                     this.InitialLoad();
+                    _alertViewModel.Title = "Update Product";
+                    _alertViewModel.Message = "Product Updated Successfully";
+                    this._dialogService.OpenDialog(_alertViewModel);
                 }
             }
         }

@@ -20,6 +20,7 @@ namespace RCG.WPF.HostBuilders
                 services.AddTransient<MainViewModel>();
                 services.AddTransient<ImportPriceListViewModel>();
                 services.AddTransient<AddProductViewModel>();
+                services.AddTransient<AlertViewModel>();
 
                 services.AddSingleton<CreateViewModel<ProductsViewModel>>(services => () => services.GetRequiredService<ProductsViewModel>());
                 services.AddSingleton<CreateViewModel<LoginViewModel>>(services => () => CreateLoginViewModel(services));
@@ -56,7 +57,8 @@ namespace RCG.WPF.HostBuilders
             return new ProductsViewModel(services.GetRequiredService<IProductService>(),
                 services.GetRequiredService<ImportPriceListViewModel>(),
                 services.GetRequiredService<IDialogService>(),
-                services.GetRequiredService<AddProductViewModel>());
+                services.GetRequiredService<AddProductViewModel>(),
+                services.GetRequiredService<AlertViewModel>());
         }
     }
 }

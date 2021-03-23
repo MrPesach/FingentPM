@@ -279,3 +279,5 @@ D:\Mehaboob\Works\RCG\RCG.WPF\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcorea
 D:\Mehaboob\Works\RCG\RCG.WPF\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
 D:\Mehaboob\Works\RCG\RCG.WPF\obj\Debug\netcoreapp3.1\Views\AddProductView.g.cs
 D:\Mehaboob\Works\RCG\RCG.WPF\obj\Debug\netcoreapp3.1\Views\AddProductView.baml
+D:\Mehaboob\Works\RCG\RCG.WPF\obj\Debug\netcoreapp3.1\Views\AlertView.g.cs
+D:\Mehaboob\Works\RCG\RCG.WPF\obj\Debug\netcoreapp3.1\Views\AlertView.baml
