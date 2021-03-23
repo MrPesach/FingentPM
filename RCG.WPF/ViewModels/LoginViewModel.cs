@@ -55,6 +55,9 @@ namespace RCG.WPF.ViewModels
 
 			LoginCommand = new LoginCommand(this, authenticator, loginRenavigator);
 			ViewRegisterCommand = new RenavigateCommand(registerRenavigator);
+
+			this.Username = "superadmin";
+			this.Password = "password";
 		}
 
         public override void Dispose()

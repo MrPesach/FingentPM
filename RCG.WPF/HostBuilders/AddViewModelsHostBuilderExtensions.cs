@@ -1,6 +1,8 @@
 ﻿using System;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using RCG.CoreApp.Interfaces.Product;
+using RCG.WPF.Services;
 using RCG.WPF.State.Authenticators;
 using RCG.WPF.State.Navigators;
 using RCG.WPF.ViewModels;
@@ -16,6 +18,7 @@ namespace RCG.WPF.HostBuilders
             {
                 services.AddTransient(CreateProductsViewModel);
                 services.AddTransient<MainViewModel>();
+                services.AddTransient<ImportPriceListViewModel>();
 
                 services.AddSingleton<CreateViewModel<ProductsViewModel>>(services => () => services.GetRequiredService<ProductsViewModel>());
                 services.AddSingleton<CreateViewModel<LoginViewModel>>(services => () => CreateLoginViewModel(services));
@@ -49,7 +52,9 @@ namespace RCG.WPF.HostBuilders
 
         private static ProductsViewModel CreateProductsViewModel(IServiceProvider services)
         {
-            return new ProductsViewModel();
+            return new ProductsViewModel(services.GetRequiredService<IProductService>(),
+                services.GetRequiredService<ImportPriceListViewModel>(),
+                services.GetRequiredService<IDialogService>());
         }
     }
 }

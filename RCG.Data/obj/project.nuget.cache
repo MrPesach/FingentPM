@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "tPSpcWiEfm57bSKhKntV6qNz2riL3ykV3ZJHHGYOaot8kTzCPBSXNNwVev3tcLoUlsJU/3ZNdENLHEHRq/PsGA==",
+  "dgSpecHash": "oYR6HVcWdkIfSd55yIc05qw+4xRql91QPtULf10hilJVpq/N7f4ntZnGX1osGIpD47a4Bm+/0wEsY0cxNG7X5w==",
   "success": true,
   "projectFilePath": "D:\\Mehaboob\\Works\\RCG\\RCG.Data\\RCG.Data.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\mehaboob.ali\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\mehaboob.ali\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",
+    "C:\\Users\\mehaboob.ali\\.nuget\\packages\\csvhelper\\26.0.1\\csvhelper.26.0.1.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.aspnetcore.authentication\\2.2.0\\microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.aspnetcore.authentication.cookies\\2.2.0\\microsoft.aspnetcore.authentication.cookies.2.2.0.nupkg.sha512",

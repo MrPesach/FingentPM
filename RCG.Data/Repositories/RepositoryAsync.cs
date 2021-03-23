@@ -24,6 +24,13 @@ namespace RCG.Data.Repositories
             return entity;
         }
 
+        public async Task<bool> AddRangeAsync(List<T> entityList)
+        {
+            await _dbContext.Set<T>().AddRangeAsync(entityList);
+            return true;
+        }
+
+
         public Task DeleteAsync(T entity)
         {
             _dbContext.Set<T>().Remove(entity);

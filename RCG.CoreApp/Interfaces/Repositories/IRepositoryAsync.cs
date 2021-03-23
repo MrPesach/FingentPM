@@ -16,6 +16,8 @@ namespace RCG.CoreApp.Interfaces.Repositories
 
         Task<T> AddAsync(T entity);
 
+        Task<bool> AddRangeAsync(List<T> entityList);
+
         Task UpdateAsync(T entity);
 
         Task DeleteAsync(T entity);
