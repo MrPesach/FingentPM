@@ -6,8 +6,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:RCG.WPF.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    d:DesignHeight="560"
-    d:DesignWidth="1272"
+    Width="1272"
+    Height="560"
     FontSize="13"
     mc:Ignorable="d">
     <UserControl.Resources>
@@ -15,7 +15,7 @@
     </UserControl.Resources>
 
 
-    <Grid ShowGridLines="False">
+    <Grid ShowGridLines="False" Background="#ffffff">
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
@@ -23,14 +23,14 @@
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        
-        <Grid Grid.Row="0" Grid.Column="0" Width="780">
+
+        <Grid Grid.Row="0" Grid.Column="0">
             <Grid.Background>
                 <ImageBrush ImageSource="/Resources/images/login-banner.png" Stretch="Fill"/>
             </Grid.Background>
         </Grid>
 
-        <Grid Grid.Row="0" Grid.Column="1" Margin="20 100 20 20" Width="492">
+        <Grid Grid.Row="0" Grid.Column="1"  Margin="72,100,155,20">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
@@ -41,29 +41,27 @@
                 <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
 
-            <TextBlock Grid.Column="1"
-                HorizontalAlignment="Left"
-                FontSize="15" FontWeight="Bold"
-                Text="Login" />
-            <TextBlock Grid.Row="0" Text="Username" Margin="0 40 0 0"/>
-            <TextBox Grid.Row="1"
-                        Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}" />
-            <TextBlock Grid.Row="2" Text="Password"/>
-            <components:BindablePasswordBox  Grid.Row="3"
-                        Password="{Binding Password}" />
 
-            <Button Grid.Row="4"
+            <TextBlock Grid.Row="0" Style="{StaticResource TextBlockHeading}"
+                Text="Login" />
+            <TextBlock Grid.Row="1" Text="Username" Style="{StaticResource TextBlockLabels}"/>
+            <TextBox Grid.Row="2" HorizontalAlignment="Left" Style="{StaticResource FormControl}"
+                        Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBlock Grid.Row="3" Style="{StaticResource TextBlockLabels}" Text="Password"/>
+            <components:BindablePasswordBox Grid.Row="4" HorizontalAlignment="Left" Width="400" Height="40"
+                        Password="{Binding Password}" />
+            <Button HorizontalAlignment="Right" Grid.Row="5" Margin="0 10 0 0"
                     Command="{Binding LoginCommand}"
                     Content="Login"
-                    IsDefault="True"/>
+                    IsDefault="True" Style="{StaticResource PrimaryButton}"/>
 
-            <TextBlock Grid.Row="5"
-                    HorizontalAlignment="Center"
+            <TextBlock Grid.Row="6" Margin="0 10 0 0"
+                    Style="{StaticResource ErrorText}"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
                     DataContext="{Binding ErrorMessageViewModel}"
-                    Foreground="DarkRed"
                     Text="{Binding Message}"
-                    Visibility="{Binding HasMessage, Converter={StaticResource BooleanToVisibilityConverter}}" />
-
+                    Visibility="{Binding HasMessage, Converter={StaticResource BooleanToVisibilityConverter}}"/>
         </Grid>
     </Grid>
 </UserControl>

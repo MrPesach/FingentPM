@@ -20,7 +20,7 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0" Background="{StaticResource BrushBlack}">
-            <Image Width="300" Source="/Resources/Images/royal_chain_white_logo.png">
+            <Image Width="300" Source="/Resources/Images/royal_chain_white_logo.png" HorizontalAlignment="Left">
             </Image>
             <!--<Image Source="/Resources/Images/royal_chain_white_logo.png" />-->
         </Grid>

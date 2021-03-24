@@ -15,36 +15,6 @@
 	</PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Resources\Images\App-top-bg.png" />
-    <None Remove="Resources\Images\arrow-left.png" />
-    <None Remove="Resources\Images\arrow-right.png" />
-    <None Remove="Resources\Images\check-green.png" />
-    <None Remove="Resources\Images\close.png" />
-    <None Remove="Resources\Images\csv.png" />
-    <None Remove="Resources\Images\delete.png" />
-    <None Remove="Resources\Images\down-arrow.png" />
-    <None Remove="Resources\Images\edit.png" />
-    <None Remove="Resources\Images\error-icon.png" />
-    <None Remove="Resources\Images\error.png" />
-    <None Remove="Resources\Images\import.png" />
-    <None Remove="Resources\Images\loader.png" />
-    <None Remove="Resources\Images\Login-box-bg.png" />
-    <None Remove="Resources\Images\next-arrow.png" />
-    <None Remove="Resources\Images\royal_chain_white_logo.png" />
-    <None Remove="Resources\Images\search.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="Resources\Images\app-header.png" />
-    <None Remove="Resources\Images\app-icon.ico" />
-    <None Remove="Resources\Images\App-top-bg.png" />
-    <None Remove="Resources\Images\check-green.png" />
-    <None Remove="Resources\Images\login-banner.png" />
-    <None Remove="Resources\Images\Login-box-bg.png" />
-    <None Remove="Resources\Images\royal_chain_white_logo.png" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.13">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -67,26 +37,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Resources\Images\App-top-bg.png" />
-    <Resource Include="Resources\Images\arrow-left.png" />
-    <Resource Include="Resources\Images\arrow-right.png" />
-    <Resource Include="Resources\Images\check-green.png" />
-    <Resource Include="Resources\Images\close.png" />
-    <Resource Include="Resources\Images\csv.png" />
-    <Resource Include="Resources\Images\delete.png" />
-    <Resource Include="Resources\Images\down-arrow.png" />
-    <Resource Include="Resources\Images\edit.png" />
-    <Resource Include="Resources\Images\error-icon.png" />
-    <Resource Include="Resources\Images\error.png" />
-    <Resource Include="Resources\Images\import.png" />
-    <Resource Include="Resources\Images\loader.png" />
-    <Resource Include="Resources\Images\Login-box-bg.png" />
-    <Resource Include="Resources\Images\next-arrow.png" />
-    <Resource Include="Resources\Images\royal_chain_white_logo.png" />
-    <Resource Include="Resources\Images\search.png" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Resource Include="Resources\Images\app-header.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
@@ -96,7 +46,46 @@
     <Resource Include="Resources\Images\App-top-bg.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Resources\Images\arrow-left.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\arrow-right.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resources\Images\check-green.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\close.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\csv.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\delete.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\down-arrow.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\edit.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\error-icon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\error.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\folder.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\Group 3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\import.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\loader.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Images\login-banner.png">
@@ -105,7 +94,13 @@
     <Resource Include="Resources\Images\Login-box-bg.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Resources\Images\next-arrow.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resources\Images\royal_chain_white_logo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\search.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
