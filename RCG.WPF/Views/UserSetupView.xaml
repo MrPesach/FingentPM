@@ -67,9 +67,9 @@
 
             <TextBlock Grid.Row="10" Margin="0,10,0,0"
                     Style="{StaticResource ErrorText}"
-                    HorizontalAlignment="Center"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
                     DataContext="{Binding ErrorMessageViewModel}"
-                    Foreground="DarkRed"
                     Text="{Binding Message}"
                     Visibility="{Binding HasMessage, Converter={StaticResource BooleanToVisibilityConverter}}" />
         </Grid>
