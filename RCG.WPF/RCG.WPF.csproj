@@ -18,6 +18,7 @@
     <None Remove="Resources\Images\edit.png" />
     <None Remove="Resources\Images\error-icon.png" />
     <None Remove="Resources\Images\error.png" />
+    <None Remove="Resources\Images\green-tick.png" />
     <None Remove="Resources\Images\import.png" />
     <None Remove="Resources\Images\loader.png" />
     <None Remove="Resources\Images\Login-box-bg.png" />
@@ -57,6 +58,7 @@
     <Resource Include="Resources\Images\edit.png" />
     <Resource Include="Resources\Images\error-icon.png" />
     <Resource Include="Resources\Images\error.png" />
+    <Resource Include="Resources\Images\green-tick.png" />
     <Resource Include="Resources\Images\import.png" />
     <Resource Include="Resources\Images\loader.png" />
     <Resource Include="Resources\Images\Login-box-bg.png" />

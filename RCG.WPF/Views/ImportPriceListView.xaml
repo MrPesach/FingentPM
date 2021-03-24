@@ -4,8 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:RCG.WPF.Views"
-             mc:Ignorable="d" 
-             Height="{Binding PopupHeight}" Width="578">
+             mc:Ignorable="d"
+             Height="{Binding PopupHeight}" Width="588">
     <UserControl.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
     </UserControl.Resources>
@@ -13,7 +13,6 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="52" />
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="97"/>
         </Grid.RowDefinitions>
         <Grid Background="#EBEDF0" Grid.Row="0">
             <Grid.ColumnDefinitions>
@@ -25,47 +24,196 @@
                     Command="{Binding CancelCommand}"  
                     CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=Window}}"/>
         </Grid>
-        <Border Visibility="{Binding FileUploadSection, Converter={StaticResource BooleanToVisibilityConverter}}" 
-                Grid.Row="1" BorderThickness="1" Width="537" Height="220" 
-                Margin="20"
-                Padding="20">
-            <Border.BorderBrush>
-                <VisualBrush>
-                    <VisualBrush.Visual>
-                        <Rectangle StrokeDashArray='20,6' Stroke='#A7A8A9' RadiusX="3" RadiusY="3"/>
-                    </VisualBrush.Visual>
-                </VisualBrush>
-            </Border.BorderBrush>
-            <StackPanel>
-                <Image  Width="48" Height="70" Source="/Resources/Images/csv.png" Margin="0,15,0,20"/>
-                <Button Command="{Binding BrowseFileCommand}" Style="{StaticResource LightButton}" Content="Browse File"/>
-                <TextBlock Style="{StaticResource DarkTextBlock}" Text="Supports .csv format" Margin="0,10,0,20"/>
-            </StackPanel>
-        </Border>
-        <Grid  Height="Auto"  Grid.Row="1" Margin="0,25,0,0" Visibility="{Binding ProgressBarSection, Converter={StaticResource BooleanToVisibilityConverter}}">
+
+        <Grid Grid.Row="1" Visibility="{Binding IsCompleted, Converter={StaticResource BooleanToVisibilityConverter}}">
             <Grid.RowDefinitions>
-                <RowDefinition />
-                <RowDefinition />
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="42"/>
             </Grid.RowDefinitions>
-            <StackPanel Grid.Row="0">
-                <TextBlock Style="{StaticResource DarkTextBlock}" Text="Processing CSV file" 
+
+            <Grid Grid.Row="0" Margin="20">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="45"/>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Image Grid.Column="0" Grid.Row="0" 
+                   Source="{Binding ImportCompleteImageUri}" 
+                   Stretch="None"
+                   Width="30"
+                   Height="30"
+                   HorizontalAlignment="Left"/>
+                <TextBlock Grid.Column="1" Grid.Row="0"  Text="{Binding ImportCompleteMessage}" Style="{StaticResource MessageHeader}"/>
+                <Grid Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" Height="131" Margin="0,0,0,10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="70*"/>
+                        <ColumnDefinition Width="20*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <Image Grid.Column="0" Grid.Row="0" Style="{StaticResource GreenTick}"/>
+                    <TextBlock Grid.Column="1" Grid.Row="0"  Style="{StaticResource DarkTextBlock}" 
                            HorizontalAlignment="Left"
-                           VerticalAlignment="Bottom"/>
-            </StackPanel>
-            <ProgressBar Grid.Row="1" Value="{Binding ProgressBarValue}" />
-        </Grid>
-        <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Right">
-            <Button Command="{Binding CancelCommand}"
+                           Text="Total Number of Product:"/>
+                    <TextBlock Grid.Column="2" Grid.Row="0"
+                           Style="{StaticResource DarkTextBlock}"
+                           FontWeight="Bold"
+                           HorizontalAlignment="Left"
+                           Text="{Binding NumberOfTotal}"/>
+
+                    <Image Grid.Column="0" Grid.Row="1" Style="{StaticResource GreenTick}"/>
+                    <TextBlock Grid.Column="1" Grid.Row="1"  Style="{StaticResource DarkTextBlock}" 
+                           HorizontalAlignment="Left"
+                           Text="Total Number of Price Updated Products:"/>
+                    <TextBlock Grid.Column="2" Grid.Row="1"
+                           Style="{StaticResource DarkTextBlock}"
+                           FontWeight="Bold"
+                           HorizontalAlignment="Left"
+                           Text="{Binding NumberOfUpdated}"/>
+
+                    <Image Grid.Column="0" Grid.Row="2" Style="{StaticResource GreenTick}"/>
+                    <TextBlock Grid.Column="1" Grid.Row="2"  Style="{StaticResource DarkTextBlock}" 
+                           HorizontalAlignment="Left"
+                           Text="Total No of New Products:"/>
+                    <TextBlock Grid.Column="2" Grid.Row="2"
+                           Style="{StaticResource DarkTextBlock}"
+                           FontWeight="Bold"
+                           HorizontalAlignment="Left"
+                           Text="{Binding NumberOfNew}"/>
+
+                    <Image Grid.Column="0" Grid.Row="3" Style="{StaticResource Error}"
+                           Visibility="{Binding CSVHasError, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                    <TextBlock Grid.Column="1" Grid.Row="3"  Style="{StaticResource DarkTextBlock}" 
+                           HorizontalAlignment="Left"
+                           Visibility="{Binding CSVHasError, Converter={StaticResource BooleanToVisibilityConverter}}"
+                           Text="Total No of  Products With Errors:"/>
+                    <TextBlock Grid.Column="2" Grid.Row="3"
+                           Style="{StaticResource DarkTextBlock}"
+                           FontWeight="Bold"
+                           HorizontalAlignment="Left"
+                           Text="{Binding NumberOfFiled}"
+                           Visibility="{Binding CSVHasError, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+
+                </Grid>
+
+                <Grid Visibility="{Binding CSVHasError, Converter={StaticResource BooleanToVisibilityConverter}}" 
+                      Grid.Row="2" Grid.ColumnSpan="2" Background="#FAFAFA">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="90*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Image Grid.Column="0" Grid.Row="0" Style="{StaticResource CSVIcon}" 
+                       Width="38" Height="55"
+                       Margin="10,0,0,0"/>
+                    <StackPanel  Grid.Column="1" Grid.Row="0">
+                        <TextBlock Style="{StaticResource MessageHeader}" 
+                               Text="Price List CSV With Errors"
+                               Margin="15,10,0,0"/>
+                        <TextBlock Style="{StaticResource DarkTextBlock}"
+                               TextWrapping="Wrap"
+                               Text="To fix this errors you can download this modified CSV file that you uploaded. It only contains data with errors. Please fix the error and upload it again"/>
+                    </StackPanel>
+                    <StackPanel Margin="0,0,10,10" Grid.Row="1" Grid.Column="1" 
+                                HorizontalAlignment="Right" 
+                                Orientation="Horizontal">
+                        <Button Command="{Binding BrowseFileCommand}" Style="{StaticResource TextOnlyButton}" Content="Upload CSV"/>
+                        <Button  Command="{Binding DownloadCSVCommand}"
+                    Style="{StaticResource DownloadButton}" >
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="/Resources/Images/down-arrow.png" Margin="0,0,10,3" Stretch="None"/>
+                                <TextBlock Text="Download CSV" />
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+            <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Right">
+                <StackPanel Visibility="{Binding CSVHasNoError, Converter={StaticResource BooleanToVisibilityConverter}}">
+                    <Button Command="{Binding CancelCommand}"  
+                    CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=Window}}"
+                    Style="{StaticResource ProceedButton}" 
+                    Content="OK"
+                    Width="75"/>
+                </StackPanel>
+                <StackPanel Visibility="{Binding CSVHasError, Converter={StaticResource BooleanToVisibilityConverter}}"
+                            Orientation="Horizontal">
+                    <Button Command="{Binding CancelCommand}"
                     CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=Window}}"
                     Style="{StaticResource TextOnlyButton}" 
                     Content="Cancel"/>
-            <Button Command="{Binding ProceedCommand}"
-                    Style="{StaticResource ProceedButton}" >
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Proceed" Margin="0,0,10,3"/>
-                    <Image Source="/Resources/Images/next-arrow.png" Stretch="None"/>
+                    <Button Command="{Binding ProceedCommand}"
+                    Style="{StaticResource ProceedButton}">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Proceed" Margin="0,0,10,3"/>
+                            <Image Source="/Resources/Images/next-arrow.png" Stretch="None"/>
+                        </StackPanel>
+                    </Button>
                 </StackPanel>
-            </Button>
-        </StackPanel>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="1" Visibility="{Binding InProgress, Converter={StaticResource BooleanToVisibilityConverter}}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="97"/>
+            </Grid.RowDefinitions>
+            <Border Visibility="{Binding FileUploadSection, Converter={StaticResource BooleanToVisibilityConverter}}" 
+                Grid.Row="0" BorderThickness="1" Width="537" Height="220" 
+                Margin="20"
+                Padding="20">
+                <Border.BorderBrush>
+                    <VisualBrush>
+                        <VisualBrush.Visual>
+                            <Rectangle StrokeDashArray='20,6' Stroke='#A7A8A9' RadiusX="3" RadiusY="3"/>
+                        </VisualBrush.Visual>
+                    </VisualBrush>
+                </Border.BorderBrush>
+                <StackPanel>
+                    <Image Style="{StaticResource CSVIcon}" />
+                    <Button Command="{Binding BrowseFileCommand}" Style="{StaticResource LightButton}" Content="Browse File"/>
+                    <TextBlock Style="{StaticResource DarkTextBlock}" Text="Supports .csv format" Margin="0,10,0,20"/>
+                </StackPanel>
+            </Border>
+            <Grid  Height="Auto"  Grid.Row="0" Margin="0,25,0,0" Visibility="{Binding ProgressBarSection, Converter={StaticResource BooleanToVisibilityConverter}}">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0">
+                    <TextBlock Style="{StaticResource DarkTextBlock}" Text="Processing CSV file" 
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Bottom"/>
+                </StackPanel>
+                <ProgressBar Grid.Row="1" Value="{Binding ProgressBarValue}" />
+            </Grid>
+            <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Right">
+                <Button Command="{Binding CancelCommand}"
+                    CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=Window}}"
+                    Style="{StaticResource TextOnlyButton}" 
+                    Content="Cancel"/>
+                <Button Command="{Binding ProceedCommand}"
+                    Style="{StaticResource ProceedButton}">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Proceed" Margin="0,0,10,3"/>
+                        <Image Source="/Resources/Images/next-arrow.png" Stretch="None"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </Grid>
     </Grid>
 </UserControl>

@@ -42,7 +42,7 @@ namespace RCG.WPF.ViewModels
             this._addProductViewModel = addProductViewModel;
             this._alertViewModel = alertViewModel;
             this.ImportPriceListCommand = new ImportPriceListCommand(this, _productService, dialogService, importPriceListViewModel);
-            this.SearchCommand = new RelayCommand(obj => this.GetProducts(), obj => true);
+            this.SearchCommand = new RelayCommand(obj => this.Search(), obj => true);
             this.PaginationCommand = new RelayCommand(obj => this.PaginationClick(obj), obj => true);
             this.AddProductCommand = new RelayCommand(obj => this.AddProduct(), obj => true);
             this.EditProductCommand = new RelayCommand(obj => this.EditProduct(obj), obj => true);
@@ -87,6 +87,7 @@ namespace RCG.WPF.ViewModels
         {
             this.PageNumber = 1;
             this.SetPages();
+            this.SearchText = string.Empty;
             await this.GetProducts();
         }
 
@@ -94,6 +95,13 @@ namespace RCG.WPF.ViewModels
         {
             var productList = await this._productService.GetPagedProductList(this.PageNumber, 10, this.SearchText);
             this.ProductList = new ObservableCollection<AddProductDto>(productList);
+        }
+
+        private async void Search()
+        {
+            this.PageNumber = 1;
+            this.SetPages();
+            await this.GetProducts();
         }
 
         private void SetPages()
@@ -119,7 +127,8 @@ namespace RCG.WPF.ViewModels
             if (result == EnumMaster.DialogResults.Success.ToString())
             {
                 this.InitialLoad();
-                _alertViewModel.Title = "Add Product";
+                _alertViewModel.IconUri = "/Resources/Images/check-green.png";
+                _alertViewModel.Title = "Success";
                 _alertViewModel.Message = "Product Saved Successfully";
                 this._dialogService.OpenDialog(_alertViewModel);
             }

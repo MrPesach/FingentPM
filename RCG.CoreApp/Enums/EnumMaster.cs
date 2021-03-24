@@ -18,5 +18,11 @@ namespace RCG.CoreApp.Enums
             Success,
             Cancelled,
         }
+
+        public enum MessageBoxType
+        {
+            Error = 1,
+            Success = 2
+        }
     }
 }

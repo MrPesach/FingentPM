@@ -4,6 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 using RCG.CoreApp.Interfaces.Repositories;
 using RCG.Data.DbContexts;
 
@@ -41,6 +42,13 @@ namespace RCG.Data.Repositories
             return Task.CompletedTask;
         }
 
+        public Task BulkDeleteAsync(List<T> entityList)
+        {
+            this._dbContext.Set<T>().RemoveRange(entityList);
+            this._dbContext.SaveChangesAsync();
+            return Task.CompletedTask;
+        }
+
         public async Task<List<T>> GetAllAsync()
         {
             return await _dbContext
@@ -69,10 +77,15 @@ namespace RCG.Data.Repositories
 
         public Task UpdateAsync(T entity)
         {
-            this._dbContext.Set<T>().Attach(entity);
-            this._dbContext.Entry(entity).State = EntityState.Modified;
+            this._dbContext.Set<T>().Update(entity);
+            ////this._dbContext.Entry(entity).State = EntityState.Modified;
             this._dbContext.SaveChangesAsync();
             return Task.CompletedTask;
+        }
+
+        public IDbContextTransaction Transaction()
+        {
+            return this._dbContext.Database.BeginTransaction();
         }
     }
 }

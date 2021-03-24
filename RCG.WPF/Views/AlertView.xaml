@@ -31,7 +31,7 @@
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <Image Grid.Column="0" Grid.Row="0" 
-                   Source="/Resources/Images/check-green.png" 
+                   Source="{Binding IconUri}" 
                    Stretch="None"
                    Width="30"
                    Height="30"

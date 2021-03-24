@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore.Storage;
+using RCG.Domain.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -25,5 +27,9 @@ namespace RCG.CoreApp.Interfaces.Repositories
         Task UpdateAsync(T entity);
 
         Task DeleteAsync(T entity);
+
+        Task BulkDeleteAsync(List<T> entityList);
+
+        IDbContextTransaction Transaction();
     }
 }

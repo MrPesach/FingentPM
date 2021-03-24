@@ -34,10 +34,28 @@
             return savedProductMain;
         }
 
-        public async Task<bool> AddProductBulkAsync(List<Products> productList)
+        public async Task<bool> AddProductBulkAsync(List<Products> productList, List<Products> productListForDelete = null)
         {
-            var success = await _productRepository.AddRangeAsync(productList);
-            return success;
+            using (var transaction = this._productRepository.Transaction())
+            {
+                try
+                {
+                    if (productListForDelete != null && productListForDelete.Any())
+                    {
+                        await this._productRepository.BulkDeleteAsync(productListForDelete);
+                    }
+
+                    var success = await _productRepository.AddRangeAsync(productList);
+                    await transaction.CommitAsync();
+                    return success;
+                }
+                catch (Exception ex)
+                {
+                    await transaction.RollbackAsync();
+                    return false;
+                    throw;
+                }
+            }
         }
 
         public async Task<bool> AddProductAsync(Products product)
@@ -56,8 +74,15 @@
 
         public bool IsProductExist(string styleName)
         {
-            var isProductExist =this._productRepository.Entities.Any(a => a.Sku.ToLower() == styleName.ToLower());
+            var isProductExist = this._productRepository.Entities.Any(a => a.Sku.ToLower() == styleName.ToLower());
             return isProductExist;
+        }
+
+        public async Task<List<Products>> GetProductsBySkuListAync(List<string> skuList)
+        {
+            var productList = await this._productRepository.Entities.Where(a => skuList.Contains(a.Sku)).ToListAsync();
+            return productList;
+            ////await this._productRepository.BulkDeleteAsync(productList);
         }
     }
 }

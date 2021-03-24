@@ -43,6 +43,9 @@ namespace RCG.CoreApp.DTO
         }
         public string UpdatedOn { get; set; }
         public string User { get; set; }
+        public long ProductMainId { get; set; }
+        public bool IsValid { get; set; }
+        public string ValidationMessage { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string info)

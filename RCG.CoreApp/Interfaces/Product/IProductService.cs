@@ -11,16 +11,22 @@ namespace RCG.CoreApp.Interfaces.Product
 
         Task<ProductMainDto> ImportPriceListAsync(string filePath);
 
-        Task<Products> SetProductModelAsync(PriceListDto item);
+        Task<Products> SetProductModelAsync(AddProductDto item);
 
         Task<ProductMain> AddProductMainAsync(ProductMainDto productMainDto);
 
-        Task<bool> AddProductBulkAsync(List<Products> productList);
+        Task<bool> AddProductBulkAsync(List<Products> productList, List<Products> productListForDelete = null);
 
-        Task<bool> AddProductAsync(PriceListDto priceListDto);
+        Task<bool> AddProductAsync(AddProductDto priceListDto);
 
         bool IsNumber(string value);
 
         bool IsProductExist(string styleName);
+
+        AddProductDto ValidateProductSave(AddProductDto addProductDto, bool isImport);
+
+        Task<List<Products>> GetProductsBySkuListAync(List<string> skuList);
+        Task<bool> CreateCSVAsync(List<AddProductDto> failedProductList);
+        bool ValidateCSV(string fileName);
     }
 }
