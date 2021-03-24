@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "W8ETXzuMfrzGOJIl5eVknOf8h0tB6qQ8oVM6nImRjv2rjAjjJB4YIHzp/19pFwEnuXH1rhbFQ9MOtNm+gT3URg==",
+  "dgSpecHash": "z5aT9TmUfoCRx4otcdiHYobc4IGM4cwMHSF8VmfJZpY+90upcdMH9YeWtuo9MpSFUeOWxVbxYjRqx72CQFjIgA==",
   "success": true,
   "projectFilePath": "D:\\Applications\\RCGProductManager\\RCG.Data\\RCG.Data.csproj",
   "expectedPackageFiles": [
@@ -89,7 +89,10 @@
     "C:\\Users\\deepak.s\\.nuget\\packages\\system.security.principal.windows\\4.6.0\\system.security.principal.windows.4.6.0.nupkg.sha512",
     "C:\\Users\\deepak.s\\.nuget\\packages\\system.text.encodings.web\\4.5.0\\system.text.encodings.web.4.5.0.nupkg.sha512",
     "C:\\Users\\deepak.s\\.nuget\\packages\\system.text.json\\4.7.2\\system.text.json.4.7.2.nupkg.sha512",
-    "C:\\Users\\deepak.s\\.nuget\\packages\\system.windows.extensions\\4.6.0\\system.windows.extensions.4.6.0.nupkg.sha512"
+    "C:\\Users\\deepak.s\\.nuget\\packages\\system.windows.extensions\\4.6.0\\system.windows.extensions.4.6.0.nupkg.sha512",
+    "C:\\Users\\deepak.s\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x64\\3.1.11\\microsoft.netcore.app.runtime.win-x64.3.1.11.nupkg.sha512",
+    "C:\\Users\\deepak.s\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\3.1.11\\microsoft.windowsdesktop.app.runtime.win-x64.3.1.11.nupkg.sha512",
+    "C:\\Users\\deepak.s\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\3.1.11\\microsoft.aspnetcore.app.runtime.win-x64.3.1.11.nupkg.sha512"
   ],
   "logs": []
 }

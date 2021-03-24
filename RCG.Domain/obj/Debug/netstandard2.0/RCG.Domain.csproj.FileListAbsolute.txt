@@ -16,12 +16,12 @@ D:\Mehaboob\Works\RCG\RCG.Domain\obj\Debug\netstandard2.0\RCG.Domain.AssemblyInf
 D:\Mehaboob\Works\RCG\RCG.Domain\obj\Debug\netstandard2.0\RCG.Domain.csproj.CoreCompileInputs.cache
 D:\Mehaboob\Works\RCG\RCG.Domain\obj\Debug\netstandard2.0\RCG.Domain.dll
 D:\Mehaboob\Works\RCG\RCG.Domain\obj\Debug\netstandard2.0\RCG.Domain.pdb
-D:\Applications\RCGProductManager\RCG.Domain\bin\Debug\netstandard2.0\RCG.Domain.deps.json
-D:\Applications\RCGProductManager\RCG.Domain\bin\Debug\netstandard2.0\RCG.Domain.dll
-D:\Applications\RCGProductManager\RCG.Domain\bin\Debug\netstandard2.0\RCG.Domain.pdb
 D:\Applications\RCGProductManager\RCG.Domain\obj\Debug\netstandard2.0\RCG.Domain.csprojAssemblyReference.cache
 D:\Applications\RCGProductManager\RCG.Domain\obj\Debug\netstandard2.0\RCG.Domain.AssemblyInfoInputs.cache
 D:\Applications\RCGProductManager\RCG.Domain\obj\Debug\netstandard2.0\RCG.Domain.AssemblyInfo.cs
 D:\Applications\RCGProductManager\RCG.Domain\obj\Debug\netstandard2.0\RCG.Domain.csproj.CoreCompileInputs.cache
+D:\Applications\RCGProductManager\RCG.Domain\bin\Debug\netstandard2.0\RCG.Domain.deps.json
+D:\Applications\RCGProductManager\RCG.Domain\bin\Debug\netstandard2.0\RCG.Domain.dll
+D:\Applications\RCGProductManager\RCG.Domain\bin\Debug\netstandard2.0\RCG.Domain.pdb
 D:\Applications\RCGProductManager\RCG.Domain\obj\Debug\netstandard2.0\RCG.Domain.dll
 D:\Applications\RCGProductManager\RCG.Domain\obj\Debug\netstandard2.0\RCG.Domain.pdb

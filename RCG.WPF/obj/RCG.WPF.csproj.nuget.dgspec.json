@@ -244,7 +244,7 @@
       "version": "1.0.0",
       "restore": {
         "projectUniqueName": "D:\\Applications\\RCGProductManager\\RCG.WPF\\RCG.WPF.csproj",
-        "projectName": "RCG.WPF",
+        "projectName": "Product Manager",
         "projectPath": "D:\\Applications\\RCGProductManager\\RCG.WPF\\RCG.WPF.csproj",
         "packagesPath": "C:\\Users\\deepak.s\\.nuget\\packages\\",
         "outputPath": "D:\\Applications\\RCGProductManager\\RCG.WPF\\obj\\",

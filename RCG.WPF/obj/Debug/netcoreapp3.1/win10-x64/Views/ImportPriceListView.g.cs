@@ -53,7 +53,7 @@ namespace RCG.WPF.Views {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/RCG.WPF;component/views/importpricelistview.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Product Manager;component/views/importpricelistview.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\Views\ImportPriceListView.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

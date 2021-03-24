@@ -1,10 +1,4 @@
 D:\Applications\RCGProductManager\RCG.WPF\bin\Release\netcoreapp3.1\win10-x64\AppData\Data\RCG.db
-D:\Applications\RCGProductManager\RCG.WPF\bin\Release\netcoreapp3.1\win10-x64\RCG.WPF.exe
-D:\Applications\RCGProductManager\RCG.WPF\bin\Release\netcoreapp3.1\win10-x64\RCG.WPF.deps.json
-D:\Applications\RCGProductManager\RCG.WPF\bin\Release\netcoreapp3.1\win10-x64\RCG.WPF.runtimeconfig.json
-D:\Applications\RCGProductManager\RCG.WPF\bin\Release\netcoreapp3.1\win10-x64\RCG.WPF.runtimeconfig.dev.json
-D:\Applications\RCGProductManager\RCG.WPF\bin\Release\netcoreapp3.1\win10-x64\RCG.WPF.dll
-D:\Applications\RCGProductManager\RCG.WPF\bin\Release\netcoreapp3.1\win10-x64\RCG.WPF.pdb
 D:\Applications\RCGProductManager\RCG.WPF\bin\Release\netcoreapp3.1\win10-x64\AutoMapper.dll
 D:\Applications\RCGProductManager\RCG.WPF\bin\Release\netcoreapp3.1\win10-x64\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 D:\Applications\RCGProductManager\RCG.WPF\bin\Release\netcoreapp3.1\win10-x64\Microsoft.AspNetCore.Authentication.dll
@@ -581,8 +575,6 @@ D:\Applications\RCGProductManager\RCG.WPF\obj\Release\netcoreapp3.1\win10-x64\Vi
 D:\Applications\RCGProductManager\RCG.WPF\obj\Release\netcoreapp3.1\win10-x64\Views\UserSetupView.g.cs
 D:\Applications\RCGProductManager\RCG.WPF\obj\Release\netcoreapp3.1\win10-x64\App.g.cs
 D:\Applications\RCGProductManager\RCG.WPF\obj\Release\netcoreapp3.1\win10-x64\GeneratedInternalTypeHelper.g.cs
-D:\Applications\RCGProductManager\RCG.WPF\obj\Release\netcoreapp3.1\win10-x64\RCG.WPF_MarkupCompile.cache
-D:\Applications\RCGProductManager\RCG.WPF\obj\Release\netcoreapp3.1\win10-x64\RCG.WPF_MarkupCompile.lref
 D:\Applications\RCGProductManager\RCG.WPF\obj\Release\netcoreapp3.1\win10-x64\App.baml
 D:\Applications\RCGProductManager\RCG.WPF\obj\Release\netcoreapp3.1\win10-x64\Controls\NavigationBar.baml
 D:\Applications\RCGProductManager\RCG.WPF\obj\Release\netcoreapp3.1\win10-x64\MainWindow.baml
@@ -591,14 +583,37 @@ D:\Applications\RCGProductManager\RCG.WPF\obj\Release\netcoreapp3.1\win10-x64\St
 D:\Applications\RCGProductManager\RCG.WPF\obj\Release\netcoreapp3.1\win10-x64\Views\LoginView.baml
 D:\Applications\RCGProductManager\RCG.WPF\obj\Release\netcoreapp3.1\win10-x64\Views\ProductsView.baml
 D:\Applications\RCGProductManager\RCG.WPF\obj\Release\netcoreapp3.1\win10-x64\Views\UserSetupView.baml
-D:\Applications\RCGProductManager\RCG.WPF\obj\Release\netcoreapp3.1\win10-x64\RCG.WPF.g.resources
 D:\Applications\RCGProductManager\RCG.WPF\obj\Release\netcoreapp3.1\win10-x64\RCG.WPF.AssemblyInfoInputs.cache
 D:\Applications\RCGProductManager\RCG.WPF\obj\Release\netcoreapp3.1\win10-x64\RCG.WPF.AssemblyInfo.cs
 D:\Applications\RCGProductManager\RCG.WPF\obj\Release\netcoreapp3.1\win10-x64\RCG.WPF.csproj.CoreCompileInputs.cache
 D:\Applications\RCGProductManager\RCG.WPF\obj\Release\netcoreapp3.1\win10-x64\RCG.WPF.csproj.CopyComplete
-D:\Applications\RCGProductManager\RCG.WPF\obj\Release\netcoreapp3.1\win10-x64\RCG.WPF.dll
-D:\Applications\RCGProductManager\RCG.WPF\obj\Release\netcoreapp3.1\win10-x64\RCG.WPF.pdb
 D:\Applications\RCGProductManager\RCG.WPF\obj\Release\netcoreapp3.1\win10-x64\RCG.WPF.genruntimeconfig.cache
 D:\Applications\RCGProductManager\RCG.WPF\bin\Release\netcoreapp3.1\win10-x64\Serilog.dll
 D:\Applications\RCGProductManager\RCG.WPF\bin\Release\netcoreapp3.1\win10-x64\Serilog.Extensions.Logging.dll
 D:\Applications\RCGProductManager\RCG.WPF\bin\Release\netcoreapp3.1\win10-x64\Serilog.Sinks.File.dll
+D:\Applications\RCGProductManager\RCG.WPF\bin\Release\netcoreapp3.1\win10-x64\CsvHelper.dll
+D:\Applications\RCGProductManager\RCG.WPF\bin\Release\netcoreapp3.1\win10-x64\EntityFramework.SqlServer.dll
+D:\Applications\RCGProductManager\RCG.WPF\bin\Release\netcoreapp3.1\win10-x64\EntityFramework.dll
+D:\Applications\RCGProductManager\RCG.WPF\bin\Release\netcoreapp3.1\win10-x64\LinqKit.dll
+D:\Applications\RCGProductManager\RCG.WPF\bin\Release\netcoreapp3.1\win10-x64\Microsoft.Xaml.Behaviors.dll
+D:\Applications\RCGProductManager\RCG.WPF\bin\Release\netcoreapp3.1\win10-x64\System.Data.SqlClient.dll
+D:\Applications\RCGProductManager\RCG.WPF\bin\Release\netcoreapp3.1\win10-x64\sni.dll
+D:\Applications\RCGProductManager\RCG.WPF\obj\Release\netcoreapp3.1\win10-x64\Views\AddProductView.g.cs
+D:\Applications\RCGProductManager\RCG.WPF\obj\Release\netcoreapp3.1\win10-x64\Views\AlertView.g.cs
+D:\Applications\RCGProductManager\RCG.WPF\obj\Release\netcoreapp3.1\win10-x64\Views\DialogWindow.g.cs
+D:\Applications\RCGProductManager\RCG.WPF\obj\Release\netcoreapp3.1\win10-x64\Views\ImportPriceListView.g.cs
+D:\Applications\RCGProductManager\RCG.WPF\obj\Release\netcoreapp3.1\win10-x64\Views\AddProductView.baml
+D:\Applications\RCGProductManager\RCG.WPF\obj\Release\netcoreapp3.1\win10-x64\Views\AlertView.baml
+D:\Applications\RCGProductManager\RCG.WPF\obj\Release\netcoreapp3.1\win10-x64\Views\DialogWindow.baml
+D:\Applications\RCGProductManager\RCG.WPF\obj\Release\netcoreapp3.1\win10-x64\Views\ImportPriceListView.baml
+D:\Applications\RCGProductManager\RCG.WPF\bin\Release\netcoreapp3.1\win10-x64\Product Manager.exe
+D:\Applications\RCGProductManager\RCG.WPF\bin\Release\netcoreapp3.1\win10-x64\Product Manager.deps.json
+D:\Applications\RCGProductManager\RCG.WPF\bin\Release\netcoreapp3.1\win10-x64\Product Manager.runtimeconfig.json
+D:\Applications\RCGProductManager\RCG.WPF\bin\Release\netcoreapp3.1\win10-x64\Product Manager.runtimeconfig.dev.json
+D:\Applications\RCGProductManager\RCG.WPF\bin\Release\netcoreapp3.1\win10-x64\Product Manager.dll
+D:\Applications\RCGProductManager\RCG.WPF\bin\Release\netcoreapp3.1\win10-x64\Product Manager.pdb
+D:\Applications\RCGProductManager\RCG.WPF\obj\Release\netcoreapp3.1\win10-x64\Product Manager_MarkupCompile.cache
+D:\Applications\RCGProductManager\RCG.WPF\obj\Release\netcoreapp3.1\win10-x64\Product Manager_MarkupCompile.lref
+D:\Applications\RCGProductManager\RCG.WPF\obj\Release\netcoreapp3.1\win10-x64\Product Manager.g.resources
+D:\Applications\RCGProductManager\RCG.WPF\obj\Release\netcoreapp3.1\win10-x64\Product Manager.dll
+D:\Applications\RCGProductManager\RCG.WPF\obj\Release\netcoreapp3.1\win10-x64\Product Manager.pdb

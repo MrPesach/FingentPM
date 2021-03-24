@@ -12,6 +12,7 @@
 	<PropertyGroup>
 		<PublishReadyToRun>true</PublishReadyToRun>
 		<ApplicationIcon>app-icon.ico</ApplicationIcon>
+		<AssemblyName>Product Manager</AssemblyName>
 	</PropertyGroup>
 
   <ItemGroup>
@@ -110,5 +111,14 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-
+<Target Name="PublishFrontend" AfterTargets="ComputeFilesToPublish">
+    <ItemGroup>
+      <DistFiles Include="AppData\Data\**" />
+      <ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
+        <RelativePath>%(DistFiles.Identity)</RelativePath>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      </ResolvedFileToPublish>
+    </ItemGroup>
+  </Target>
 </Project>

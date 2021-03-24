@@ -1,5 +1,3 @@
-D:\Applications\RCGProductManager\RCG.WPF\bin\Debug\netcoreapp3.1\win10-x64\RCG.WPF.exe
-D:\Applications\RCGProductManager\RCG.WPF\bin\Debug\netcoreapp3.1\win10-x64\RCG.WPF.dll
 D:\Applications\RCGProductManager\RCG.WPF\bin\Debug\netcoreapp3.1\win10-x64\System.Runtime.InteropServices.dll
 D:\Applications\RCGProductManager\RCG.WPF\bin\Debug\netcoreapp3.1\win10-x64\System.Runtime.dll
 D:\Applications\RCGProductManager\RCG.WPF\bin\Debug\netcoreapp3.1\win10-x64\System.Threading.ThreadPool.dll
@@ -14,10 +12,6 @@ D:\Applications\RCGProductManager\RCG.WPF\bin\Debug\netcoreapp3.1\win10-x64\Pres
 D:\Applications\RCGProductManager\RCG.WPF\bin\Debug\netcoreapp3.1\win10-x64\System.Xaml.dll
 D:\Applications\RCGProductManager\RCG.WPF\bin\Debug\netcoreapp3.1\win10-x64\WindowsBase.dll
 D:\Applications\RCGProductManager\RCG.WPF\bin\Debug\netcoreapp3.1\win10-x64\AppData\data\rcg.db
-D:\Applications\RCGProductManager\RCG.WPF\bin\Debug\netcoreapp3.1\win10-x64\RCG.WPF.deps.json
-D:\Applications\RCGProductManager\RCG.WPF\bin\Debug\netcoreapp3.1\win10-x64\RCG.WPF.runtimeconfig.json
-D:\Applications\RCGProductManager\RCG.WPF\bin\Debug\netcoreapp3.1\win10-x64\RCG.WPF.runtimeconfig.dev.json
-D:\Applications\RCGProductManager\RCG.WPF\bin\Debug\netcoreapp3.1\win10-x64\RCG.WPF.pdb
 D:\Applications\RCGProductManager\RCG.WPF\bin\Debug\netcoreapp3.1\win10-x64\AutoMapper.dll
 D:\Applications\RCGProductManager\RCG.WPF\bin\Debug\netcoreapp3.1\win10-x64\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 D:\Applications\RCGProductManager\RCG.WPF\bin\Debug\netcoreapp3.1\win10-x64\CsvHelper.dll
@@ -596,8 +590,6 @@ D:\Applications\RCGProductManager\RCG.WPF\obj\Debug\netcoreapp3.1\win10-x64\View
 D:\Applications\RCGProductManager\RCG.WPF\obj\Debug\netcoreapp3.1\win10-x64\Views\UserSetupView.g.cs
 D:\Applications\RCGProductManager\RCG.WPF\obj\Debug\netcoreapp3.1\win10-x64\App.g.cs
 D:\Applications\RCGProductManager\RCG.WPF\obj\Debug\netcoreapp3.1\win10-x64\GeneratedInternalTypeHelper.g.cs
-D:\Applications\RCGProductManager\RCG.WPF\obj\Debug\netcoreapp3.1\win10-x64\RCG.WPF_MarkupCompile.cache
-D:\Applications\RCGProductManager\RCG.WPF\obj\Debug\netcoreapp3.1\win10-x64\RCG.WPF_MarkupCompile.lref
 D:\Applications\RCGProductManager\RCG.WPF\obj\Debug\netcoreapp3.1\win10-x64\App.baml
 D:\Applications\RCGProductManager\RCG.WPF\obj\Debug\netcoreapp3.1\win10-x64\Controls\NavigationBar.baml
 D:\Applications\RCGProductManager\RCG.WPF\obj\Debug\netcoreapp3.1\win10-x64\MainWindow.baml
@@ -609,11 +601,19 @@ D:\Applications\RCGProductManager\RCG.WPF\obj\Debug\netcoreapp3.1\win10-x64\View
 D:\Applications\RCGProductManager\RCG.WPF\obj\Debug\netcoreapp3.1\win10-x64\Views\LoginView.baml
 D:\Applications\RCGProductManager\RCG.WPF\obj\Debug\netcoreapp3.1\win10-x64\Views\ProductsView.baml
 D:\Applications\RCGProductManager\RCG.WPF\obj\Debug\netcoreapp3.1\win10-x64\Views\UserSetupView.baml
-D:\Applications\RCGProductManager\RCG.WPF\obj\Debug\netcoreapp3.1\win10-x64\RCG.WPF.g.resources
 D:\Applications\RCGProductManager\RCG.WPF\obj\Debug\netcoreapp3.1\win10-x64\RCG.WPF.AssemblyInfoInputs.cache
 D:\Applications\RCGProductManager\RCG.WPF\obj\Debug\netcoreapp3.1\win10-x64\RCG.WPF.AssemblyInfo.cs
 D:\Applications\RCGProductManager\RCG.WPF\obj\Debug\netcoreapp3.1\win10-x64\RCG.WPF.csproj.CoreCompileInputs.cache
 D:\Applications\RCGProductManager\RCG.WPF\obj\Debug\netcoreapp3.1\win10-x64\RCG.WPF.csproj.CopyComplete
-D:\Applications\RCGProductManager\RCG.WPF\obj\Debug\netcoreapp3.1\win10-x64\RCG.WPF.dll
-D:\Applications\RCGProductManager\RCG.WPF\obj\Debug\netcoreapp3.1\win10-x64\RCG.WPF.pdb
 D:\Applications\RCGProductManager\RCG.WPF\obj\Debug\netcoreapp3.1\win10-x64\RCG.WPF.genruntimeconfig.cache
+D:\Applications\RCGProductManager\RCG.WPF\obj\Debug\netcoreapp3.1\win10-x64\Product Manager_MarkupCompile.cache
+D:\Applications\RCGProductManager\RCG.WPF\obj\Debug\netcoreapp3.1\win10-x64\Product Manager_MarkupCompile.lref
+D:\Applications\RCGProductManager\RCG.WPF\bin\Debug\netcoreapp3.1\win10-x64\Product Manager.exe
+D:\Applications\RCGProductManager\RCG.WPF\bin\Debug\netcoreapp3.1\win10-x64\Product Manager.deps.json
+D:\Applications\RCGProductManager\RCG.WPF\bin\Debug\netcoreapp3.1\win10-x64\Product Manager.runtimeconfig.json
+D:\Applications\RCGProductManager\RCG.WPF\bin\Debug\netcoreapp3.1\win10-x64\Product Manager.runtimeconfig.dev.json
+D:\Applications\RCGProductManager\RCG.WPF\bin\Debug\netcoreapp3.1\win10-x64\Product Manager.dll
+D:\Applications\RCGProductManager\RCG.WPF\bin\Debug\netcoreapp3.1\win10-x64\Product Manager.pdb
+D:\Applications\RCGProductManager\RCG.WPF\obj\Debug\netcoreapp3.1\win10-x64\Product Manager.g.resources
+D:\Applications\RCGProductManager\RCG.WPF\obj\Debug\netcoreapp3.1\win10-x64\Product Manager.dll
+D:\Applications\RCGProductManager\RCG.WPF\obj\Debug\netcoreapp3.1\win10-x64\Product Manager.pdb
