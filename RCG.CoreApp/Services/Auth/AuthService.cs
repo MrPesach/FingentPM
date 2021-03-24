@@ -52,6 +52,10 @@ namespace RCG.CoreApp.Services.Auth
             {
                 result = UserSetupResult.PasswordsDoNotMatch;
             }
+            if (password.Length < 5)
+            {
+                result = UserSetupResult.PasswordLength;
+            }
 
             Users usernameAccount = await _userRepository.GetByUsernameAsync(username);
             if (usernameAccount != null)

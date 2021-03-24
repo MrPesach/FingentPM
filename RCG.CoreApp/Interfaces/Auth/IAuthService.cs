@@ -9,7 +9,8 @@ namespace RCG.CoreApp.Interfaces.Auth
         Success,
         PasswordsDoNotMatch,
         EmailAlreadyExists,
-        UsernameAlreadyExists
+        UsernameAlreadyExists,
+        PasswordLength
     }
 
     public interface IAuthService

@@ -54,6 +54,9 @@ namespace RCG.WPF.Commands
                     case UserSetupResult.UsernameAlreadyExists:
                         _usersetupViewModel.ErrorMessage = "An account for this username already exists.";
                         break;
+                    case UserSetupResult.PasswordLength:
+                        _usersetupViewModel.ErrorMessage = "Password should have a minimum length of 5 characters.";
+                        break;
                     default:
                         _usersetupViewModel.ErrorMessage = "User Setup failed.";
                         break;
