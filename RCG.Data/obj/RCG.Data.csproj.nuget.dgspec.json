@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Applications\\RCGProductManager\\RCG.Data\\RCG.Data.csproj": {}
+    "D:\\Mehaboob\\Works\\RCG\\RCG.Data\\RCG.Data.csproj": {}
   },
   "projects": {
-    "D:\\Applications\\RCGProductManager\\RCG.CoreApp\\RCG.CoreApp.csproj": {
+    "D:\\Mehaboob\\Works\\RCG\\RCG.CoreApp\\RCG.CoreApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Applications\\RCGProductManager\\RCG.CoreApp\\RCG.CoreApp.csproj",
+        "projectUniqueName": "D:\\Mehaboob\\Works\\RCG\\RCG.CoreApp\\RCG.CoreApp.csproj",
         "projectName": "RCG.CoreApp",
-        "projectPath": "D:\\Applications\\RCGProductManager\\RCG.CoreApp\\RCG.CoreApp.csproj",
-        "packagesPath": "C:\\Users\\deepak.s\\.nuget\\packages\\",
-        "outputPath": "D:\\Applications\\RCGProductManager\\RCG.CoreApp\\obj\\",
+        "projectPath": "D:\\Mehaboob\\Works\\RCG\\RCG.CoreApp\\RCG.CoreApp.csproj",
+        "packagesPath": "C:\\Users\\mehaboob.ali\\.nuget\\packages\\",
+        "outputPath": "D:\\Mehaboob\\Works\\RCG\\RCG.CoreApp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\deepak.s\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\mehaboob.ali\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -29,10 +29,9 @@
         },
         "frameworks": {
           "netstandard2.1": {
-            "targetAlias": "netstandard2.1",
             "projectReferences": {
-              "D:\\Applications\\RCGProductManager\\RCG.Domain\\RCG.Domain.csproj": {
-                "projectPath": "D:\\Applications\\RCGProductManager\\RCG.Domain\\RCG.Domain.csproj"
+              "D:\\Mehaboob\\Works\\RCG\\RCG.Domain\\RCG.Domain.csproj": {
+                "projectPath": "D:\\Mehaboob\\Works\\RCG\\RCG.Domain\\RCG.Domain.csproj"
               }
             }
           }
@@ -45,7 +44,6 @@
       },
       "frameworks": {
         "netstandard2.1": {
-          "targetAlias": "netstandard2.1",
           "dependencies": {
             "AutoMapper": {
               "target": "Package",
@@ -54,6 +52,14 @@
             "AutoMapper.Extensions.Microsoft.DependencyInjection": {
               "target": "Package",
               "version": "[8.1.1, )"
+            },
+            "CsvHelper": {
+              "target": "Package",
+              "version": "[26.0.1, )"
+            },
+            "LinqKit": {
+              "target": "Package",
+              "version": "[1.1.24, )"
             },
             "Microsoft.AspNetCore.Cryptography.KeyDerivation": {
               "target": "Package",
@@ -75,7 +81,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
         }
       },
       "runtimes": {
@@ -84,20 +90,20 @@
         }
       }
     },
-    "D:\\Applications\\RCGProductManager\\RCG.Data\\RCG.Data.csproj": {
+    "D:\\Mehaboob\\Works\\RCG\\RCG.Data\\RCG.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Applications\\RCGProductManager\\RCG.Data\\RCG.Data.csproj",
+        "projectUniqueName": "D:\\Mehaboob\\Works\\RCG\\RCG.Data\\RCG.Data.csproj",
         "projectName": "RCG.Data",
-        "projectPath": "D:\\Applications\\RCGProductManager\\RCG.Data\\RCG.Data.csproj",
-        "packagesPath": "C:\\Users\\deepak.s\\.nuget\\packages\\",
-        "outputPath": "D:\\Applications\\RCGProductManager\\RCG.Data\\obj\\",
+        "projectPath": "D:\\Mehaboob\\Works\\RCG\\RCG.Data\\RCG.Data.csproj",
+        "packagesPath": "C:\\Users\\mehaboob.ali\\.nuget\\packages\\",
+        "outputPath": "D:\\Mehaboob\\Works\\RCG\\RCG.Data\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\deepak.s\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\mehaboob.ali\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -109,10 +115,9 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
-            "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "D:\\Applications\\RCGProductManager\\RCG.CoreApp\\RCG.CoreApp.csproj": {
-                "projectPath": "D:\\Applications\\RCGProductManager\\RCG.CoreApp\\RCG.CoreApp.csproj"
+              "D:\\Mehaboob\\Works\\RCG\\RCG.CoreApp\\RCG.CoreApp.csproj": {
+                "projectPath": "D:\\Mehaboob\\Works\\RCG\\RCG.CoreApp\\RCG.CoreApp.csproj"
               }
             }
           }
@@ -125,7 +130,6 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
           "dependencies": {
             "Microsoft.AspNetCore.Identity": {
               "target": "Package",
@@ -179,7 +183,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
         }
       },
       "runtimes": {
@@ -188,20 +192,20 @@
         }
       }
     },
-    "D:\\Applications\\RCGProductManager\\RCG.Domain\\RCG.Domain.csproj": {
+    "D:\\Mehaboob\\Works\\RCG\\RCG.Domain\\RCG.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Applications\\RCGProductManager\\RCG.Domain\\RCG.Domain.csproj",
+        "projectUniqueName": "D:\\Mehaboob\\Works\\RCG\\RCG.Domain\\RCG.Domain.csproj",
         "projectName": "RCG.Domain",
-        "projectPath": "D:\\Applications\\RCGProductManager\\RCG.Domain\\RCG.Domain.csproj",
-        "packagesPath": "C:\\Users\\deepak.s\\.nuget\\packages\\",
-        "outputPath": "D:\\Applications\\RCGProductManager\\RCG.Domain\\obj\\",
+        "projectPath": "D:\\Mehaboob\\Works\\RCG\\RCG.Domain\\RCG.Domain.csproj",
+        "packagesPath": "C:\\Users\\mehaboob.ali\\.nuget\\packages\\",
+        "outputPath": "D:\\Mehaboob\\Works\\RCG\\RCG.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\deepak.s\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\mehaboob.ali\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -213,7 +217,6 @@
         },
         "frameworks": {
           "netstandard2.0": {
-            "targetAlias": "netstandard2.0",
             "projectReferences": {}
           }
         },
@@ -225,7 +228,6 @@
       },
       "frameworks": {
         "netstandard2.0": {
-          "targetAlias": "netstandard2.0",
           "dependencies": {
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
@@ -252,7 +254,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
         }
       },
       "runtimes": {

@@ -4,20 +4,142 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:RCG.WPF.Views"
-             
              xmlns:controls="clr-namespace:RCG.WPF.Controls"
-             
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Margin="20" MaxWidth="1000">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-        </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0"
-                HorizontalAlignment="Left"
-                FontSize="25"
-                Text="Products" />
+             mc:Ignorable="d"
+             xmlns:local1="clr-namespace:RCG.Domain.Entities;assembly=RCG.Domain"
+             xmlns:InteractionTrigger ="http://schemas.microsoft.com/xaml/behaviors"
+             x:Name="ProductList">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <x:Array x:Key="MyDumbMockedList" Type="local1:Products">
+                <local1:Products Sku="Fred" Length="10.8" Weight="9" Price="100.80"  />
+                <local1:Products Sku="Fred" Length="10.8" Weight="9" Price="100.80"  />
+                <local1:Products Sku="Fred" Length="10.8" Weight="9" Price="100.80"  />
+                <local1:Products Sku="Fred" Length="10.8" Weight="9" Price="100.80"  />
+                <local1:Products Sku="Fred" Length="10.8" Weight="9" Price="100.80"  />
+                <local1:Products Sku="Fred" Length="10.8" Weight="9" Price="100.80"  />
+                <local1:Products Sku="Fred" Length="10.8" Weight="9" Price="100.80"  />
+                <local1:Products Sku="Fred" Length="10.8" Weight="9" Price="100.80"  />
+                <local1:Products Sku="Fred" Length="10.8" Weight="9" Price="100.80"  />
+                <local1:Products Sku="Fred" Length="10.8" Weight="9" Price="100.80"  />
+                <local1:Products Sku="Fred" Length="10.8" Weight="9" Price="100.80"  />
+            </x:Array>
+        </ResourceDictionary>
+    </UserControl.Resources>
 
+    <Grid Background="#ffffff">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="80"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Margin="15,0,15,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="282"/>
+                <ColumnDefinition Width="173"/>
+                <ColumnDefinition Width="173"/>
+            </Grid.ColumnDefinitions>
+            <TextBox x:Name="SearchText" Grid.Column="1" Style="{StaticResource SearchTextBox}" 
+                     Text="{Binding SearchText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" >
+                <InteractionTrigger:Interaction.Triggers>
+                    <InteractionTrigger:KeyTrigger Key="Enter">
+                        <InteractionTrigger:InvokeCommandAction 
+                            Command="{Binding SearchCommand}" 
+                            CommandParameter="{Binding Text, ElementName=SearchText}" />
+                    </InteractionTrigger:KeyTrigger>
+                </InteractionTrigger:Interaction.Triggers>
+            </TextBox>
+            <Button Grid.Column="2" Style="{StaticResource LightButton}" 
+                    Content="Add Product" Command="{Binding AddProductCommand}"/>
+            <Button Grid.Column="3" Style="{StaticResource PrimaryButton}" 
+                    Content="Import Price List" Command="{Binding ImportPriceListCommand}"/>
+        </Grid>
+        <!--{StaticResource MyDumbMockedList}}-->
+        <DataGrid Grid.Row="1" ItemsSource="{Binding ProductList}" x:Name="ProductListGrid">
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="20"/>
+                <DataGridTemplateColumn Width="*" Header="Style">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Style}" VerticalAlignment="Center"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Width="*" Header="Available Length">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding AvailableLength}" VerticalAlignment="Center"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Width="*" Header="Average Weight">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding AvrageWeight}" VerticalAlignment="Center"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Width="*" Header="Price">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Price}" VerticalAlignment="Center"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Width="*" Header="Updated On">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding UpdatedOn}" VerticalAlignment="Center"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Width="60" Header="Actions">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <Button Command="{Binding Path=DataContext.EditProductCommand, ElementName=ProductListGrid}" 
+                                    CommandParameter="{Binding}" Style="{StaticResource EditButton}">
+                                </Button>
+                                <Button Command="{Binding Path=DataContext.RemoveItemCommand, ElementName=ProductListGrid}" 
+                                    CommandParameter="{Binding}" Style="{StaticResource TrashButton}">
+                                </Button>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTextColumn Width="20"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Grid Grid.Row="2" Height="36"  HorizontalAlignment="Right" Margin="0,0,10,0" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0"  Style="{StaticResource PaginationMainButton}" Content="First"  Margin="0,0,5,0"></Button>
+            <Button Grid.Column="1"  Style="{StaticResource PaginationPrevButton}"></Button>
+            <ItemsControl Grid.Column="2"  ItemsSource="{Binding Pages}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Button Style="{StaticResource PaginationButton}" 
+                                Content="{Binding}"
+                                Command="{Binding Path=DataContext.PaginationCommand, ElementName=ProductList}"
+                                CommandParameter="{Binding}" />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+            <Button Grid.Column="3"  Style="{StaticResource PaginationNextButton}"></Button>
+            <Button Grid.Column="4" Style="{StaticResource PaginationMainButton}" Content="Last" Margin="5,0,0,0"></Button>
+        </Grid>
     </Grid>
 </UserControl>

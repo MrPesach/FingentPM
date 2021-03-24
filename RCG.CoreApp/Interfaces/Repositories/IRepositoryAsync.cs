@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace RCG.CoreApp.Interfaces.Repositories
@@ -12,9 +14,13 @@ namespace RCG.CoreApp.Interfaces.Repositories
 
         Task<List<T>> GetAllAsync();
 
-        Task<List<T>> GetPagedReponseAsync(int pageNumber, int pageSize);
+        Task<List<T>> GetPagedReponseAsync(
+            int pageNumber, int pageSize,
+            Expression<Func<T, bool>> filter = null);
 
         Task<T> AddAsync(T entity);
+
+        Task<bool> AddRangeAsync(List<T> entityList);
 
         Task UpdateAsync(T entity);
 

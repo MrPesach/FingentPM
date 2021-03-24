@@ -21,6 +21,15 @@
             <DataTemplate DataType="{x:Type viewmodels:UserSetupViewModel}">
                 <views:UserSetupView />
             </DataTemplate>
+            <DataTemplate DataType="{x:Type viewmodels:ImportPriceListViewModel}">
+                <views:ImportPriceList />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewmodels:AddProductViewModel}">
+                <views:AddProductView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewmodels:AlertViewModel}">
+                <views:AlertView />
+            </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

@@ -15,6 +15,26 @@
 	</PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Images\App-top-bg.png" />
+    <None Remove="Resources\Images\arrow-left.png" />
+    <None Remove="Resources\Images\arrow-right.png" />
+    <None Remove="Resources\Images\check-green.png" />
+    <None Remove="Resources\Images\close.png" />
+    <None Remove="Resources\Images\csv.png" />
+    <None Remove="Resources\Images\delete.png" />
+    <None Remove="Resources\Images\down-arrow.png" />
+    <None Remove="Resources\Images\edit.png" />
+    <None Remove="Resources\Images\error-icon.png" />
+    <None Remove="Resources\Images\error.png" />
+    <None Remove="Resources\Images\import.png" />
+    <None Remove="Resources\Images\loader.png" />
+    <None Remove="Resources\Images\Login-box-bg.png" />
+    <None Remove="Resources\Images\next-arrow.png" />
+    <None Remove="Resources\Images\royal_chain_white_logo.png" />
+    <None Remove="Resources\Images\search.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Resources\Images\app-header.png" />
     <None Remove="Resources\Images\app-icon.ico" />
     <None Remove="Resources\Images\App-top-bg.png" />
@@ -31,6 +51,7 @@
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="5.0.0" />
     <PackageReference Include="Microsoft.Extensions.Identity.Core" Version="5.0.3" />
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.31" />
     <PackageReference Include="PasswordBoxMVVM" Version="1.0.5" />
     <PackageReference Include="Serilog" Version="2.10.0" />
     <PackageReference Include="Serilog.Extensions.Logging" Version="3.0.1" />
@@ -42,7 +63,27 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="AppData\logs\" />
+    <Folder Include="AppData\Data\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\App-top-bg.png" />
+    <Resource Include="Resources\Images\arrow-left.png" />
+    <Resource Include="Resources\Images\arrow-right.png" />
+    <Resource Include="Resources\Images\check-green.png" />
+    <Resource Include="Resources\Images\close.png" />
+    <Resource Include="Resources\Images\csv.png" />
+    <Resource Include="Resources\Images\delete.png" />
+    <Resource Include="Resources\Images\down-arrow.png" />
+    <Resource Include="Resources\Images\edit.png" />
+    <Resource Include="Resources\Images\error-icon.png" />
+    <Resource Include="Resources\Images\error.png" />
+    <Resource Include="Resources\Images\import.png" />
+    <Resource Include="Resources\Images\loader.png" />
+    <Resource Include="Resources\Images\Login-box-bg.png" />
+    <Resource Include="Resources\Images\next-arrow.png" />
+    <Resource Include="Resources\Images\royal_chain_white_logo.png" />
+    <Resource Include="Resources\Images\search.png" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using RCG.CoreApp.Interfaces.Repositories;
@@ -25,6 +27,14 @@ namespace RCG.Data.Repositories
             return entity;
         }
 
+        public async Task<bool> AddRangeAsync(List<T> entityList)
+        {
+            await _dbContext.Set<T>().AddRangeAsync(entityList);
+            await _dbContext.SaveChangesAsync();
+            return true;
+        }
+
+
         public Task DeleteAsync(T entity)
         {
             _dbContext.Set<T>().Remove(entity);
@@ -43,10 +53,14 @@ namespace RCG.Data.Repositories
             return await _dbContext.Set<T>().FindAsync(id);
         }
 
-        public async Task<List<T>> GetPagedReponseAsync(int pageNumber, int pageSize)
+        public async Task<List<T>> GetPagedReponseAsync(
+            int pageNumber, int pageSize,
+            Expression<Func<T, bool>> filter = null)
         {
+
             return await _dbContext
                 .Set<T>()
+                .Where(filter)
                 .Skip((pageNumber - 1) * pageSize)
                 .Take(pageSize)
                 .AsNoTracking()
@@ -55,7 +69,9 @@ namespace RCG.Data.Repositories
 
         public Task UpdateAsync(T entity)
         {
-            _dbContext.Entry(entity).CurrentValues.SetValues(entity);
+            this._dbContext.Set<T>().Attach(entity);
+            this._dbContext.Entry(entity).State = EntityState.Modified;
+            this._dbContext.SaveChangesAsync();
             return Task.CompletedTask;
         }
     }

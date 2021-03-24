@@ -6,11 +6,14 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using RCG.CoreApp.Interfaces.Auth;
 using RCG.CoreApp.Interfaces.DbContexts;
+using RCG.CoreApp.Interfaces.Product;
 using RCG.CoreApp.Interfaces.Repositories;
 using RCG.CoreApp.Interfaces.Shared;
 using RCG.CoreApp.Services.Auth;
+using RCG.CoreApp.Services.Product;
 using RCG.Data.DbContexts;
 using RCG.Data.Repositories;
+using RCG.WPF.Services;
 using RCG.WPF.State.Accounts;
 using RCG.WPF.State.Authenticators;
 using RCG.WPF.State.Navigators;
@@ -55,6 +58,9 @@ namespace RCG.WPF.HostBuilders
                 services.AddSingleton<IUnitOfWork, UnitOfWork>();
                 services.AddSingleton<IAuthService, AuthService>();
                 services.AddSingleton<IUserRepository, UserRepository>();
+                services.AddSingleton<IProductRepository, ProductRepository>();
+                services.AddSingleton<IProductService, ProductService>();
+                services.AddSingleton<IDialogService, DialogService>();
             });
 
             return host;

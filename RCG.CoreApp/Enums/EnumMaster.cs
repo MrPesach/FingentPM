@@ -1,4 +1,6 @@
-﻿namespace RCG.CoreApp.Enums
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace RCG.CoreApp.Enums
 {
     public static class EnumMaster
     {
@@ -6,6 +8,15 @@
         {
             SuperAdmin,
             Admin
+        }
+
+        public enum DialogResults
+        {
+            Unidefined,
+            Yes,
+            No,
+            Success,
+            Cancelled,
         }
     }
 }

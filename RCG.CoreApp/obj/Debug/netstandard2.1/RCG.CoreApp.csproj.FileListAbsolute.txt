@@ -22,3 +22,15 @@ D:\Applications\RCGProductManager\RCG.CoreApp\obj\Debug\netstandard2.1\RCG.CoreA
 D:\Applications\RCGProductManager\RCG.CoreApp\obj\Debug\netstandard2.1\RCG.CoreApp.csproj.CopyComplete
 D:\Applications\RCGProductManager\RCG.CoreApp\obj\Debug\netstandard2.1\RCG.CoreApp.dll
 D:\Applications\RCGProductManager\RCG.CoreApp\obj\Debug\netstandard2.1\RCG.CoreApp.pdb
+D:\Mehaboob\Works\RCG\RCG.CoreApp\obj\Debug\netstandard2.1\RCG.CoreApp.csprojAssemblyReference.cache
+D:\Mehaboob\Works\RCG\RCG.CoreApp\obj\Debug\netstandard2.1\RCG.CoreApp.AssemblyInfoInputs.cache
+D:\Mehaboob\Works\RCG\RCG.CoreApp\obj\Debug\netstandard2.1\RCG.CoreApp.AssemblyInfo.cs
+D:\Mehaboob\Works\RCG\RCG.CoreApp\obj\Debug\netstandard2.1\RCG.CoreApp.dll
+D:\Mehaboob\Works\RCG\RCG.CoreApp\obj\Debug\netstandard2.1\RCG.CoreApp.pdb
+D:\Mehaboob\Works\RCG\RCG.CoreApp\bin\Debug\netstandard2.1\RCG.CoreApp.deps.json
+D:\Mehaboob\Works\RCG\RCG.CoreApp\bin\Debug\netstandard2.1\RCG.CoreApp.dll
+D:\Mehaboob\Works\RCG\RCG.CoreApp\bin\Debug\netstandard2.1\RCG.CoreApp.pdb
+D:\Mehaboob\Works\RCG\RCG.CoreApp\bin\Debug\netstandard2.1\RCG.Domain.dll
+D:\Mehaboob\Works\RCG\RCG.CoreApp\bin\Debug\netstandard2.1\RCG.Domain.pdb
+D:\Mehaboob\Works\RCG\RCG.CoreApp\obj\Debug\netstandard2.1\RCG.CoreApp.csproj.CopyComplete
+D:\Mehaboob\Works\RCG\RCG.CoreApp\obj\Debug\netstandard2.1\RCG.CoreApp.csproj.CoreCompileInputs.cache
