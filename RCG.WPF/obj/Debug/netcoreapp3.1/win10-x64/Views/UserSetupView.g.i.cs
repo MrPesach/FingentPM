@@ -54,7 +54,7 @@ namespace RCG.WPF.Views {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Product Manager;V1.0.0.0;component/views/usersetupview.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Product Manager;component/views/usersetupview.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\Views\UserSetupView.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
