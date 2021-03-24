@@ -24,6 +24,8 @@ namespace RCG.WPF.ViewModels
 
         private readonly AlertViewModel _alertViewModel;
 
+        private readonly ImportPriceListViewModel _importPriceListViewModel;
+
         public ICommand ImportPriceListCommand { get; }
         public ICommand SearchCommand { get; }
         public ICommand PaginationCommand { get; }
@@ -41,7 +43,9 @@ namespace RCG.WPF.ViewModels
             this._dialogService = dialogService;
             this._addProductViewModel = addProductViewModel;
             this._alertViewModel = alertViewModel;
-            this.ImportPriceListCommand = new ImportPriceListCommand(this, _productService, dialogService, importPriceListViewModel);
+            this._importPriceListViewModel = importPriceListViewModel;
+
+            this.ImportPriceListCommand = new RelayCommand(obj => this.ImportProductList(), obj => true);
             this.SearchCommand = new RelayCommand(obj => this.Search(), obj => true);
             this.PaginationCommand = new RelayCommand(obj => this.PaginationClick(obj), obj => true);
             this.AddProductCommand = new RelayCommand(obj => this.AddProduct(), obj => true);
@@ -83,7 +87,7 @@ namespace RCG.WPF.ViewModels
         }
 
 
-        private async void InitialLoad()
+        private async Task InitialLoad()
         {
             this.PageNumber = 1;
             this.SetPages();
@@ -121,12 +125,12 @@ namespace RCG.WPF.ViewModels
             this.SetPages();
         }
 
-        private void AddProduct()
+        private async void AddProduct()
         {
             var result = this._dialogService.OpenDialog(_addProductViewModel);
             if (result == EnumMaster.DialogResults.Success.ToString())
             {
-                this.InitialLoad();
+                await this.InitialLoad();
                 _alertViewModel.IconUri = "/Resources/Images/check-green.png";
                 _alertViewModel.Title = "Success";
                 _alertViewModel.Message = "Product Saved Successfully";
@@ -134,7 +138,7 @@ namespace RCG.WPF.ViewModels
             }
         }
 
-        private void EditProduct(object obj)
+        private async void EditProduct(object obj)
         {
             if (obj != null)
             {
@@ -151,11 +155,20 @@ namespace RCG.WPF.ViewModels
                 var result = this._dialogService.OpenDialog(this._addProductViewModel);
                 if (result == EnumMaster.DialogResults.Success.ToString())
                 {
-                    this.InitialLoad();
+                    await this.InitialLoad();
                     _alertViewModel.Title = "Update Product";
                     _alertViewModel.Message = "Product Updated Successfully";
                     this._dialogService.OpenDialog(_alertViewModel);
                 }
+            }
+        }
+
+        private async void ImportProductList()
+        {
+            var result = _dialogService.OpenDialog(_importPriceListViewModel);
+            if (result != EnumMaster.DialogResults.Cancelled.ToString())
+            {
+                await this.InitialLoad();
             }
         }
     }
