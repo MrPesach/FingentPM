@@ -45,14 +45,15 @@ namespace RCG.Data.Repositories
         public Task BulkDeleteAsync(List<T> entityList)
         {
             this._dbContext.Set<T>().RemoveRange(entityList);
-            this._dbContext.SaveChangesAsync();
-            return Task.CompletedTask;
+            return this._dbContext.SaveChangesAsync();
+            ////return Task.CompletedTask;
         }
 
         public async Task<List<T>> GetAllAsync()
         {
             return await _dbContext
                 .Set<T>()
+                .AsNoTracking()
                 .ToListAsync();
         }
 
@@ -78,9 +79,14 @@ namespace RCG.Data.Repositories
         public Task UpdateAsync(T entity)
         {
             this._dbContext.Set<T>().Update(entity);
+            return this._dbContext.SaveChangesAsync();
+
+            //// this._dbContext.Set<T>().Update(entity);
+            //_dbContext.Entry(entity).State = EntityState.Modified;
+            //this._dbContext.Set<T>().Update(entity);
             ////this._dbContext.Entry(entity).State = EntityState.Modified;
-            this._dbContext.SaveChangesAsync();
-            return Task.CompletedTask;
+            //return this._dbContext.SaveChangesAsync();
+            ///return Task.CompletedTask;
         }
 
         public IDbContextTransaction Transaction()

@@ -8,9 +8,10 @@
         mc:Ignorable="d"
         Title="RCG - Product Manager" 
         WindowStartupLocation="CenterScreen"
-        ShowInTaskbar="True" WindowStyle="SingleBorderWindow" ResizeMode="NoResize"
-        Width="{Binding WindowWidth, Mode=TwoWay}"
-        Height="{Binding WindowHeight, Mode=TwoWay}"
+        Width="{Binding Path=WindowWidth, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+        Height="{Binding Path=WindowHeight, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+        MinWidth="{Binding Path=WindowWidth, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+        MaxWidth="{Binding Path=WindowHeight, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
        >
     <Grid>
         <Grid.RowDefinitions>

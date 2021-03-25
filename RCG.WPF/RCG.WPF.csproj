@@ -14,6 +14,9 @@
 		<ApplicationIcon>app-icon.ico</ApplicationIcon>
 		<AssemblyName>Product Manager</AssemblyName>
 	</PropertyGroup>
+	<ItemGroup>
+	  <None Remove="Resources\Images\green-tick.png" />
+	</ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.13">
@@ -31,10 +34,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\RCG.Data\RCG.Data.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="AppData\Data\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -81,6 +80,9 @@
     <Resource Include="Resources\Images\folder.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Resources\Images\green-tick.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resources\Images\Group 3.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
@@ -108,9 +110,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="AppData\data\rcg.db">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    <Folder Include="AppData\" />
   </ItemGroup>
 <Target Name="PublishFrontend" AfterTargets="ComputeFilesToPublish">
     <ItemGroup>

@@ -20,7 +20,7 @@ namespace RCG.WPF.ViewModels
             set
             {
                 _windowWidth = value;
-                OnPropertyChanged(Resource.WindowWidth);
+                RaisePropertyChanged(Resource.WindowWidth);
             }
         }
 
@@ -31,7 +31,7 @@ namespace RCG.WPF.ViewModels
             set
             {
                 _windowHeight = value;
-                OnPropertyChanged(Resource.WindowHeight);
+                RaisePropertyChanged(Resource.WindowHeight);
             }
         }
 
@@ -58,13 +58,15 @@ namespace RCG.WPF.ViewModels
             UpdateCurrentViewModelCommand = new UpdateCurrentViewModelCommand(navigator, _viewModelFactory);
             //UpdateCurrentViewModelCommand.Execute(ViewType.Login);
 
-            WindowHeight = Convert.ToInt32(Resource.HeightLoginView);
-            WindowWidth = Convert.ToInt32(Resource.WidthLoginView);
+            WindowHeight = Convert.ToInt32(Resource.HeightProductsView);
+            WindowWidth = Convert.ToInt32(Resource.WidthProductsView);
 
             var userList = _authenticationService.GetNonAdminListAsync();
             if (userList.Result.Count > 0)
             {
                 UpdateCurrentViewModelCommand.Execute(ViewType.Login);
+                WindowHeight = Convert.ToInt32(Resource.HeightLoginView);
+                WindowWidth = Convert.ToInt32(Resource.WidthLoginView);
             }
             else
             {

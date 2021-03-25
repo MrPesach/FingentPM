@@ -27,7 +27,7 @@ namespace RCG.WPF.HostBuilders
         {
             host.ConfigureServices((context, services) =>
             {
-                Action<DbContextOptionsBuilder> configureDbContext = o => o.UseSqlite("Data Source="+ @"AppData/data/rcg.db");
+                Action<DbContextOptionsBuilder> configureDbContext = o => o.UseSqlite("Data Source="+ @"rcg.fin");
 
                 services.AddDbContext<ApplicationDbContext>(configureDbContext);
             });
@@ -53,14 +53,14 @@ namespace RCG.WPF.HostBuilders
             {
                 services.AddSingleton<IDateTimeService, SystemDateTimeService>();
                 services.AddAutoMapper(Assembly.GetExecutingAssembly());
-                services.AddSingleton<IApplicationDbContext, ApplicationDbContext>();
-                services.AddSingleton(typeof(IRepositoryAsync<>), typeof(RepositoryAsync<>));
-                services.AddSingleton<IUnitOfWork, UnitOfWork>();
-                services.AddSingleton<IAuthService, AuthService>();
-                services.AddSingleton<IUserRepository, UserRepository>();
-                services.AddSingleton<IProductRepository, ProductRepository>();
-                services.AddSingleton<IProductService, ProductService>();
-                services.AddSingleton<IDialogService, DialogService>();
+                services.AddTransient<IApplicationDbContext, ApplicationDbContext>();
+                services.AddTransient(typeof(IRepositoryAsync<>), typeof(RepositoryAsync<>));
+                services.AddTransient<IUnitOfWork, UnitOfWork>();
+                services.AddTransient<IAuthService, AuthService>();
+                services.AddTransient<IUserRepository, UserRepository>();
+                services.AddTransient<IProductRepository, ProductRepository>();
+                services.AddTransient<IProductService, ProductService>();
+                services.AddTransient<IDialogService, DialogService>();
             });
 
             return host;

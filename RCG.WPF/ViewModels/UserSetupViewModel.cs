@@ -16,7 +16,7 @@ namespace RCG.WPF.ViewModels
             set
             {
                 _windowWidth = value;
-                OnPropertyChanged(Resource.WindowWidth);
+                RaisePropertyChanged(Resource.WindowWidth);
             }
         }
 
@@ -27,7 +27,7 @@ namespace RCG.WPF.ViewModels
             set
             {
                 _windowHeight = value;
-                OnPropertyChanged(Resource.WindowHeight);
+                RaisePropertyChanged(Resource.WindowHeight);
             }
         }
 
