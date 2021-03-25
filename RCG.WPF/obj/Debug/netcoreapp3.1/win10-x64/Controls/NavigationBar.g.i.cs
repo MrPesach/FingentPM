@@ -56,7 +56,7 @@ namespace RCG.WPF.Controls {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Product Manager;component/controls/navigationbar.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Product Manager;V1.0.0.0;component/controls/navigationbar.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\Controls\NavigationBar.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
