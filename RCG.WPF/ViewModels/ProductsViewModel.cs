@@ -1,4 +1,5 @@
 ﻿
+using RCG.CoreApp.AppResources;
 using RCG.CoreApp.DTO;
 using RCG.CoreApp.Enums;
 using RCG.CoreApp.Interfaces.Product;
@@ -37,6 +38,9 @@ namespace RCG.WPF.ViewModels
             AddProductViewModel addProductViewModel,
             AlertViewModel alertViewModel)
         {
+            WindowHeight = Convert.ToInt32(Resource.HeightProductsView);
+            WindowWidth = Convert.ToInt32(Resource.WidthProductsView);
+
             this._productService = productService;
             this._dialogService = dialogService;
             this._addProductViewModel = addProductViewModel;
@@ -53,6 +57,28 @@ namespace RCG.WPF.ViewModels
         private string _searchText;
         private ObservableCollection<int> _pages;
         private int _pageNumber;
+
+        private int _windowWidth;
+        public int WindowWidth
+        {
+            get { return _windowWidth; }
+            set
+            {
+                _windowWidth = value;
+                OnPropertyChanged(Resource.WindowWidth);
+            }
+        }
+
+        private int _windowHeight;
+        public int WindowHeight
+        {
+            get { return _windowHeight; }
+            set
+            {
+                _windowHeight = value;
+                OnPropertyChanged(Resource.WindowHeight);
+            }
+        }
 
         public ObservableCollection<AddProductDto> ProductList
         {

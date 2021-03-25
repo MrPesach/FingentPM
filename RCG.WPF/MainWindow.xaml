@@ -7,9 +7,11 @@
         xmlns:controls="clr-namespace:RCG.WPF.Controls"
         mc:Ignorable="d"
         Title="RCG - Product Manager" 
-        WindowState="Maximized"
-        WindowStartupLocation="CenterScreen" ResizeMode="NoResize" ShowInTaskbar="True" 
-        MaxHeight="768"  MaxWidth="1366"
+        WindowStartupLocation="CenterScreen"
+        ShowInTaskbar="True" WindowStyle="None"
+        Width="{Binding WindowWidth}"
+        Height="{Binding WindowHeight}"
+         MaxHeight="768"  MaxWidth="1366"
         MinWidth="800" MinHeight="600">
     <Grid>
         <Grid.RowDefinitions>

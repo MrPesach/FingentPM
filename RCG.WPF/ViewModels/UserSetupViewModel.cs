@@ -1,4 +1,6 @@
-﻿using System.Windows.Input;
+﻿using System;
+using System.Windows.Input;
+using RCG.CoreApp.AppResources;
 using RCG.WPF.Commands;
 using RCG.WPF.State.Authenticators;
 using RCG.WPF.State.Navigators;
@@ -7,6 +9,28 @@ namespace RCG.WPF.ViewModels
 {
     public class UserSetupViewModel : ViewModelBase
     {
+        private int _windowWidth;
+        public int WindowWidth
+        {
+            get { return _windowWidth; }
+            set
+            {
+                _windowWidth = value;
+                OnPropertyChanged(Resource.WindowWidth);
+            }
+        }
+
+        private int _windowHeight;
+        public int WindowHeight
+        {
+            get { return _windowHeight; }
+            set
+            {
+                _windowHeight = value;
+                OnPropertyChanged(Resource.WindowHeight);
+            }
+        }
+
         private string _name;
         public string Name
         {
@@ -89,6 +113,9 @@ namespace RCG.WPF.ViewModels
 
             RegisterCommand = new UserSetupCommand(this, authenticator, registerRenavigator);
             ViewLoginCommand = new RenavigateCommand(loginRenavigator);
+
+            WindowHeight = Convert.ToInt32(Resource.HeightUserSetupView);
+            WindowWidth = Convert.ToInt32(Resource.WidthUserSetupView);
         }
 
         public override void Dispose()

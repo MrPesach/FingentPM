@@ -34,3 +34,5 @@ D:\Applications\RCGProductManager\RCG.CoreApp\obj\Debug\netstandard2.1\RCG.CoreA
 D:\Applications\RCGProductManager\RCG.CoreApp\obj\Debug\netstandard2.1\RCG.CoreApp.csproj.CopyComplete
 D:\Applications\RCGProductManager\RCG.CoreApp\obj\Debug\netstandard2.1\RCG.CoreApp.dll
 D:\Applications\RCGProductManager\RCG.CoreApp\obj\Debug\netstandard2.1\RCG.CoreApp.pdb
+D:\Applications\RCGProductManager\RCG.CoreApp\obj\Debug\netstandard2.1\RCG.CoreApp.AppResources.Resource.resources
+D:\Applications\RCGProductManager\RCG.CoreApp\obj\Debug\netstandard2.1\RCG.CoreApp.csproj.GenerateResource.cache

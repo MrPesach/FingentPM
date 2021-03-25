@@ -1,4 +1,6 @@
-﻿using System.Windows.Input;
+﻿using System;
+using System.Windows.Input;
+using RCG.CoreApp.AppResources;
 using RCG.WPF.Commands;
 using RCG.WPF.State.Authenticators;
 using RCG.WPF.State.Navigators;
@@ -7,6 +9,28 @@ namespace RCG.WPF.ViewModels
 {
     public class LoginViewModel : ViewModelBase
     {
+        private int _windowWidth;
+        public int WindowWidth
+        {
+            get { return _windowWidth; }
+            set
+            {
+                _windowWidth = value;
+                OnPropertyChanged(Resource.WindowWidth);
+            }
+        }
+
+        private int _windowHeight;
+        public int WindowHeight
+        {
+            get { return _windowHeight; }
+            set
+            {
+                _windowHeight = value;
+                OnPropertyChanged(Resource.WindowHeight);
+            }
+        }
+
         private string _username;
         public string Username
         {
@@ -58,6 +82,9 @@ namespace RCG.WPF.ViewModels
 
             this.Username = "superadmin";
             this.Password = "password";
+
+            WindowHeight = Convert.ToInt32(Resource.HeightLoginView);
+            WindowWidth = Convert.ToInt32(Resource.WidthLoginView);
         }
 
         public override void Dispose()
