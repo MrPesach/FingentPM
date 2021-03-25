@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows.Input;
+using RCG.CoreApp.AppResources;
 using RCG.CoreApp.Interfaces.Auth;
 using RCG.Domain.Entities;
 using RCG.WPF.Commands;
@@ -11,6 +13,28 @@ namespace RCG.WPF.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
+        private int _windowWidth;
+        public int WindowWidth
+        {
+            get { return _windowWidth; }
+            set
+            {
+                _windowWidth = value;
+                OnPropertyChanged(Resource.WindowWidth);
+            }
+        }
+
+        private int _windowHeight;
+        public int WindowHeight
+        {
+            get { return _windowHeight; }
+            set
+            {
+                _windowHeight = value;
+                OnPropertyChanged(Resource.WindowHeight);
+            }
+        }
+
         private readonly IProductManagerViewModelFactory _viewModelFactory;
         private readonly INavigator _navigator;
         private readonly IAuthenticator _authenticator;
@@ -33,6 +57,9 @@ namespace RCG.WPF.ViewModels
 
             UpdateCurrentViewModelCommand = new UpdateCurrentViewModelCommand(navigator, _viewModelFactory);
             //UpdateCurrentViewModelCommand.Execute(ViewType.Login);
+
+            WindowHeight = Convert.ToInt32(Resource.HeightLoginView);
+            WindowWidth = Convert.ToInt32(Resource.WidthLoginView);
 
             var userList = _authenticationService.GetNonAdminListAsync();
             if (userList.Result.Count > 0)
