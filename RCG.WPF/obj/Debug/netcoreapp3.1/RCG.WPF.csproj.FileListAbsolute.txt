@@ -291,4 +291,9 @@ D:\Mehaboob\Works\RCG\RCG.WPF\obj\Debug\netcoreapp3.1\Views\AddProductView.g.cs
 D:\Mehaboob\Works\RCG\RCG.WPF\obj\Debug\netcoreapp3.1\Views\AddProductView.baml
 D:\Mehaboob\Works\RCG\RCG.WPF\obj\Debug\netcoreapp3.1\Views\AlertView.g.cs
 D:\Mehaboob\Works\RCG\RCG.WPF\obj\Debug\netcoreapp3.1\Views\AlertView.baml
+<<<<<<< HEAD
+>>>>>>> origin/Feature/ImportProduct
+=======
+D:\Mehaboob\Works\RCG\RCG.WPF\obj\Debug\netcoreapp3.1\Views\ImportCompletedView.g.cs
+D:\Mehaboob\Works\RCG\RCG.WPF\obj\Debug\netcoreapp3.1\Views\ImportCompletedView.baml
 >>>>>>> origin/Feature/ImportProduct

@@ -16,6 +16,9 @@
     <Compile Update="Views\AlertView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\ImportCompletedView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Controls\NavigationBar.xaml">
@@ -31,6 +34,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\AddProductView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\ImportCompletedView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\ProductsView.xaml">

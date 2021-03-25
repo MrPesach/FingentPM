@@ -42,25 +42,20 @@ namespace RCG.WPF.ViewModels
 
         private async void SaveProduct(object obj)
         {
-            if (this.ValidateProductSave())
+            var validatedProduct = this._productService.ValidateProductSave(this.AddProduct, false);
+            if (validatedProduct.IsValid)
             {
-                var priceListDto = new PriceListDto
-                {
-                    ProductId = this.AddProduct.ProductId,
-                    AvailableLength = this.AddProduct.AvailableLength,
-                    AvrageWeight = this.AddProduct.AvrageWeight,
-                    Price = this.AddProduct.Price,
-                    Style = this.AddProduct.Style,
-                    User = _userStore.IsAuth.Username,
-                };
-
-                var success = await this._productService.AddProductAsync(priceListDto);
+                var success = await this._productService.AddProductAsync(this.AddProduct);
                 if (success)
                 {
                     this.ClearAll();
                     var window = (IDialogWindow)obj;
                     CloseDialogWithResult(window, EnumMaster.DialogResults.Success.ToString());
                 }
+            }
+            else
+            {
+                this.SetErrorMessage(validatedProduct.ValidationMessage);
             }
         }
 

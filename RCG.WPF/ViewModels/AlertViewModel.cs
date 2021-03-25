@@ -16,6 +16,8 @@ namespace RCG.WPF.ViewModels
             this.CancelCommand = new RelayCommand(o => this.CloseDialog(o), o => true);
         }
 
+        public string IconUri { get; set; }
+
         private void CloseDialog(object obj)
         {
             var window = (IDialogWindow)obj;

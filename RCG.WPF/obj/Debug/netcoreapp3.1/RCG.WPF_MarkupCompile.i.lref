@@ -1,4 +1,21 @@
+<<<<<<< HEAD
 ﻿
 
 FD:\Applications\RCGProductManager\RCG.WPF\Views\LoginView.xaml;;
+=======
+﻿D:\Mehaboob\Works\RCG\RCG.WPF\obj\Debug\netcoreapp3.1\GeneratedInternalTypeHelper.g.i.cs
+FD:\Mehaboob\Works\RCG\RCG.WPF\App.xaml;;
+FD:\Mehaboob\Works\RCG\RCG.WPF\Controls\NavigationBar.xaml;;
+FD:\Mehaboob\Works\RCG\RCG.WPF\MainWindow.xaml;;
+FD:\Mehaboob\Works\RCG\RCG.WPF\Styles\Common.xaml;;
+FD:\Mehaboob\Works\RCG\RCG.WPF\Styles\NavigationBar.xaml;;
+FD:\Mehaboob\Works\RCG\RCG.WPF\Views\AddProductView.xaml;;
+FD:\Mehaboob\Works\RCG\RCG.WPF\Views\AlertView.xaml;;
+FD:\Mehaboob\Works\RCG\RCG.WPF\Views\DialogWindow.xaml;;
+FD:\Mehaboob\Works\RCG\RCG.WPF\Views\ImportCompletedView.xaml;;
+FD:\Mehaboob\Works\RCG\RCG.WPF\Views\ImportPriceListView.xaml;;
+FD:\Mehaboob\Works\RCG\RCG.WPF\Views\LoginView.xaml;;
+FD:\Mehaboob\Works\RCG\RCG.WPF\Views\ProductsView.xaml;;
+FD:\Mehaboob\Works\RCG\RCG.WPF\Views\RegisterView.xaml;;
+>>>>>>> origin/Feature/ImportProduct
 
