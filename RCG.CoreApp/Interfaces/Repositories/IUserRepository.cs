@@ -14,6 +14,8 @@ namespace RCG.CoreApp.Interfaces.Repositories
 
         Task<Users> GetByUsernameAsync(string username);
 
+        Task<Users> GetByUsernameandIdAsync(long id, string username);
+
         Task<long> InsertAsync(Users user);
 
         Task UpdateAsync(Users user);

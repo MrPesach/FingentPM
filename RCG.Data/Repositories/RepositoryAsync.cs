@@ -76,10 +76,20 @@ namespace RCG.Data.Repositories
                 .ToListAsync();
         }
 
-        public Task UpdateAsync(T entity)
+        public Task UpdateAsync(T entity, object key)
         {
-            this._dbContext.Set<T>().Update(entity);
-            return this._dbContext.SaveChangesAsync();
+            if (entity == null)
+                return null;
+            T exist =  _dbContext.Set<T>().Find(key);
+            if (exist != null)
+            {
+                _dbContext.Entry(exist).CurrentValues.SetValues(entity);
+                 _dbContext.SaveChangesAsync();
+            }
+            return Task.CompletedTask;
+
+            //this._dbContext.Set<T>().Update(entity);
+            //return this._dbContext.SaveChangesAsync();
 
             //// this._dbContext.Set<T>().Update(entity);
             //_dbContext.Entry(entity).State = EntityState.Modified;

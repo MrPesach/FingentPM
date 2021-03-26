@@ -62,7 +62,7 @@
         {
             if (product.Id > 0)
             {
-                await _productRepository.UpdateAsync(product);
+                await _productRepository.UpdateAsync(product, product.Id);
             }
             else
             {

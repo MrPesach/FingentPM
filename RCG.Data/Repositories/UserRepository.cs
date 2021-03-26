@@ -39,6 +39,11 @@ namespace RCG.Data.Repositories
             return await _repository.Entities.Where(p => p.Username == username).FirstOrDefaultAsync();
         }
 
+        public async Task<Users> GetByUsernameandIdAsync(long id, string username)
+        {
+            return await _repository.Entities.Where(p => p.Id != id &&   p.Username == username).FirstOrDefaultAsync();
+        }
+
         public async Task<long> InsertAsync(Users user)
         {
             await _repository.AddAsync(user);
@@ -47,7 +52,7 @@ namespace RCG.Data.Repositories
 
         public async Task UpdateAsync(Users User)
         {
-            await _repository.UpdateAsync(User);
+            await _repository.UpdateAsync(User, User.Id);
         }
 
 

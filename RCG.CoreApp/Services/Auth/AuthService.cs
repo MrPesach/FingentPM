@@ -81,5 +81,44 @@ namespace RCG.CoreApp.Services.Auth
 
             return result;
         }
+
+        public async Task<UserSetupResult> UserUpdate(long id, string name, string username, string password, string confirmPassword, string lastModifiedBy)
+        {
+            UserSetupResult result = UserSetupResult.Success;
+
+            if (password != confirmPassword)
+            {
+                result = UserSetupResult.PasswordsDoNotMatch;
+            }
+            if (password.Length < 5)
+            {
+                result = UserSetupResult.PasswordLength;
+            }
+
+            Users usernameAccount = await _userRepository.GetByUsernameandIdAsync(id, username);
+            if (usernameAccount != null)
+            {
+                result = UserSetupResult.UsernameAlreadyExists;
+            }
+
+            if (result == UserSetupResult.Success)
+            {
+                string hashedPassword = SecurityHelper.HashPassword(password);
+
+                Users user = new Users()
+                {
+                    Name = name,
+                    Username = username,
+                    PasswordHash = hashedPassword,
+                    LastModifiedBy = lastModifiedBy,
+                    LastModifiedOn = _dateTimeService.NowUtc,
+                    IsAdmin = false
+                };
+
+                await _userRepository.UpdateAsync(user);
+            }
+
+            return result;
+        }
     }
 }
