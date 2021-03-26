@@ -8,8 +8,9 @@
         mc:Ignorable="d"
         Title="RCG - Product Manager" 
         WindowStartupLocation="CenterScreen"
-        SizeToContent="WidthAndHeight" WindowStyle="SingleBorderWindow" ShowInTaskbar="True"
-       
+        SizeToContent="WidthAndHeight" ShowInTaskbar="True"
+       WindowState="Maximized"
+        WindowStyle="ToolWindow"
        >
     <Grid>
         <Grid.RowDefinitions>
