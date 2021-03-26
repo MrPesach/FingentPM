@@ -40,8 +40,8 @@ namespace RCG.WPF.ViewModels
             AddProductViewModel addProductViewModel,
             AlertViewModel alertViewModel)
         {
-            WindowHeight = Convert.ToInt32(Resource.HeightProductsView);
-            WindowWidth = Convert.ToInt32(Resource.WidthProductsView);
+            ////WindowHeight = Convert.ToInt32(Resource.HeightProductsView);
+            ////WindowWidth = Convert.ToInt32(Resource.WidthProductsView);
 
             this._productService = productService;
             this._dialogService = dialogService;
@@ -62,27 +62,27 @@ namespace RCG.WPF.ViewModels
         private ObservableCollection<int> _pages;
         private int _pageNumber;
 
-        private int _windowWidth;
-        public int WindowWidth
-        {
-            get { return _windowWidth; }
-            set
-            {
-                _windowWidth = value;
-                RaisePropertyChanged(Resource.WindowWidth);
-            }
-        }
+        ////private int _windowWidth;
+        ////public int WindowWidth
+        ////{
+        ////    get { return _windowWidth; }
+        ////    set
+        ////    {
+        ////        _windowWidth = value;
+        ////        RaisePropertyChanged(Resource.WindowWidth);
+        ////    }
+        ////}
 
-        private int _windowHeight;
-        public int WindowHeight
-        {
-            get { return _windowHeight; }
-            set
-            {
-                _windowHeight = value;
-                RaisePropertyChanged(Resource.WindowHeight);
-            }
-        }
+        ////private int _windowHeight;
+        ////public int WindowHeight
+        ////{
+        ////    get { return _windowHeight; }
+        ////    set
+        ////    {
+        ////        _windowHeight = value;
+        ////        RaisePropertyChanged(Resource.WindowHeight);
+        ////    }
+        ////}
 
         public ObservableCollection<AddProductDto> ProductList
         {

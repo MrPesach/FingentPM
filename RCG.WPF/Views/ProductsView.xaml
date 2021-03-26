@@ -8,7 +8,9 @@
              mc:Ignorable="d"
              xmlns:local1="clr-namespace:RCG.Domain.Entities;assembly=RCG.Domain"
              xmlns:InteractionTrigger ="http://schemas.microsoft.com/xaml/behaviors"
-             x:Name="ProductList">
+             x:Name="ProductList"
+             Width="1370"
+             Height="600">
     <UserControl.Resources>
         <ResourceDictionary>
             <x:Array x:Key="MyDumbMockedList" Type="local1:Products">

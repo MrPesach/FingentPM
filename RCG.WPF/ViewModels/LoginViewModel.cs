@@ -10,27 +10,27 @@ namespace RCG.WPF.ViewModels
 {
     public class LoginViewModel : ViewModelBase
     {
-        private int _windowWidth;
-        public int WindowWidth
-        {
-            get { return _windowWidth; }
-            set
-            {
-                _windowWidth = value;
-                RaisePropertyChanged(Resource.WindowWidth);
-            }
-        }
+        ////private int _windowWidth;
+        ////public int WindowWidth
+        ////{
+        ////    get { return _windowWidth; }
+        ////    set
+        ////    {
+        ////        _windowWidth = value;
+        ////        RaisePropertyChanged(Resource.WindowWidth);
+        ////    }
+        ////}
 
-        private int _windowHeight;
-        public int WindowHeight
-        {
-            get { return _windowHeight; }
-            set
-            {
-                _windowHeight = value;
-                RaisePropertyChanged(Resource.WindowHeight);
-            }
-        }
+        ////private int _windowHeight;
+        ////public int WindowHeight
+        ////{
+        ////    get { return _windowHeight; }
+        ////    set
+        ////    {
+        ////        _windowHeight = value;
+        ////        RaisePropertyChanged(Resource.WindowHeight);
+        ////    }
+        ////}
 
         private string _username;
         public string Username
@@ -84,8 +84,8 @@ namespace RCG.WPF.ViewModels
             this.Username = "superadmin";
             this.Password = "password";
 
-            WindowHeight = Convert.ToInt32(Resource.HeightLoginView);
-            WindowWidth = Convert.ToInt32(Resource.WidthLoginView);
+            ////WindowHeight = Convert.ToInt32(Resource.HeightLoginView);
+            ////WindowWidth = Convert.ToInt32(Resource.WidthLoginView);
         }
 
         public override void Dispose()

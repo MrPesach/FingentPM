@@ -13,27 +13,27 @@ namespace RCG.WPF.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
-        private int _windowWidth;
-        public int WindowWidth
-        {
-            get { return _windowWidth; }
-            set
-            {
-                _windowWidth = value;
-                RaisePropertyChanged(Resource.WindowWidth);
-            }
-        }
+        ////private int _windowWidth;
+        ////public int WindowWidth
+        ////{
+        ////    get { return _windowWidth; }
+        ////    set
+        ////    {
+        ////        _windowWidth = value;
+        ////        RaisePropertyChanged(Resource.WindowWidth);
+        ////    }
+        ////}
 
-        private int _windowHeight;
-        public int WindowHeight
-        {
-            get { return _windowHeight; }
-            set
-            {
-                _windowHeight = value;
-                RaisePropertyChanged(Resource.WindowHeight);
-            }
-        }
+        ////private int _windowHeight;
+        ////public int WindowHeight
+        ////{
+        ////    get { return _windowHeight; }
+        ////    set
+        ////    {
+        ////        _windowHeight = value;
+        ////        RaisePropertyChanged(Resource.WindowHeight);
+        ////    }
+        ////}
 
         private readonly IProductManagerViewModelFactory _viewModelFactory;
         private readonly INavigator _navigator;
@@ -58,15 +58,15 @@ namespace RCG.WPF.ViewModels
             UpdateCurrentViewModelCommand = new UpdateCurrentViewModelCommand(navigator, _viewModelFactory);
             //UpdateCurrentViewModelCommand.Execute(ViewType.Login);
 
-            WindowHeight = Convert.ToInt32(Resource.HeightProductsView);
-            WindowWidth = Convert.ToInt32(Resource.WidthProductsView);
+            ////WindowHeight = Convert.ToInt32(Resource.HeightProductsView);
+            ////WindowWidth = Convert.ToInt32(Resource.WidthProductsView);
 
             var userList = _authenticationService.GetNonAdminListAsync();
             if (userList.Result.Count > 0)
             {
                 UpdateCurrentViewModelCommand.Execute(ViewType.Login);
-                WindowHeight = Convert.ToInt32(Resource.HeightLoginView);
-                WindowWidth = Convert.ToInt32(Resource.WidthLoginView);
+                ////WindowHeight = Convert.ToInt32(Resource.HeightLoginView);
+                ////WindowWidth = Convert.ToInt32(Resource.WidthLoginView);
             }
             else
             {

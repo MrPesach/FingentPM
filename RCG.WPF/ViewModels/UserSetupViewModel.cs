@@ -9,27 +9,27 @@ namespace RCG.WPF.ViewModels
 {
     public class UserSetupViewModel : ViewModelBase
     {
-        private int _windowWidth;
-        public int WindowWidth
-        {
-            get { return _windowWidth; }
-            set
-            {
-                _windowWidth = value;
-                RaisePropertyChanged(Resource.WindowWidth);
-            }
-        }
+        ////private int _windowWidth;
+        ////public int WindowWidth
+        ////{
+        ////    get { return _windowWidth; }
+        ////    set
+        ////    {
+        ////        _windowWidth = value;
+        ////        RaisePropertyChanged(Resource.WindowWidth);
+        ////    }
+        ////}
 
-        private int _windowHeight;
-        public int WindowHeight
-        {
-            get { return _windowHeight; }
-            set
-            {
-                _windowHeight = value;
-                RaisePropertyChanged(Resource.WindowHeight);
-            }
-        }
+        ////private int _windowHeight;
+        ////public int WindowHeight
+        ////{
+        ////    get { return _windowHeight; }
+        ////    set
+        ////    {
+        ////        _windowHeight = value;
+        ////        RaisePropertyChanged(Resource.WindowHeight);
+        ////    }
+        ////}
 
         private string _name;
         public string Name
@@ -114,8 +114,8 @@ namespace RCG.WPF.ViewModels
             RegisterCommand = new UserSetupCommand(this, authenticator, registerRenavigator);
             ViewLoginCommand = new RenavigateCommand(loginRenavigator);
 
-            WindowHeight = Convert.ToInt32(Resource.HeightUserSetupView);
-            WindowWidth = Convert.ToInt32(Resource.WidthUserSetupView);
+            ////WindowHeight = Convert.ToInt32(Resource.HeightUserSetupView);
+            ////WindowWidth = Convert.ToInt32(Resource.WidthUserSetupView);
         }
 
         public override void Dispose()

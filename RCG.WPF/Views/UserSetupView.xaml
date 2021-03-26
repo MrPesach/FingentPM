@@ -5,7 +5,9 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:RCG.WPF.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:components="clr-namespace:PasswordBoxMVVM.Components;assembly=PasswordBoxMVVM"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    Width="1272"
+    Height="600">
     <UserControl.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
     </UserControl.Resources>
