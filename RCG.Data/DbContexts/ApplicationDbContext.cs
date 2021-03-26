@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Data;
-using System.Threading;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using RCG.CoreApp.Helpers;
 using RCG.CoreApp.Interfaces.DbContexts;
-using RCG.CoreApp.Interfaces.Shared;
 using RCG.Domain.Entities;
 
 
