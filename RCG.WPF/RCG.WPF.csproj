@@ -13,6 +13,10 @@
 		<PublishReadyToRun>true</PublishReadyToRun>
 		<ApplicationIcon>app-icon.ico</ApplicationIcon>
 		<AssemblyName>Product Manager</AssemblyName>
+		<AllowedReferenceRelatedFileExtensions>
+			*.pdb;
+			*.xml
+		</AllowedReferenceRelatedFileExtensions>
 	</PropertyGroup>
 	<ItemGroup>
 	  <None Remove="Resources\Images\green-tick.png" />
@@ -108,13 +112,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="AppData\" />
-  </ItemGroup>
 <Target Name="PublishFrontend" AfterTargets="ComputeFilesToPublish">
     <ItemGroup>
-      <DistFiles Include="AppData\Data\**" />
+      <DistFiles Include="AppData\Logs\**" />
       <ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
         <RelativePath>%(DistFiles.Identity)</RelativePath>
         <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>

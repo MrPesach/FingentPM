@@ -19,7 +19,6 @@ namespace RCG.WPF.ViewModels
 
         protected void RaisePropertyChanged(string propertyName)
         {
-            // take a copy to prevent thread issues
             PropertyChangedEventHandler handler = RaPropertyChanged;
             if (handler != null)
             {

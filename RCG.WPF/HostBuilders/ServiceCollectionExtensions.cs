@@ -27,12 +27,8 @@ namespace RCG.WPF.HostBuilders
         {
             host.ConfigureServices((context, services) =>
             {
-                ///Action<DbContextOptionsBuilder> configureDbContext = o => o.UseSqlite("Data Source="+ @"rcg.fin");
-
-                ////services.AddDbContext<ApplicationDbContext>(configureDbContext);
-                ///
                 services.AddDbContext<ApplicationDbContext>(options => {
-                    options.UseSqlite("Data Source=" + @"rcg.fin");
+                    options.UseSqlite("Data Source=" + @"data.fin");
                     //options.EnableSensitiveDataLogging(true);
                 });
             });
