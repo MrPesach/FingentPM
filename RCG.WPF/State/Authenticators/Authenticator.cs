@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using RCG.CoreApp.DTO;
 using RCG.CoreApp.Interfaces.Auth;
 using RCG.Domain.Entities;
 using RCG.WPF.State.Accounts;
@@ -44,9 +45,9 @@ namespace RCG.WPF.State.Authenticators
             IsAuthenticated = null;
         }
 
-        public async Task<UserSetupResult> UserSetup(string name, string username, string password, string confirmPassword)
+        public async Task<UserSetupResult> UserSetup(UserSetupDto userSetupDto)
         {
-            return await _authenticationService.UserSetup(name, username, password, confirmPassword);
+            return await _authenticationService.UserSetup(userSetupDto);
         }
     }
 }

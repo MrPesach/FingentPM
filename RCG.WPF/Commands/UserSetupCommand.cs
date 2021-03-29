@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Threading.Tasks;
+using RCG.CoreApp.DTO;
 using RCG.CoreApp.Interfaces.Auth;
 using RCG.WPF.State.Authenticators;
 using RCG.WPF.State.Navigators;
@@ -34,11 +35,16 @@ namespace RCG.WPF.Commands
 
             try
             {
-                UserSetupResult userSetupResult = await _authenticator.UserSetup(
-                       _usersetupViewModel.Name,
-                       _usersetupViewModel.Username,
-                       _usersetupViewModel.Password,
-                       _usersetupViewModel.ConfirmPassword);
+                UserSetupDto userSetupDto = new UserSetupDto()
+                {
+                    UserId = null,
+                    Name = _usersetupViewModel.Name,
+                    Username = _usersetupViewModel.Username,
+                    Password = _usersetupViewModel.Password,
+                    ConfirmPassword = _usersetupViewModel.ConfirmPassword,
+                };
+
+                UserSetupResult userSetupResult = await _authenticator.UserSetup(userSetupDto);
 
                 switch (userSetupResult)
                 {
@@ -57,14 +63,17 @@ namespace RCG.WPF.Commands
                     case UserSetupResult.PasswordLength:
                         _usersetupViewModel.ErrorMessage = "Password should have a minimum length of 5 characters.";
                         break;
+                    case UserSetupResult.UsernameLength:
+                        _usersetupViewModel.ErrorMessage = "Username should have a minimum length of 5 characters.";
+                        break;
                     default:
-                        _usersetupViewModel.ErrorMessage = "User Setup failed.";
+                        _usersetupViewModel.ErrorMessage = "Unable to Save.";
                         break;
                 }
             }
             catch (Exception)
             {
-                _usersetupViewModel.ErrorMessage = "User Setup failed.";
+                _usersetupViewModel.ErrorMessage = "Unable to Save.";
             }
         }
 

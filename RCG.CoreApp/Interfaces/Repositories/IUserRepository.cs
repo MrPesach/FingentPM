@@ -12,9 +12,7 @@ namespace RCG.CoreApp.Interfaces.Repositories
 
         Task<Users> GetByIdAsync(long id);
 
-        Task<Users> GetByUsernameAsync(string username);
-
-        Task<Users> GetByUsernameandIdAsync(long id, string username);
+        Task<Users> GetByUsernameAsync(long? id, string username);
 
         Task<long> InsertAsync(Users user);
 

@@ -34,14 +34,16 @@ namespace RCG.Data.Repositories
             return await _repository.Entities.Where(p => p.Id == id).FirstOrDefaultAsync();
         }
 
-        public async Task<Users> GetByUsernameAsync(string username)
+        public async Task<Users> GetByUsernameAsync(long? id, string username)
         {
-            return await _repository.Entities.Where(p => p.Username == username).FirstOrDefaultAsync();
-        }
-
-        public async Task<Users> GetByUsernameandIdAsync(long id, string username)
-        {
-            return await _repository.Entities.Where(p => p.Id != id &&   p.Username == username).FirstOrDefaultAsync();
+            if (id != null)
+            {
+                return await _repository.Entities.Where(p => p.Username == username).FirstOrDefaultAsync();
+            }
+            else
+            {
+                return await _repository.Entities.Where(p => p.Id != id && p.Username == username).FirstOrDefaultAsync();
+            }
         }
 
         public async Task<long> InsertAsync(Users user)

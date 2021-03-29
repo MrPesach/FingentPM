@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using RCG.CoreApp.DTO;
 using RCG.CoreApp.Exceptions;
 using RCG.CoreApp.Helpers;
 using RCG.CoreApp.Interfaces.Auth;
@@ -27,7 +28,7 @@ namespace RCG.CoreApp.Services.Auth
 
         public async Task<Users> Login(string username, string password)
         {
-            Users userAccount = await _userRepository.GetByUsernameAsync(username);
+            Users userAccount = await _userRepository.GetByUsernameAsync(null, username);
 
             if (userAccount == null)
             {
@@ -44,20 +45,64 @@ namespace RCG.CoreApp.Services.Auth
             return userAccount;
         }
 
-        public async Task<UserSetupResult> UserSetup(string name, string username, string password, string confirmPassword)
+        ////public async Task<UserSetupResult> UserSetup(long? id, string name, string username, string password, string confirmPassword)
+        ////{
+        ////    UserSetupResult result = UserSetupResult.Success;
+
+        ////    if (password != confirmPassword)
+        ////    {
+        ////        result = UserSetupResult.PasswordsDoNotMatch;
+        ////    }
+        ////    if (password.Length < 5)
+        ////    {
+        ////        result = UserSetupResult.PasswordLength;
+        ////    }
+
+        ////    Users usernameAccount = await _userRepository.GetByUsernameAsync(username);
+        ////    if (usernameAccount != null)
+        ////    {
+        ////        result = UserSetupResult.UsernameAlreadyExists;
+        ////    }
+
+        ////    if (result == UserSetupResult.Success)
+        ////    {
+        ////        string hashedPassword = SecurityHelper.HashPassword(password);
+
+        ////        Users user = new Users()
+        ////        {
+        ////            Name = name,
+        ////            Username = username,
+        ////            PasswordHash = hashedPassword,
+        ////            CreatedOn = _dateTimeService.NowUtc,
+        ////            IsAdmin = false
+        ////        };
+
+        ////        await _userRepository.InsertAsync(user);
+        ////    }
+
+        ////    return result;
+        ////}
+
+        public async Task<UserSetupResult> UserSetup(UserSetupDto userSetupDto)
         {
             UserSetupResult result = UserSetupResult.Success;
 
-            if (password != confirmPassword)
+            if (userSetupDto.Username.Length < 5)
+            {
+                result = UserSetupResult.UsernameLength;
+            }
+
+            if (userSetupDto.Password != userSetupDto.ConfirmPassword)
             {
                 result = UserSetupResult.PasswordsDoNotMatch;
             }
-            if (password.Length < 5)
+            if (userSetupDto.Password.Length < 5)
             {
                 result = UserSetupResult.PasswordLength;
             }
 
-            Users usernameAccount = await _userRepository.GetByUsernameAsync(username);
+            Users usernameAccount = await _userRepository.GetByUsernameAsync(userSetupDto.UserId, userSetupDto.Username);
+
             if (usernameAccount != null)
             {
                 result = UserSetupResult.UsernameAlreadyExists;
@@ -65,57 +110,35 @@ namespace RCG.CoreApp.Services.Auth
 
             if (result == UserSetupResult.Success)
             {
-                string hashedPassword = SecurityHelper.HashPassword(password);
+                string hashedPassword = SecurityHelper.HashPassword(userSetupDto.Password);
 
-                Users user = new Users()
+                if (userSetupDto.UserId != null)
                 {
-                    Name = name,
-                    Username = username,
-                    PasswordHash = hashedPassword,
-                    CreatedOn = _dateTimeService.NowUtc,
-                    IsAdmin = false
-                };
+                    Users user = new Users()
+                    {
+                        Name = userSetupDto.Name,
+                        Username = userSetupDto.Username,
+                        PasswordHash = hashedPassword,
+                        LastModifiedBy = userSetupDto.LastModifiedBy,
+                        LastModifiedOn = _dateTimeService.NowUtc,
+                        IsAdmin = false
+                    };
 
-                await _userRepository.InsertAsync(user);
-            }
-
-            return result;
-        }
-
-        public async Task<UserSetupResult> UserUpdate(long id, string name, string username, string password, string confirmPassword, string lastModifiedBy)
-        {
-            UserSetupResult result = UserSetupResult.Success;
-
-            if (password != confirmPassword)
-            {
-                result = UserSetupResult.PasswordsDoNotMatch;
-            }
-            if (password.Length < 5)
-            {
-                result = UserSetupResult.PasswordLength;
-            }
-
-            Users usernameAccount = await _userRepository.GetByUsernameandIdAsync(id, username);
-            if (usernameAccount != null)
-            {
-                result = UserSetupResult.UsernameAlreadyExists;
-            }
-
-            if (result == UserSetupResult.Success)
-            {
-                string hashedPassword = SecurityHelper.HashPassword(password);
-
-                Users user = new Users()
+                    await _userRepository.UpdateAsync(user);
+                }
+                else
                 {
-                    Name = name,
-                    Username = username,
-                    PasswordHash = hashedPassword,
-                    LastModifiedBy = lastModifiedBy,
-                    LastModifiedOn = _dateTimeService.NowUtc,
-                    IsAdmin = false
-                };
+                    Users user = new Users()
+                    {
+                        Name = userSetupDto.Name,
+                        Username = userSetupDto.Username,
+                        PasswordHash = hashedPassword,
+                        CreatedOn = _dateTimeService.NowUtc,
+                        IsAdmin = false
+                    };
 
-                await _userRepository.UpdateAsync(user);
+                    await _userRepository.InsertAsync(user);
+                }
             }
 
             return result;

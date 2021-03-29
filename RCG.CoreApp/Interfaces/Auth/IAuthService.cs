@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using RCG.CoreApp.DTO;
 using RCG.Domain.Entities;
 
 namespace RCG.CoreApp.Interfaces.Auth
@@ -10,7 +11,8 @@ namespace RCG.CoreApp.Interfaces.Auth
         PasswordsDoNotMatch,
         EmailAlreadyExists,
         UsernameAlreadyExists,
-        PasswordLength
+        PasswordLength,
+        UsernameLength
     }
 
     public interface IAuthService
@@ -18,6 +20,6 @@ namespace RCG.CoreApp.Interfaces.Auth
         Task<List<Users>> GetNonAdminListAsync();
         Task<Users> Login(string username, string password);
 
-        Task<UserSetupResult> UserSetup(string name, string username, string password, string confirmPassword);
+        Task<UserSetupResult> UserSetup(UserSetupDto userSetupDto);
     }
 }
