@@ -126,6 +126,9 @@
   <data name="HeightUserSetupView" xml:space="preserve">
     <value>600</value>
   </data>
+  <data name="PathIndesignDataFile" xml:space="preserve">
+    <value>C:\Program Files (x86)\Common Files\Adobe\CEP\extensions\Price_Manager</value>
+  </data>
   <data name="WidthLoginView" xml:space="preserve">
     <value>1272</value>
   </data>

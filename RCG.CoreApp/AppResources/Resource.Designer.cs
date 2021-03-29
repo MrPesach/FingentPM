@@ -88,6 +88,15 @@ namespace RCG.CoreApp.AppResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to C:\Program Files (x86)\Common Files\Adobe\CEP\extensions\Price_Manager.
+        /// </summary>
+        public static string PathIndesignDataFile {
+            get {
+                return ResourceManager.GetString("PathIndesignDataFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 1272.
         /// </summary>
         public static string WidthLoginView {
