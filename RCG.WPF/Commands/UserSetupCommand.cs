@@ -1,7 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Threading.Tasks;
-using RCG.CoreApp.DTO;
 using RCG.CoreApp.DTO.User;
 using RCG.CoreApp.Interfaces.User;
 using RCG.WPF.State.Authenticators;

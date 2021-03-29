@@ -12,7 +12,7 @@ using RCG.WPF.State.Accounts;
 
 namespace RCG.WPF.ViewModels
 {
-    public class UpdateUserViewModel : DialogViewModelBase<string>
+    public class UserSetupEditViewModel : DialogViewModelBase<string>
     {
         public ICommand SaveUserCommand { get; }
         public ICommand CancelCommand { get; }
@@ -20,7 +20,7 @@ namespace RCG.WPF.ViewModels
         private readonly IUserService _authService;
         private readonly IUserStore _userStore;
 
-        public UpdateUserViewModel(IUserService authService, IUserStore userStore)
+        public UserSetupEditViewModel(IUserService authService, IUserStore userStore)
         {
             _authService = authService;
             _userStore = userStore;
