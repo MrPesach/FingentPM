@@ -1,20 +1,20 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using RCG.CoreApp.DTO;
+using RCG.CoreApp.DTO.User;
 using RCG.CoreApp.Exceptions;
 using RCG.CoreApp.Helpers;
-using RCG.CoreApp.Interfaces.Auth;
 using RCG.CoreApp.Interfaces.Repositories;
 using RCG.CoreApp.Interfaces.Shared;
+using RCG.CoreApp.Interfaces.User;
 using RCG.Domain.Entities;
 
-namespace RCG.CoreApp.Services.Auth
+namespace RCG.CoreApp.Services.User
 {
-    public class AuthService : IAuthService
+    public class UserService : IUserService
     {
         private readonly IUserRepository _userRepository;
         private readonly IDateTimeService _dateTimeService;
-        public AuthService(IUserRepository userRepository, IDateTimeService dateTimeService)
+        public UserService(IUserRepository userRepository, IDateTimeService dateTimeService)
         {
             _userRepository = userRepository;
             _dateTimeService = dateTimeService;
@@ -142,6 +142,30 @@ namespace RCG.CoreApp.Services.Auth
             }
 
             return result;
+        }
+
+        public UserSetupDto ValidateUserSave(UserSetupDto userSetupDto)
+        {
+            bool isValid = true;
+            var messageList = new List<string>();
+            if (string.IsNullOrEmpty(userSetupDto.Name))
+            {
+                messageList.Add("Please enter Name");
+                isValid = false;
+            }
+
+            if (string.IsNullOrEmpty(userSetupDto.Password))
+            {
+                messageList.Add("Please enter Password");
+                isValid = false;
+            }
+            if (string.IsNullOrEmpty(userSetupDto.Password))
+            {
+                messageList.Add("Please enter Password");
+                isValid = false;
+            }
+            //userSetupDto.IsValid = isValid;
+            return userSetupDto;
         }
     }
 }

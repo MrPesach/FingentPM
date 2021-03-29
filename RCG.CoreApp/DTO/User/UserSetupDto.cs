@@ -1,4 +1,4 @@
-﻿namespace RCG.CoreApp.DTO
+﻿namespace RCG.CoreApp.DTO.User
 {
     public class UserSetupDto
     {

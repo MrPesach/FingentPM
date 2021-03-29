@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
 using RCG.CoreApp.DTO;
-using RCG.CoreApp.Interfaces.Auth;
+using RCG.CoreApp.DTO.User;
+using RCG.CoreApp.Interfaces.User;
 using RCG.Domain.Entities;
 using RCG.WPF.State.Accounts;
 
@@ -9,10 +10,10 @@ namespace RCG.WPF.State.Authenticators
 {
     public class Authenticator : IAuthenticator
     {
-        private readonly IAuthService _authenticationService;
+        private readonly IUserService _authenticationService;
         private readonly IUserStore _userStore;
 
-        public Authenticator(IAuthService authenticationService, IUserStore userStore)
+        public Authenticator(IUserService authenticationService, IUserStore userStore)
         {
             _authenticationService = authenticationService;
             _userStore = userStore;

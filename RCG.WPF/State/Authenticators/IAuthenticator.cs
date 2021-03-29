@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
-using RCG.CoreApp.DTO;
-using RCG.CoreApp.Interfaces.Auth;
+using RCG.CoreApp.DTO.User;
+using RCG.CoreApp.Interfaces.User;
 
 namespace RCG.WPF.State.Authenticators
 {

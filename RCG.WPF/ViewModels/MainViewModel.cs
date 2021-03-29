@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows.Input;
-using RCG.CoreApp.AppResources;
-using RCG.CoreApp.Interfaces.Auth;
-using RCG.Domain.Entities;
+﻿using System.Windows.Input;
+using RCG.CoreApp.Interfaces.User;
 using RCG.WPF.Commands;
 using RCG.WPF.State.Authenticators;
 using RCG.WPF.State.Navigators;
@@ -38,14 +34,14 @@ namespace RCG.WPF.ViewModels
         private readonly IProductManagerViewModelFactory _viewModelFactory;
         private readonly INavigator _navigator;
         private readonly IAuthenticator _authenticator;
-        private readonly IAuthService _authenticationService;
+        private readonly IUserService _authenticationService;
 
         public bool IsLoggedIn => _authenticator.IsLoggedIn;
         public ViewModelBase CurrentViewModel => _navigator.CurrentViewModel;
 
         public ICommand UpdateCurrentViewModelCommand { get; }
 
-        public MainViewModel(INavigator navigator, IProductManagerViewModelFactory viewModelFactory, IAuthenticator authenticator, IAuthService authenticationService)
+        public MainViewModel(INavigator navigator, IProductManagerViewModelFactory viewModelFactory, IAuthenticator authenticator, IUserService authenticationService)
         {
             _navigator = navigator;
             _viewModelFactory = viewModelFactory;

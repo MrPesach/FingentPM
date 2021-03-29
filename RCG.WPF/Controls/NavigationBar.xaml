@@ -8,21 +8,42 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:nav="clr-namespace:RCG.WPF.State.Navigators"
     xmlns:vm="clr-namespace:RCG.WPF.ViewModels"
-    d:DesignHeight="450"
-    d:DesignWidth="800"
+    d:Height="450"
+    d:Width="800"
     mc:Ignorable="d">
     <UserControl.Resources>
         <converters:EqualValueToParameterConverter x:Key="EqualValueToParameterConverter" />
     </UserControl.Resources>
-    <Grid>
+    <Grid ShowGridLines="False" Grid.Row="0" Background="{StaticResource BrushBlack}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="600"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="100" />
+            <RowDefinition Height="100"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0" Background="{StaticResource BrushBlack}">
-            <Image Width="300" Source="/Resources/Images/royal_chain_white_logo.png" HorizontalAlignment="Left">
-            </Image>
-            <!--<Image Source="/Resources/Images/royal_chain_white_logo.png" />-->
-        </Grid>
+        <Image Margin="10" Grid.Row="0" Grid.Column="0" Width="300" Source="/Resources/Images/royal_chain_white_logo.png" HorizontalAlignment="Left">
+        </Image>
+
+        <Button Grid.Row="0" Grid.Column="1" Visibility="Hidden">
+        </Button>
+      
+
+
+        <Border Grid.Row="0" Grid.Column="2" CornerRadius="50" Visibility="Hidden"
+        Width="50"
+        Height="50"
+        Background="{StaticResource BrushBlue}"
+        BorderBrush="{StaticResource BrushWhite}"
+        BorderThickness="1">
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="A" Foreground="{StaticResource BrushWhite}" />
+        </Border>
+
+        <TextBlock  Grid.Row="0" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center"
+              Text="Administrator" Foreground="{StaticResource BrushWhite}" Visibility="Hidden"/>
     </Grid>
+   
 </UserControl>

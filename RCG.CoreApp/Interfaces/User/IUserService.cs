@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using RCG.CoreApp.DTO;
+using RCG.CoreApp.DTO.User;
 using RCG.Domain.Entities;
 
-namespace RCG.CoreApp.Interfaces.Auth
+namespace RCG.CoreApp.Interfaces.User
 {
     public enum UserSetupResult
     {
@@ -15,7 +15,7 @@ namespace RCG.CoreApp.Interfaces.Auth
         UsernameLength
     }
 
-    public interface IAuthService
+    public interface IUserService
     {
         Task<List<Users>> GetNonAdminListAsync();
         Task<Users> Login(string username, string password);

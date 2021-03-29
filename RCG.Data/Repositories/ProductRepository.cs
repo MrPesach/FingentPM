@@ -49,7 +49,7 @@
                     await transaction.CommitAsync();
                     return success;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     await transaction.RollbackAsync();
                     return false;

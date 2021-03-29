@@ -32,7 +32,7 @@
 
         public async Task<List<AddProductDto>> GetPagedProductList(int pageNumber, int pageSize, string search = null)
         {
-            search = search ?? string.Empty;
+            search ??= string.Empty;
             var predicate = this.BuildFilter(search.ToLower());
             var productList = await _productRepository.GetPagedListAsync(pageNumber, pageSize, predicate);
             var productListDto = productList.Select(a => new AddProductDto
@@ -203,13 +203,11 @@
         public async Task<bool> CreateCSVAsync(List<AddProductDto> failedProductList)
         {
             var filePath = @"D:\Mehaboob\Project Documents\RCG\Failed CSV\" + Guid.NewGuid().ToString() + ".csv";
-            using (var writer = new StreamWriter(filePath))
-            using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
-            {
-                csv.Context.RegisterClassMap<ExportProductsMapper>();
-                await csv.WriteRecordsAsync(failedProductList);
-                return true;
-            }
+            using var writer = new StreamWriter(filePath);
+            using var csv = new CsvWriter(writer, CultureInfo.InvariantCulture);
+            csv.Context.RegisterClassMap<ExportProductsMapper>();
+            await csv.WriteRecordsAsync(failedProductList);
+            return true;
         }
 
         public bool ValidateCSV(string fileName)

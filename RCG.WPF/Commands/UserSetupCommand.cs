@@ -2,7 +2,8 @@
 using System.ComponentModel;
 using System.Threading.Tasks;
 using RCG.CoreApp.DTO;
-using RCG.CoreApp.Interfaces.Auth;
+using RCG.CoreApp.DTO.User;
+using RCG.CoreApp.Interfaces.User;
 using RCG.WPF.State.Authenticators;
 using RCG.WPF.State.Navigators;
 using RCG.WPF.ViewModels;
