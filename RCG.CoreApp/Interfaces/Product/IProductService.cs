@@ -7,7 +7,7 @@ namespace RCG.CoreApp.Interfaces.Product
 {
     public interface IProductService
     {
-        Task<List<AddProductDto>> GetPagedProductList(int pageNumber, int pageSize, string search = null);
+        Task<GridResponseDto<AddProductDto>> GetPagedProductList(int pageNumber, int pageSize, string search = null);
 
         Task<ProductMainDto> ImportPriceListAsync(string filePath);
 

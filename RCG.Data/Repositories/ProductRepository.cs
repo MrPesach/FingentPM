@@ -91,5 +91,16 @@
             var result = await this._productRepository.DeleteAsync(product);
             return result;
         }
+
+        public IQueryable<Products> GetQuery(
+             out int totalCount,
+             int pageNumber, int pageSize,
+             Expression<Func<Products, bool>> filter = null)
+        {
+            Func<IQueryable<Products>, IOrderedQueryable<Products>> orderBy = null;
+            orderBy = prop => prop.OrderBy(prop => prop.Id);
+            var productList = _productRepository.GetQuery(out totalCount, filter, orderBy, true, pageNumber, pageSize);
+            return productList;
+        }
     }
 }

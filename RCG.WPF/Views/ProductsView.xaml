@@ -26,6 +26,7 @@
                 <local1:Products Sku="Fred" Length="10.8" Weight="9" Price="100.80"  />
                 <local1:Products Sku="Fred" Length="10.8" Weight="9" Price="100.80"  />
             </x:Array>
+            <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
         </ResourceDictionary>
     </UserControl.Resources>
 
@@ -58,24 +59,25 @@
                     Content="Import products" Command="{Binding ImportPriceListCommand}"/>
         </Grid>
         <!--{StaticResource MyDumbMockedList}}-->
+
         <DataGrid Grid.Row="1" ItemsSource="{Binding ProductList}" x:Name="ProductListGrid">
             <DataGrid.Columns>
                 <DataGridTextColumn Width="20"/>
-                <DataGridTemplateColumn Width="*" Header="Style">
+                <DataGridTemplateColumn Width="*" Header="SKU">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding Style}" VerticalAlignment="Center"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTemplateColumn Width="*" Header="Available Length">
+                <DataGridTemplateColumn Width="*" Header="Length">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding AvailableLength}" VerticalAlignment="Center"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTemplateColumn Width="*" Header="Average Weight">
+                <DataGridTemplateColumn Width="*" Header="Weight">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding AvrageWeight}" VerticalAlignment="Center"/>
@@ -110,12 +112,19 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-
                 <DataGridTextColumn Width="20"/>
             </DataGrid.Columns>
-        </DataGrid>
 
-        <Grid Grid.Row="2" Height="36"  HorizontalAlignment="Right" Margin="0,0,10,0" >
+        </DataGrid>
+        <StackPanel Grid.Row="1" Panel.ZIndex="1"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Visibility="{Binding IsNoRecords, Converter={StaticResource BooleanToVisibilityConverter}}">
+            <TextBlock  HorizontalAlignment="Center"  Style="{StaticResource MessageHeader}" 
+                       Text="No record(s) found"/>
+        </StackPanel>
+
+        <Grid Grid.Row="2" Height="36"  HorizontalAlignment="Right" Margin="0,0,10,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
@@ -123,25 +132,47 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0"  Style="{StaticResource PaginationMainButton}" Content="First"  Margin="0,0,5,0"></Button>
-            <Button Grid.Column="1"  Style="{StaticResource PaginationPrevButton}"></Button>
-            <ItemsControl Grid.Column="2"  ItemsSource="{Binding Pages}">
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <StackPanel Orientation="Horizontal"/>
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <Button Style="{StaticResource PaginationButton}" 
-                                Content="{Binding}"
-                                Command="{Binding Path=DataContext.PaginationCommand, ElementName=ProductList}"
-                                CommandParameter="{Binding}" />
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
-            <Button Grid.Column="3"  Style="{StaticResource PaginationNextButton}"></Button>
-            <Button Grid.Column="4" Style="{StaticResource PaginationMainButton}" Content="Last" Margin="5,0,0,0"></Button>
+            <Button Grid.Column="0"  Style="{StaticResource PaginationMainButton}" Content="First" 
+                    Margin="0,0,5,0"
+                    Command="{Binding Path=DataContext.FirstOrLastCommand, ElementName=PaginationIC}"
+                    CommandParameter="{Binding Content ,RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Column="1"  Style="{StaticResource PaginationPrevButton}"
+                    Name="Prev"
+                    Command="{Binding Path=DataContext.NextOrPrevCommand, ElementName=PaginationIC}"
+                    CommandParameter="{Binding Name ,RelativeSource={RelativeSource Self}}"/>
+            <ScrollViewer Grid.Column="2" 
+                          MaxWidth="180"
+                          HorizontalScrollBarVisibility="Hidden"
+                          VerticalScrollBarVisibility="Disabled"
+                          CanContentScroll="True"
+                          Name="CategoryScrollViewer">
+                <ItemsControl Grid.Column="2"  ItemsSource="{Binding Pages}"  Name="PaginationIC">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal">
+                            </StackPanel>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Button Style="{StaticResource PaginationButton}"
+                                Content="{Binding Number}"
+                                Command="{Binding Path=DataContext.PaginationCommand, ElementName=PaginationIC}"
+                                CommandParameter="{Binding Content ,RelativeSource={RelativeSource Self}}" />
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+            <Button Grid.Column="3"  Style="{StaticResource PaginationNextButton}"
+                    Name="Next"
+                    Command="{Binding Path=DataContext.NextOrPrevCommand, ElementName=PaginationIC}"
+                    CommandParameter="{Binding Name ,RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Column="4" Style="{StaticResource PaginationMainButton}" 
+                    Content="Last" 
+                    Margin="5,0,0,0"
+                    Command="{Binding Path=DataContext.FirstOrLastCommand, ElementName=PaginationIC}"
+                    CommandParameter="{Binding Content ,RelativeSource={RelativeSource Self}}"/>
+
         </Grid>
     </Grid>
 </UserControl>

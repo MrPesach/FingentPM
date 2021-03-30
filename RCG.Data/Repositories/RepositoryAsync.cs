@@ -89,15 +89,56 @@ namespace RCG.Data.Repositories
             }
             return Task.CompletedTask;
 
-            //this._dbContext.Set<T>().Update(entity);
-            //return this._dbContext.SaveChangesAsync();
+            ////this._dbContext.Set<T>().Update(entity);
+            ////return this._dbContext.SaveChangesAsync();
 
             //// this._dbContext.Set<T>().Update(entity);
-            //_dbContext.Entry(entity).State = EntityState.Modified;
-            //this._dbContext.Set<T>().Update(entity);
+            ////_dbContext.Entry(entity).State = EntityState.Modified;
+            ////this._dbContext.Set<T>().Update(entity);
             ////this._dbContext.Entry(entity).State = EntityState.Modified;
-            //return this._dbContext.SaveChangesAsync();
+            ////return this._dbContext.SaveChangesAsync();
             ///return Task.CompletedTask;
+        }
+
+        public IQueryable<T> GetQuery(
+                                out int totalCount,
+                                Expression<Func<T, bool>> filter = null,
+                                Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+                                bool enablePaging = false,
+                                int curPage = 0,
+                                int countPerPage = 10,
+                                string includeProperties = "")
+        {
+
+            IQueryable<T> query = this.Entities;
+
+            if (filter != null)
+            {
+                query = query.Where(filter);
+            }
+
+            foreach (var includeProperty in includeProperties.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+            {
+                query = query.Include(includeProperty);
+            }
+
+            totalCount = query.Count();
+
+            if (orderBy != null)
+            {
+                if (enablePaging)
+                {
+                    return orderBy(query).Skip(curPage * countPerPage).Take(countPerPage);
+                }
+                else
+                {
+                    return orderBy(query);
+                }
+            }
+            else
+            {
+                return query;
+            }
         }
 
         public IDbContextTransaction Transaction()

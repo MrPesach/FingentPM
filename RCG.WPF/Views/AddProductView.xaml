@@ -32,21 +32,21 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <StackPanel Width="415" Orientation="Vertical" Grid.Row="0">
-                <TextBlock HorizontalAlignment="Left" Style="{StaticResource DarkTextBlock}" Text="Style Name"/>
+                <TextBlock HorizontalAlignment="Left" Style="{StaticResource DarkTextBlock}" Text="SKU"/>
                 <TextBox  Grid.Column="1"
                          Style="{StaticResource FormControl}"
                      Text="{Binding AddProduct.Style, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" >
                 </TextBox>
             </StackPanel>
             <StackPanel Width="415" Orientation="Vertical" Grid.Row="1">
-                <TextBlock HorizontalAlignment="Left" Style="{StaticResource DarkTextBlock}" Text="Available Length"/>
+                <TextBlock HorizontalAlignment="Left" Style="{StaticResource DarkTextBlock}" Text="Length"/>
                 <TextBox  Grid.Column="1"
                          Style="{StaticResource FormControl}"
                      Text="{Binding AddProduct.AvailableLength, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" >
                 </TextBox>
             </StackPanel>
             <StackPanel Width="415" Orientation="Vertical" Grid.Row="2">
-                <TextBlock HorizontalAlignment="Left" Style="{StaticResource DarkTextBlock}" Text="Average Weight"/>
+                <TextBlock HorizontalAlignment="Left" Style="{StaticResource DarkTextBlock}" Text="Weight"/>
                 <TextBox  Grid.Column="1"
                          Style="{StaticResource FormControl}"
                      Text="{Binding AddProduct.AvrageWeight, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" >
@@ -74,6 +74,7 @@
                     VerticalAlignment="Center"
                     DataContext="{Binding ErrorMessageViewModel}"
                     Text="{Binding Message}"
+                    TextWrapping="Wrap"
                     Visibility="{Binding HasMessage, Converter={StaticResource BooleanToVisibilityConverter}}"/>
             <Button Command="{Binding CancelCommand}"
                     Grid.Column="1"

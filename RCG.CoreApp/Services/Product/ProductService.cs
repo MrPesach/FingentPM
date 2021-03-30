@@ -2,6 +2,7 @@
 {
     using CsvHelper;
     using LinqKit;
+    using Microsoft.EntityFrameworkCore;
     using RCG.CoreApp.DTO;
     using RCG.CoreApp.DTO.Mapper;
     using RCG.CoreApp.Interfaces.Product;
@@ -30,23 +31,27 @@
             _dateTimeService = dateTimeService;
         }
 
-        public async Task<List<AddProductDto>> GetPagedProductList(int pageNumber, int pageSize, string search = null)
+        public async Task<GridResponseDto<AddProductDto>> GetPagedProductList(int pageNumber, int pageSize, string search = null)
         {
             search ??= string.Empty;
             var predicate = this.BuildFilter(search.ToLower());
-            var productList = await _productRepository.GetPagedListAsync(pageNumber, pageSize, predicate);
-            var productListDto = productList.Select(a => new AddProductDto
-            {
-                ProductId = a.Id,
-                Style = a.Sku,
-                AvailableLength = a.Length.ToString(),
-                AvrageWeight = a.Weight.ToString(),
-                Price = a.Price.ToString(),
-                UpdatedOn = a.LastModifiedOn.Value.ToString("MM/dd/yyyy")
+            var gridResponseModel = new GridResponseDto<AddProductDto>();
+            gridResponseModel.Rows = await _productRepository.GetQuery(out int totalCount, pageNumber, pageSize, predicate)
+              .Select(a => new AddProductDto
+              {
+                  ProductId = a.Id,
+                  Style = a.Sku,
+                  AvailableLength = a.Length.ToString(),
+                  AvrageWeight = a.Weight.ToString(),
+                  Price = a.Price.ToString(),
+                  UpdatedOn = a.LastModifiedOn.Value.ToString("MM/dd/yyyy hh:mm tt")
+              }).ToListAsync();
 
-            }).ToList();
+            gridResponseModel.TotalCount = totalCount;
+            gridResponseModel.PageNumber = pageNumber;
+            gridResponseModel.PageSize = pageSize;
 
-            return productListDto;
+            return gridResponseModel;
         }
 
         public async Task<ProductMain> AddProductMainAsync(ProductMainDto productMainDto)
@@ -158,28 +163,33 @@
         {
             bool isValid = true;
             var messageList = new List<string>();
-            if (string.IsNullOrEmpty(addProductDto.Style))
+            if (string.IsNullOrWhiteSpace(addProductDto.Style))
             {
-                messageList.Add("Please enter Style Name");
+                messageList.Add("Please enter SKU");
+                isValid = false;
+            }
+            if (!string.IsNullOrWhiteSpace(addProductDto.Style) && addProductDto.Style.Length > 25)
+            {
+                messageList.Add("SKU name cannot be longer than 25 characters");
                 isValid = false;
             }
             if (!isImport && !string.IsNullOrEmpty(addProductDto.Style) &&
                addProductDto.ProductId == 0 &&
                this.IsProductExist(addProductDto.Style))
             {
-                messageList.Add("Style Name already exist");
+                messageList.Add("SKU already exist");
                 isValid = false;
             }
             if (!string.IsNullOrEmpty(addProductDto.AvailableLength)
                && !this.IsNumber(addProductDto.AvailableLength))
             {
-                messageList.Add("Please enter a valid Available Length");
+                messageList.Add("Please enter a valid Length");
                 isValid = false;
             }
             if (!string.IsNullOrEmpty(addProductDto.AvrageWeight)
                && !this.IsNumber(addProductDto.AvrageWeight))
             {
-                messageList.Add("Please enter a valid Average Weight");
+                messageList.Add("Please enter a valid Weight");
                 isValid = false;
             }
             if (string.IsNullOrEmpty(addProductDto.Price)

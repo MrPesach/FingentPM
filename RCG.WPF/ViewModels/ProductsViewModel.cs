@@ -1,6 +1,7 @@
 ﻿
 using RCG.CoreApp.AppResources;
 using RCG.CoreApp.DTO;
+using RCG.CoreApp.DTO.Common;
 using RCG.CoreApp.Enums;
 using RCG.CoreApp.Interfaces.Product;
 using RCG.Domain.Entities;
@@ -30,6 +31,8 @@ namespace RCG.WPF.ViewModels
         public ICommand ImportPriceListCommand { get; }
         public ICommand SearchCommand { get; }
         public ICommand PaginationCommand { get; }
+        public ICommand FirstOrLastCommand { get; }
+        public ICommand NextOrPrevCommand { get; }
         public ICommand AddProductCommand { get; }
         public ICommand EditProductCommand { get; }
         public ICommand DeleteProductCommand { get; }
@@ -53,6 +56,8 @@ namespace RCG.WPF.ViewModels
             this.ImportPriceListCommand = new RelayCommand(obj => this.ImportProductList(), obj => true);
             this.SearchCommand = new RelayCommand(obj => this.Search(), obj => true);
             this.PaginationCommand = new RelayCommand(obj => this.PaginationClick(obj), obj => true);
+            this.FirstOrLastCommand = new RelayCommand(obj => this.FirstOrLast(obj), obj => true);
+            this.NextOrPrevCommand = new RelayCommand(obj => this.FirstOrLast(obj), obj => true);
             this.AddProductCommand = new RelayCommand(obj => this.AddProduct(), obj => true);
             this.EditProductCommand = new RelayCommand(obj => this.EditProduct(obj), obj => true);
             this.DeleteProductCommand = new RelayCommand(obj => this.DeleteProduct(obj), obj => true);
@@ -61,8 +66,10 @@ namespace RCG.WPF.ViewModels
 
         private ObservableCollection<AddProductDto> _productList;
         private string _searchText;
-        private ObservableCollection<int> _pages;
+        private ObservableCollection<PaginationButtonDto> _pages;
         private int _pageNumber;
+        private bool _isNoRecords;
+        private int _totalPages;
 
         ////private int _windowWidth;
         ////public int WindowWidth
@@ -92,6 +99,7 @@ namespace RCG.WPF.ViewModels
             set
             {
                 _productList = value;
+                this.IsNoRecords = !value.Any();
                 OnPropertyChanged(nameof(ProductList));
             }
         }
@@ -102,7 +110,7 @@ namespace RCG.WPF.ViewModels
             set { _searchText = value; this.OnPropertyChanged("SearchText"); }
         }
 
-        public ObservableCollection<int> Pages
+        public ObservableCollection<PaginationButtonDto> Pages
         {
             get { return _pages; }
             set { _pages = value; this.OnPropertyChanged("Pages"); }
@@ -114,48 +122,95 @@ namespace RCG.WPF.ViewModels
             set { _pageNumber = value; this.OnPropertyChanged("PageNumber"); }
         }
 
+        public bool IsNoRecords
+        {
+            get { return _isNoRecords; }
+            set { _isNoRecords = value; this.OnPropertyChanged("IsNoRecords"); }
+        }
+
+        public int TotalPages
+        {
+            get { return _totalPages; }
+            set { _totalPages = value; this.OnPropertyChanged("TotalPages"); }
+        }
+
 
         private async Task InitialLoad()
         {
-            this.PageNumber = 1;
-            this.SetPages();
+            this.PageNumber = 0;
+            ////this.SetPages();
             this.SearchText = string.Empty;
             await this.GetProducts();
         }
 
         private async Task GetProducts()
         {
-            var productList = await this._productService.GetPagedProductList(this.PageNumber, 10, this.SearchText);
-            this.ProductList = new ObservableCollection<AddProductDto>(productList);
+            var gridResponse = await this._productService.GetPagedProductList(this.PageNumber, 10, this.SearchText);
+            this.TotalPages = gridResponse.TotalPages;
+            this.SetPages();
+            this.ProductList = new ObservableCollection<AddProductDto>(gridResponse.Rows);
         }
 
         private async void Search()
         {
-            this.PageNumber = 1;
-            this.SetPages();
+            this.PageNumber = 0;
+            ////this.SetPages();
             await this.GetProducts();
         }
 
         private void SetPages()
         {
-            this.Pages = new ObservableCollection<int>();
-            var endingPageNumber = this.PageNumber + 4;
-            for (int i = this.PageNumber; i <= endingPageNumber; i++)
+            this.Pages = new ObservableCollection<PaginationButtonDto>();
+
+            var fromPage = this.PageNumber > 1 ? this.PageNumber - 1 : 1;
+            fromPage = (this.PageNumber + 1) >= this.TotalPages - 1 ? this.TotalPages - 4 : fromPage;
+
+            var toPage = (fromPage + 4) > this.TotalPages ? this.TotalPages : (fromPage + 4);
+            for (int i = fromPage; i <= toPage; i++)
             {
-                Pages.Add(i);
+                this.Pages.Add(new PaginationButtonDto { Number = i, IsSelected = this.PageNumber == 0 && i == 1 });
             }
         }
 
-        private async void PaginationClick(object selectedPageNumber)
+        private async Task PaginationClick(object selectedPageNumber)
         {
-            this.PageNumber = (int)selectedPageNumber;
-            await GetProducts();
-            this.SetPages();
+            var selectedNumber = (int)selectedPageNumber;
+            if (selectedNumber > 0)
+            {
+                this.PageNumber = selectedNumber - 1;
+                await GetProducts();
+                var selectedPage = this.Pages.FirstOrDefault(a => a.Number == selectedNumber);
+                selectedPage.IsSelected = true;
+            }
+        }
+
+        private async void FirstOrLast(object selectedButton)
+        {
+            var firstOrLast = (string)selectedButton;
+            int selectedNumber = 0;
+            if (firstOrLast == "First")
+            {
+                selectedNumber = 1;
+            }
+            else if (firstOrLast == "Last")
+            {
+                selectedNumber = this.TotalPages;
+            }
+            else if (firstOrLast == "Prev" && this.PageNumber > 0)
+            {
+                selectedNumber = this.PageNumber;
+            }
+            else if (firstOrLast == "Next" && this.PageNumber + 1 < this.TotalPages)
+            {
+                selectedNumber = this.PageNumber + 2;
+            }
+
+            await this.PaginationClick(selectedNumber);
         }
 
         private async void AddProduct()
         {
-            _addProductViewModel.Title = "Add Product";
+            _addProductViewModel.Title = "Add New Product";
             var result = this._dialogService.OpenDialog(_addProductViewModel);
             if (result == EnumMaster.DialogResults.Success.ToString())
             {
@@ -228,6 +283,7 @@ namespace RCG.WPF.ViewModels
             {
                 this._dialogService.OpenMessageBox("Success", "Product deleted successfully.", EnumMaster.MessageBoxType.Success);
                 this.ProductList.Remove(ProductList.Single(s => s.ProductId == productId));
+                this.IsNoRecords = !this.ProductList.Any();
             }
         }
     }
