@@ -1,10 +1,8 @@
-﻿using CsvHelper;
-using CsvHelper.Configuration;
-using Microsoft.Win32;
+﻿using Microsoft.Win32;
 using RCG.CoreApp.DTO;
-using RCG.CoreApp.DTO.Mapper;
 using RCG.CoreApp.Enums;
 using RCG.CoreApp.Interfaces.Product;
+using RCG.CoreApp.Interfaces.Shared;
 using RCG.Domain.Entities;
 using RCG.WPF.Commands;
 using RCG.WPF.DialogServices;
@@ -12,13 +10,8 @@ using RCG.WPF.Services;
 using RCG.WPF.State.Accounts;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Input;
 
 namespace RCG.WPF.ViewModels
@@ -32,15 +25,18 @@ namespace RCG.WPF.ViewModels
         private readonly IProductService _productService;
         private readonly IUserStore _userStore;
         private readonly IDialogService _dialogService;
+        private readonly IDateTimeService _dateTimeService;
 
         public ImportPriceListViewModel(
             IProductService productService,
             IUserStore userStore,
-            IDialogService dialogService)
+            IDialogService dialogService,
+            IDateTimeService dateTimeService)
         {
             _productService = productService;
             _userStore = userStore;
             _dialogService = dialogService;
+            _dateTimeService = dateTimeService;
             this.ProceedCommand = new RelayCommand(o => this.ProceedFileUpload(), o => this.CanExecute);
             this.BrowseFileCommand = new RelayCommand(o => this.BrowseFile(), o => true);
             this.CancelCommand = new RelayCommand(o => this.Cancel(o), o => true);
@@ -202,6 +198,7 @@ namespace RCG.WPF.ViewModels
             set { _csvHasNoError = value; this.OnPropertyChanged("CSVHasNoError"); }
         }
 
+        public string DownloadFileName { get; set; }
 
         private void BrowseFile()
         {
@@ -214,6 +211,7 @@ namespace RCG.WPF.ViewModels
                 if (success)
                 {
                     ///FileNameTextBox.Text = openFileDlg.FileName;
+                    this.DownloadFileName = Path.GetFileName(openFileDlg.FileName);
                     this.FilePath = openFileDlg.FileName;
                 }
                 else
@@ -303,10 +301,17 @@ namespace RCG.WPF.ViewModels
 
         private async void DownloadCSV()
         {
-            var succss = await this._productService.CreateCSVAsync(this.FailedProductList);
-            if (succss)
+            var saveFileDialog = new SaveFileDialog();
+            saveFileDialog.FileName = "error_" + this._dateTimeService.NowUtc.ToString("ddmmyyyyhhss") + this.DownloadFileName;
+            saveFileDialog.Filter = "CSV Only|*.csv";
+            var result = saveFileDialog.ShowDialog();
+            if (result.HasValue && result.Value)
             {
-                _dialogService.OpenMessageBox("Success", "File saved successfully", EnumMaster.MessageBoxType.Success);
+                var succss = await this._productService.CreateCSVAsync(this.FailedProductList, saveFileDialog.FileName);
+                if (succss)
+                {
+                    _dialogService.OpenMessageBox("Success", "File saved successfully", EnumMaster.MessageBoxType.Success);
+                }
             }
         }
 

@@ -84,5 +84,12 @@
             return productList;
             ////await this._productRepository.BulkDeleteAsync(productList);
         }
+
+        public async Task<bool> DeleteProductByIdAsync(long productId)
+        {
+            var product = await this._productRepository.GetByIdAsync(productId);
+            var result = await this._productRepository.DeleteAsync(product);
+            return result;
+        }
     }
 }

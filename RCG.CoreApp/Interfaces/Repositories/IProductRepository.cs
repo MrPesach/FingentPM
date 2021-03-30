@@ -18,5 +18,6 @@ namespace RCG.CoreApp.Interfaces.Repositories
         Task<bool> AddProductAsync(Products product);
         bool IsProductExist(string styleName);
         Task<List<Products>> GetProductsBySkuListAync(List<string> skuList);
+        Task<bool> DeleteProductByIdAsync(long productId);
     }
 }

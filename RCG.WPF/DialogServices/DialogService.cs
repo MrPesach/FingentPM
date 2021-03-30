@@ -21,7 +21,7 @@ namespace RCG.WPF.Services
             return viewModel.DialogResult;
         }
 
-        public string OpenMessageBox(string title, string message, EnumMaster.MessageBoxType messageBoxType)
+        public EnumMaster.DialogResults OpenMessageBox(string title, string message, EnumMaster.MessageBoxType messageBoxType)
         {
             var viewModel = new AlertViewModel
             {
@@ -29,9 +29,9 @@ namespace RCG.WPF.Services
                 Title = title,
             };
 
-
             viewModel.IconUri = messageBoxType == EnumMaster.MessageBoxType.Success ? "/Resources/Images/check-green.png" : "/Resources/Images/error-icon.png";
-
+            viewModel.IsConfirmation = messageBoxType == EnumMaster.MessageBoxType.Confirmation;
+            viewModel.IsAlert = messageBoxType != EnumMaster.MessageBoxType.Confirmation;
 
 
             var parentWindow = Application.Current.MainWindow;

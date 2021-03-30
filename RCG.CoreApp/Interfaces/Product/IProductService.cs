@@ -26,7 +26,8 @@ namespace RCG.CoreApp.Interfaces.Product
         AddProductDto ValidateProductSave(AddProductDto addProductDto, bool isImport);
 
         Task<List<Products>> GetProductsBySkuListAync(List<string> skuList);
-        Task<bool> CreateCSVAsync(List<AddProductDto> failedProductList);
+        Task<bool> CreateCSVAsync(List<AddProductDto> failedProductList, string filePath);
         bool ValidateCSV(string fileName);
+        Task<bool> DeleteProductByIdAsync(long productId);
     }
 }

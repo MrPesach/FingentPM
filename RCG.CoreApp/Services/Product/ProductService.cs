@@ -200,9 +200,8 @@
             return productList;
         }
 
-        public async Task<bool> CreateCSVAsync(List<AddProductDto> failedProductList)
+        public async Task<bool> CreateCSVAsync(List<AddProductDto> failedProductList, string filePath)
         {
-            var filePath = @"D:\Mehaboob\Project Documents\RCG\Failed CSV\" + Guid.NewGuid().ToString() + ".csv";
             using var writer = new StreamWriter(filePath);
             using var csv = new CsvWriter(writer, CultureInfo.InvariantCulture);
             csv.Context.RegisterClassMap<ExportProductsMapper>();
@@ -231,6 +230,12 @@
 
             return isValid;
 
+        }
+
+        public async Task<bool> DeleteProductByIdAsync(long productId)
+        {
+            bool result = await this._productRepository.DeleteProductByIdAsync(productId);
+            return result;
         }
 
         private decimal ConvertToDecimal(string value)

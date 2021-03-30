@@ -12,7 +12,7 @@ namespace RCG.CoreApp.Interfaces.Repositories
     {
         IQueryable<T> Entities { get; }
 
-        Task<T> GetByIdAsync(int id);
+        Task<T> GetByIdAsync(long id);
 
         Task<List<T>> GetAllAsync();
 
@@ -26,7 +26,7 @@ namespace RCG.CoreApp.Interfaces.Repositories
 
         Task UpdateAsync(T entity, object key);
 
-        Task DeleteAsync(T entity);
+        Task<bool> DeleteAsync(T entity);
 
         Task BulkDeleteAsync(List<T> entityList);
 

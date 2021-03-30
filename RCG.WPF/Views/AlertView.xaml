@@ -5,6 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:RCG.WPF.Views"
              mc:Ignorable="d" Width="400" Height="180">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    </UserControl.Resources>
     <Grid Background="#ffffff">
         <Grid.RowDefinitions>
             <RowDefinition Height="52" />
@@ -18,7 +21,7 @@
             </Grid.ColumnDefinitions>
             <TextBlock Grid.Column="0" Style="{StaticResource PopupHeader}" Text="{Binding Title}"/>
             <Button Grid.Column="1" Style="{StaticResource CloseButton}"
-                    Command="{Binding CancelCommand}"  
+                    Command="{Binding OkCommand}"  
                     CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=Window}}"/>
         </Grid>
         <Grid Grid.Row="1" Margin="20">
@@ -38,11 +41,29 @@
                    HorizontalAlignment="Left"/>
             <TextBlock Grid.Column="1" Grid.Row="0"  Text="{Binding Message}" Style="{StaticResource MessageHeader}"/>
         </Grid>
+        <StackPanel Grid.Row="2" 
+                    HorizontalAlignment="Right" 
+                    Orientation="Horizontal" 
+                    Margin="0,0,15,0"
+                    Visibility="{Binding IsConfirmation, Converter={StaticResource BooleanToVisibilityConverter}}">
+            <Button Command="{Binding NoCommand}"  
+                    CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=Window}}"
+                    Style="{StaticResource TextOnlyButton}" 
+                    Content="No"
+                    Width="75"
+                    Margin="0"/>
+            <Button  Command="{Binding YesCommand}"  
+                    CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=Window}}"
+                    Style="{StaticResource PrimaryButton}" 
+                    Content="Yes"
+                    Width="75"/>
+        </StackPanel>
         <Button Grid.Row="2" 
-                    Command="{Binding CancelCommand}"  
+                    Command="{Binding OkCommand}"  
                     CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=Window}}"
                     Style="{StaticResource PrimaryButton}" 
                     Content="OK"
-                    Width="75"/>
+                    Width="75"
+                 Visibility="{Binding IsAlert, Converter={StaticResource BooleanToVisibilityConverter}}"/>
     </Grid>
 </UserControl>

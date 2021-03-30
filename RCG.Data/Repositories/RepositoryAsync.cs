@@ -36,10 +36,11 @@ namespace RCG.Data.Repositories
         }
 
 
-        public Task DeleteAsync(T entity)
+        public async Task<bool> DeleteAsync(T entity)
         {
             _dbContext.Set<T>().Remove(entity);
-            return Task.CompletedTask;
+            await _dbContext.SaveChangesAsync();
+            return true;
         }
 
         public Task BulkDeleteAsync(List<T> entityList)
@@ -57,7 +58,7 @@ namespace RCG.Data.Repositories
                 .ToListAsync();
         }
 
-        public async Task<T> GetByIdAsync(int id)
+        public async Task<T> GetByIdAsync(long id)
         {
             return await _dbContext.Set<T>().FindAsync(id);
         }
@@ -80,11 +81,11 @@ namespace RCG.Data.Repositories
         {
             if (entity == null)
                 return null;
-            T exist =  _dbContext.Set<T>().Find(key);
+            T exist = _dbContext.Set<T>().Find(key);
             if (exist != null)
             {
                 _dbContext.Entry(exist).CurrentValues.SetValues(entity);
-                 _dbContext.SaveChangesAsync();
+                _dbContext.SaveChangesAsync();
             }
             return Task.CompletedTask;
 

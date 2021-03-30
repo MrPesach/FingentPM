@@ -32,6 +32,7 @@ namespace RCG.WPF.ViewModels
         public ICommand PaginationCommand { get; }
         public ICommand AddProductCommand { get; }
         public ICommand EditProductCommand { get; }
+        public ICommand DeleteProductCommand { get; }
 
         public ProductsViewModel(
             IProductService productService,
@@ -54,6 +55,7 @@ namespace RCG.WPF.ViewModels
             this.PaginationCommand = new RelayCommand(obj => this.PaginationClick(obj), obj => true);
             this.AddProductCommand = new RelayCommand(obj => this.AddProduct(), obj => true);
             this.EditProductCommand = new RelayCommand(obj => this.EditProduct(obj), obj => true);
+            this.DeleteProductCommand = new RelayCommand(obj => this.DeleteProduct(obj), obj => true);
             this.InitialLoad();
         }
 
@@ -158,10 +160,11 @@ namespace RCG.WPF.ViewModels
             if (result == EnumMaster.DialogResults.Success.ToString())
             {
                 await this.InitialLoad();
-                _alertViewModel.IconUri = "/Resources/Images/check-green.png";
-                _alertViewModel.Title = "Success";
-                _alertViewModel.Message = "Product added successfully";
-                this._dialogService.OpenDialog(_alertViewModel);
+                this._dialogService.OpenMessageBox("Add Product", "Product added successfully", EnumMaster.MessageBoxType.Success);
+                ////_alertViewModel.IconUri = "/Resources/Images/check-green.png";
+                ////_alertViewModel.Title = "Success";
+                ////_alertViewModel.Message = "Product added successfully";
+                ////this._dialogService.OpenDialog(_alertViewModel);
             }
         }
 
@@ -183,10 +186,28 @@ namespace RCG.WPF.ViewModels
                 if (result == EnumMaster.DialogResults.Success.ToString())
                 {
                     await this.InitialLoad();
-                    _alertViewModel.IconUri = "/Resources/Images/check-green.png";
-                    _alertViewModel.Title = "Update Product";
-                    _alertViewModel.Message = "Product details updated successfully";
-                    this._dialogService.OpenDialog(_alertViewModel);
+                    this._dialogService.OpenMessageBox("Update Product", "Product details updated successfully", EnumMaster.MessageBoxType.Success);
+                    ////_alertViewModel.IconUri = "/Resources/Images/check-green.png";
+                    ////_alertViewModel.Title = "Update Product";
+                    ////_alertViewModel.Message = "Product details updated successfully";
+                    ////this._dialogService.OpenDialog(_alertViewModel);
+                }
+            }
+        }
+
+        private async void DeleteProduct(object obj)
+        {
+            if (obj != null)
+            {
+                var addProductDto = (AddProductDto)obj;
+
+                if (addProductDto.ProductId > 0)
+                {
+                    var result = this._dialogService.OpenMessageBox("Confirm", "Are you sure to delete the Product", EnumMaster.MessageBoxType.Confirmation);
+                    if (result == EnumMaster.DialogResults.Yes)
+                    {
+                        await this.DeleteProductByIdAsync(addProductDto.ProductId);
+                    }
                 }
             }
         }
@@ -197,6 +218,16 @@ namespace RCG.WPF.ViewModels
             if (result != EnumMaster.DialogResults.Cancelled.ToString())
             {
                 await this.InitialLoad();
+            }
+        }
+
+        private async Task DeleteProductByIdAsync(long productId)
+        {
+            bool result = await this._productService.DeleteProductByIdAsync(productId);
+            if (result)
+            {
+                this._dialogService.OpenMessageBox("Success", "Product deleted successfully.", EnumMaster.MessageBoxType.Success);
+                this.ProductList.Remove(ProductList.Single(s => s.ProductId == productId));
             }
         }
     }

@@ -55,7 +55,7 @@
             <Button Grid.Column="2" Style="{StaticResource LightButton}" 
                     Content="Add Product" Command="{Binding AddProductCommand}"/>
             <Button Grid.Column="3" Style="{StaticResource PrimaryButton}" 
-                    Content="Import Price List" Command="{Binding ImportPriceListCommand}"/>
+                    Content="Import products" Command="{Binding ImportPriceListCommand}"/>
         </Grid>
         <!--{StaticResource MyDumbMockedList}}-->
         <DataGrid Grid.Row="1" ItemsSource="{Binding ProductList}" x:Name="ProductListGrid">
@@ -103,7 +103,7 @@
                                 <Button Command="{Binding Path=DataContext.EditProductCommand, ElementName=ProductListGrid}" 
                                     CommandParameter="{Binding}" Style="{StaticResource EditButton}">
                                 </Button>
-                                <Button Command="{Binding Path=DataContext.RemoveItemCommand, ElementName=ProductListGrid}" 
+                                <Button Command="{Binding Path=DataContext.DeleteProductCommand, ElementName=ProductListGrid}" 
                                     CommandParameter="{Binding}" Style="{StaticResource TrashButton}">
                                 </Button>
                             </StackPanel>

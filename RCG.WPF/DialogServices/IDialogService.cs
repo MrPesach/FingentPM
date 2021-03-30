@@ -9,6 +9,6 @@ namespace RCG.WPF.Services
     public interface IDialogService
     {
         T OpenDialog<T>(DialogViewModelBase<T> viewModel);
-        string OpenMessageBox(string title, string message, EnumMaster.MessageBoxType messageBoxType);
+        EnumMaster.DialogResults OpenMessageBox(string title, string message, EnumMaster.MessageBoxType messageBoxType);
     }
 }

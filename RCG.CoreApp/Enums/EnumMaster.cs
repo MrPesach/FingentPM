@@ -17,12 +17,14 @@ namespace RCG.CoreApp.Enums
             No,
             Success,
             Cancelled,
+            OK,
         }
 
         public enum MessageBoxType
         {
             Error = 1,
-            Success = 2
+            Success = 2,
+            Confirmation = 3
         }
     }
 }
