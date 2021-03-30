@@ -153,13 +153,14 @@ namespace RCG.WPF.ViewModels
 
         private async void AddProduct()
         {
+            _addProductViewModel.Title = "Add Product";
             var result = this._dialogService.OpenDialog(_addProductViewModel);
             if (result == EnumMaster.DialogResults.Success.ToString())
             {
                 await this.InitialLoad();
                 _alertViewModel.IconUri = "/Resources/Images/check-green.png";
                 _alertViewModel.Title = "Success";
-                _alertViewModel.Message = "Product Saved Successfully";
+                _alertViewModel.Message = "Product added successfully";
                 this._dialogService.OpenDialog(_alertViewModel);
             }
         }
@@ -177,13 +178,14 @@ namespace RCG.WPF.ViewModels
                     AvrageWeight = addProductDto.AvrageWeight,
                     Price = addProductDto.Price,
                 };
-
+                _addProductViewModel.Title = "Update Product";
                 var result = this._dialogService.OpenDialog(this._addProductViewModel);
                 if (result == EnumMaster.DialogResults.Success.ToString())
                 {
                     await this.InitialLoad();
+                    _alertViewModel.IconUri = "/Resources/Images/check-green.png";
                     _alertViewModel.Title = "Update Product";
-                    _alertViewModel.Message = "Product Updated Successfully";
+                    _alertViewModel.Message = "Product details updated successfully";
                     this._dialogService.OpenDialog(_alertViewModel);
                 }
             }
