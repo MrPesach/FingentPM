@@ -180,7 +180,10 @@ namespace RCG.WPF.ViewModels
                 this.PageNumber = selectedNumber - 1;
                 await GetProducts();
                 var selectedPage = this.Pages.FirstOrDefault(a => a.Number == selectedNumber);
-                selectedPage.IsSelected = true;
+                if (selectedPage != null)
+                {
+                    selectedPage.IsSelected = true;
+                }
             }
         }
 
