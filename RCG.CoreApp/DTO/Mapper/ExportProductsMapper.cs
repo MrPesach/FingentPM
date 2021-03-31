@@ -9,10 +9,10 @@ namespace RCG.CoreApp.DTO.Mapper
     {
         public ExportProductsMapper()
         {
-            Map(m => m.Style).Name("STYLE#");
-            Map(m => m.AvailableLength).Name("AVAILABLE  LENGTH");
-            Map(m => m.AvrageWeight).Name("AVG.WT.");
-            Map(m => m.Price).Name("TRIPLE KEY UNIT PRICE IN USD");
+            Map(m => m.Style).Name("SKU");
+            Map(m => m.AvailableLength).Name("LENGTH");
+            Map(m => m.AvrageWeight).Name("WEIGHT");
+            Map(m => m.Price).Name("PRICE");
             Map(m => m.ValidationMessage).Name("ERROR MESSAGE");
         }
     }

@@ -98,7 +98,7 @@
              Expression<Func<Products, bool>> filter = null)
         {
             Func<IQueryable<Products>, IOrderedQueryable<Products>> orderBy = null;
-            orderBy = prop => prop.OrderBy(prop => prop.Id);
+            orderBy = prop => prop.OrderBy(prop => prop.Sku);
             var productList = _productRepository.GetQuery(out totalCount, filter, orderBy, true, pageNumber, pageSize);
             return productList;
         }
