@@ -233,7 +233,7 @@
                 hasRecord = csv.GetRecords<dynamic>().Any();
             }
 
-            if (!hasRecord || !headerList.Exists(x => x == "STYLE#") || !headerList.Exists(x => x == "TRIPLE KEY UNIT PRICE IN USD"))
+            if (!hasRecord || !headerList.Exists(x => x == "SKU") || !headerList.Exists(x => x == "PRICE"))
             {
                 isValid = false;
             }

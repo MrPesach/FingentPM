@@ -9,10 +9,10 @@ namespace RCG.CoreApp.DTO.Mapper
     {
         public PriceListMapper()
         {
-            Map(m => m.Style).Name("STYLE#");
-            Map(m => m.AvailableLength).Name("AVAILABLE  LENGTH").Optional();
-            Map(m => m.AvrageWeight).Name("AVG.WT.").Optional();
-            Map(m => m.Price).Name("TRIPLE KEY UNIT PRICE IN USD");
+            Map(m => m.Style).Name("SKU");
+            Map(m => m.AvailableLength).Name("LENGTH").Optional();
+            Map(m => m.AvrageWeight).Name("WEIGHT").Optional();
+            Map(m => m.Price).Name("PRICE");
         }
     }
 }

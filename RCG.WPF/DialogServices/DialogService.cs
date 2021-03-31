@@ -15,6 +15,9 @@ namespace RCG.WPF.Services
         {
             var parentWindow = Application.Current.MainWindow;
             IDialogWindow window = new DialogWindow();
+            window.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
+            window.MaxWidth = SystemParameters.MaximizedPrimaryScreenWidth;
+
             window.Owner = parentWindow;
             window.DataContext = viewModel;
             window.ShowDialog();
@@ -36,6 +39,8 @@ namespace RCG.WPF.Services
 
             var parentWindow = Application.Current.MainWindow;
             IDialogWindow window = new DialogWindow();
+            window.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
+            window.MaxWidth = SystemParameters.MaximizedPrimaryScreenWidth;
             window.Owner = parentWindow;
             window.DataContext = viewModel;
             window.ShowDialog();

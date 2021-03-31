@@ -11,5 +11,7 @@ namespace RCG.WPF.DialogServices
         object DataContext { get; set; }
         public Window Owner { get; set; }
         bool? ShowDialog();
+        double MaxHeight { get; set; }
+        double MaxWidth { get; set; }
     }
 }

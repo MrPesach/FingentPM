@@ -163,7 +163,7 @@ namespace RCG.WPF.ViewModels
             this.Pages = new ObservableCollection<PaginationButtonDto>();
 
             var fromPage = this.PageNumber > 1 ? this.PageNumber - 1 : 1;
-            fromPage = (this.PageNumber + 1) >= this.TotalPages - 1 ? this.TotalPages - 4 : fromPage;
+            fromPage = (this.PageNumber + 1) >= this.TotalPages - 1 ? Math.Max(this.TotalPages - 4, 1) : fromPage;
 
             var toPage = (fromPage + 4) > this.TotalPages ? this.TotalPages : (fromPage + 4);
             for (int i = fromPage; i <= toPage; i++)
