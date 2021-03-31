@@ -57,7 +57,7 @@ namespace RCG.Data.Migrations
                         new
                         {
                             Id = 1L,
-                            CreatedOn = new DateTime(2021, 3, 22, 14, 48, 5, 494, DateTimeKind.Utc).AddTicks(1752),
+                            CreatedOn = new DateTime(2021, 3, 31, 6, 49, 32, 378, DateTimeKind.Utc).AddTicks(6433),
                             DisplayName = "Indesign Index File Save Path",
                             Name = "IndesignIndexFileSavePath",
                             ShowtoUser = true,
@@ -123,11 +123,11 @@ namespace RCG.Data.Migrations
                     b.Property<DateTime?>("LastModifiedOn")
                         .HasColumnType("TEXT");
 
-                    b.Property<decimal>("Length")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<string>("Length")
+                        .HasColumnType("TEXT");
 
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<string>("Price")
+                        .HasColumnType("TEXT");
 
                     b.Property<long?>("ProductMainId")
                         .HasColumnType("INTEGER");
@@ -136,8 +136,8 @@ namespace RCG.Data.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<decimal>("Weight")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<string>("Weight")
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
@@ -187,7 +187,7 @@ namespace RCG.Data.Migrations
                         new
                         {
                             Id = 1L,
-                            CreatedOn = new DateTime(2021, 3, 22, 14, 48, 5, 491, DateTimeKind.Utc).AddTicks(1676),
+                            CreatedOn = new DateTime(2021, 3, 31, 6, 49, 32, 377, DateTimeKind.Utc).AddTicks(217),
                             IsAdmin = true,
                             Name = "Super Admin",
                             PasswordHash = "SwxrqFTghcosbgFO5GEAAYfG2cKPvfyWrXsgP4zE5r8=",

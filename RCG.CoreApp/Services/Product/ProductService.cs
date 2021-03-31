@@ -110,9 +110,12 @@
                 product = new Products
                 {
                     Sku = item.Style.Trim(),
-                    Length = this.ConvertToDecimal(item.AvailableLength),
-                    Weight = this.ConvertToDecimal(item.AvrageWeight),
-                    Price = this.ConvertToDecimal(item.Price),
+                    ////Length = this.ConvertToDecimal(item.AvailableLength),
+                    ////Weight = this.ConvertToDecimal(item.AvrageWeight),
+                    ////Price = this.ConvertToDecimal(item.Price),
+                    Length = item.AvailableLength,
+                    Weight = item.AvrageWeight,
+                    Price = item.Price,
                     CreatedBy = item.User,
                     CreatedOn = _dateTimeService.NowUtc,
                     LastModifiedBy = item.User,
