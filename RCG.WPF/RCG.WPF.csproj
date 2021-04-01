@@ -19,7 +19,11 @@
 		</AllowedReferenceRelatedFileExtensions>
 	</PropertyGroup>
 	<ItemGroup>
+	  <None Remove="Resources\Images\folder-open.png" />
 	  <None Remove="Resources\Images\green-tick.png" />
+	  <None Remove="Resources\Images\keyboard-arrow-down.png" />
+	  <None Remove="Resources\Images\settings.png" />
+	  <None Remove="Resources\Images\user.png" />
 	</ItemGroup>
 
   <ItemGroup>
@@ -81,6 +85,7 @@
     <Resource Include="Resources\Images\error.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Resources\Images\folder-open.png" />
     <Resource Include="Resources\Images\folder.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
@@ -93,6 +98,7 @@
     <Resource Include="Resources\Images\import.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Resources\Images\keyboard-arrow-down.png" />
     <Resource Include="Resources\Images\loader.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
@@ -111,6 +117,8 @@
     <Resource Include="Resources\Images\search.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Resources\Images\settings.png" />
+    <Resource Include="Resources\Images\user.png" />
   </ItemGroup>
 <Target Name="PublishFrontend" AfterTargets="ComputeFilesToPublish">
     <ItemGroup>

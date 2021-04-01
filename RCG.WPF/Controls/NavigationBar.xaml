@@ -8,6 +8,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:nav="clr-namespace:RCG.WPF.State.Navigators"
     xmlns:vm="clr-namespace:RCG.WPF.ViewModels"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
     d:Height="450"
     d:Width="800"
     mc:Ignorable="d">
@@ -16,8 +17,6 @@
     </UserControl.Resources>
     <Grid ShowGridLines="False" Grid.Row="0" Background="{StaticResource BrushBlack}">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="600"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
@@ -25,25 +24,48 @@
             <RowDefinition Height="100"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <Image Margin="10" Grid.Row="0" Grid.Column="0" Width="300" Source="/Resources/Images/royal_chain_white_logo.png" HorizontalAlignment="Left">
+        <Image Margin="10" Grid.Row="0" Grid.Column="0" Width="300" 
+               Source="/Resources/Images/royal_chain_white_logo.png"
+               HorizontalAlignment="Left">
         </Image>
-
-        <Button Grid.Row="0" Grid.Column="1" Visibility="Hidden">
-        </Button>
-      
-
-
-        <Border Grid.Row="0" Grid.Column="2" CornerRadius="50" Visibility="Hidden"
-        Width="50"
-        Height="50"
-        Background="{StaticResource BrushBlue}"
-        BorderBrush="{StaticResource BrushWhite}"
-        BorderThickness="1">
-            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="A" Foreground="{StaticResource BrushWhite}" />
-        </Border>
-
-        <TextBlock  Grid.Row="0" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center"
-              Text="Administrator" Foreground="{StaticResource BrushWhite}" Visibility="Hidden"/>
+        <StackPanel Grid.Row="0" Grid.Column="1"  Margin="0,0,30,0" HorizontalAlignment="Right" Orientation="Horizontal">
+            <Button Style="{StaticResource TransparentButton}" 
+                x:Name="MainButton" 
+                ContextMenuService.IsEnabled="False"
+                ContextMenuService.ShowOnDisabled="True"
+                Click="MainButton_Click"
+                HorizontalAlignment="Right">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Resources/Images/settings.png" Margin="0,0,10,0" Width="20" Height="22" />
+                    <TextBlock Text="Settings" />
+                    <Image Source="/Resources/Images/keyboard-arrow-down.png" Margin="20,0,0,0" Stretch="None" />
+                </StackPanel>
+                <Button.ContextMenu>
+                    <ContextMenu x:Name="MainContextMenu" Background="#ffffff">
+                        <MenuItem Header="Manage User Account" 
+                              Command="{Binding UserSettingsCommand}"
+                              Uid="/Resources/Images/user.png"/>
+                        <MenuItem Header="Change Index Path" 
+                        Uid="/Resources/Images/folder-open.png"/>
+                    </ContextMenu>
+                </Button.ContextMenu>
+            </Button>
+            <Border CornerRadius="50" Width="50"
+                    Height="50"
+                    Background="{StaticResource BrushBlue}"
+                    BorderBrush="{StaticResource BrushWhite}"
+                    BorderThickness="2" Margin="35,0,0,0">
+                <TextBlock Style="{StaticResource LighTextBlock}" 
+                       Text="{Binding LoggedUserFirstLetter}"
+                           Margin="0"
+                       Foreground="{StaticResource BrushWhite}" />
+            </Border>
+            <TextBlock  Grid.Row="0" Grid.Column="3" 
+                        HorizontalAlignment="Center" 
+                        VerticalAlignment="Center"
+                        Style="{StaticResource LighTextBlock}"
+              Text="{Binding LoggedUserName}"  />
+        </StackPanel>
     </Grid>
-   
+
 </UserControl>
