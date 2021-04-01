@@ -31,28 +31,28 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <StackPanel Width="415" Orientation="Vertical" Grid.Row="0">
+            <StackPanel Grid.Row="0" Style="{StaticResource FormGroup}">
                 <TextBlock HorizontalAlignment="Left" Style="{StaticResource DarkTextBlock}" Text="SKU"/>
                 <TextBox  Grid.Column="1"
                          Style="{StaticResource FormControl}"
                      Text="{Binding AddProduct.Style, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" >
                 </TextBox>
             </StackPanel>
-            <StackPanel Width="415" Orientation="Vertical" Grid.Row="1">
+            <StackPanel Style="{StaticResource FormGroup}" Grid.Row="1">
                 <TextBlock HorizontalAlignment="Left" Style="{StaticResource DarkTextBlock}" Text="Length"/>
                 <TextBox  Grid.Column="1"
                          Style="{StaticResource FormControl}"
                      Text="{Binding AddProduct.AvailableLength, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" >
                 </TextBox>
             </StackPanel>
-            <StackPanel Width="415" Orientation="Vertical" Grid.Row="2">
+            <StackPanel Style="{StaticResource FormGroup}" Grid.Row="2">
                 <TextBlock HorizontalAlignment="Left" Style="{StaticResource DarkTextBlock}" Text="Weight"/>
                 <TextBox  Grid.Column="1"
                          Style="{StaticResource FormControl}"
                      Text="{Binding AddProduct.AvrageWeight, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" >
                 </TextBox>
             </StackPanel>
-            <StackPanel Width="415" Orientation="Vertical" Grid.Row="3">
+            <StackPanel Style="{StaticResource FormGroup}" Grid.Row="3">
                 <TextBlock HorizontalAlignment="Left" Style="{StaticResource DarkTextBlock}" Text="Price in USD"/>
                 <TextBox  Grid.Column="1"
                          Style="{StaticResource FormControl}"

@@ -47,6 +47,7 @@ namespace RCG.WPF
             try
             {
                 var context = services.GetRequiredService<ApplicationDbContext>();
+                ////context.Database.EnsureCreated();
                 context.Database.Migrate(); // apply all migrations
             }
             catch (Exception ex)

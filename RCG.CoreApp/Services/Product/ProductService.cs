@@ -110,9 +110,6 @@
                 product = new Products
                 {
                     Sku = item.Style.Trim(),
-                    ////Length = this.ConvertToDecimal(item.AvailableLength),
-                    ////Weight = this.ConvertToDecimal(item.AvrageWeight),
-                    ////Price = this.ConvertToDecimal(item.Price),
                     Length = item.AvailableLength,
                     Weight = item.AvrageWeight,
                     Price = item.Price,
@@ -183,12 +180,12 @@
                 messageList.Add("SKU already exist");
                 isValid = false;
             }
-            if (!string.IsNullOrEmpty(addProductDto.AvailableLength)
-               && !this.IsNumber(addProductDto.AvailableLength))
-            {
-                messageList.Add("Please enter a valid Length");
-                isValid = false;
-            }
+            ////if (!string.IsNullOrEmpty(addProductDto.AvailableLength)
+            ////   && !this.IsNumber(addProductDto.AvailableLength))
+            ////{
+            ////    messageList.Add("Please enter a valid Length");
+            ////    isValid = false;
+            ////}
             if (!string.IsNullOrEmpty(addProductDto.AvrageWeight)
                && !this.IsNumber(addProductDto.AvrageWeight))
             {
