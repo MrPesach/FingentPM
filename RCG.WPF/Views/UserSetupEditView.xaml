@@ -6,66 +6,87 @@
     xmlns:local="clr-namespace:RCG.WPF.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:components="clr-namespace:PasswordBoxMVVM.Components;assembly=PasswordBoxMVVM"
     mc:Ignorable="d"
-    Width="700"
-    Height="600">
+     Width="445" Height="490">
     <UserControl.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
     </UserControl.Resources>
 
-    <Grid ShowGridLines="False" Background="#ffffff">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition></ColumnDefinition>
-        </Grid.ColumnDefinitions>
+    <Grid Background="#ffffff">
         <Grid.RowDefinitions>
-            <RowDefinition></RowDefinition>
+            <RowDefinition Height="52" />
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="97"/>
         </Grid.RowDefinitions>
-
-
-        <Grid Grid.Row="0" Grid.Column="1"  Margin="72,100,155,20">
+        <Grid Background="#EBEDF0" Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Style="{StaticResource PopupHeader}" Text="{Binding Title}"/>
+            <Button Grid.Column="1" Style="{StaticResource CloseButton}"
+                    Command="{Binding CancelCommand}"  
+                    CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=Window}}"/>
+        </Grid>
+        <Grid Grid.Row="1" Margin="0,20,0,5">
             <Grid.RowDefinitions>
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="auto" />
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
             </Grid.RowDefinitions>
-
-            <TextBlock Grid.Column="1" Grid.Row="0" Style="{StaticResource TextBlockHeading}"
-                Text="Setup Account" />
-            <TextBlock Grid.Row="1" Text="Name" Style="{StaticResource TextBlockLabels}"/>
-            <TextBox Grid.Row="2" 
-                        Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource FormControl}" />
-
-            <TextBlock Grid.Row="3" Text="Username" Style="{StaticResource TextBlockLabels}"/>
-            <TextBox Grid.Row="4"
-                        Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource FormControl}" />
-
-            <TextBlock Grid.Row="5" Text="Password" Style="{StaticResource TextBlockLabels}" />
-            <components:BindablePasswordBox Grid.Row="6" HorizontalAlignment="Left" Width="400" Height="40"
+            <StackPanel Grid.Row="0" Style="{StaticResource FormGroup}">
+                <TextBlock HorizontalAlignment="Left" Style="{StaticResource DarkTextBlock}" Text="Name"/>
+                <TextBox  Grid.Column="1"
+                         Style="{StaticResource FormControl}"
+                     Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" >
+                </TextBox>
+            </StackPanel>
+            <StackPanel Style="{StaticResource FormGroup}" Grid.Row="1">
+                <TextBlock HorizontalAlignment="Left" Style="{StaticResource DarkTextBlock}" Text="Username"/>
+                <TextBox  Grid.Column="1"
+                         Style="{StaticResource FormControl}"
+                     Text="{Binding Username, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" >
+                </TextBox>
+            </StackPanel>
+            <StackPanel Style="{StaticResource FormGroup}" Grid.Row="2">
+                <TextBlock HorizontalAlignment="Left" Style="{StaticResource DarkTextBlock}" Text="Password"/>
+                <components:BindablePasswordBox Grid.Column="1" HorizontalAlignment="Left" Width="400" Height="40"
                         Password="{Binding Password}" />
-
-            <TextBlock Grid.Row="7" Text="Confirm Password" Style="{StaticResource TextBlockLabels}"/>
-            <components:BindablePasswordBox Grid.Row="8" HorizontalAlignment="Left"
+            </StackPanel>
+            <StackPanel Style="{StaticResource FormGroup}" Grid.Row="3">
+                <TextBlock HorizontalAlignment="Left" Style="{StaticResource DarkTextBlock}" Text="Confirm Password"/>
+                <components:BindablePasswordBox Grid.Column="1" HorizontalAlignment="Left"
                         Password="{Binding ConfirmPassword}" Width="400" Height="40"/>
-
-            <Button Grid.Row="9"  HorizontalAlignment="Right" Margin="0 10 0 0"
-                    Command="{Binding RegisterCommand}"
-                    Content="Create Account"
-                    IsDefault="True" Style="{StaticResource PrimaryButton}" />
-
-            <TextBlock Grid.Row="10" Margin="0,10,0,0"
+            </StackPanel>
+        </Grid>
+        <Grid Margin="18,0,10,0" Grid.Row="2" 
+              Width="408">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="90"/>
+                <ColumnDefinition Width="4"/>
+                <ColumnDefinition Width="90"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Row="0"
                     Style="{StaticResource ErrorText}"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Center"
                     DataContext="{Binding ErrorMessageViewModel}"
                     Text="{Binding Message}"
-                    Visibility="{Binding HasMessage, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                    TextWrapping="Wrap"
+                    Visibility="{Binding HasMessage, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+            <Button Command="{Binding CancelCommand}"
+                    Grid.Column="1"
+                    CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=Window}}"
+                    Style="{StaticResource LightButton}" 
+                    Content="Cancel"
+                    Width="80"/>
+            <Button Command="{Binding RegisterCommand}"
+                    CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=Window}}"
+                     Grid.Column="3"
+                    Style="{StaticResource PrimaryButton}" Content="Save"
+                    Width="80">
+            </Button>
         </Grid>
     </Grid>
 </UserControl>

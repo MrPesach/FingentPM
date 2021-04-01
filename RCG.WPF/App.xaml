@@ -28,7 +28,7 @@
                 <views:AddProductView />
             </DataTemplate>
             <DataTemplate DataType="{x:Type viewmodels:UserSetupEditViewModel}">
-                <views:UserSetupView />
+                <views:UserSetupEditView />
             </DataTemplate>
             <DataTemplate DataType="{x:Type viewmodels:AlertViewModel}">
                 <views:AlertView />

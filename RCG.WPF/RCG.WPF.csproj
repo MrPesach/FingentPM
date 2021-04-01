@@ -118,7 +118,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Images\settings.png" />
-    <Resource Include="Resources\Images\user.png" />
+    <Resource Include="Resources\Images\user.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 <Target Name="PublishFrontend" AfterTargets="ComputeFilesToPublish">
     <ItemGroup>
