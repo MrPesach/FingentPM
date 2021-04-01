@@ -9,17 +9,11 @@ namespace RCG.Domain.Entities
         [Required]
         public string Sku { get; set; }
 
-        [Column(TypeName = "decimal(18,2)")]
-        [Required]
-        public decimal Length { get; set; }
+        public string Length { get; set; }
 
-        [Column(TypeName = "decimal(18,2)")]
-        [Required]
-        public decimal Weight { get; set; }
+        public string Weight { get; set; }
 
-        [Column(TypeName = "decimal(18,2)")]
-        [Required]
-        public decimal Price { get; set; }
+        public string Price { get; set; }
 
         [ForeignKey("ProductMain")]
         public long? ProductMainId { get; set; }

@@ -51,7 +51,7 @@ namespace RCG.WPF
             }
             catch (Exception ex)
             {
-                Log.Error("OnStartup " + ex.Message);
+                Log.Error(ex.Message);
                 throw;
             }
 
