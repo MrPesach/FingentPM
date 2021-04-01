@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Text;
 using System.Threading.Tasks;
 using RCG.CoreApp.DTO.User;
 using RCG.CoreApp.Interfaces.User;
@@ -24,7 +22,7 @@ namespace RCG.WPF.Commands
 
         public override bool CanExecute(object parameter)
         {
-            return _usersetupEditViewModel.CanRegister && base.CanExecute(parameter);
+            return _usersetupEditViewModel.CanUpdate && base.CanExecute(parameter);
         }
 
         public override async Task ExecuteAsync(object parameter)
@@ -35,7 +33,7 @@ namespace RCG.WPF.Commands
             {
                 UserSetupDto userSetupDto = new UserSetupDto()
                 {
-                    UserId = null,
+                    UserId = _usersetupEditViewModel.UserId,
                     Name = _usersetupEditViewModel.Name,
                     Username = _usersetupEditViewModel.Username,
                     Password = _usersetupEditViewModel.Password,
@@ -77,7 +75,7 @@ namespace RCG.WPF.Commands
 
         private void RegisterViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == nameof(UserSetupViewModel.CanRegister))
+            if (e.PropertyName == nameof(UserSetupEditViewModel.CanUpdate))
             {
                 OnCanExecuteChanged();
             }

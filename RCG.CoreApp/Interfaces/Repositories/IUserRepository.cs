@@ -10,6 +10,8 @@ namespace RCG.CoreApp.Interfaces.Repositories
 
         Task<List<Users>> GetNonAdminListAsync();
 
+        Task<Users> GetNonAdminUserAsync();
+
         Task<Users> GetByIdAsync(long id);
 
         Task<Users> GetByUsernameAsync(long? id, string username);

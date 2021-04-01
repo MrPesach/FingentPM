@@ -29,6 +29,11 @@ namespace RCG.Data.Repositories
             return await _repository.Entities.Where(p => p.IsAdmin == false).ToListAsync();
         }
 
+        public async Task<Users> GetNonAdminUserAsync()
+        {
+            return await _repository.Entities.Where(p => p.IsAdmin == false).FirstOrDefaultAsync();
+        }
+
         public async Task<Users> GetByIdAsync(long id)
         {
             return await _repository.Entities.Where(p => p.Id == id).FirstOrDefaultAsync();

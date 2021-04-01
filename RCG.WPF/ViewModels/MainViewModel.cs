@@ -74,8 +74,8 @@ namespace RCG.WPF.ViewModels
             ////WindowHeight = Convert.ToInt32(Resource.HeightProductsView);
             ////WindowWidth = Convert.ToInt32(Resource.WidthProductsView);
 
-            var userList = _authenticationService.GetNonAdminListAsync();
-            if (userList.Result.Count > 0)
+            var user = _authenticationService.GetNonAdminUserAsync();
+            if (user.Result != null)
             {
                 UpdateCurrentViewModelCommand.Execute(ViewType.Login);
                 ////WindowHeight = Convert.ToInt32(Resource.HeightLoginView);
@@ -111,6 +111,10 @@ namespace RCG.WPF.ViewModels
 
         private void UserSettings()
         {
+            var user = _authenticationService.GetNonAdminUserAsync();
+            _userSetupEditViewModel.UserId = user.Result.Id;
+            _userSetupEditViewModel.Name = user.Result.Name;
+            _userSetupEditViewModel.Username = user.Result.Username;
             _userSetupEditViewModel.Title = "Manage User Account";
             this._dialogService.OpenDialog(_userSetupEditViewModel);
         }

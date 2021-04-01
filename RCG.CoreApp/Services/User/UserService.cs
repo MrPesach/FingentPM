@@ -25,6 +25,11 @@ namespace RCG.CoreApp.Services.User
             List<Users> users = await _userRepository.GetNonAdminListAsync();
             return users;
         }
+        
+        public async Task<Users> GetNonAdminUserAsync()
+        {
+            return await _userRepository.GetNonAdminUserAsync();
+        }
 
         public async Task<Users> Login(string username, string password)
         {

@@ -18,6 +18,9 @@ namespace RCG.CoreApp.Interfaces.User
     public interface IUserService
     {
         Task<List<Users>> GetNonAdminListAsync();
+
+        Task<Users> GetNonAdminUserAsync();
+
         Task<Users> Login(string username, string password);
 
         Task<UserSetupResult> UserSetup(UserSetupDto userSetupDto);

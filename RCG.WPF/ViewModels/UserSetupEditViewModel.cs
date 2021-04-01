@@ -10,6 +10,21 @@ namespace RCG.WPF.ViewModels
 {
     public class UserSetupEditViewModel : DialogViewModelBase<string>
     {
+        private long _UserId;
+        public long UserId
+        {
+            get
+            {
+                return _UserId;
+            }
+            set
+            {
+                _UserId = value;
+                ////OnPropertyChanged(nameof(UserId));
+                OnPropertyChanged(nameof(CanUpdate));
+            }
+        }
+
         private string _name;
         public string Name
         {
@@ -21,7 +36,7 @@ namespace RCG.WPF.ViewModels
             {
                 _name = value;
                 OnPropertyChanged(nameof(Name));
-                OnPropertyChanged(nameof(CanRegister));
+                OnPropertyChanged(nameof(CanUpdate));
             }
         }
 
@@ -36,7 +51,7 @@ namespace RCG.WPF.ViewModels
             {
                 _username = value;
                 OnPropertyChanged(nameof(Username));
-                OnPropertyChanged(nameof(CanRegister));
+                OnPropertyChanged(nameof(CanUpdate));
             }
         }
 
@@ -51,7 +66,7 @@ namespace RCG.WPF.ViewModels
             {
                 _password = value;
                 OnPropertyChanged(nameof(Password));
-                OnPropertyChanged(nameof(CanRegister));
+                OnPropertyChanged(nameof(CanUpdate));
             }
         }
 
@@ -66,11 +81,11 @@ namespace RCG.WPF.ViewModels
             {
                 _confirmPassword = value;
                 OnPropertyChanged(nameof(ConfirmPassword));
-                OnPropertyChanged(nameof(CanRegister));
+                OnPropertyChanged(nameof(CanUpdate));
             }
         }
 
-        public bool CanRegister => !string.IsNullOrEmpty(Name) &&
+        public bool CanUpdate => !string.IsNullOrEmpty(Name) &&
             !string.IsNullOrEmpty(Username) &&
             !string.IsNullOrEmpty(Password) &&
             !string.IsNullOrEmpty(ConfirmPassword);
