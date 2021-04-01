@@ -111,7 +111,7 @@ namespace RCG.WPF.ViewModels
 
         private void UserSettings()
         {
-            _userSetupEditViewModel.Title = "User Settings";
+            _userSetupEditViewModel.Title = "Manage User Account";
             this._dialogService.OpenDialog(_userSetupEditViewModel);
         }
 

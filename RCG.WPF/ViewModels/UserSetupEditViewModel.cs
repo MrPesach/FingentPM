@@ -4,6 +4,7 @@ using RCG.CoreApp.Interfaces.User;
 using RCG.WPF.Commands;
 using RCG.WPF.DialogServices;
 using RCG.WPF.State.Accounts;
+using RCG.WPF.State.Authenticators;
 
 namespace RCG.WPF.ViewModels
 {
@@ -74,10 +75,10 @@ namespace RCG.WPF.ViewModels
             !string.IsNullOrEmpty(Password) &&
             !string.IsNullOrEmpty(ConfirmPassword);
 
-        public ICommand SaveUserCommand { get; }
+        public ICommand UpdateUserCommand { get; }
         public ICommand CancelCommand { get; }
 
-        private readonly IUserService _authService;
+        private readonly IAuthenticator _authenticator;
         private readonly IUserStore _userStore;
 
         public MessageViewModel ErrorMessageViewModel { get; }
@@ -87,13 +88,14 @@ namespace RCG.WPF.ViewModels
             set => ErrorMessageViewModel.Message = value;
         }
 
-        public UserSetupEditViewModel(IUserService authService, IUserStore userStore)
+        public UserSetupEditViewModel(IAuthenticator authenticator, IUserStore userStore)
         {
             ErrorMessageViewModel = new MessageViewModel();
 
-            _authService = authService;
+            _authenticator = authenticator;
             _userStore = userStore;
             this.CancelCommand = new RelayCommand(o => this.CloseDialog(o), o => true);
+            UpdateUserCommand = new UserSetupEditCommand(this, authenticator);
         }
         private void CloseDialog(object obj)
         {

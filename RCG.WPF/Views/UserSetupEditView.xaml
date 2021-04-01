@@ -81,7 +81,7 @@
                     Style="{StaticResource LightButton}" 
                     Content="Cancel"
                     Width="80"/>
-            <Button Command="{Binding RegisterCommand}"
+            <Button Command="{Binding UpdateUserCommand}"
                     CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=Window}}"
                      Grid.Column="3"
                     Style="{StaticResource PrimaryButton}" Content="Save"
