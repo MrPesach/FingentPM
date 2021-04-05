@@ -102,5 +102,11 @@
             var productList = _productRepository.GetQuery(out totalCount, filter, orderBy, true, pageNumber, pageSize);
             return productList;
         }
+
+        public async Task<List<Products>> GetAllProductsAsync()
+        {
+            var allProducts = await this._productRepository.Entities.ToListAsync();
+            return allProducts;
+        }
     }
 }

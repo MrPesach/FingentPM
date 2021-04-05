@@ -5,9 +5,11 @@ using Microsoft.Extensions.Hosting;
 using RCG.CoreApp.Interfaces.DbContexts;
 using RCG.CoreApp.Interfaces.Product;
 using RCG.CoreApp.Interfaces.Repositories;
+using RCG.CoreApp.Interfaces.Settings;
 using RCG.CoreApp.Interfaces.Shared;
 using RCG.CoreApp.Interfaces.User;
 using RCG.CoreApp.Services.Product;
+using RCG.CoreApp.Services.Settings;
 using RCG.CoreApp.Services.User;
 using RCG.Data.DbContexts;
 using RCG.Data.Repositories;
@@ -25,7 +27,8 @@ namespace RCG.WPF.HostBuilders
         {
             host.ConfigureServices((context, services) =>
             {
-                services.AddDbContext<ApplicationDbContext>(options => {
+                services.AddDbContext<ApplicationDbContext>(options =>
+                {
                     options.UseSqlite("Data Source=" + @"data.fin");
                     //options.EnableSensitiveDataLogging(true);
                 });
@@ -60,6 +63,8 @@ namespace RCG.WPF.HostBuilders
                 services.AddTransient<IProductRepository, ProductRepository>();
                 services.AddTransient<IProductService, ProductService>();
                 services.AddTransient<IDialogService, DialogService>();
+                services.AddTransient<IApplConfigsRepository, ApplConfigsRepository>();
+                services.AddTransient<ISettingsService, SettingsService>();
             });
 
             return host;

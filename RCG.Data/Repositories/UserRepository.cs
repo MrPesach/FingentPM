@@ -26,7 +26,7 @@ namespace RCG.Data.Repositories
 
         public async Task<List<Users>> GetNonAdminListAsync()
         {
-            return await _repository.Entities.Where(p => p.IsAdmin == false).ToListAsync();
+            return await _repository.Entities.Where(p => !p.IsAdmin).ToListAsync();
         }
 
         public async Task<Users> GetNonAdminUserAsync()

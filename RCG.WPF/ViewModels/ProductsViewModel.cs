@@ -213,12 +213,13 @@ namespace RCG.WPF.ViewModels
 
         private async void AddProduct()
         {
+            await this.GenerateProductJsonFileAsync();
             _addProductViewModel.Title = "Add New Product";
             var result = this._dialogService.OpenDialog(_addProductViewModel);
             if (result == EnumMaster.DialogResults.Success.ToString())
             {
                 await this.InitialLoad();
-                this._dialogService.OpenMessageBox("Add Product", "Product added successfully", EnumMaster.MessageBoxType.Success);
+                this._dialogService.OpenMessageBox("Product added successfully", EnumMaster.MessageBoxType.Success);
                 ////_alertViewModel.IconUri = "/Resources/Images/check-green.png";
                 ////_alertViewModel.Title = "Success";
                 ////_alertViewModel.Message = "Product added successfully";
@@ -244,7 +245,7 @@ namespace RCG.WPF.ViewModels
                 if (result == EnumMaster.DialogResults.Success.ToString())
                 {
                     await this.InitialLoad();
-                    this._dialogService.OpenMessageBox("Update Product", "Product details updated successfully", EnumMaster.MessageBoxType.Success);
+                    this._dialogService.OpenMessageBox("Product details updated successfully", EnumMaster.MessageBoxType.Success);
                     ////_alertViewModel.IconUri = "/Resources/Images/check-green.png";
                     ////_alertViewModel.Title = "Update Product";
                     ////_alertViewModel.Message = "Product details updated successfully";
@@ -261,7 +262,7 @@ namespace RCG.WPF.ViewModels
 
                 if (addProductDto.ProductId > 0)
                 {
-                    var result = this._dialogService.OpenMessageBox("Confirm", "Are you sure to delete the Product", EnumMaster.MessageBoxType.Confirmation);
+                    var result = this._dialogService.OpenMessageBox("Are you sure to delete the Product", EnumMaster.MessageBoxType.Confirmation);
                     if (result == EnumMaster.DialogResults.Yes)
                     {
                         await this.DeleteProductByIdAsync(addProductDto.ProductId);
@@ -284,10 +285,16 @@ namespace RCG.WPF.ViewModels
             bool result = await this._productService.DeleteProductByIdAsync(productId);
             if (result)
             {
-                this._dialogService.OpenMessageBox("Success", "Product deleted successfully.", EnumMaster.MessageBoxType.Success);
+                this._dialogService.OpenMessageBox("Product deleted successfully.", EnumMaster.MessageBoxType.Success);
                 this.ProductList.Remove(ProductList.Single(s => s.ProductId == productId));
                 this.IsNoRecords = !this.ProductList.Any();
             }
+        }
+
+        private async Task<bool> GenerateProductJsonFileAsync()
+        {
+            bool result = await this._productService.GenerateProductJsonFileAsync();
+            return result;
         }
     }
 }

@@ -23,14 +23,17 @@
     public class ProductService : IProductService
     {
         private readonly IProductRepository _productRepository;
+        private readonly IApplConfigsRepository _applConfigsRepository;
         private readonly IDateTimeService _dateTimeService;
 
         public ProductService(
             IProductRepository productRepository,
-            IDateTimeService dateTimeService)
+            IDateTimeService dateTimeService,
+            IApplConfigsRepository applConfigsRepository)
         {
             _productRepository = productRepository;
             _dateTimeService = dateTimeService;
+            _applConfigsRepository = applConfigsRepository;
         }
 
         public async Task<GridResponseDto<AddProductDto>> GetPagedProductList(int pageNumber, int pageSize, string search = null)
@@ -248,6 +251,32 @@
         {
             bool result = await this._productRepository.DeleteProductByIdAsync(productId);
             return result;
+        }
+
+        public async Task<bool> GenerateProductJsonFileAsync()
+        {
+            var allProducts = await this._productRepository.GetAllProductsAsync();
+            var indexFilePath = await this._applConfigsRepository.GetApplConfigValueAsync(Enums.EnumMaster.ApplConfig.IndesignIndexFileSavePath);
+
+            if (allProducts != null && allProducts.Any() && indexFilePath != null && !string.IsNullOrEmpty(indexFilePath.Value))
+            {
+                var productRootJsonDto = new ProductRootJsonDto();
+                productRootJsonDto.IndexFilePath = indexFilePath.Value;
+                productRootJsonDto.Products = allProducts.Select(a => new ProductJsonDto
+                {
+                    Product = a.Sku,
+                    Length = a.Length,
+                    Price = a.Price,
+                    Weight = a.Weight
+                }).ToList();
+
+                var filePath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"/RCG/ProductDetails.txt";
+                var json = JsonConvert.SerializeObject(productRootJsonDto);
+                File.WriteAllText(filePath, json);
+                return true;
+            }
+
+            return false;
         }
 
         private decimal ConvertToDecimal(string value)

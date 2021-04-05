@@ -41,12 +41,14 @@ namespace RCG.WPF.ViewModels
         private readonly IUserService _authenticationService;
         private readonly IDialogService _dialogService;
         private readonly UserSetupEditViewModel _userSetupEditViewModel;
+        private readonly IndexPathViewModel _indexPathViewModel;
         private readonly IUserStore _userStore;
         public bool IsLoggedIn => _authenticator.IsLoggedIn;
         public ViewModelBase CurrentViewModel => _navigator.CurrentViewModel;
 
         public ICommand UpdateCurrentViewModelCommand { get; }
         public ICommand UserSettingsCommand { get; }
+        public ICommand ChangeIndexPathCommand { get; }
 
         public MainViewModel(
             INavigator navigator,
@@ -55,7 +57,8 @@ namespace RCG.WPF.ViewModels
             IUserService authenticationService,
             IDialogService dialogService,
             UserSetupEditViewModel userSetupEditViewModel,
-            IUserStore userStore)
+            IUserStore userStore,
+            IndexPathViewModel indexPathViewModel)
         {
             _navigator = navigator;
             _viewModelFactory = viewModelFactory;
@@ -64,12 +67,14 @@ namespace RCG.WPF.ViewModels
             this._userStore = userStore;
             this._dialogService = dialogService;
             this._userSetupEditViewModel = userSetupEditViewModel;
+            this._indexPathViewModel = indexPathViewModel;
 
             _navigator.StateChanged += Navigator_StateChanged;
             _authenticator.StateChanged += Authenticator_StateChanged;
 
             UpdateCurrentViewModelCommand = new UpdateCurrentViewModelCommand(navigator, _viewModelFactory);
             this.UserSettingsCommand = new RelayCommand(a => this.UserSettings());
+            this.ChangeIndexPathCommand = new RelayCommand(a => this.ChangeIndexPath());
             ////UpdateCurrentViewModelCommand.Execute(ViewType.Login);
 
             ////WindowHeight = Convert.ToInt32(Resource.HeightProductsView);
@@ -121,6 +126,11 @@ namespace RCG.WPF.ViewModels
             _userSetupEditViewModel.Username = user.Result.Username;
             _userSetupEditViewModel.Title = Resource.ManageUserAccountHeading;
             this._dialogService.OpenDialog(_userSetupEditViewModel);
+        }
+
+        private void ChangeIndexPath()
+        {
+            this._dialogService.OpenDialog(_indexPathViewModel);
         }
 
         private void Authenticator_StateChanged()
