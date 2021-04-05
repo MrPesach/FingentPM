@@ -41,7 +41,7 @@ namespace RCG.Data.Repositories
 
         public async Task<Users> GetByUsernameAsync(long? id, string username)
         {
-            if (id != null)
+            if (id == null)
             {
                 return await _repository.Entities.Where(p => p.Username == username).FirstOrDefaultAsync();
             }

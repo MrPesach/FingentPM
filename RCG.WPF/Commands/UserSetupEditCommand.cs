@@ -2,7 +2,9 @@
 using System.ComponentModel;
 using System.Threading.Tasks;
 using RCG.CoreApp.DTO.User;
+using RCG.CoreApp.Enums;
 using RCG.CoreApp.Interfaces.User;
+using RCG.WPF.DialogServices;
 using RCG.WPF.State.Authenticators;
 using RCG.WPF.ViewModels;
 
@@ -45,6 +47,8 @@ namespace RCG.WPF.Commands
                 switch (userSetupResult)
                 {
                     case UserSetupResult.Success:
+                        //var window = (IDialogWindow)parameter;
+                        //CloseDialogWithResult(window, EnumMaster.DialogResults.Success.ToString());
                         ///_usersetupRenavigator.Renavigate();
                         break;
                     case UserSetupResult.PasswordsDoNotMatch:
