@@ -54,13 +54,11 @@ namespace RCG.WPF.ViewModels
 
         private void SelectPath()
         {
-            using (var dialog = new FolderBrowserDialog())
+            using var dialog = new FolderBrowserDialog();
+            dialog.ShowDialog();
+            if (!string.IsNullOrEmpty(dialog.SelectedPath))
             {
-                dialog.ShowDialog();
-                if (!string.IsNullOrEmpty(dialog.SelectedPath))
-                {
-                    this.SelectedPath = dialog.SelectedPath;
-                }
+                this.SelectedPath = dialog.SelectedPath;
             }
         }
 
