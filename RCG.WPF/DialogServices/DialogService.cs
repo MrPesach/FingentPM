@@ -24,8 +24,9 @@ namespace RCG.WPF.Services
             return viewModel.DialogResult;
         }
 
-        public EnumMaster.DialogResults OpenMessageBox(string title, string message, EnumMaster.MessageBoxType messageBoxType)
+        public EnumMaster.DialogResults OpenMessageBox(string message, EnumMaster.MessageBoxType messageBoxType, string title = null)
         {
+            title = !string.IsNullOrEmpty(title) ? title : messageBoxType.ToString();
             var viewModel = new AlertViewModel
             {
                 Message = message,

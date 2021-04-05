@@ -29,5 +29,6 @@ namespace RCG.CoreApp.Interfaces.Product
         Task<bool> CreateCSVAsync(List<AddProductDto> failedProductList, string filePath);
         bool ValidateCSV(string fileName);
         Task<bool> DeleteProductByIdAsync(long productId);
+        Task<bool> GenerateProductJsonFileAsync();
     }
 }

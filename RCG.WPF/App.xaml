@@ -33,6 +33,9 @@
             <DataTemplate DataType="{x:Type viewmodels:AlertViewModel}">
                 <views:AlertView />
             </DataTemplate>
+            <DataTemplate DataType="{x:Type viewmodels:IndexPathViewModel}">
+                <views:IndexPathView />
+            </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

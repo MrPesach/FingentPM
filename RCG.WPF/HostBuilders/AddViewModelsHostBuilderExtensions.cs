@@ -23,6 +23,7 @@ namespace RCG.WPF.HostBuilders
                 services.AddTransient<AddProductViewModel>();
                 services.AddTransient<UserSetupEditViewModel>();
                 services.AddTransient<AlertViewModel>();
+                services.AddTransient<IndexPathViewModel>();
 
                 services.AddSingleton<CreateViewModel<ProductsViewModel>>(services => () => services.GetRequiredService<ProductsViewModel>());
                 services.AddSingleton<CreateViewModel<LoginViewModel>>(services => () => CreateLoginViewModel(services));

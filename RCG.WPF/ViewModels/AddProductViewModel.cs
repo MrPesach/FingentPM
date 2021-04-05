@@ -76,42 +76,5 @@ namespace RCG.WPF.ViewModels
         {
             ErrorMessageViewModel.Message = value;
         }
-
-        private bool ValidateProductSave()
-        {
-            bool isValid = true;
-            if (string.IsNullOrEmpty(this.AddProduct.Style))
-            {
-                this.SetErrorMessage("Please enter Style Name");
-                isValid = false;
-            }
-            else if (!string.IsNullOrEmpty(this.AddProduct.Style) &&
-                this.AddProduct.ProductId == 0 &&
-                _productService.IsProductExist(this.AddProduct.Style))
-            {
-                this.SetErrorMessage("Style Name already exist");
-                isValid = false;
-            }
-            else if (!string.IsNullOrEmpty(this.AddProduct.AvailableLength)
-                && !_productService.IsNumber(this.AddProduct.AvailableLength))
-            {
-                this.SetErrorMessage("Please enter a valid Available Length");
-                isValid = false;
-            }
-            else if (string.IsNullOrEmpty(this.AddProduct.Price)
-               || !_productService.IsNumber(this.AddProduct.Price))
-            {
-                this.SetErrorMessage("Please enter a valid Price");
-                isValid = false;
-            }
-            else if (!string.IsNullOrEmpty(this.AddProduct.AvrageWeight)
-                && !_productService.IsNumber(this.AddProduct.AvrageWeight))
-            {
-                this.SetErrorMessage("Please enter a valid Average Weight");
-                isValid = false;
-            }
-
-            return isValid;
-        }
     }
 }

@@ -12,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace RCG.WPF.ViewModels
@@ -22,6 +23,7 @@ namespace RCG.WPF.ViewModels
         public ICommand ProceedCommand { get; }
         public ICommand CancelCommand { get; }
         public ICommand DownloadCSVCommand { get; }
+
         private readonly IProductService _productService;
         private readonly IUserStore _userStore;
         private readonly IDialogService _dialogService;
@@ -37,7 +39,7 @@ namespace RCG.WPF.ViewModels
             _userStore = userStore;
             _dialogService = dialogService;
             _dateTimeService = dateTimeService;
-            this.ProceedCommand = new RelayCommand(o => this.ProceedFileUpload(), o => this.CanExecute);
+            this.ProceedCommand = new RelayCommand(o => this.ProceedFileUploadAsync(), o => this.CanExecute);
             this.BrowseFileCommand = new RelayCommand(o => this.BrowseFile(), o => true);
             this.CancelCommand = new RelayCommand(o => this.Cancel(o), o => true);
             this.DownloadCSVCommand = new RelayCommand(o => this.DownloadCSV(), o => true);
@@ -217,7 +219,7 @@ namespace RCG.WPF.ViewModels
                 else
                 {
                     this.FilePath = string.Empty;
-                    _dialogService.OpenMessageBox("Error", "Invalid CSV file selected", EnumMaster.MessageBoxType.Error);
+                    _dialogService.OpenMessageBox("Invalid CSV file selected", EnumMaster.MessageBoxType.Error);
                 }
             }
         }
@@ -229,7 +231,7 @@ namespace RCG.WPF.ViewModels
             CloseDialogWithResult(window, EnumMaster.DialogResults.Unidefined.ToString());
         }
 
-        private async void ProceedFileUpload()
+        private async Task ProceedFileUploadAsync()
         {
             this.FileUploadSection = false;
             var productMainDto = await this._productService.ImportPriceListAsync(this.FilePath);
@@ -310,7 +312,7 @@ namespace RCG.WPF.ViewModels
                 var succss = await this._productService.CreateCSVAsync(this.FailedProductList, saveFileDialog.FileName);
                 if (succss)
                 {
-                    _dialogService.OpenMessageBox("Success", "File saved successfully", EnumMaster.MessageBoxType.Success);
+                    _dialogService.OpenMessageBox("File saved successfully", EnumMaster.MessageBoxType.Success);
                 }
             }
         }

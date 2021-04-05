@@ -46,6 +46,7 @@
                               Command="{Binding UserSettingsCommand}"
                               Uid="/Resources/Images/user.png"/>
                         <MenuItem Header="Change Index Path" 
+                                  Command="{Binding ChangeIndexPathCommand}"
                         Uid="/Resources/Images/folder-open.png"/>
                     </ContextMenu>
                 </Button.ContextMenu>
