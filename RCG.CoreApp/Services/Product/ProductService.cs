@@ -3,6 +3,8 @@
     using CsvHelper;
     using LinqKit;
     using Microsoft.EntityFrameworkCore;
+    using Newtonsoft.Json;
+    using RCG.CoreApp.AppResources;
     using RCG.CoreApp.DTO;
     using RCG.CoreApp.DTO.Mapper;
     using RCG.CoreApp.Interfaces.Product;
@@ -41,9 +43,9 @@
               {
                   ProductId = a.Id,
                   Style = a.Sku,
-                  AvailableLength = a.Length.ToString(),
-                  AvrageWeight = a.Weight.ToString(),
-                  Price = a.Price.ToString(),
+                  AvailableLength = !string.IsNullOrEmpty(a.Length) ? a.Length : Resource.BlankEntryLbl,
+                  AvrageWeight = !string.IsNullOrEmpty(a.Weight) ? a.Weight : Resource.BlankEntryLbl,
+                  Price = a.Price,
                   UpdatedOn = a.LastModifiedOn.Value.ToString("MM/dd/yyyy hh:mm tt")
               }).ToListAsync();
 
@@ -165,12 +167,12 @@
             var messageList = new List<string>();
             if (string.IsNullOrWhiteSpace(addProductDto.Style))
             {
-                messageList.Add("Please enter SKU");
+                messageList.Add(string.Format(Resource.PleaseEnterLbl, Resource.SKULbl));
                 isValid = false;
             }
             if (!string.IsNullOrWhiteSpace(addProductDto.Style) && addProductDto.Style.Length > 25)
             {
-                messageList.Add("SKU name cannot be longer than 25 characters");
+                messageList.Add("SKU cannot be longer than 25 characters");
                 isValid = false;
             }
             if (!isImport && !string.IsNullOrEmpty(addProductDto.Style) &&
