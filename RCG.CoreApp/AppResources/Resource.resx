@@ -129,6 +129,9 @@
   <data name="HeightUserSetupView" xml:space="preserve">
     <value>600</value>
   </data>
+  <data name="ManageUserAccountHeading" xml:space="preserve">
+    <value>Manage User Account</value>
+  </data>
   <data name="PathIndesignDataFile" xml:space="preserve">
     <value>C:\Program Files (x86)\Common Files\Adobe\CEP\extensions\Price_Manager</value>
   </data>
@@ -140,6 +143,18 @@
   </data>
   <data name="SKULbl" xml:space="preserve">
     <value>SKU</value>
+  </data>
+  <data name="UnableSave" xml:space="preserve">
+    <value>Unable to Save.</value>
+  </data>
+  <data name="UnableUpdate" xml:space="preserve">
+    <value>Unable to Update.</value>
+  </data>
+  <data name="UserAccountSaved" xml:space="preserve">
+    <value>User Account details saved successfully.</value>
+  </data>
+  <data name="UserAccountUpdated" xml:space="preserve">
+    <value>User Account details updated successfully.</value>
   </data>
   <data name="WeightLbl" xml:space="preserve">
     <value>Weight</value>

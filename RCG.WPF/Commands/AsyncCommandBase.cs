@@ -5,8 +5,8 @@ using RCG.WPF.ViewModels;
 
 namespace RCG.WPF.Commands
 {
-    ////public abstract class AsyncCommandBase : DialogViewModelBase<string>, ICommand
-    public abstract class AsyncCommandBase : ICommand
+    public abstract class AsyncCommandBase : DialogViewModelBase<string>, ICommand
+    ////public abstract class AsyncCommandBase : ICommand
     {
         private bool _isExecuting;
         public bool IsExecuting

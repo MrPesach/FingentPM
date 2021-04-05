@@ -97,6 +97,15 @@ namespace RCG.CoreApp.AppResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Manage User Account.
+        /// </summary>
+        public static string ManageUserAccountHeading {
+            get {
+                return ResourceManager.GetString("ManageUserAccountHeading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to C:\Program Files (x86)\Common Files\Adobe\CEP\extensions\Price_Manager.
         /// </summary>
         public static string PathIndesignDataFile {
@@ -129,6 +138,42 @@ namespace RCG.CoreApp.AppResources {
         public static string SKULbl {
             get {
                 return ResourceManager.GetString("SKULbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to Save..
+        /// </summary>
+        public static string UnableSave {
+            get {
+                return ResourceManager.GetString("UnableSave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to Update..
+        /// </summary>
+        public static string UnableUpdate {
+            get {
+                return ResourceManager.GetString("UnableUpdate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User Account details saved successfully..
+        /// </summary>
+        public static string UserAccountSaved {
+            get {
+                return ResourceManager.GetString("UserAccountSaved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User Account details updated successfully..
+        /// </summary>
+        public static string UserAccountUpdated {
+            get {
+                return ResourceManager.GetString("UserAccountUpdated", resourceCulture);
             }
         }
         

@@ -1,10 +1,11 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Threading.Tasks;
+using RCG.CoreApp.AppResources;
 using RCG.CoreApp.DTO.User;
 using RCG.CoreApp.Enums;
-using RCG.CoreApp.Interfaces.User;
 using RCG.WPF.DialogServices;
+using RCG.WPF.Services;
 using RCG.WPF.State.Authenticators;
 using RCG.WPF.ViewModels;
 
@@ -14,11 +15,13 @@ namespace RCG.WPF.Commands
     {
         private readonly UserSetupEditViewModel _usersetupEditViewModel;
         private readonly IAuthenticator _authenticator;
+        private readonly IDialogService _dialogService;
 
-        public UserSetupEditCommand(UserSetupEditViewModel usersetupEditViewModel, IAuthenticator authenticator)
+        public UserSetupEditCommand(UserSetupEditViewModel usersetupEditViewModel, IAuthenticator authenticator, IDialogService dialogService)
         {
             _usersetupEditViewModel = usersetupEditViewModel;
             _authenticator = authenticator;
+            _dialogService = dialogService;
             _usersetupEditViewModel.PropertyChanged += RegisterViewModel_PropertyChanged;
         }
 
@@ -46,7 +49,9 @@ namespace RCG.WPF.Commands
 
                 if (userSetupDtoResult.IsValid == true)
                 {
-
+                    var window = (IDialogWindow)parameter;
+                    CloseDialogWithResult(window, EnumMaster.DialogResults.Success.ToString());
+                    this._dialogService.OpenMessageBox(Resource.ManageUserAccountHeading, userSetupDtoResult.Message, EnumMaster.MessageBoxType.Success);
                 }
                 else
                 {
@@ -55,7 +60,7 @@ namespace RCG.WPF.Commands
             }
             catch (Exception)
             {
-                _usersetupEditViewModel.ErrorMessage = "Unable to Save.";
+                _usersetupEditViewModel.ErrorMessage = Resource.UnableUpdate;
             }
         }
 

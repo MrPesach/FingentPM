@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Input;
+using RCG.CoreApp.AppResources;
 using RCG.CoreApp.Interfaces.User;
 using RCG.WPF.Commands;
 using RCG.WPF.Services;
@@ -111,11 +112,14 @@ namespace RCG.WPF.ViewModels
 
         private void UserSettings()
         {
+            _userSetupEditViewModel.ErrorMessageViewModel.Dispose();
+            _userSetupEditViewModel.Password = string.Empty;
+            _userSetupEditViewModel.ConfirmPassword = string.Empty;
             var user = _authenticationService.GetNonAdminUserAsync();
             _userSetupEditViewModel.UserId = user.Result.Id;
             _userSetupEditViewModel.Name = user.Result.Name;
             _userSetupEditViewModel.Username = user.Result.Username;
-            _userSetupEditViewModel.Title = "Manage User Account";
+            _userSetupEditViewModel.Title = Resource.ManageUserAccountHeading;
             this._dialogService.OpenDialog(_userSetupEditViewModel);
         }
 

@@ -11,6 +11,7 @@
         SizeToContent="WidthAndHeight" ShowInTaskbar="True"
        WindowState="Maximized"
         WindowStyle="ToolWindow"
+        Topmost="True"
        >
     <Grid>
         <Grid.RowDefinitions>

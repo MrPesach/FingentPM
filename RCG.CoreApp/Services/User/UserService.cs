@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using RCG.CoreApp.AppResources;
 using RCG.CoreApp.DTO.User;
 using RCG.CoreApp.Exceptions;
 using RCG.CoreApp.Helpers;
@@ -104,7 +105,7 @@ namespace RCG.CoreApp.Services.User
 
                         await _userRepository.UpdateAsync(user);
                         isValid = true;
-                        message = "User Details updated successfully";
+                        message = Resource.UserAccountUpdated;
                     }
                     else
                     {
@@ -119,7 +120,7 @@ namespace RCG.CoreApp.Services.User
 
                         await _userRepository.InsertAsync(user);
                         isValid = true;
-                        message = "User Details saved successfully";
+                        message = Resource.UserAccountSaved;
                     }
                 }
 

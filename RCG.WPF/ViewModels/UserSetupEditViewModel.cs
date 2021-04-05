@@ -3,6 +3,7 @@ using RCG.CoreApp.Enums;
 using RCG.CoreApp.Interfaces.User;
 using RCG.WPF.Commands;
 using RCG.WPF.DialogServices;
+using RCG.WPF.Services;
 using RCG.WPF.State.Accounts;
 using RCG.WPF.State.Authenticators;
 
@@ -95,6 +96,7 @@ namespace RCG.WPF.ViewModels
 
         private readonly IAuthenticator _authenticator;
         private readonly IUserStore _userStore;
+        private readonly IDialogService _dialogService;
 
         public MessageViewModel ErrorMessageViewModel { get; }
 
@@ -103,14 +105,15 @@ namespace RCG.WPF.ViewModels
             set => ErrorMessageViewModel.Message = value;
         }
 
-        public UserSetupEditViewModel(IAuthenticator authenticator, IUserStore userStore)
+        public UserSetupEditViewModel(IAuthenticator authenticator, IUserStore userStore, IDialogService dialogService)
         {
             ErrorMessageViewModel = new MessageViewModel();
 
             _authenticator = authenticator;
             _userStore = userStore;
+            _dialogService = dialogService;
             this.CancelCommand = new RelayCommand(o => this.CloseDialog(o), o => true);
-            UpdateUserCommand = new UserSetupEditCommand(this, authenticator);
+            UpdateUserCommand = new UserSetupEditCommand(this, authenticator, _dialogService);
         }
         private void CloseDialog(object obj)
         {
