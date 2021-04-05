@@ -151,33 +151,6 @@ namespace RCG.CoreApp.AppResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please enter {0}.
-        /// </summary>
-        public static string PleaseEnterLbl {
-            get {
-                return ResourceManager.GetString("PleaseEnterLbl", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Price.
-        /// </summary>
-        public static string PriceLbl {
-            get {
-                return ResourceManager.GetString("PriceLbl", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to SKU.
-        /// </summary>
-        public static string SKULbl {
-            get {
-                return ResourceManager.GetString("SKULbl", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Unable to Save..
         /// </summary>
         public static string UnableSave {
@@ -210,15 +183,6 @@ namespace RCG.CoreApp.AppResources {
         public static string UserAccountUpdated {
             get {
                 return ResourceManager.GetString("UserAccountUpdated", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Weight.
-        /// </summary>
-        public static string WeightLbl {
-            get {
-                return ResourceManager.GetString("WeightLbl", resourceCulture);
             }
         }
         

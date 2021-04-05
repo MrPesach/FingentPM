@@ -51,7 +51,7 @@ namespace RCG.WPF.Commands
                 {
                     var window = (IDialogWindow)parameter;
                     CloseDialogWithResult(window, EnumMaster.DialogResults.Success.ToString());
-                    this._dialogService.OpenMessageBox(Resource.ManageUserAccountHeading, userSetupDtoResult.Message, EnumMaster.MessageBoxType.Success);
+                    this._dialogService.OpenMessageBox(userSetupDtoResult.Message, EnumMaster.MessageBoxType.Success,  Resource.ManageUserAccountHeading);
                 }
                 else
                 {
