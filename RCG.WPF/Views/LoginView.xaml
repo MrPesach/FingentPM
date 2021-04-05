@@ -17,7 +17,7 @@
     <Grid ShowGridLines="False" Background="#ffffff">
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="500"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
@@ -29,7 +29,7 @@
             </Grid.Background>
         </Grid>
 
-        <Grid Grid.Row="0" Grid.Column="1"  Margin="72,100,155,20">
+        <Grid Grid.Row="0" Grid.Column="1"  Margin="50,100,50,20">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
@@ -59,7 +59,7 @@
                     HorizontalAlignment="Left"
                     VerticalAlignment="Center"
                     DataContext="{Binding ErrorMessageViewModel}"
-                    Text="{Binding Message}"
+                    Text="{Binding Message}" TextWrapping="Wrap"
                     Visibility="{Binding HasMessage, Converter={StaticResource BooleanToVisibilityConverter}}"/>
         </Grid>
     </Grid>
