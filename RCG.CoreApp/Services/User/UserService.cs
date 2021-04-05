@@ -25,7 +25,7 @@ namespace RCG.CoreApp.Services.User
             List<Users> users = await _userRepository.GetNonAdminListAsync();
             return users;
         }
-        
+
         public async Task<Users> GetNonAdminUserAsync()
         {
             return await _userRepository.GetNonAdminUserAsync();
@@ -41,8 +41,8 @@ namespace RCG.CoreApp.Services.User
             }
 
             string hashPassword = SecurityHelper.HashPassword(password.Trim());
-            
-            if(hashPassword != userAccount.PasswordHash)
+
+            if (hashPassword != userAccount.PasswordHash)
             {
                 throw new InvalidPasswordException(username, password);
             }
@@ -50,101 +50,85 @@ namespace RCG.CoreApp.Services.User
             return userAccount;
         }
 
-        ////public async Task<UserSetupResult> UserSetup(long? id, string name, string username, string password, string confirmPassword)
-        ////{
-        ////    UserSetupResult result = UserSetupResult.Success;
-
-        ////    if (password != confirmPassword)
-        ////    {
-        ////        result = UserSetupResult.PasswordsDoNotMatch;
-        ////    }
-        ////    if (password.Length < 5)
-        ////    {
-        ////        result = UserSetupResult.PasswordLength;
-        ////    }
-
-        ////    Users usernameAccount = await _userRepository.GetByUsernameAsync(username);
-        ////    if (usernameAccount != null)
-        ////    {
-        ////        result = UserSetupResult.UsernameAlreadyExists;
-        ////    }
-
-        ////    if (result == UserSetupResult.Success)
-        ////    {
-        ////        string hashedPassword = SecurityHelper.HashPassword(password);
-
-        ////        Users user = new Users()
-        ////        {
-        ////            Name = name,
-        ////            Username = username,
-        ////            PasswordHash = hashedPassword,
-        ////            CreatedOn = _dateTimeService.NowUtc,
-        ////            IsAdmin = false
-        ////        };
-
-        ////        await _userRepository.InsertAsync(user);
-        ////    }
-
-        ////    return result;
-        ////}
-
-        public async Task<UserSetupResult> UserSetup(UserSetupDto userSetupDto)
+        public async Task<UserSetupDto> UserSetup(UserSetupDto userSetupDto)
         {
-            UserSetupResult result = UserSetupResult.Success;
-
-            if (userSetupDto.Username.Length < 5)
+            bool isValid = true;
+            string message = string.Empty;
+            if (userSetupDto.Name.Length < 3 || userSetupDto.Username.Length > 10)
             {
-                result = UserSetupResult.UsernameLength;
+                isValid = false;
+                message = "Name should have a minimum length of 3 and maximum length of 10 characters.";
             }
 
+            if (userSetupDto.Username.Length < 5 || userSetupDto.Username.Length > 10)
+            {
+                isValid = false;
+                message = "Username should have a minimum length of 5 and maximum length of 10 characters.";
+            }
+            if (userSetupDto.Password.Length < 5 || userSetupDto.Password.Length > 10)
+            {
+                isValid = false;
+                message = "Password should have a minimum length of 5 and maximum length of 10 characters.";
+            }
             if (userSetupDto.Password != userSetupDto.ConfirmPassword)
             {
-                result = UserSetupResult.PasswordsDoNotMatch;
-            }
-            if (userSetupDto.Password.Length < 5)
-            {
-                result = UserSetupResult.PasswordLength;
+                isValid = false;
+                message = "Password does not match confirm password.";
             }
 
-            Users usernameAccount = await _userRepository.GetByUsernameAsync(userSetupDto.UserId, userSetupDto.Username);
-
-            if (usernameAccount != null)
+            if (isValid)
             {
-                result = UserSetupResult.UsernameAlreadyExists;
-            }
+                Users usernameAccount = await _userRepository.GetByUsernameAsync(userSetupDto.UserId, userSetupDto.Username);
 
-            if (result == UserSetupResult.Success)
-            {
-                string hashedPassword = SecurityHelper.HashPassword(userSetupDto.Password);
-
-                if (userSetupDto.UserId != null)
+                if (usernameAccount != null)
                 {
-                    Users user = new Users()
-                    {
-                        Name = userSetupDto.Name,
-                        Username = userSetupDto.Username,
-                        PasswordHash = hashedPassword,
-                        LastModifiedBy = userSetupDto.LastModifiedBy,
-                        LastModifiedOn = _dateTimeService.NowUtc,
-                        IsAdmin = false
-                    };
-
-                    await _userRepository.UpdateAsync(user);
+                    isValid = false;
+                    message = "Username already exists.";
                 }
+
                 else
                 {
-                    Users user = new Users()
-                    {
-                        Name = userSetupDto.Name,
-                        Username = userSetupDto.Username,
-                        PasswordHash = hashedPassword,
-                        CreatedOn = _dateTimeService.NowUtc,
-                        IsAdmin = false
-                    };
+                    string hashedPassword = SecurityHelper.HashPassword(userSetupDto.Password);
 
-                    await _userRepository.InsertAsync(user);
+                    if (userSetupDto.UserId != null)
+                    {
+                        Users user = new Users()
+                        {
+                            Name = userSetupDto.Name,
+                            Username = userSetupDto.Username,
+                            PasswordHash = hashedPassword,
+                            LastModifiedBy = userSetupDto.LastModifiedBy,
+                            LastModifiedOn = _dateTimeService.NowUtc,
+                            IsAdmin = false
+                        };
+
+                        await _userRepository.UpdateAsync(user);
+                        isValid = true;
+                        message = "User Details updated successfully";
+                    }
+                    else
+                    {
+                        Users user = new Users()
+                        {
+                            Name = userSetupDto.Name,
+                            Username = userSetupDto.Username,
+                            PasswordHash = hashedPassword,
+                            CreatedOn = _dateTimeService.NowUtc,
+                            IsAdmin = false
+                        };
+
+                        await _userRepository.InsertAsync(user);
+                        isValid = true;
+                        message = "User Details saved successfully";
+                    }
                 }
+
             }
+            UserSetupDto result = new UserSetupDto
+            {
+                IsValid = isValid,
+                Message = message
+            };
 
             return result;
         }

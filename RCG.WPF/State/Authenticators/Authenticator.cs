@@ -46,7 +46,7 @@ namespace RCG.WPF.State.Authenticators
             IsAuthenticated = null;
         }
 
-        public async Task<UserSetupResult> UserSetup(UserSetupDto userSetupDto)
+        public async Task<UserSetupDto> UserSetup(UserSetupDto userSetupDto)
         {
             return await _authenticationService.UserSetup(userSetupDto);
         }

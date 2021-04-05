@@ -23,6 +23,6 @@ namespace RCG.CoreApp.Interfaces.User
 
         Task<Users> Login(string username, string password);
 
-        Task<UserSetupResult> UserSetup(UserSetupDto userSetupDto);
+        Task<UserSetupDto> UserSetup(UserSetupDto userSetupDto);
     }
 }

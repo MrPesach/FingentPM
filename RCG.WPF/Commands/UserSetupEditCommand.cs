@@ -42,33 +42,15 @@ namespace RCG.WPF.Commands
                     ConfirmPassword = _usersetupEditViewModel.ConfirmPassword,
                 };
 
-                UserSetupResult userSetupResult = await _authenticator.UserSetup(userSetupDto);
+                UserSetupDto userSetupDtoResult = await _authenticator.UserSetup(userSetupDto);
 
-                switch (userSetupResult)
+                if (userSetupDtoResult.IsValid == true)
                 {
-                    case UserSetupResult.Success:
-                        //var window = (IDialogWindow)parameter;
-                        //CloseDialogWithResult(window, EnumMaster.DialogResults.Success.ToString());
-                        ///_usersetupRenavigator.Renavigate();
-                        break;
-                    case UserSetupResult.PasswordsDoNotMatch:
-                        _usersetupEditViewModel.ErrorMessage = "Password does not match confirm password.";
-                        break;
-                    case UserSetupResult.EmailAlreadyExists:
-                        _usersetupEditViewModel.ErrorMessage = "An account for this email already exists.";
-                        break;
-                    case UserSetupResult.UsernameAlreadyExists:
-                        _usersetupEditViewModel.ErrorMessage = "An account for this username already exists.";
-                        break;
-                    case UserSetupResult.PasswordLength:
-                        _usersetupEditViewModel.ErrorMessage = "Password should have a minimum length of 5 characters.";
-                        break;
-                    case UserSetupResult.UsernameLength:
-                        _usersetupEditViewModel.ErrorMessage = "Username should have a minimum length of 5 characters.";
-                        break;
-                    default:
-                        _usersetupEditViewModel.ErrorMessage = "Unable to Save.";
-                        break;
+
+                }
+                else
+                {
+                    _usersetupEditViewModel.ErrorMessage = userSetupDtoResult.Message;
                 }
             }
             catch (Exception)

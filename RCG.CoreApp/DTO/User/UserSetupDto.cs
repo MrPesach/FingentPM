@@ -8,5 +8,9 @@
         public string Password { get; set; }
         public string ConfirmPassword { get; set; }
         public string LastModifiedBy { get; set; }
+
+        public bool IsValid { get; set; }
+
+        public string Message { get; set; }
     }
 }

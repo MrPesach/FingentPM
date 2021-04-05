@@ -29,7 +29,7 @@
                HorizontalAlignment="Left">
         </Image>
         <StackPanel Grid.Row="0" Grid.Column="1"  Margin="0,0,30,0" HorizontalAlignment="Right" Orientation="Horizontal">
-            <Button Style="{StaticResource TransparentButton}"  Visibility="Hidden"
+            <Button Style="{StaticResource TransparentButton}"
                 x:Name="MainButton" 
                 ContextMenuService.IsEnabled="False"
                 ContextMenuService.ShowOnDisabled="True"

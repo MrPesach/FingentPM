@@ -44,31 +44,15 @@ namespace RCG.WPF.Commands
                     ConfirmPassword = _usersetupViewModel.ConfirmPassword,
                 };
 
-                UserSetupResult userSetupResult = await _authenticator.UserSetup(userSetupDto);
+                UserSetupDto userSetupDtoResult = await _authenticator.UserSetup(userSetupDto);
 
-                switch (userSetupResult)
+                if (userSetupDtoResult.IsValid == true)
                 {
-                    case UserSetupResult.Success:
-                        _usersetupRenavigator.Renavigate();
-                        break;
-                    case UserSetupResult.PasswordsDoNotMatch:
-                        _usersetupViewModel.ErrorMessage = "Password does not match confirm password.";
-                        break;
-                    case UserSetupResult.EmailAlreadyExists:
-                        _usersetupViewModel.ErrorMessage = "An account for this email already exists.";
-                        break;
-                    case UserSetupResult.UsernameAlreadyExists:
-                        _usersetupViewModel.ErrorMessage = "An account for this username already exists.";
-                        break;
-                    case UserSetupResult.PasswordLength:
-                        _usersetupViewModel.ErrorMessage = "Password should have a minimum length of 5 characters.";
-                        break;
-                    case UserSetupResult.UsernameLength:
-                        _usersetupViewModel.ErrorMessage = "Username should have a minimum length of 5 characters.";
-                        break;
-                    default:
-                        _usersetupViewModel.ErrorMessage = "Unable to Save.";
-                        break;
+                    _usersetupRenavigator.Renavigate();
+                }
+                else
+                {
+                    _usersetupViewModel.ErrorMessage = userSetupDtoResult.Message;
                 }
             }
             catch (Exception)
