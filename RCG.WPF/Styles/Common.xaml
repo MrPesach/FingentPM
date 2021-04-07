@@ -465,7 +465,7 @@
                                 <ColumnDefinition Width="9*"/>
                             </Grid.ColumnDefinitions>
                             <Image Grid.Column="0" Width="20" Height="22"  
-                                   Source="{TemplateBinding Uid}"
+                                   Source="{Binding RelativeSource={RelativeSource TemplatedParent},Path=Icon}"
                                    Margin="0,0,10,0"
                                    VerticalAlignment="Center"></Image>
                             <ContentPresenter x:Name="ContentPresenter"  
