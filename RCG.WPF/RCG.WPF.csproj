@@ -20,6 +20,7 @@
 		</AllowedReferenceRelatedFileExtensions>
 	</PropertyGroup>
 	<ItemGroup>
+		<None Remove="app-icon.ico" />
 		<None Remove="Resources\Images\folder-open.png" />
 		<None Remove="Resources\Images\green-tick.png" />
 		<None Remove="Resources\Images\keyboard-arrow-down.png" />
@@ -47,10 +48,11 @@
 
 	<ItemGroup>
 
-		<Resource Include="Resources\Images\app-header.png">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		<Resource Include="app-icon.ico">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Resource>
-		<Resource Include="Resources\Images\app-icon.ico">
+
+		<Resource Include="Resources\Images\app-header.png">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Resource>
 		<Resource Include="Resources\Images\App-top-bg.png">
