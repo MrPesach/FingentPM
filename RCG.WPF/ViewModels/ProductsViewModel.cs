@@ -36,6 +36,7 @@ namespace RCG.WPF.ViewModels
         public ICommand AddProductCommand { get; }
         public ICommand EditProductCommand { get; }
         public ICommand DeleteProductCommand { get; }
+        public ICommand LoadedCommand { get; }
 
         public ProductsViewModel(
             IProductService productService,
@@ -44,24 +45,21 @@ namespace RCG.WPF.ViewModels
             AddProductViewModel addProductViewModel,
             AlertViewModel alertViewModel)
         {
-            ////WindowHeight = Convert.ToInt32(Resource.HeightProductsView);
-            ////WindowWidth = Convert.ToInt32(Resource.WidthProductsView);
-
             this._productService = productService;
             this._dialogService = dialogService;
             this._addProductViewModel = addProductViewModel;
             this._alertViewModel = alertViewModel;
             this._importPriceListViewModel = importPriceListViewModel;
 
-            this.ImportPriceListCommand = new RelayCommand(obj => this.ImportProductList(), obj => true);
-            this.SearchCommand = new RelayCommand(obj => this.Search(), obj => true);
-            this.PaginationCommand = new RelayCommand(obj => this.PaginationClick(obj), obj => true);
-            this.FirstOrLastCommand = new RelayCommand(obj => this.FirstOrLast(obj), obj => true);
-            this.NextOrPrevCommand = new RelayCommand(obj => this.FirstOrLast(obj), obj => true);
-            this.AddProductCommand = new RelayCommand(obj => this.AddProduct(), obj => true);
-            this.EditProductCommand = new RelayCommand(obj => this.EditProduct(obj), obj => true);
-            this.DeleteProductCommand = new RelayCommand(obj => this.DeleteProduct(obj), obj => true);
-            this.InitialLoad();
+            this.ImportPriceListCommand = new AsyncCommand(obj => this.ImportProductList());
+            this.SearchCommand = new AsyncCommand(obj => this.Search());
+            this.PaginationCommand = new AsyncCommand(obj => this.PaginationClick(obj));
+            this.FirstOrLastCommand = new AsyncCommand(obj => this.FirstOrLast(obj));
+            this.NextOrPrevCommand = new AsyncCommand(obj => this.FirstOrLast(obj));
+            this.AddProductCommand = new AsyncCommand(obj => this.AddProduct());
+            this.EditProductCommand = new AsyncCommand(obj => this.EditProduct(obj));
+            this.DeleteProductCommand = new AsyncCommand(obj => this.DeleteProduct(obj));
+            this.LoadedCommand = new AsyncCommand(obj => this.InitialLoad());
         }
 
         private ObservableCollection<AddProductDto> _productList;
@@ -70,28 +68,6 @@ namespace RCG.WPF.ViewModels
         private int _pageNumber;
         private bool _isNoRecords;
         private int _totalPages;
-
-        ////private int _windowWidth;
-        ////public int WindowWidth
-        ////{
-        ////    get { return _windowWidth; }
-        ////    set
-        ////    {
-        ////        _windowWidth = value;
-        ////        RaisePropertyChanged(Resource.WindowWidth);
-        ////    }
-        ////}
-
-        ////private int _windowHeight;
-        ////public int WindowHeight
-        ////{
-        ////    get { return _windowHeight; }
-        ////    set
-        ////    {
-        ////        _windowHeight = value;
-        ////        RaisePropertyChanged(Resource.WindowHeight);
-        ////    }
-        ////}
 
         public ObservableCollection<AddProductDto> ProductList
         {
@@ -131,7 +107,12 @@ namespace RCG.WPF.ViewModels
         public int TotalPages
         {
             get { return _totalPages; }
-            set { _totalPages = value; this.OnPropertyChanged("TotalPages"); }
+            set
+            {
+                _totalPages = value;
+                this.ShowPagination = value > 0;
+                this.OnPropertyChanged("TotalPages");
+            }
         }
 
 
@@ -143,6 +124,15 @@ namespace RCG.WPF.ViewModels
             await this.GetProducts();
         }
 
+        private bool _showPagination;
+
+        public bool ShowPagination
+        {
+            get { return _showPagination; }
+            set { _showPagination = value; this.OnPropertyChanged("ShowPagination"); }
+        }
+
+
         private async Task GetProducts()
         {
             var gridResponse = await this._productService.GetPagedProductList(this.PageNumber, 10, this.SearchText);
@@ -151,7 +141,7 @@ namespace RCG.WPF.ViewModels
             this.ProductList = new ObservableCollection<AddProductDto>(gridResponse.Rows);
         }
 
-        private async void Search()
+        private async Task Search()
         {
             this.PageNumber = 0;
             ////this.SetPages();
@@ -187,7 +177,7 @@ namespace RCG.WPF.ViewModels
             }
         }
 
-        private async void FirstOrLast(object selectedButton)
+        private async Task FirstOrLast(object selectedButton)
         {
             var firstOrLast = (string)selectedButton;
             int selectedNumber = 0;
@@ -211,7 +201,7 @@ namespace RCG.WPF.ViewModels
             await this.PaginationClick(selectedNumber);
         }
 
-        private async void AddProduct()
+        private async Task AddProduct()
         {
             await this.GenerateProductJsonFileAsync();
             _addProductViewModel.Title = "Add New Product";
@@ -227,7 +217,7 @@ namespace RCG.WPF.ViewModels
             }
         }
 
-        private async void EditProduct(object obj)
+        private async Task EditProduct(object obj)
         {
             if (obj != null)
             {
@@ -254,7 +244,7 @@ namespace RCG.WPF.ViewModels
             }
         }
 
-        private async void DeleteProduct(object obj)
+        private async Task DeleteProduct(object obj)
         {
             if (obj != null)
             {
@@ -271,7 +261,7 @@ namespace RCG.WPF.ViewModels
             }
         }
 
-        private async void ImportProductList()
+        private async Task ImportProductList()
         {
             var result = _dialogService.OpenDialog(_importPriceListViewModel);
             if (result != EnumMaster.DialogResults.Cancelled.ToString())
@@ -286,8 +276,9 @@ namespace RCG.WPF.ViewModels
             if (result)
             {
                 this._dialogService.OpenMessageBox("Product deleted successfully.", EnumMaster.MessageBoxType.Success);
-                this.ProductList.Remove(ProductList.Single(s => s.ProductId == productId));
-                this.IsNoRecords = !this.ProductList.Any();
+                await this.GetProducts();
+                ////this.ProductList.Remove(ProductList.Single(s => s.ProductId == productId));
+                ////this.IsNoRecords = !this.ProductList.Any();
             }
         }
 

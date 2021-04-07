@@ -11,6 +11,11 @@
              x:Name="ProductList"
              Width="1370"
              Height="600">
+    <InteractionTrigger:Interaction.Triggers>
+        <InteractionTrigger:EventTrigger EventName="Loaded">
+            <InteractionTrigger:InvokeCommandAction Command="{Binding LoadedCommand}" />
+        </InteractionTrigger:EventTrigger>
+    </InteractionTrigger:Interaction.Triggers>
     <UserControl.Resources>
         <ResourceDictionary>
             <x:Array x:Key="MyDumbMockedList" Type="local1:Products">
@@ -32,9 +37,9 @@
 
     <Grid Background="#ffffff">
         <Grid.RowDefinitions>
-            <RowDefinition Height="70"/>
+            <RowDefinition Height="60"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="80"/>
+            <RowDefinition Height="60"/>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" Margin="15,0,15,0">
             <Grid.ColumnDefinitions>
@@ -124,7 +129,8 @@
                        Text="No record(s) found"/>
         </StackPanel>
 
-        <Grid Grid.Row="2" Height="36"  HorizontalAlignment="Right" Margin="0,0,10,0">
+        <Grid Visibility="{Binding ShowPagination, Converter={StaticResource BooleanToVisibilityConverter}}"
+              Grid.Row="2" Height="36"  HorizontalAlignment="Right" Margin="0,0,10,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>

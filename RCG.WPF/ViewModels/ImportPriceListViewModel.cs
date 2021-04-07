@@ -61,6 +61,7 @@ namespace RCG.WPF.ViewModels
         private string _importCompleteMessage;
         private bool _csvHasError;
         private bool _csvHasNoError;
+        private string _fileName;
 
         public bool CanExecute => !string.IsNullOrEmpty(this.FilePath) && !ProgressBarSection;
 
@@ -110,6 +111,7 @@ namespace RCG.WPF.ViewModels
             this.PopupHeight = 402;
             this.FailedProductList = new List<AddProductDto>();
             this.FilePath = string.Empty;
+            this.FileName = string.Empty;
             this.ClearCounts();
             this.CSVHasError = false;
         }
@@ -200,6 +202,13 @@ namespace RCG.WPF.ViewModels
             set { _csvHasNoError = value; this.OnPropertyChanged("CSVHasNoError"); }
         }
 
+        public string FileName
+        {
+            get { return _fileName; }
+            set { _fileName = value; this.OnPropertyChanged("FileName"); }
+        }
+
+
         public string DownloadFileName { get; set; }
 
         private void BrowseFile()
@@ -212,14 +221,15 @@ namespace RCG.WPF.ViewModels
                 var success = this._productService.ValidateCSV(openFileDlg.FileName);
                 if (success)
                 {
-                    ///FileNameTextBox.Text = openFileDlg.FileName;
+                    this.FileName = openFileDlg.FileName;
                     this.DownloadFileName = Path.GetFileName(openFileDlg.FileName);
                     this.FilePath = openFileDlg.FileName;
                 }
                 else
                 {
                     this.FilePath = string.Empty;
-                    _dialogService.OpenMessageBox("Invalid CSV file selected", EnumMaster.MessageBoxType.Error);
+                    this.FileName = string.Empty;
+                    _dialogService.OpenMessageBox("Uploaded CSV does not match the required format", EnumMaster.MessageBoxType.Error);
                 }
             }
         }
@@ -276,6 +286,7 @@ namespace RCG.WPF.ViewModels
             {
                 this.ClearCounts();
                 this.FilePath = string.Empty;
+                this.FileName = string.Empty;
                 this.ProgressBarSection = false;
                 this.IsCompleted = true;
                 this.InProgress = false;
