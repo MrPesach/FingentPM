@@ -6,13 +6,90 @@
     xmlns:local="clr-namespace:RCG.WPF.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:components="clr-namespace:PasswordBoxMVVM.Components;assembly=PasswordBoxMVVM"
     mc:Ignorable="d"
-    Width="1272"
-    Height="600">
+    d:Height="592"
+    d:Width="1272">
     <UserControl.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
     </UserControl.Resources>
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Resources/images/login-banner.png" Stretch="None"/>
+        </Grid.Background>
+        <Grid Background="#ffffff" HorizontalAlignment="Right" Width="484">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*" />
+                <RowDefinition Height="98*" />
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" HorizontalAlignment="Right" Orientation="Horizontal">
+                <Button Style="{StaticResource TitleBarButton}" Command="{Binding MinimizeAppCommand}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}}">
+                    <Image Source="/Resources/Images/black-line.png"></Image>
+                </Button>
+                <Button Style="{StaticResource TitleBarButton}" Command="{Binding MaximizeAppCommand}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}}">
+                    <Image Source="/Resources/Images/black-rectangle.png"></Image>
+                </Button>
+                <Button Style="{StaticResource TitleBarButton}" Command="{Binding CloseAppCommand}">
+                    <Image Source="/Resources/Images/close.png"></Image>
+                </Button>
+            </StackPanel>
+            <Grid Grid.Row="1"  VerticalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
 
-    <Grid ShowGridLines="False" Background="#ffffff">
+                <StackPanel Grid.Row="1" Style="{StaticResource FormGroup}">
+                    <TextBlock  Style="{StaticResource TextBlockHeading}" Text="Setup Account" />
+                    <TextBlock HorizontalAlignment="Left" Style="{StaticResource DarkTextBlock}" Text="Name"/>
+                    <TextBox Style="{StaticResource FormControl}"
+                     Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" >
+                    </TextBox>
+                </StackPanel>
+                <StackPanel Grid.Row="2" Style="{StaticResource FormGroup}">
+                    <TextBlock HorizontalAlignment="Left" Style="{StaticResource DarkTextBlock}" Text="Username"/>
+                    <TextBox Style="{StaticResource FormControl}"
+                     Text="{Binding Username, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" >
+                    </TextBox>
+                </StackPanel>
+                <StackPanel Grid.Row="3" Style="{StaticResource FormGroup}">
+                    <TextBlock HorizontalAlignment="Left" Style="{StaticResource DarkTextBlock}" Text="Password"/>
+                    <components:BindablePasswordBox  HorizontalAlignment="Left" Width="400" Height="40"
+                        Password="{Binding Password}" />
+                </StackPanel>
+                <StackPanel Grid.Row="4" Style="{StaticResource FormGroup}">
+                    <TextBlock HorizontalAlignment="Left" Style="{StaticResource DarkTextBlock}" Text="Confirm Password"/>
+                    <components:BindablePasswordBox  HorizontalAlignment="Left" Width="400" Height="40"
+                        Password="{Binding ConfirmPassword}" />
+                </StackPanel>
+                <Grid Width="400" Grid.Row="5" HorizontalAlignment="Right" Margin="0,20,42,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="70*"/>
+                        <ColumnDefinition Width="30*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Style="{StaticResource ErrorText}"
+                               Grid.Column="0"
+                    Margin="0,0,10,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    DataContext="{Binding ErrorMessageViewModel}"
+                    Text="{Binding Message}"
+                    TextWrapping="Wrap"
+                    Visibility="{Binding HasMessage, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+
+                    <Button Grid.Column="1" Command="{Binding RegisterCommand}" Content="Create Account" IsDefault="True" 
+                            Style="{StaticResource PrimaryButton}" Height="35" Width="113" HorizontalAlignment="Right"/>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+
+
+    <!--<Grid ShowGridLines="False" Background="#ffffff">
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition Width="500"></ColumnDefinition>
@@ -73,5 +150,5 @@
                     Text="{Binding Message}" TextWrapping="Wrap"
                     Visibility="{Binding HasMessage, Converter={StaticResource BooleanToVisibilityConverter}}" />
         </Grid>
-    </Grid>
+    </Grid>-->
 </UserControl>

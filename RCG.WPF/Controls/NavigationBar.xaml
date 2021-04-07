@@ -9,26 +9,43 @@
     xmlns:nav="clr-namespace:RCG.WPF.State.Navigators"
     xmlns:vm="clr-namespace:RCG.WPF.ViewModels"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
-    d:Height="450"
-    d:Width="800"
+    d:Height="113"
+    d:Width="1366"
     mc:Ignorable="d">
     <UserControl.Resources>
         <converters:EqualValueToParameterConverter x:Key="EqualValueToParameterConverter" />
     </UserControl.Resources>
-    <Grid ShowGridLines="False" Grid.Row="0" Background="{StaticResource BrushBlack}">
+    <Grid Height="113">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="30*"></RowDefinition>
+            <RowDefinition Height="70*"></RowDefinition>
         </Grid.RowDefinitions>
-
-        <Image Margin="10" Grid.Row="0" Grid.Column="0" Width="300" 
-               Source="/Resources/Images/royal_chain_white_logo.png"
-               HorizontalAlignment="Left">
-        </Image>
-        <StackPanel Grid.Row="0" Grid.Column="1"  Margin="0,0,30,0" HorizontalAlignment="Right" Orientation="Horizontal">
+        <Grid.Background>
+            <ImageBrush ImageSource="/Resources/images/app-header-new.png" Stretch="None"/>
+        </Grid.Background>
+        <TextBlock Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" 
+                   Style="{StaticResource LighTextBlock}" Text="Product Manager"
+                   Margin="10,10,0,0"/>
+        <StackPanel Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal">
+            <Button Style="{StaticResource TitleBarButton}" Command="{Binding MinimizeAppCommand}"
+                    CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}}">
+                <Image Source="/Resources/Images/white-line.png"></Image>
+            </Button>
+            <Button Style="{StaticResource TitleBarButton}" Command="{Binding MaximizeAppCommand}"
+                    CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}}">
+                <Image Source="/Resources/Images/white-rectangle.png"></Image>
+            </Button>
+            <Button Style="{StaticResource TitleBarButton}" Command="{Binding CloseAppCommand}">
+                <Image Source="/Resources/Images/white-close.png"></Image>
+            </Button>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="1"  Margin="0,0,30,0" 
+                    HorizontalAlignment="Right" 
+                    Orientation="Horizontal">
             <Button Style="{StaticResource TransparentButton}"
                 x:Name="MainButton" 
                 ContextMenuService.IsEnabled="False"
@@ -51,17 +68,16 @@
                     </ContextMenu>
                 </Button.ContextMenu>
             </Button>
-            <Border CornerRadius="50" Width="50"
-                    Height="50"
-                    Background="{StaticResource BrushBlue}"
-                    BorderBrush="{StaticResource BrushWhite}"
-                    BorderThickness="2" Margin="35,0,0,0">
+
+            <Grid Margin="35,0,0,0">
+                <Ellipse Stroke="#ffffff" StrokeThickness="2" SnapsToDevicePixels="True"  Fill="{StaticResource BrushBlue}" Width="40" Height="40"/>
                 <TextBlock Style="{StaticResource LighTextBlock}" 
                        Text="{Binding LoggedUserFirstLetter}"
-                           Margin="0"
-                       Foreground="{StaticResource BrushWhite}" />
-            </Border>
-            <TextBlock  Grid.Row="0" Grid.Column="3" 
+                       Margin="0"
+                       Foreground="{StaticResource BrushWhite}" FontSize="14" />
+            </Grid>
+            <TextBlock  Grid.Row="1" Grid.Column="3" 
+                        
                         HorizontalAlignment="Center" 
                         VerticalAlignment="Center"
                         Style="{StaticResource LighTextBlock}"

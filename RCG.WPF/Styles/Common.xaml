@@ -61,7 +61,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
+
     <Style TargetType="Button" BasedOn="{StaticResource ImageButton}" x:Key="FolderButton">
         <Setter Property="Width" Value="23"></Setter>
         <Setter Property="Height" Value="23"></Setter>
@@ -383,6 +383,10 @@
         <Setter Property="Width" Value="400"/>
         <Setter Property="Height" Value="40"/>
         <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="Foreground" Value="#4E5052"/>
+        <Setter Property="FontFamily" Value="{StaticResource SegoeUI}"/>
+        <Setter Property="FontSize" Value="13"/>
+        <Setter Property="FontWeight" Value="Bold"/>
     </Style>
 
     <Style TargetType="TextBlock" x:Key="ErrorText">
@@ -439,7 +443,8 @@
         <Setter Property="Background" Value="Transparent"></Setter>
         <Setter Property="Foreground" Value="#ffffff"/>
         <Setter Property="BorderBrush" Value="#ffffff"/>
-        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
         <Setter Property="Width" Value="140"/>
     </Style>
 
@@ -489,7 +494,7 @@
         <Setter Property="Width" Value="Auto"/>
         <Setter Property="Foreground" Value="#105EEB"/>
     </Style>
-   
+
     <Style x:Key="FolderPathTextBox" TargetType="{x:Type TextBox}" BasedOn="{StaticResource {x:Type TextBox}}">
         <Setter Property="FontFamily" Value="{StaticResource SegoeUI}" />
         <Setter Property="FontSize" Value="14" />
@@ -498,7 +503,7 @@
         <Setter Property="Foreground" Value="#706E6E" />
         <Setter Property="FontWeight" Value="SemiBold" />
         <Setter Property="IsReadOnly" Value="True" />
-        
+
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TextBox}">
@@ -516,11 +521,11 @@
                                 <ColumnDefinition Width="2*"/>
                             </Grid.ColumnDefinitions>
                             <Button Style="{StaticResource FolderButton}" Grid.Column="0"/>
-                            
-                                <TextBlock Grid.Column="1" Text="{TemplateBinding Text}" 
+
+                            <TextBlock Grid.Column="1" Text="{TemplateBinding Text}" 
                                            TextTrimming="CharacterEllipsis"
                                            ToolTip="{TemplateBinding Text}"/>
-                            
+
                             <Button Style="{StaticResource LinkButton}" Grid.Column="2"
                                     Content="Change"
                                     Command="{Binding SelectPathCommand}"/>
@@ -535,5 +540,11 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+    </Style>
+
+    <Style TargetType="Button" BasedOn="{StaticResource ImageButton}" x:Key="TitleBarButton">
+        <Setter Property="Width" Value="14"/>
+        <Setter Property="Margin" Value="0,10,10,0"/>
+        <Setter Property="Cursor" Value="Hand"/>
     </Style>
 </ResourceDictionary>

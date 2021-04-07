@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows;
 using System.Windows.Input;
 using RCG.CoreApp.AppResources;
 using RCG.CoreApp.Interfaces.User;
@@ -43,6 +44,11 @@ namespace RCG.WPF.ViewModels
         private readonly UserSetupEditViewModel _userSetupEditViewModel;
         private readonly IndexPathViewModel _indexPathViewModel;
         private readonly IUserStore _userStore;
+
+        private string _loggedUserName;
+        private string _loggedUserFirstLetter;
+        private WindowState _windowState;
+
         public bool IsLoggedIn => _authenticator.IsLoggedIn;
         public ViewModelBase CurrentViewModel => _navigator.CurrentViewModel;
 
@@ -94,9 +100,6 @@ namespace RCG.WPF.ViewModels
 
         }
 
-        private string _loggedUserName;
-        private string _loggedUserFirstLetter;
-
         public string LoggedUserName
         {
             get { return _loggedUserName; }
@@ -114,6 +117,13 @@ namespace RCG.WPF.ViewModels
             get { return _loggedUserFirstLetter; }
             set { _loggedUserFirstLetter = value; this.OnPropertyChanged("LoggedUserFirstLetter"); }
         }
+
+        public WindowState WindowState
+        {
+            get { return _windowState; }
+            set { _windowState = value; this.OnPropertyChanged("WindowState"); }
+        }
+
 
         private void UserSettings()
         {
@@ -145,6 +155,10 @@ namespace RCG.WPF.ViewModels
         private void Navigator_StateChanged()
         {
             OnPropertyChanged(nameof(CurrentViewModel));
+            if (this.IsLoggedIn)
+            {
+                this.WindowState = WindowState.Maximized;
+            }
         }
 
         public override void Dispose()

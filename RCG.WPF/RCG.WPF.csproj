@@ -21,11 +21,17 @@
 	</PropertyGroup>
 	<ItemGroup>
 		<None Remove="app-icon.ico" />
+		<None Remove="Resources\Images\app-header-new.png" />
+		<None Remove="Resources\Images\black-Line.png" />
+		<None Remove="Resources\Images\black-rectangle.png" />
 		<None Remove="Resources\Images\folder-open.png" />
 		<None Remove="Resources\Images\green-tick.png" />
 		<None Remove="Resources\Images\keyboard-arrow-down.png" />
 		<None Remove="Resources\Images\settings.png" />
 		<None Remove="Resources\Images\user.png" />
+		<None Remove="Resources\Images\white-close.png" />
+		<None Remove="Resources\Images\white-line.png" />
+		<None Remove="Resources\Images\white-rectangle.png" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -52,8 +58,8 @@
 		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Resource>
 
-		<Resource Include="Resources\Images\app-header.png">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		<Resource Include="Resources\Images\app-header-new.png">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Resource>
 		<Resource Include="Resources\Images\App-top-bg.png">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -64,6 +70,8 @@
 		<Resource Include="Resources\Images\arrow-right.png">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Resource>
+		<Resource Include="Resources\Images\black-Line.png" />
+		<Resource Include="Resources\Images\black-rectangle.png" />
 		<Resource Include="Resources\Images\check-green.png">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Resource>
@@ -122,6 +130,9 @@
 		</Resource>
 		<Resource Include="Resources\Images\settings.png" />
 		<Resource Include="Resources\Images\user.png" />
+		<Resource Include="Resources\Images\white-close.png" />
+		<Resource Include="Resources\Images\white-line.png" />
+		<Resource Include="Resources\Images\white-rectangle.png" />
 	</ItemGroup>
 	<Target Name="PublishFrontend" AfterTargets="ComputeFilesToPublish">
 		<ItemGroup>

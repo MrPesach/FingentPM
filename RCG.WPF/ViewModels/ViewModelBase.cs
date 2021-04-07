@@ -1,4 +1,7 @@
-﻿using System.ComponentModel;
+﻿using RCG.WPF.Commands;
+using System.ComponentModel;
+using System.Windows;
+using System.Windows.Input;
 
 namespace RCG.WPF.ViewModels
 {
@@ -6,6 +9,39 @@ namespace RCG.WPF.ViewModels
 
     public class ViewModelBase : INotifyPropertyChanged
     {
+        public ICommand CloseAppCommand { get; }
+        public ICommand MaximizeAppCommand { get; }
+        public ICommand MinimizeAppCommand { get; }
+
+        public ViewModelBase()
+        {
+            this.CloseAppCommand = new RelayCommand(a => this.CloseApp());
+            this.MaximizeAppCommand = new RelayCommand(a => this.MaximizeApp(a));
+            this.MinimizeAppCommand = new RelayCommand(a => this.MinimizeApp(a));
+        }
+
+        private void MinimizeApp(object window)
+        {
+            if (window != null)
+            {
+                var mainWindow = (Window)window;
+                mainWindow.WindowState = WindowState.Minimized;
+            }
+        }
+
+        private void MaximizeApp(object window)
+        {
+            if (window != null)
+            {
+                var mainWindow = (Window)window;
+                mainWindow.WindowState = WindowState.Maximized;
+            }
+        }
+
+        private void CloseApp()
+        {
+            Application.Current.Shutdown();
+        }
         public virtual void Dispose() { }
 
         public event PropertyChangedEventHandler PropertyChanged;
