@@ -97,6 +97,15 @@ namespace RCG.CoreApp.AppResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ProductDetails.txt.
+        /// </summary>
+        public static string IndesignDataFileName {
+            get {
+                return ResourceManager.GetString("IndesignDataFileName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Manage User Account.
         /// </summary>
         public static string ManageUserAccountHeading {
@@ -106,11 +115,20 @@ namespace RCG.CoreApp.AppResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to C:\Program Files (x86)\Common Files\Adobe\CEP\extensions\Price_Manager.
+        ///   Looks up a localized string similar to \RCG\Indesign\.
         /// </summary>
         public static string PathIndesignDataFile {
             get {
                 return ResourceManager.GetString("PathIndesignDataFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to \RCG\Uploads\.
+        /// </summary>
+        public static string PathUploads {
+            get {
+                return ResourceManager.GetString("PathUploads", resourceCulture);
             }
         }
         
@@ -138,15 +156,6 @@ namespace RCG.CoreApp.AppResources {
         public static string SKULbl {
             get {
                 return ResourceManager.GetString("SKULbl", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Weight.
-        /// </summary>
-        public static string WeightLbl {
-            get {
-                return ResourceManager.GetString("WeightLbl", resourceCulture);
             }
         }
         
@@ -183,6 +192,15 @@ namespace RCG.CoreApp.AppResources {
         public static string UserAccountUpdated {
             get {
                 return ResourceManager.GetString("UserAccountUpdated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Weight.
+        /// </summary>
+        public static string WeightLbl {
+            get {
+                return ResourceManager.GetString("WeightLbl", resourceCulture);
             }
         }
         

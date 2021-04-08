@@ -58,7 +58,7 @@
             }
         }
 
-        public async Task<bool> AddProductAsync(Products product)
+        public async Task<bool> AddOrUpdateProductAsync(Products product)
         {
             if (product.Id > 0)
             {

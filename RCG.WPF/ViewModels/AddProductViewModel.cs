@@ -7,6 +7,7 @@ using RCG.WPF.State.Accounts;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace RCG.WPF.ViewModels
@@ -23,7 +24,7 @@ namespace RCG.WPF.ViewModels
         {
             _productService = productService;
             _userStore = userStore;
-            this.SaveProductCommand = new RelayCommand(o => this.SaveProduct(o), o => this.CanExecuteSave);
+            this.SaveProductCommand = new RelayCommand(o => this.SaveProductAsync(o), o => this.CanExecuteSave);
             this.CancelCommand = new RelayCommand(o => this.CloseDialog(o), o => true);
             this.ClearAll();
         }
@@ -40,7 +41,7 @@ namespace RCG.WPF.ViewModels
 
         public bool CanExecuteSave => this.AddProduct != null && !string.IsNullOrEmpty(AddProduct.Style) && !string.IsNullOrEmpty(AddProduct.Price);
 
-        private async void SaveProduct(object obj)
+        private async Task SaveProductAsync(object obj)
         {
             var validatedProduct = this._productService.ValidateProductSave(this.AddProduct, false);
             if (validatedProduct.IsValid)

@@ -133,7 +133,7 @@
     <value>Manage User Account</value>
   </data>
   <data name="PathIndesignDataFile" xml:space="preserve">
-    <value>C:\Program Files (x86)\Common Files\Adobe\CEP\extensions\Price_Manager</value>
+    <value>\RCG\Indesign\</value>
   </data>
   <data name="PleaseEnterLbl" xml:space="preserve">
     <value>Please enter {0}</value>
@@ -146,15 +146,6 @@
   </data>
   <data name="WeightLbl" xml:space="preserve">
     <value>Weight</value>
-  </data>
-  <data name="PleaseEnterLbl" xml:space="preserve">
-    <value>Please enter {0}</value>
-  </data>
-  <data name="PriceLbl" xml:space="preserve">
-    <value>Price</value>
-  </data>
-  <data name="SKULbl" xml:space="preserve">
-    <value>SKU</value>
   </data>
   <data name="UnableSave" xml:space="preserve">
     <value>Unable to Save.</value>
@@ -167,9 +158,6 @@
   </data>
   <data name="UserAccountUpdated" xml:space="preserve">
     <value>User Account details updated successfully.</value>
-  </data>
-  <data name="WeightLbl" xml:space="preserve">
-    <value>Weight</value>
   </data>
   <data name="WidthLoginView" xml:space="preserve">
     <value>1272</value>
@@ -185,5 +173,11 @@
   </data>
   <data name="WindowWidth" xml:space="preserve">
     <value>WindowWidth</value>
+  </data>
+  <data name="IndesignDataFileName" xml:space="preserve">
+    <value>ProductDetails.txt</value>
+  </data>
+  <data name="PathUploads" xml:space="preserve">
+    <value>\RCG\Uploads\</value>
   </data>
 </root>
