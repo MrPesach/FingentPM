@@ -133,7 +133,7 @@
     <value>Manage User Account</value>
   </data>
   <data name="PathIndesignDataFile" xml:space="preserve">
-    <value>\RCG\</value>
+    <value>\RCG\Indesign\</value>
   </data>
   <data name="PleaseEnterLbl" xml:space="preserve">
     <value>Please enter {0}</value>
@@ -176,5 +176,8 @@
   </data>
   <data name="IndesignDataFileName" xml:space="preserve">
     <value>ProductDetails.txt</value>
+  </data>
+  <data name="PathUploads" xml:space="preserve">
+    <value>\RCG\Uploads\</value>
   </data>
 </root>

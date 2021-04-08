@@ -88,17 +88,17 @@
                     productList = csv.GetRecords<AddProductDto>().ToList();
                 }
 
-                string appPath = Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory) + @"\Resources\UploadedFiles\";
-                if (!Directory.Exists(appPath))
+                var saveFilePath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + Resource.PathUploads;
+                if (!Directory.Exists(saveFilePath))
                 {
-                    Directory.CreateDirectory(appPath);
+                    Directory.CreateDirectory(saveFilePath);
                 }
 
                 var fileExt = Path.GetExtension(filePath);
                 roductMainDto.FileTempname = Guid.NewGuid().ToString() + fileExt;
                 roductMainDto.FileActualname = Path.GetFileName(filePath);
 
-                File.Copy(filePath, appPath + roductMainDto.FileTempname);
+                File.Copy(filePath, saveFilePath + roductMainDto.FileTempname);
 
             });
 
