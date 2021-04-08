@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using RCG.CoreApp.Enums;
+using RCG.CoreApp.Interfaces.Product;
 using RCG.CoreApp.Interfaces.Settings;
 using RCG.CoreApp.Interfaces.Shared;
 using RCG.Domain.Entities;
@@ -23,6 +24,7 @@ namespace RCG.WPF.ViewModels
         private readonly IDialogService _dialogService;
         private readonly IUserStore _userStore;
         private readonly IDateTimeService _dateTimeService;
+        private readonly IProductService _productService;
 
         public ICommand CancelCommand { get; }
         public ICommand SelectPathCommand { get; }
@@ -32,7 +34,8 @@ namespace RCG.WPF.ViewModels
         public IndexPathViewModel(ISettingsService settingsService,
             IDialogService dialogService,
             IUserStore userStore,
-            IDateTimeService dateTimeService)
+            IDateTimeService dateTimeService,
+            IProductService productService)
         {
             this.CancelCommand = new RelayCommand(o => this.CloseDialog(o));
             this.SelectPathCommand = new RelayCommand(o => this.SelectPath());
@@ -42,6 +45,7 @@ namespace RCG.WPF.ViewModels
             this._dialogService = dialogService;
             this._userStore = userStore;
             this._dateTimeService = dateTimeService;
+            this._productService = productService;
         }
 
         private string _selectedPath;
@@ -91,6 +95,7 @@ namespace RCG.WPF.ViewModels
             {
                 this.CloseDialog(window);
                 this._dialogService.OpenMessageBox("Index file download path changed successfully", EnumMaster.MessageBoxType.Success);
+                await this._productService.GenerateProductJsonFileAsync();
             }
         }
     }

@@ -25,10 +25,10 @@
                         CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}}">
                     <Image Source="/Resources/Images/black-line.png"></Image>
                 </Button>
-                <Button Style="{StaticResource TitleBarButton}" Command="{Binding MaximizeAppCommand}"
+                <!--<Button Style="{StaticResource TitleBarButton}" Command="{Binding MaximizeAppCommand}"
                         CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}}">
                     <Image Source="/Resources/Images/black-rectangle.png"></Image>
-                </Button>
+                </Button>-->
                 <Button Style="{StaticResource TitleBarButton}" Command="{Binding CloseAppCommand}">
                     <Image Source="/Resources/Images/close.png"></Image>
                 </Button>

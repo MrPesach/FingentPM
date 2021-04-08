@@ -141,13 +141,15 @@
         public async Task<bool> AddProductBulkAsync(List<Products> productList, List<Products> productListForDelete = null)
         {
             var success = await this._productRepository.AddProductBulkAsync(productList, productListForDelete);
+            await this.GenerateProductJsonFileAsync();
             return success;
         }
 
         public async Task<bool> AddProductAsync(AddProductDto priceListDto)
         {
             var product = await this.SetProductModelAsync(priceListDto);
-            var success = await this._productRepository.AddProductAsync(product);
+            var success = await this._productRepository.AddOrUpdateProductAsync(product);
+            await this.GenerateProductJsonFileAsync();
             return success;
         }
 
@@ -250,6 +252,7 @@
         public async Task<bool> DeleteProductByIdAsync(long productId)
         {
             bool result = await this._productRepository.DeleteProductByIdAsync(productId);
+            await this.GenerateProductJsonFileAsync();
             return result;
         }
 
@@ -270,7 +273,13 @@
                     Weight = a.Weight
                 }).ToList();
 
-                var filePath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"/RCG/ProductDetails.txt";
+                var filePath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + Resource.PathIndesignDataFile;
+                if (!Directory.Exists(filePath))
+                {
+                    Directory.CreateDirectory(filePath);
+                }
+
+                filePath += Resource.IndesignDataFileName;
                 var json = JsonConvert.SerializeObject(productRootJsonDto);
                 File.WriteAllText(filePath, json);
                 return true;

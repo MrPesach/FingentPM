@@ -16,7 +16,7 @@ namespace RCG.CoreApp.Interfaces.Repositories
         Task<ProductMain> AddProductMainAsync(ProductMain productMain);
 
         Task<bool> AddProductBulkAsync(List<Products> productList, List<Products> productListForDelete = null);
-        Task<bool> AddProductAsync(Products product);
+        Task<bool> AddOrUpdateProductAsync(Products product);
         bool IsProductExist(string styleName);
         Task<List<Products>> GetProductsBySkuListAync(List<string> skuList);
         Task<bool> DeleteProductByIdAsync(long productId);

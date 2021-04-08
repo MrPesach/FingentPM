@@ -203,17 +203,12 @@ namespace RCG.WPF.ViewModels
 
         private async Task AddProduct()
         {
-            await this.GenerateProductJsonFileAsync();
             _addProductViewModel.Title = "Add New Product";
             var result = this._dialogService.OpenDialog(_addProductViewModel);
             if (result == EnumMaster.DialogResults.Success.ToString())
             {
                 await this.InitialLoad();
                 this._dialogService.OpenMessageBox("Product added successfully", EnumMaster.MessageBoxType.Success);
-                ////_alertViewModel.IconUri = "/Resources/Images/check-green.png";
-                ////_alertViewModel.Title = "Success";
-                ////_alertViewModel.Message = "Product added successfully";
-                ////this._dialogService.OpenDialog(_alertViewModel);
             }
         }
 
@@ -230,16 +225,13 @@ namespace RCG.WPF.ViewModels
                     AvrageWeight = addProductDto.AvrageWeight,
                     Price = addProductDto.Price,
                 };
+
                 _addProductViewModel.Title = "Update Product";
                 var result = this._dialogService.OpenDialog(this._addProductViewModel);
                 if (result == EnumMaster.DialogResults.Success.ToString())
                 {
                     await this.InitialLoad();
                     this._dialogService.OpenMessageBox("Product details updated successfully", EnumMaster.MessageBoxType.Success);
-                    ////_alertViewModel.IconUri = "/Resources/Images/check-green.png";
-                    ////_alertViewModel.Title = "Update Product";
-                    ////_alertViewModel.Message = "Product details updated successfully";
-                    ////this._dialogService.OpenDialog(_alertViewModel);
                 }
             }
         }
@@ -277,15 +269,7 @@ namespace RCG.WPF.ViewModels
             {
                 this._dialogService.OpenMessageBox("Product deleted successfully.", EnumMaster.MessageBoxType.Success);
                 await this.GetProducts();
-                ////this.ProductList.Remove(ProductList.Single(s => s.ProductId == productId));
-                ////this.IsNoRecords = !this.ProductList.Any();
             }
-        }
-
-        private async Task<bool> GenerateProductJsonFileAsync()
-        {
-            bool result = await this._productService.GenerateProductJsonFileAsync();
-            return result;
         }
     }
 }
