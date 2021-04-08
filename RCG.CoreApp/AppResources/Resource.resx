@@ -180,4 +180,7 @@
   <data name="PathUploads" xml:space="preserve">
     <value>\RCG\Uploads\</value>
   </data>
+  <data name="PathLogs" xml:space="preserve">
+    <value>\RCG\Logs\</value>
+  </data>
 </root>

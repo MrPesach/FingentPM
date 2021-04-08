@@ -124,6 +124,15 @@ namespace RCG.CoreApp.AppResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to \RCG\Logs\.
+        /// </summary>
+        public static string PathLogs {
+            get {
+                return ResourceManager.GetString("PathLogs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to \RCG\Uploads\.
         /// </summary>
         public static string PathUploads {

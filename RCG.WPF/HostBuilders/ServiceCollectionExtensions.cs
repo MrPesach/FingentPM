@@ -30,7 +30,6 @@ namespace RCG.WPF.HostBuilders
                 services.AddDbContext<ApplicationDbContext>(options =>
                 {
                     options.UseSqlite("Data Source=" + @"data.fin");
-                    //options.EnableSensitiveDataLogging(true);
                 });
             });
 

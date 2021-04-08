@@ -134,14 +134,4 @@
 		<Resource Include="Resources\Images\white-line.png" />
 		<Resource Include="Resources\Images\white-rectangle.png" />
 	</ItemGroup>
-	<Target Name="PublishFrontend" AfterTargets="ComputeFilesToPublish">
-		<ItemGroup>
-			<DistFiles Include="AppData\Logs\**" />
-			<ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
-				<RelativePath>%(DistFiles.Identity)</RelativePath>
-				<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-				<ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-			</ResolvedFileToPublish>
-		</ItemGroup>
-	</Target>
 </Project>
