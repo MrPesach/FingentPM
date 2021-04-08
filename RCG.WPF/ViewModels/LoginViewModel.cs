@@ -80,9 +80,8 @@ namespace RCG.WPF.ViewModels
 
             LoginCommand = new LoginCommand(this, authenticator, loginRenavigator);
             ViewRegisterCommand = new RenavigateCommand(registerRenavigator);
-
-            this.Username = "superadmin";
-            this.Password = "password";
+            ////this.Username = "superadmin";
+            ////this.Password = "password";
 
             ////WindowHeight = Convert.ToInt32(Resource.HeightLoginView);
             ////WindowWidth = Convert.ToInt32(Resource.WidthLoginView);
