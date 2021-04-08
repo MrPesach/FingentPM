@@ -55,10 +55,10 @@ namespace RCG.CoreApp.Services.User
         {
             bool isValid = true;
             string message = string.Empty;
-            if (userSetupDto.Name.Length < 3 || userSetupDto.Username.Length > 10)
+            if (userSetupDto.Name.Length < 3 || userSetupDto.Name.Length > 20)
             {
                 isValid = false;
-                message = "Name should have a minimum length of 3 and maximum length of 10 characters.";
+                message = "Name should have a minimum length of 3 and maximum length of 20 characters.";
             }
 
             if (userSetupDto.Username.Length < 5 || userSetupDto.Username.Length > 10)
@@ -132,30 +132,6 @@ namespace RCG.CoreApp.Services.User
             };
 
             return result;
-        }
-
-        public UserSetupDto ValidateUserSave(UserSetupDto userSetupDto)
-        {
-            bool isValid = true;
-            var messageList = new List<string>();
-            if (string.IsNullOrEmpty(userSetupDto.Name))
-            {
-                messageList.Add("Please enter Name");
-                isValid = false;
-            }
-
-            if (string.IsNullOrEmpty(userSetupDto.Password))
-            {
-                messageList.Add("Please enter Password");
-                isValid = false;
-            }
-            if (string.IsNullOrEmpty(userSetupDto.Password))
-            {
-                messageList.Add("Please enter Password");
-                isValid = false;
-            }
-            //userSetupDto.IsValid = isValid;
-            return userSetupDto;
         }
     }
 }
