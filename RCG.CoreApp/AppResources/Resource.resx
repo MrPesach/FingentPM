@@ -198,4 +198,7 @@
   <data name="PasswordNotMatchMsg" xml:space="preserve">
     <value>Password does not match confirm password.</value>
   </data>
+  <data name="PathDatabase" xml:space="preserve">
+    <value>\RCG\Data\</value>
+  </data>
 </root>

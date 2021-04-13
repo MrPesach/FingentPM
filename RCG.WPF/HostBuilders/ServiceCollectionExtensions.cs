@@ -1,7 +1,10 @@
-﻿using System.Reflection;
+﻿using System;
+using System.IO;
+using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using RCG.CoreApp.AppResources;
 using RCG.CoreApp.Interfaces.DbContexts;
 using RCG.CoreApp.Interfaces.Product;
 using RCG.CoreApp.Interfaces.Repositories;
@@ -25,11 +28,17 @@ namespace RCG.WPF.HostBuilders
     {
         public static IHostBuilder AddDbContext(this IHostBuilder host)
         {
+            var dbfilePath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + Resource.PathDatabase;
+            if (!Directory.Exists(dbfilePath))
+            {
+                Directory.CreateDirectory(dbfilePath);
+            }
+
             host.ConfigureServices((context, services) =>
             {
                 services.AddDbContext<ApplicationDbContext>(options =>
                 {
-                    options.UseSqlite("Data Source=" + @"data.fin");
+                    options.UseSqlite("Data Source=" + @dbfilePath + "data.fin");
                 });
             });
 

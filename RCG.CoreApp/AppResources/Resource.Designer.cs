@@ -133,6 +133,15 @@ namespace RCG.CoreApp.AppResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to \RCG\Data\.
+        /// </summary>
+        public static string PathDatabase {
+            get {
+                return ResourceManager.GetString("PathDatabase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to \RCG\Indesign\.
         /// </summary>
         public static string PathIndesignDataFile {
