@@ -48,6 +48,7 @@ namespace RCG.WPF.ViewModels
         private string _loggedUserName;
         private string _loggedUserFirstLetter;
         private WindowState _windowState;
+        private bool _isAdmin;
 
         public bool IsLoggedIn => _authenticator.IsLoggedIn;
         public ViewModelBase CurrentViewModel => _navigator.CurrentViewModel;
@@ -124,6 +125,11 @@ namespace RCG.WPF.ViewModels
             set { _windowState = value; this.OnPropertyChanged("WindowState"); }
         }
 
+        public bool IsAdmin
+        {
+            get { return _isAdmin; }
+            set { _isAdmin = value; this.OnPropertyChanged("IsAdmin"); }
+        }
 
         private void UserSettings()
         {
@@ -148,6 +154,7 @@ namespace RCG.WPF.ViewModels
             OnPropertyChanged(nameof(IsLoggedIn));
             if (IsLoggedIn)
             {
+                this.IsAdmin = this._userStore.IsAuth.IsAdmin;
                 this.LoggedUserName = this._userStore.IsAuth.Name;
             }
         }
