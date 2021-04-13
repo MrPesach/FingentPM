@@ -70,6 +70,15 @@ namespace RCG.CoreApp.AppResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Do you really want to delete this product?.
+        /// </summary>
+        public static string DeleteProductMsg {
+            get {
+                return ResourceManager.GetString("DeleteProductMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 560.
         /// </summary>
         public static string HeightLoginView {
@@ -111,6 +120,15 @@ namespace RCG.CoreApp.AppResources {
         public static string ManageUserAccountHeading {
             get {
                 return ResourceManager.GetString("ManageUserAccountHeading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password does not match confirm password..
+        /// </summary>
+        public static string PasswordNotMatchMsg {
+            get {
+                return ResourceManager.GetString("PasswordNotMatchMsg", resourceCulture);
             }
         }
         
@@ -160,6 +178,24 @@ namespace RCG.CoreApp.AppResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Products updated With Errors.
+        /// </summary>
+        public static string ProductsUpdatedErrorMsg {
+            get {
+                return ResourceManager.GetString("ProductsUpdatedErrorMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Products updated successfully.
+        /// </summary>
+        public static string ProductsUpdatedSuccessMsg {
+            get {
+                return ResourceManager.GetString("ProductsUpdatedSuccessMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to SKU.
         /// </summary>
         public static string SKULbl {
@@ -183,6 +219,15 @@ namespace RCG.CoreApp.AppResources {
         public static string UnableUpdate {
             get {
                 return ResourceManager.GetString("UnableUpdate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MM/dd/yyyy hh:mm tt.
+        /// </summary>
+        public static string UpdatedOnDateFromat {
+            get {
+                return ResourceManager.GetString("UpdatedOnDateFromat", resourceCulture);
             }
         }
         

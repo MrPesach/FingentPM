@@ -46,7 +46,7 @@ namespace RCG.WPF.Commands
 
                 UserSetupDto userSetupDtoResult = await _authenticator.UserSetup(userSetupDto);
 
-                if (userSetupDtoResult.IsValid == true)
+                if (userSetupDtoResult.IsValid)
                 {
                     _usersetupRenavigator.Renavigate();
                 }

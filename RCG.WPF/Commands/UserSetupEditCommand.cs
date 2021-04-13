@@ -32,7 +32,7 @@ namespace RCG.WPF.Commands
 
         public override async Task ExecuteAsync(object parameter)
         {
-            _usersetupEditViewModel.ErrorMessage = string.Empty;
+            _usersetupEditViewModel.SetErrorMessage(string.Empty);
 
             try
             {
@@ -55,12 +55,12 @@ namespace RCG.WPF.Commands
                 }
                 else
                 {
-                    _usersetupEditViewModel.ErrorMessage = userSetupDtoResult.Message;
+                    _usersetupEditViewModel.SetErrorMessage(userSetupDtoResult.Message);
                 }
             }
             catch (Exception)
             {
-                _usersetupEditViewModel.ErrorMessage = Resource.UnableUpdate;
+                _usersetupEditViewModel.SetErrorMessage(Resource.UnableUpdate);
             }
         }
 

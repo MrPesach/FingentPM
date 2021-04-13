@@ -1,6 +1,7 @@
 ﻿namespace RCG.CoreApp.Services.Product
 {
     using CsvHelper;
+    using CsvHelper.Configuration;
     using LinqKit;
     using Microsoft.EntityFrameworkCore;
     using Newtonsoft.Json;
@@ -49,7 +50,7 @@
                   AvailableLength = !string.IsNullOrEmpty(a.Length) ? a.Length : Resource.BlankEntryLbl,
                   AvrageWeight = !string.IsNullOrEmpty(a.Weight) ? a.Weight : Resource.BlankEntryLbl,
                   Price = a.Price,
-                  UpdatedOn = a.LastModifiedOn.Value.ToString("MM/dd/yyyy hh:mm tt")
+                  UpdatedOn = a.LastModifiedOn.Value.ToString(Resource.UpdatedOnDateFromat)
               }).ToListAsync();
 
             gridResponseModel.TotalCount = totalCount;
@@ -81,8 +82,14 @@
             List<AddProductDto> productList = null;
             await Task.Run(() =>
             {
+                var config = new CsvConfiguration(CultureInfo.InvariantCulture)
+                {
+                    PrepareHeaderForMatch = args => args.Header.ToLower(),
+                    TrimOptions = TrimOptions.Trim,
+                };
+
                 using (var reader = new StreamReader(filePath))
-                using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+                using (var csv = new CsvReader(reader, config))
                 {
                     csv.Context.RegisterClassMap<PriceListMapper>();
                     productList = csv.GetRecords<AddProductDto>().ToList();
@@ -102,7 +109,11 @@
 
             });
 
-            productList = productList.GroupBy(p => p.Style).Select(g => g.FirstOrDefault()).ToList();
+            var emtySkuList = productList.Where(a => string.IsNullOrEmpty(a.Style));
+            productList = productList.
+                Where(a => !string.IsNullOrEmpty(a.Style)).
+                GroupBy(p => p.Style).Select(g => g.FirstOrDefault()).ToList();
+            productList.AddRange(emtySkuList);
             roductMainDto.ProductList = productList;
             return roductMainDto;
         }
@@ -114,8 +125,8 @@
             {
                 product = new Products
                 {
-                    Sku = item.Style.Trim(),
-                    Length = item.AvailableLength,
+                    Sku = item.Style?.Trim(),
+                    Length = item.AvailableLength?.Trim(),
                     Weight = item.AvrageWeight,
                     Price = item.Price,
                     CreatedBy = item.User,
@@ -231,16 +242,24 @@
             List<string> headerList = null;
             bool hasRecord = false;
             bool isValid = true;
+            var config = new CsvConfiguration(CultureInfo.InvariantCulture)
+            {
+                PrepareHeaderForMatch = args => args.Header.ToLower(),
+                TrimOptions = TrimOptions.Trim,
+            };
             using (var reader = new StreamReader(fileName))
-            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+            using (var csv = new CsvReader(reader, config))
             {
                 csv.Read();
-                csv.ReadHeader();
-                headerList = csv.HeaderRecord.ToList();
-                hasRecord = csv.GetRecords<dynamic>().Any();
+                if (csv.Parser.Count > 0)
+                {
+                    csv.ReadHeader();
+                    headerList = csv.HeaderRecord.ToList();
+                    hasRecord = csv.GetRecords<dynamic>().Any();
+                }
             }
 
-            if (!hasRecord || !headerList.Exists(x => x == "SKU") || !headerList.Exists(x => x == "PRICE"))
+            if (!hasRecord || !headerList.Exists(x => x.ToLower() == "sku") || !headerList.Exists(x => x.ToLower() == "price"))
             {
                 isValid = false;
             }

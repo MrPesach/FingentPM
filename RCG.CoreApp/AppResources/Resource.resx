@@ -183,4 +183,19 @@
   <data name="PathLogs" xml:space="preserve">
     <value>\RCG\Logs\</value>
   </data>
+  <data name="UpdatedOnDateFromat" xml:space="preserve">
+    <value>MM/dd/yyyy hh:mm tt</value>
+  </data>
+  <data name="DeleteProductMsg" xml:space="preserve">
+    <value>Do you really want to delete this product?</value>
+  </data>
+  <data name="ProductsUpdatedErrorMsg" xml:space="preserve">
+    <value>Products updated With Errors</value>
+  </data>
+  <data name="ProductsUpdatedSuccessMsg" xml:space="preserve">
+    <value>Products updated successfully</value>
+  </data>
+  <data name="PasswordNotMatchMsg" xml:space="preserve">
+    <value>Password does not match confirm password.</value>
+  </data>
 </root>

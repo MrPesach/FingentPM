@@ -1,4 +1,5 @@
 ﻿using Microsoft.Win32;
+using RCG.CoreApp.AppResources;
 using RCG.CoreApp.DTO;
 using RCG.CoreApp.Enums;
 using RCG.CoreApp.Interfaces.Product;
@@ -298,14 +299,14 @@ namespace RCG.WPF.ViewModels
                 if (this.FailedProductList.Any())
                 {
                     this.ImportCompleteImageUri = "/Resources/Images/error-icon.png";
-                    this.ImportCompleteMessage = "Price List Updated With Errors";
+                    this.ImportCompleteMessage = Resource.ProductsUpdatedErrorMsg;
                     this.CSVHasError = true;
                     this.PopupHeight = 470;
                 }
                 else
                 {
                     this.ImportCompleteImageUri = "/Resources/Images/check-green.png";
-                    this.ImportCompleteMessage = "Price List Updated Successfully";
+                    this.ImportCompleteMessage = Resource.ProductsUpdatedSuccessMsg;
                     this.CSVHasError = false;
                     this.PopupHeight = 322;
                 }

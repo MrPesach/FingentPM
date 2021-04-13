@@ -1,4 +1,5 @@
 ﻿using System.Windows.Input;
+using RCG.CoreApp.AppResources;
 using RCG.CoreApp.Enums;
 using RCG.CoreApp.Interfaces.User;
 using RCG.WPF.Commands;
@@ -94,26 +95,28 @@ namespace RCG.WPF.ViewModels
         public ICommand UpdateUserCommand { get; }
         public ICommand CancelCommand { get; }
 
-        private readonly IAuthenticator _authenticator;
-        private readonly IUserStore _userStore;
-        private readonly IDialogService _dialogService;
+        ////private readonly IAuthenticator _authenticator;
+        ////private readonly IUserStore _userStore;
+
 
         public MessageViewModel ErrorMessageViewModel { get; }
 
-        public string ErrorMessage
+        public void SetErrorMessage(string value)
         {
-            set => ErrorMessageViewModel.Message = value;
+            if (value == Resource.PasswordNotMatchMsg)
+            {
+                this.Password = string.Empty;
+                this.ConfirmPassword = string.Empty;
+            }
+
+            ErrorMessageViewModel.Message = value;
         }
 
-        public UserSetupEditViewModel(IAuthenticator authenticator, IUserStore userStore, IDialogService dialogService)
+        public UserSetupEditViewModel(IAuthenticator authenticator, IDialogService dialogService)
         {
             ErrorMessageViewModel = new MessageViewModel();
-
-            _authenticator = authenticator;
-            _userStore = userStore;
-            _dialogService = dialogService;
             this.CancelCommand = new RelayCommand(o => this.CloseDialog(o), o => true);
-            UpdateUserCommand = new UserSetupEditCommand(this, authenticator, _dialogService);
+            UpdateUserCommand = new UserSetupEditCommand(this, authenticator, dialogService);
         }
         private void CloseDialog(object obj)
         {

@@ -55,26 +55,36 @@ namespace RCG.CoreApp.Services.User
         {
             bool isValid = true;
             string message = string.Empty;
-            if (userSetupDto.Name.Length < 3 || userSetupDto.Name.Length > 20)
+            if (string.IsNullOrWhiteSpace(userSetupDto.Name))
+            {
+                isValid = false;
+                message = "Please enter Name.";
+            }
+            else if (string.IsNullOrWhiteSpace(userSetupDto.Username))
+            {
+                isValid = false;
+                message = "Please enter Username";
+            }
+            else if (userSetupDto.Name.Length < 3 || userSetupDto.Name.Length > 20)
             {
                 isValid = false;
                 message = "Name should have a minimum length of 3 and maximum length of 20 characters.";
             }
 
-            if (userSetupDto.Username.Length < 5 || userSetupDto.Username.Length > 10)
+            else if (userSetupDto.Username.Length < 5 || userSetupDto.Username.Length > 10)
             {
                 isValid = false;
                 message = "Username should have a minimum length of 5 and maximum length of 10 characters.";
             }
-            if (userSetupDto.Password.Length < 5 || userSetupDto.Password.Length > 10)
+            else if (userSetupDto.Password.Length < 5 || userSetupDto.Password.Length > 10)
             {
                 isValid = false;
                 message = "Password should have a minimum length of 5 and maximum length of 10 characters.";
             }
-            if (userSetupDto.Password != userSetupDto.ConfirmPassword)
+            else if (userSetupDto.Password != userSetupDto.ConfirmPassword)
             {
                 isValid = false;
-                message = "Password does not match confirm password.";
+                message = Resource.PasswordNotMatchMsg;
             }
 
             if (isValid)
@@ -91,12 +101,13 @@ namespace RCG.CoreApp.Services.User
                 {
                     string hashedPassword = SecurityHelper.HashPassword(userSetupDto.Password);
 
-                    if (userSetupDto.UserId != null)
+                    if (userSetupDto.UserId.HasValue)
                     {
                         Users user = new Users()
                         {
-                            Name = userSetupDto.Name,
-                            Username = userSetupDto.Username,
+                            Id = userSetupDto.UserId.Value,
+                            Name = userSetupDto.Name.Trim(),
+                            Username = userSetupDto.Username.Trim(),
                             PasswordHash = hashedPassword,
                             LastModifiedBy = userSetupDto.LastModifiedBy,
                             LastModifiedOn = _dateTimeService.NowUtc,
@@ -111,8 +122,8 @@ namespace RCG.CoreApp.Services.User
                     {
                         Users user = new Users()
                         {
-                            Name = userSetupDto.Name,
-                            Username = userSetupDto.Username,
+                            Name = userSetupDto.Name.Trim(),
+                            Username = userSetupDto.Username.Trim(),
                             PasswordHash = hashedPassword,
                             CreatedOn = _dateTimeService.NowUtc,
                             IsAdmin = false

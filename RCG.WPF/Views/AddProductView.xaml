@@ -31,10 +31,12 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <StackPanel Grid.Row="0" Style="{StaticResource FormGroup}">
+            <StackPanel Grid.Row="0" Style="{StaticResource FormGroup}" FocusManager.FocusedElement="{Binding ElementName=SkuTextBox}">
                 <TextBlock HorizontalAlignment="Left" Style="{StaticResource DarkTextBlock}" Text="SKU"/>
-                <TextBox  Grid.Column="1"
+                <TextBox Grid.Column="1"
+                         Name="SkuTextBox"
                          Style="{StaticResource FormControl}"
+                         Focusable="True"
                      Text="{Binding AddProduct.Style, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" >
                 </TextBox>
             </StackPanel>
@@ -83,6 +85,7 @@
                     Content="Cancel"
                     Width="80"/>
             <Button Command="{Binding SaveProductCommand}"
+                    IsDefault="True"
                     CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=Window}}"
                      Grid.Column="3"
                     Style="{StaticResource PrimaryButton}" Content="Save"

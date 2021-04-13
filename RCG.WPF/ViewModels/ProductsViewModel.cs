@@ -221,8 +221,8 @@ namespace RCG.WPF.ViewModels
                 {
                     ProductId = addProductDto.ProductId,
                     Style = addProductDto.Style,
-                    AvailableLength = addProductDto.AvailableLength,
-                    AvrageWeight = addProductDto.AvrageWeight,
+                    AvailableLength = addProductDto.AvailableLength != Resource.BlankEntryLbl ? addProductDto.AvailableLength : string.Empty,
+                    AvrageWeight = addProductDto.AvrageWeight != Resource.BlankEntryLbl ? addProductDto.AvrageWeight : string.Empty,
                     Price = addProductDto.Price,
                 };
 
@@ -244,7 +244,7 @@ namespace RCG.WPF.ViewModels
 
                 if (addProductDto.ProductId > 0)
                 {
-                    var result = this._dialogService.OpenMessageBox("Are you sure to delete the Product", EnumMaster.MessageBoxType.Confirmation);
+                    var result = this._dialogService.OpenMessageBox(Resource.DeleteProductMsg, EnumMaster.MessageBoxType.Confirmation);
                     if (result == EnumMaster.DialogResults.Yes)
                     {
                         await this.DeleteProductByIdAsync(addProductDto.ProductId);

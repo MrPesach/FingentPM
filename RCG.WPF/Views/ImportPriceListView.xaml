@@ -64,7 +64,7 @@
                     <Image Grid.Column="0" Grid.Row="0" Style="{StaticResource GreenTick}"/>
                     <TextBlock Grid.Column="1" Grid.Row="0"  Style="{StaticResource DarkTextBlock}" 
                            HorizontalAlignment="Left"
-                           Text="Total Number of Product:"/>
+                           Text="Total no of products:"/>
                     <TextBlock Grid.Column="2" Grid.Row="0"
                            Style="{StaticResource DarkTextBlock}"
                            FontWeight="Bold"
@@ -74,7 +74,7 @@
                     <Image Grid.Column="0" Grid.Row="1" Style="{StaticResource GreenTick}"/>
                     <TextBlock Grid.Column="1" Grid.Row="1"  Style="{StaticResource DarkTextBlock}" 
                            HorizontalAlignment="Left"
-                           Text="Total Number of Price Updated Products:"/>
+                           Text="Total no of products updated:"/>
                     <TextBlock Grid.Column="2" Grid.Row="1"
                            Style="{StaticResource DarkTextBlock}"
                            FontWeight="Bold"
@@ -84,7 +84,7 @@
                     <Image Grid.Column="0" Grid.Row="2" Style="{StaticResource GreenTick}"/>
                     <TextBlock Grid.Column="1" Grid.Row="2"  Style="{StaticResource DarkTextBlock}" 
                            HorizontalAlignment="Left"
-                           Text="Total No of New Products:"/>
+                           Text="Total no of new products:"/>
                     <TextBlock Grid.Column="2" Grid.Row="2"
                            Style="{StaticResource DarkTextBlock}"
                            FontWeight="Bold"
@@ -96,7 +96,7 @@
                     <TextBlock Grid.Column="1" Grid.Row="3"  Style="{StaticResource DarkTextBlock}" 
                            HorizontalAlignment="Left"
                            Visibility="{Binding CSVHasError, Converter={StaticResource BooleanToVisibilityConverter}}"
-                           Text="Total No of  Products With Errors:"/>
+                           Text="Total no of products with error:"/>
                     <TextBlock Grid.Column="2" Grid.Row="3"
                            Style="{StaticResource DarkTextBlock}"
                            FontWeight="Bold"

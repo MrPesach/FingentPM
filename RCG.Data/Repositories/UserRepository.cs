@@ -57,15 +57,15 @@ namespace RCG.Data.Repositories
             return user.Id;
         }
 
-        public async Task UpdateAsync(Users User)
+        public async Task UpdateAsync(Users user)
         {
-            await _repository.UpdateAsync(User, User.Id);
+            await _repository.UpdateAsync(user, user.Id);
         }
 
 
-        public async Task DeleteAsync(Users User)
+        public async Task DeleteAsync(Users user)
         {
-            await _repository.DeleteAsync(User);
+            await _repository.DeleteAsync(user);
         }
     }
 
