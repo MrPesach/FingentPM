@@ -98,12 +98,12 @@ namespace RCG.Data.Migrations
             migrationBuilder.InsertData(
                 table: "ApplConfigs",
                 columns: new[] { "Id", "CreatedBy", "CreatedOn", "DisplayName", "LastModifiedBy", "LastModifiedOn", "Name", "ShowtoUser", "Value" },
-                values: new object[] { 1L, null, new DateTime(2021, 3, 31, 6, 49, 32, 378, DateTimeKind.Utc).AddTicks(6433), "Indesign Index File Save Path", null, null, "IndesignIndexFileSavePath", true, "C:\\Indesign\\IndexFiles\\" });
+                values: new object[] { 1L, null, new DateTime(2021, 4, 16, 7, 19, 7, 843, DateTimeKind.Utc).AddTicks(5504), "Indesign Index File Save Path", null, null, "IndesignIndexFileSavePath", true, "C:\\Indesign\\IndexFiles\\" });
 
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "CreatedBy", "CreatedOn", "IsAdmin", "LastModifiedBy", "LastModifiedOn", "Name", "PasswordHash", "Username" },
-                values: new object[] { 1L, null, new DateTime(2021, 3, 31, 6, 49, 32, 377, DateTimeKind.Utc).AddTicks(217), true, null, null, "Super Admin", "SwxrqFTghcosbgFO5GEAAYfG2cKPvfyWrXsgP4zE5r8=", "superadmin" });
+                values: new object[] { 1L, null, new DateTime(2021, 4, 16, 7, 19, 7, 841, DateTimeKind.Utc).AddTicks(1090), true, null, null, "Super Admin", "BHJ/7xKctZbcNVqU/TCQaFqnxB9TlAgwawptL4Gr2bc=", "MusaSA" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Products_ProductMainId",

@@ -9,7 +9,7 @@ using RCG.Data.DbContexts;
 namespace RCG.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210331064932_InitialCreate")]
+    [Migration("20210416071908_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -59,7 +59,7 @@ namespace RCG.Data.Migrations
                         new
                         {
                             Id = 1L,
-                            CreatedOn = new DateTime(2021, 3, 31, 6, 49, 32, 378, DateTimeKind.Utc).AddTicks(6433),
+                            CreatedOn = new DateTime(2021, 4, 16, 7, 19, 7, 843, DateTimeKind.Utc).AddTicks(5504),
                             DisplayName = "Indesign Index File Save Path",
                             Name = "IndesignIndexFileSavePath",
                             ShowtoUser = true,
@@ -189,11 +189,11 @@ namespace RCG.Data.Migrations
                         new
                         {
                             Id = 1L,
-                            CreatedOn = new DateTime(2021, 3, 31, 6, 49, 32, 377, DateTimeKind.Utc).AddTicks(217),
+                            CreatedOn = new DateTime(2021, 4, 16, 7, 19, 7, 841, DateTimeKind.Utc).AddTicks(1090),
                             IsAdmin = true,
                             Name = "Super Admin",
-                            PasswordHash = "SwxrqFTghcosbgFO5GEAAYfG2cKPvfyWrXsgP4zE5r8=",
-                            Username = "superadmin"
+                            PasswordHash = "BHJ/7xKctZbcNVqU/TCQaFqnxB9TlAgwawptL4Gr2bc=",
+                            Username = "MusaSA"
                         });
                 });
 

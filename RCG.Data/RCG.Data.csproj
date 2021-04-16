@@ -28,8 +28,4 @@
     <ProjectReference Include="..\RCG.CoreApp\RCG.CoreApp.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Migrations\" />
-  </ItemGroup>
-
 </Project>

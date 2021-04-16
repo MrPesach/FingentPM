@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using Microsoft.EntityFrameworkCore;
+using RCG.CoreApp.Enums;
 using RCG.CoreApp.Helpers;
 using RCG.CoreApp.Interfaces.DbContexts;
 using RCG.Domain.Entities;
@@ -31,9 +32,8 @@ namespace RCG.Data.DbContexts
                 {
                     Id = 1,
                     Name = "Super Admin",
-                    Username = "superadmin",
-                    PasswordHash = SecurityHelper.HashPassword("password"),
-                    //PasswordHash = SecurityHelper.HashPassword("rcQ$%^&*12FH"),
+                    Username = "MusaSA",
+                    PasswordHash = SecurityHelper.HashPassword("RCI@2w46m"),
                     IsAdmin = true,
                     CreatedOn = DateTime.UtcNow
 
@@ -44,8 +44,8 @@ namespace RCG.Data.DbContexts
                 new ApplConfigs
                 {
                     Id = 1,
-                    Name = "IndesignIndexFileSavePath",
-                    DisplayName = "Indesign Index File Save Path",
+                    Name = EnumMaster.ApplConfig.IndesignIndexFileSavePath.ToString(),
+                    DisplayName = EnumMaster.GetDisplayValue(EnumMaster.ApplConfig.IndesignIndexFileSavePath),
                     Value = "C:\\Indesign\\IndexFiles\\",
                     ShowtoUser = true,
                     CreatedOn = DateTime.UtcNow
