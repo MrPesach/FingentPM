@@ -178,7 +178,9 @@
             </Trigger>
         </Style.Triggers>
     </Style>
+
     <Style x:Key="CellStyle" TargetType="{x:Type DataGridCell}">
+        
         <Setter Property="Foreground" Value="#6E6F73"/>
         <Style.Triggers>
             <Trigger Property="IsSelected" Value="True">
@@ -188,7 +190,8 @@
         </Style.Triggers>
     </Style>
     <Style TargetType="DataGrid">
-        <Setter Property="BorderThickness" Value="0"></Setter>
+        <Setter Property="BorderBrush" Value="#D4D4D4"></Setter>
+        <Setter Property="BorderThickness" Value="0,0,0,0"></Setter>
         <Setter Property="RowHeaderWidth" Value="0"></Setter>
         <Setter Property="AutoGenerateColumns" Value="False"></Setter>
         <Setter Property="GridLinesVisibility" Value="Horizontal"></Setter>

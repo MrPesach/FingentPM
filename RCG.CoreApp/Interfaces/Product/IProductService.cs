@@ -21,8 +21,6 @@ namespace RCG.CoreApp.Interfaces.Product
 
         bool IsNumber(string value);
 
-        bool IsProductExist(string styleName);
-
         AddProductDto ValidateProductSave(AddProductDto addProductDto, bool isImport);
 
         Task<List<Products>> GetProductsBySkuListAync(List<string> skuList);
@@ -30,5 +28,6 @@ namespace RCG.CoreApp.Interfaces.Product
         bool ValidateCSV(string fileName);
         Task<bool> DeleteProductByIdAsync(long productId);
         Task<bool> GenerateProductJsonFileAsync();
+        Task<AddProductDto> GetProductByIdAsync(long productId);
     }
 }

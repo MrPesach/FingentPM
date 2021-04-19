@@ -48,6 +48,9 @@
                 <ColumnDefinition Width="173"/>
                 <ColumnDefinition Width="173"/>
             </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Margin="0" Style="{StaticResource TextBlockHeading}"
+                      VerticalAlignment="Center"
+                       Text="{Binding TotalRecords, StringFormat='Product List ({0})'}" />
             <TextBox x:Name="SearchText" Grid.Column="1" Style="{StaticResource SearchTextBox}" 
                      Text="{Binding SearchText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" >
                 <InteractionTrigger:Interaction.Triggers>
@@ -63,6 +66,7 @@
             <Button Grid.Column="3" Style="{StaticResource PrimaryButton}" 
                     Content="Import products" Command="{Binding ImportPriceListCommand}"/>
         </Grid>
+        <!--{Binding TotalRecords, StringFormat='Product List ({0})'}-->
         <!--{StaticResource MyDumbMockedList}}-->
 
         <DataGrid Grid.Row="1" ItemsSource="{Binding ProductList}" x:Name="ProductListGrid">
@@ -108,7 +112,7 @@
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                                 <Button Command="{Binding Path=DataContext.EditProductCommand, ElementName=ProductListGrid}" 
-                                    CommandParameter="{Binding}" Style="{StaticResource EditButton}">
+                                    CommandParameter="{Binding ProductId}" Style="{StaticResource EditButton}">
                                 </Button>
                                 <Button Command="{Binding Path=DataContext.DeleteProductCommand, ElementName=ProductListGrid}" 
                                     CommandParameter="{Binding}" Style="{StaticResource TrashButton}">

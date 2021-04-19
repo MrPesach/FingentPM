@@ -72,9 +72,9 @@
             return true;
         }
 
-        public bool IsProductExist(string styleName)
+        public bool IsProductExist(long productId, string styleName)
         {
-            var isProductExist = this._productRepository.Entities.Any(a => a.Sku.ToLower() == styleName.ToLower());
+            var isProductExist = this._productRepository.Entities.Any(a => a.Id != productId && a.Sku.ToLower() == styleName.ToLower());
             return isProductExist;
         }
 
@@ -107,6 +107,12 @@
         {
             var allProducts = await this._productRepository.Entities.ToListAsync();
             return allProducts;
+        }
+
+        public async Task<Products> GetProductByIdAsync(long productId)
+        {
+            var product = await this._productRepository.Entities.Where(a => a.Id == productId).FirstOrDefaultAsync();
+            return product;
         }
     }
 }

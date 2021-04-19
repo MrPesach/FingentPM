@@ -115,11 +115,19 @@ namespace RCG.WPF.ViewModels
             }
         }
 
+        private int _totalRecords;
+
+        public int TotalRecords
+        {
+            get { return _totalRecords; }
+            set { _totalRecords = value; this.OnPropertyChanged("TotalRecords"); }
+        }
+
+
 
         private async Task InitialLoad()
         {
             this.PageNumber = 0;
-            ////this.SetPages();
             this.SearchText = string.Empty;
             await this.GetProducts();
         }
@@ -136,6 +144,7 @@ namespace RCG.WPF.ViewModels
         private async Task GetProducts()
         {
             var gridResponse = await this._productService.GetPagedProductList(this.PageNumber, 10, this.SearchText);
+            this.TotalRecords = gridResponse.TotalRecords;
             this.TotalPages = gridResponse.TotalPages;
             this.SetPages();
             this.ProductList = new ObservableCollection<AddProductDto>(gridResponse.Rows);
@@ -216,15 +225,9 @@ namespace RCG.WPF.ViewModels
         {
             if (obj != null)
             {
-                var addProductDto = (AddProductDto)obj;
-                this._addProductViewModel.AddProduct = new AddProductDto
-                {
-                    ProductId = addProductDto.ProductId,
-                    Style = addProductDto.Style,
-                    AvailableLength = addProductDto.AvailableLength != Resource.BlankEntryLbl ? addProductDto.AvailableLength : string.Empty,
-                    AvrageWeight = addProductDto.AvrageWeight != Resource.BlankEntryLbl ? addProductDto.AvrageWeight : string.Empty,
-                    Price = addProductDto.Price,
-                };
+                var productId = (long)obj;
+                var product = await this._productService.GetProductByIdAsync(productId);
+                this._addProductViewModel.AddProduct = product;
 
                 _addProductViewModel.Title = "Update Product";
                 var result = this._dialogService.OpenDialog(this._addProductViewModel);

@@ -40,7 +40,7 @@ namespace RCG.WPF.ViewModels
             this.CancelCommand = new RelayCommand(o => this.CloseDialog(o));
             this.SelectPathCommand = new RelayCommand(o => this.SelectPath());
             this.LoadedCommand = new AsyncCommand(o => this.InitialLoadAsync());
-            this.SaveIndexFilePathCommand = new AsyncCommand(o => this.SaveIndexFilePathAsync(o));
+            this.SaveIndexFilePathCommand = new AsyncCommand(o => this.SaveIndexFilePathAsync(o), o => this.CanSave);
             this._settingsService = settingsService;
             this._dialogService = dialogService;
             this._userStore = userStore;
@@ -56,12 +56,15 @@ namespace RCG.WPF.ViewModels
             set { _selectedPath = value; this.OnPropertyChanged("SelectedPath"); }
         }
 
+        public bool CanSave { get; set; }
+
         private void SelectPath()
         {
             using var dialog = new FolderBrowserDialog();
             dialog.ShowDialog();
             if (!string.IsNullOrEmpty(dialog.SelectedPath))
             {
+                this.CanSave = true;
                 this.SelectedPath = dialog.SelectedPath;
             }
         }
@@ -74,6 +77,7 @@ namespace RCG.WPF.ViewModels
 
         private async Task InitialLoadAsync()
         {
+            this.CanSave = false;
             this.SelectedPath = await _settingsService.GetApplConfigValueAsync(EnumMaster.ApplConfig.IndesignIndexFileSavePath);
         }
 
