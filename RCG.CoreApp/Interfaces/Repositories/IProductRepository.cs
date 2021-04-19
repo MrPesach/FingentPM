@@ -17,10 +17,11 @@ namespace RCG.CoreApp.Interfaces.Repositories
 
         Task<bool> AddProductBulkAsync(List<Products> productList, List<Products> productListForDelete = null);
         Task<bool> AddOrUpdateProductAsync(Products product);
-        bool IsProductExist(string styleName);
+        bool IsProductExist(long productId, string styleName);
         Task<List<Products>> GetProductsBySkuListAync(List<string> skuList);
         Task<bool> DeleteProductByIdAsync(long productId);
         IQueryable<Products> GetQuery(out int totalCount, int pageNumber, int pageSize, Expression<Func<Products, bool>> filter = null);
         Task<List<Products>> GetAllProductsAsync();
+        Task<Products> GetProductByIdAsync(long productId);
     }
 }

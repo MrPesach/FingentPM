@@ -48,8 +48,8 @@
                   ProductId = a.Id,
                   Style = a.Sku,
                   AvailableLength = !string.IsNullOrEmpty(a.Length) ? a.Length : Resource.BlankEntryLbl,
-                  AvrageWeight = !string.IsNullOrEmpty(a.Weight) ? a.Weight : Resource.BlankEntryLbl,
-                  Price = a.Price,
+                  AvrageWeight = !string.IsNullOrEmpty(a.Weight) ? AddDecimalPoint(a.Weight) : Resource.BlankEntryLbl,
+                  Price = FormattedAmount(a.Price),
                   UpdatedOn = a.LastModifiedOn.Value.ToString(Resource.UpdatedOnDateFromat)
               }).ToListAsync();
 
@@ -164,9 +164,9 @@
             return success;
         }
 
-        public bool IsProductExist(string styleName)
+        public bool IsProductExist(long productId, string styleName)
         {
-            var isProductExist = this._productRepository.IsProductExist(styleName);
+            var isProductExist = this._productRepository.IsProductExist(productId, styleName);
             return isProductExist;
         }
 
@@ -192,8 +192,7 @@
                 isValid = false;
             }
             if (!isImport && !string.IsNullOrEmpty(addProductDto.Style) &&
-               addProductDto.ProductId == 0 &&
-               this.IsProductExist(addProductDto.Style))
+               this.IsProductExist(addProductDto.ProductId, addProductDto.Style))
             {
                 messageList.Add("SKU already exist");
                 isValid = false;
@@ -287,9 +286,9 @@
                 productRootJsonDto.Products = allProducts.Select(a => new ProductJsonDto
                 {
                     Product = a.Sku,
-                    Length = a.Length,
-                    Price = a.Price,
-                    Weight = a.Weight
+                    Length = !string.IsNullOrEmpty(a.Length) ? a.Length : string.Empty,
+                    Price = FormattedAmount(a.Price),
+                    Weight = !string.IsNullOrEmpty(a.Weight) ? AddDecimalPoint(a.Weight) : string.Empty
                 }).ToList();
 
                 var filePath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + Resource.PathIndesignDataFile;
@@ -305,6 +304,21 @@
             }
 
             return false;
+        }
+
+        public async Task<AddProductDto> GetProductByIdAsync(long productId)
+        {
+            var product = await this._productRepository.GetProductByIdAsync(productId);
+            var addProductDto = new AddProductDto
+            {
+                ProductId = product.Id,
+                Style = product.Sku,
+                AvailableLength = product.Length,
+                AvrageWeight = product.Weight,
+                Price = product.Price,
+            };
+
+            return addProductDto;
         }
 
         private decimal ConvertToDecimal(string value)
@@ -331,6 +345,34 @@
 
             predicate.And(a => !string.IsNullOrEmpty(a.Sku));
             return predicate;
+        }
+
+        private static string AddDecimalPoint(string value)
+        {
+            string formatedValue = value;
+            var isValid = decimal.TryParse(value, out decimal decValue);
+            if (isValid)
+            {
+                var hasNoDecimalPoint = int.TryParse(value, out int inValue);
+                if (hasNoDecimalPoint)
+                {
+                    formatedValue = (inValue * 1.0M).ToString();
+                }
+            }
+
+            return formatedValue;
+        }
+
+        private static string FormattedAmount(string value)
+        {
+            string formatedValue = value;
+            var isValid = decimal.TryParse(value, out decimal decValue);
+            if (isValid)
+            {
+                formatedValue = string.Format("{0:n0}", decValue);
+            }
+
+            return formatedValue;
         }
     }
 }
