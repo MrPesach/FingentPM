@@ -4,20 +4,185 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:RCG.WPF.Views"
-             
              xmlns:controls="clr-namespace:RCG.WPF.Controls"
-             
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Margin="20" MaxWidth="1000">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-        </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0"
-                HorizontalAlignment="Center"
-                FontSize="48"
-                Text="Products" />
+             mc:Ignorable="d"
+             xmlns:local1="clr-namespace:RCG.Domain.Entities;assembly=RCG.Domain"
+             xmlns:InteractionTrigger ="http://schemas.microsoft.com/xaml/behaviors"
+             x:Name="ProductList"
+             Width="1370"
+             Height="600">
+    <InteractionTrigger:Interaction.Triggers>
+        <InteractionTrigger:EventTrigger EventName="Loaded">
+            <InteractionTrigger:InvokeCommandAction Command="{Binding LoadedCommand}" />
+        </InteractionTrigger:EventTrigger>
+    </InteractionTrigger:Interaction.Triggers>
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <x:Array x:Key="MyDumbMockedList" Type="local1:Products">
+                <local1:Products Sku="Fred" Length="10.8" Weight="9" Price="100.80"  />
+                <local1:Products Sku="Fred" Length="10.8" Weight="9" Price="100.80"  />
+                <local1:Products Sku="Fred" Length="10.8" Weight="9" Price="100.80"  />
+                <local1:Products Sku="Fred" Length="10.8" Weight="9" Price="100.80"  />
+                <local1:Products Sku="Fred" Length="10.8" Weight="9" Price="100.80"  />
+                <local1:Products Sku="Fred" Length="10.8" Weight="9" Price="100.80"  />
+                <local1:Products Sku="Fred" Length="10.8" Weight="9" Price="100.80"  />
+                <local1:Products Sku="Fred" Length="10.8" Weight="9" Price="100.80"  />
+                <local1:Products Sku="Fred" Length="10.8" Weight="9" Price="100.80"  />
+                <local1:Products Sku="Fred" Length="10.8" Weight="9" Price="100.80"  />
+                <local1:Products Sku="Fred" Length="10.8" Weight="9" Price="100.80"  />
+            </x:Array>
+            <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+        </ResourceDictionary>
+    </UserControl.Resources>
 
+    <Grid Background="#ffffff">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Margin="15,0,15,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="282"/>
+                <ColumnDefinition Width="173"/>
+                <ColumnDefinition Width="173"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Margin="0" Style="{StaticResource TextBlockHeading}"
+                      VerticalAlignment="Center"
+                       Text="{Binding TotalRecords, StringFormat='Product List ({0})'}" />
+            <TextBox x:Name="SearchText" Grid.Column="1" Style="{StaticResource SearchTextBox}" 
+                     Text="{Binding SearchText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" >
+                <InteractionTrigger:Interaction.Triggers>
+                    <InteractionTrigger:KeyTrigger Key="Enter">
+                        <InteractionTrigger:InvokeCommandAction 
+                            Command="{Binding SearchCommand}" 
+                            CommandParameter="{Binding Text, ElementName=SearchText}" />
+                    </InteractionTrigger:KeyTrigger>
+                </InteractionTrigger:Interaction.Triggers>
+            </TextBox>
+            <Button Grid.Column="2" Style="{StaticResource LightButton}" 
+                    Content="Add Product" Command="{Binding AddProductCommand}"/>
+            <Button Grid.Column="3" Style="{StaticResource PrimaryButton}" 
+                    Content="Import products" Command="{Binding ImportPriceListCommand}"/>
+        </Grid>
+        <!--{Binding TotalRecords, StringFormat='Product List ({0})'}-->
+        <!--{StaticResource MyDumbMockedList}}-->
+
+        <DataGrid Grid.Row="1" ItemsSource="{Binding ProductList}" x:Name="ProductListGrid">
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="20"/>
+                <DataGridTemplateColumn Width="*" Header="SKU">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Style}" VerticalAlignment="Center"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Width="*" Header="Length">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding AvailableLength}" VerticalAlignment="Center"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Width="*" Header="Weight">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding AvrageWeight}" VerticalAlignment="Center"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Width="*" Header="Price">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Price}" VerticalAlignment="Center"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Width="*" Header="Updated On">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding UpdatedOn}" VerticalAlignment="Center"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Width="60" Header="Actions">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <Button Command="{Binding Path=DataContext.EditProductCommand, ElementName=ProductListGrid}" 
+                                    CommandParameter="{Binding ProductId}" Style="{StaticResource EditButton}">
+                                </Button>
+                                <Button Command="{Binding Path=DataContext.DeleteProductCommand, ElementName=ProductListGrid}" 
+                                    CommandParameter="{Binding}" Style="{StaticResource TrashButton}">
+                                </Button>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Width="20"/>
+            </DataGrid.Columns>
+
+        </DataGrid>
+        <StackPanel Grid.Row="1" Panel.ZIndex="1"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Visibility="{Binding IsNoRecords, Converter={StaticResource BooleanToVisibilityConverter}}">
+            <TextBlock  HorizontalAlignment="Center"  Style="{StaticResource MessageHeader}" 
+                       Text="No record(s) found"/>
+        </StackPanel>
+
+        <Grid Visibility="{Binding ShowPagination, Converter={StaticResource BooleanToVisibilityConverter}}"
+              Grid.Row="2" Height="36"  HorizontalAlignment="Right" Margin="0,0,10,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0"  Style="{StaticResource PaginationMainButton}" Content="First" 
+                    Margin="0,0,5,0"
+                    Command="{Binding Path=DataContext.FirstOrLastCommand, ElementName=PaginationIC}"
+                    CommandParameter="{Binding Content ,RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Column="1"  Style="{StaticResource PaginationPrevButton}"
+                    Name="Prev"
+                    Command="{Binding Path=DataContext.NextOrPrevCommand, ElementName=PaginationIC}"
+                    CommandParameter="{Binding Name ,RelativeSource={RelativeSource Self}}"/>
+            <ScrollViewer Grid.Column="2" 
+                          MaxWidth="180"
+                          HorizontalScrollBarVisibility="Hidden"
+                          VerticalScrollBarVisibility="Disabled"
+                          CanContentScroll="True"
+                          Name="CategoryScrollViewer">
+                <ItemsControl Grid.Column="2"  ItemsSource="{Binding Pages}"  Name="PaginationIC">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal">
+                            </StackPanel>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Button Style="{StaticResource PaginationButton}"
+                                Content="{Binding Number}"
+                                Command="{Binding Path=DataContext.PaginationCommand, ElementName=PaginationIC}"
+                                CommandParameter="{Binding Content ,RelativeSource={RelativeSource Self}}" />
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+            <Button Grid.Column="3"  Style="{StaticResource PaginationNextButton}"
+                    Name="Next"
+                    Command="{Binding Path=DataContext.NextOrPrevCommand, ElementName=PaginationIC}"
+                    CommandParameter="{Binding Name ,RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Column="4" Style="{StaticResource PaginationMainButton}" 
+                    Content="Last" 
+                    Margin="5,0,0,0"
+                    Command="{Binding Path=DataContext.FirstOrLastCommand, ElementName=PaginationIC}"
+                    CommandParameter="{Binding Content ,RelativeSource={RelativeSource Self}}"/>
+
+        </Grid>
     </Grid>
 </UserControl>

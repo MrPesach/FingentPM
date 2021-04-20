@@ -7,7 +7,7 @@ namespace RCG.WPF.State.Navigators
     {
         Login,
         Products,
-        UserAccounts
+        UserSetup
     }
 
     public interface INavigator

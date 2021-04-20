@@ -1,16 +1,22 @@
 ﻿using System;
+using System.IO;
 using System.Reflection;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using RCG.CoreApp.Interfaces.Auth;
+using RCG.CoreApp.AppResources;
 using RCG.CoreApp.Interfaces.DbContexts;
+using RCG.CoreApp.Interfaces.Product;
 using RCG.CoreApp.Interfaces.Repositories;
+using RCG.CoreApp.Interfaces.Settings;
 using RCG.CoreApp.Interfaces.Shared;
-using RCG.CoreApp.Services.Auth;
+using RCG.CoreApp.Interfaces.User;
+using RCG.CoreApp.Services.Product;
+using RCG.CoreApp.Services.Settings;
+using RCG.CoreApp.Services.User;
 using RCG.Data.DbContexts;
 using RCG.Data.Repositories;
+using RCG.WPF.Services;
 using RCG.WPF.State.Accounts;
 using RCG.WPF.State.Authenticators;
 using RCG.WPF.State.Navigators;
@@ -20,25 +26,20 @@ namespace RCG.WPF.HostBuilders
 {
     public static class ServiceCollectionExtensions
     {
-        public static IHostBuilder AddConfiguration(this IHostBuilder host)
-        {
-            host.ConfigureAppConfiguration(c =>
-            {
-                c.AddJsonFile("appsettings.json");
-                c.AddEnvironmentVariables();
-            });
-
-            return host;
-        }
-
         public static IHostBuilder AddDbContext(this IHostBuilder host)
         {
+            var dbfilePath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + Resource.PathDatabase;
+            if (!Directory.Exists(dbfilePath))
+            {
+                Directory.CreateDirectory(dbfilePath);
+            }
+
             host.ConfigureServices((context, services) =>
             {
-                string connectionString = context.Configuration.GetConnectionString("DefaultConnection");
-                Action<DbContextOptionsBuilder> configureDbContext = o => o.UseSqlite(connectionString);
-
-                services.AddDbContext<ApplicationDbContext>(configureDbContext);
+                services.AddDbContext<ApplicationDbContext>(options =>
+                {
+                    options.UseSqlite("Data Source=" + @dbfilePath + "data.fin");
+                });
             });
 
             return host;
@@ -62,11 +63,16 @@ namespace RCG.WPF.HostBuilders
             {
                 services.AddSingleton<IDateTimeService, SystemDateTimeService>();
                 services.AddAutoMapper(Assembly.GetExecutingAssembly());
-                services.AddSingleton<IApplicationDbContext, ApplicationDbContext>();
-                services.AddSingleton(typeof(IRepositoryAsync<>), typeof(RepositoryAsync<>));
-                services.AddSingleton<IUnitOfWork, UnitOfWork>();
-                services.AddSingleton<IAuthService, AuthService>();
-                services.AddSingleton<IUserRepository, UserRepository>();
+                services.AddTransient<IApplicationDbContext, ApplicationDbContext>();
+                services.AddTransient(typeof(IRepositoryAsync<>), typeof(RepositoryAsync<>));
+                services.AddTransient<IUnitOfWork, UnitOfWork>();
+                services.AddTransient<IUserService, UserService>();
+                services.AddTransient<IUserRepository, UserRepository>();
+                services.AddTransient<IProductRepository, ProductRepository>();
+                services.AddTransient<IProductService, ProductService>();
+                services.AddTransient<IDialogService, DialogService>();
+                services.AddTransient<IApplConfigsRepository, ApplConfigsRepository>();
+                services.AddTransient<ISettingsService, SettingsService>();
             });
 
             return host;

@@ -1,5 +1,0 @@
-D:\Publish\RCG\Product Manager\RCG.WPF.pdb
-D:\Publish\RCG\Product Manager\RCG.Data.pdb
-D:\Publish\RCG\Product Manager\RCG.CoreApp.pdb
-D:\Publish\RCG\Product Manager\RCG.Domain.pdb
-D:\Publish\RCG\Product Manager\RCG.WPF.exe

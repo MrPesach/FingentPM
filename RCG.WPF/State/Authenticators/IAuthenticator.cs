@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
-using RCG.CoreApp.Interfaces.Auth;
+using RCG.CoreApp.DTO.User;
+using RCG.CoreApp.Interfaces.User;
 
 namespace RCG.WPF.State.Authenticators
 {
@@ -12,7 +13,7 @@ namespace RCG.WPF.State.Authenticators
 
         Task Login(string username, string password);
 
-        Task<RegistrationResult> Register(string name, string username, string password, string confirmPassword);
+        Task<UserSetupDto> UserSetup(UserSetupDto userSetupDto);
 
         void Logout();
     }

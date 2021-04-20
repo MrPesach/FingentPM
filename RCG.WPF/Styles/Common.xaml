@@ -4,11 +4,14 @@
     <!--Colors-->
     <Color x:Key="ColorBlack">#000</Color>
     <Color x:Key="ColorBlue">#105EEB</Color>
-    
+    <Color x:Key="ColorWhite">#FFFFFF</Color>
+    <FontFamily x:Key="SegoeUI">Segoe UI</FontFamily>
+
     <!--Brushes-->
     <SolidColorBrush x:Key="BrushBlack" Color="{StaticResource ColorBlack}"/>
     <SolidColorBrush x:Key="BrushBlue" Color="{StaticResource ColorBlue}"/>
-    
+    <SolidColorBrush x:Key="BrushWhite" Color="{StaticResource ColorWhite}"/>
+
     <!--Text Boxes-->
     <Style x:Key="TextBoxBase" TargetType="Control">
         <Setter Property="VerticalContentAlignment" Value="Center"/>
@@ -16,41 +19,535 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Control">
-                    <Border BorderThickness="1" BorderBrush="Gray" CornerRadius="3">
+                    <Border x:Name="border" BorderThickness="1" BorderBrush="#BCBFC6" CornerRadius="1">
                         <ScrollViewer x:Name="PART_ContentHost"/>
                     </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsKeyboardFocused" Value="true">
+                            <Setter Property="BorderBrush" TargetName="border" Value="#105EEB"/>
+                            <Setter Property="BorderThickness" TargetName="border" Value="1"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
-
     <Style TargetType="TextBox" BasedOn="{StaticResource TextBoxBase}"/>
     <Style TargetType="PasswordBox" BasedOn="{StaticResource TextBoxBase}"/>
-    
-    <!--Buttons-->
-    <Style TargetType="Button">
-        <Setter Property="Background" Value="{StaticResource BrushBlue}"/>
-        <Setter Property="Foreground" Value="White"/>
-        <Setter Property="Cursor" Value="Hand"/>
-        <Setter Property="Padding" Value="10 5"/>
-        <Setter Property="HorizontalAlignment" Value="Center"/>
+
+    <Style TargetType="Button" x:Key="ImageButton">
+        <Setter Property="Background" Value="Transparent"></Setter>
+        <Setter Property="BorderThickness" Value="0"></Setter>
+        <Setter Property="Cursor" Value="Hand"></Setter>
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="Button">
-                    <Border CornerRadius="3" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" Margin="{TemplateBinding Margin}">
-                        <ContentPresenter />
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="{TemplateBinding Background}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
         <Style.Triggers>
-            <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="{StaticResource BrushBlack}"/>
-            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True"/>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Button" BasedOn="{StaticResource ImageButton}" x:Key="SearchButton">
+        <Setter Property="Width" Value="14"></Setter>
+        <Setter Property="Height" Value="14"></Setter>
+        <Setter Property="Background">
+            <Setter.Value>
+                <ImageBrush ImageSource="/Resources/Images/search.png"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="Button" BasedOn="{StaticResource ImageButton}" x:Key="FolderButton">
+        <Setter Property="Width" Value="23"></Setter>
+        <Setter Property="Height" Value="23"></Setter>
+        <Setter Property="Cursor" Value="Arrow"></Setter>
+        <Setter Property="Background">
+            <Setter.Value>
+                <ImageBrush ImageSource="/Resources/Images/folder-open.png"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="SearchTextBox" TargetType="{x:Type TextBox}" BasedOn="{StaticResource {x:Type TextBox}}">
+        <Setter Property="FontFamily" Value="{StaticResource SegoeUI}" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="Margin" Value="5,0,0,0" />
+        <Setter Property="Width" Value="272" />
+        <Setter Property="Height" Value="40" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+                    <Border x:Name="border"
+                                CornerRadius="3"
+                                Background="#ffffff"
+                                BorderBrush="#DAD5C7"
+                                BorderThickness="1"
+                                Panel.ZIndex="2"
+                                SnapsToDevicePixels="True">
+                        <Grid VerticalAlignment="Center">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="9*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <ScrollViewer Grid.Column="0" x:Name="PART_ContentHost" Focusable="false" 
+                                          HorizontalScrollBarVisibility="Hidden" 
+                                          VerticalScrollBarVisibility="Hidden"/>
+                            <Button Style="{StaticResource SearchButton}" Grid.Column="1"></Button>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsKeyboardFocused" Value="true">
+                            <Setter Property="BorderBrush" TargetName="border" Value="#105EEB"/>
+                            <Setter Property="BorderThickness" TargetName="border" Value="1"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--Buttons-->
+    <Style TargetType="Button" x:Key="btn">
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Width" Value="163"/>
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="FontFamily" Value="{StaticResource SegoeUI}"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border CornerRadius="3" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" Margin="{TemplateBinding Margin}">
+                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
             <Trigger Property="IsEnabled" Value="False">
                 <Setter Property="Opacity" Value="0.5"/>
             </Trigger>
         </Style.Triggers>
     </Style>
 
+    <Style TargetType="Button" BasedOn="{StaticResource btn}" x:Key="PrimaryButton">
+        <Setter Property="Background" Value="{StaticResource BrushBlue}"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="BorderBrush" Value="#105EEB"/>
+
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#0046C3"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="Button" BasedOn="{StaticResource btn}" x:Key="LightButton">
+        <Setter Property="Background" Value="{StaticResource BrushWhite}"/>
+        <Setter Property="Foreground" Value="#4E4C4C"/>
+        <Setter Property="BorderBrush" Value="#D2D2D2"/>
+
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#3E3E3E"/>
+                <Setter Property="Foreground" Value="#F5F5F5"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="DataGridColumnHeader">
+        <Setter Property="Height" Value="52"></Setter>
+        <Setter Property="Background" Value="#E9ECF2"></Setter>
+        <Setter Property="Foreground" Value="#3B3E41"></Setter>
+        <Setter Property="FontFamily" Value="{StaticResource SegoeUI}"></Setter>
+        <Setter Property="FontSize" Value="16"></Setter>
+        <Setter Property="FontWeight" Value="SemiBold"></Setter>
+    </Style>
+    <Style TargetType="DataGridRow" x:Key="kk">
+        <Style.Triggers>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Background" Value="{x:Null}" />
+                <Setter Property="BorderBrush" Value="{x:Null}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="CellStyle" TargetType="{x:Type DataGridCell}">
+        
+        <Setter Property="Foreground" Value="#6E6F73"/>
+        <Style.Triggers>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Background" Value="{x:Null}" />
+                <Setter Property="BorderBrush" Value="{x:Null}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="DataGrid">
+        <Setter Property="BorderBrush" Value="#D4D4D4"></Setter>
+        <Setter Property="BorderThickness" Value="0,0,0,0"></Setter>
+        <Setter Property="RowHeaderWidth" Value="0"></Setter>
+        <Setter Property="AutoGenerateColumns" Value="False"></Setter>
+        <Setter Property="GridLinesVisibility" Value="Horizontal"></Setter>
+        <Setter Property="Background" Value="#ffffff"></Setter>
+        <Setter Property="HorizontalGridLinesBrush" Value="#D4D4D4"></Setter>
+        <Setter Property="RowHeight" Value="39"></Setter>
+        <Setter Property="FontFamily" Value="{StaticResource SegoeUI}"></Setter>
+        <Setter Property="FontSize" Value="14"></Setter>
+        <Setter Property="FontWeight" Value="SemiBold"></Setter>
+        <Setter Property="CellStyle" Value="{StaticResource CellStyle}"></Setter>
+        <Setter Property="IsReadOnly" Value="True"></Setter>
+
+    </Style>
+
+    <Style TargetType="Button" BasedOn="{StaticResource ImageButton}" x:Key="TrashButton">
+        <Setter Property="Width" Value="12"></Setter>
+        <Setter Property="Height" Value="16"></Setter>
+        <Setter Property="Margin" Value="5"></Setter>
+        <Setter Property="Background">
+            <Setter.Value>
+                <ImageBrush ImageSource="/Resources/Images/delete.png"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="Button" BasedOn="{StaticResource ImageButton}" x:Key="EditButton">
+        <Setter Property="Width" Value="14"></Setter>
+        <Setter Property="Height" Value="14"></Setter>
+        <Setter Property="Margin" Value="5"></Setter>
+        <Setter Property="Background">
+            <Setter.Value>
+                <ImageBrush ImageSource="/Resources/Images/edit.png"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="Button" x:Key="PaginationMainButton" BasedOn="{StaticResource LightButton}">
+        <Setter Property="Height" Value="36"></Setter>
+        <Setter Property="Width" Value="55"></Setter>
+        <Setter Property="FontFamily" Value="{StaticResource SegoeUI}"></Setter>
+        <Setter Property="FontSize" Value="14"></Setter>
+        <Setter Property="FontWeight" Value="Regular"></Setter>
+    </Style>
+
+    <Style TargetType="Button" BasedOn="{StaticResource LightButton}" x:Key="PaginationNumberBase">
+        <Setter Property="Height" Value="36"></Setter>
+        <Setter Property="Width" Value="36"></Setter>
+        <Setter Property="FontFamily" Value="{StaticResource SegoeUI}"></Setter>
+        <Setter Property="FontSize" Value="14"></Setter>
+        <Setter Property="FontWeight" Value="Regular"></Setter>
+    </Style>
+
+
+    <Style TargetType="Button" x:Key="PaginationButton" BasedOn="{StaticResource PaginationNumberBase}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border CornerRadius="0" BorderThickness="1" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" Margin="{TemplateBinding Margin}">
+                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding IsSelected}" Value="True">
+                <Setter Property="Background" Value="#EFEFEF"></Setter>
+                <Setter Property="Foreground" Value="#105EEB"></Setter>
+                <Setter Property="FontWeight" Value="Bold"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="Button" x:Key="PaginationPrevButton" BasedOn="{StaticResource PaginationNumberBase}">
+        <Setter Property="Background">
+            <Setter.Value>
+                <ImageBrush ImageSource="/Resources/Images/arrow-left.png" Stretch="None"/>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border CornerRadius="3,0,0,3" BorderThickness="1" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" Margin="{TemplateBinding Margin}">
+                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="Button" x:Key="PaginationNextButton" BasedOn="{StaticResource PaginationNumberBase}">
+        <Setter Property="Background">
+            <Setter.Value>
+                <ImageBrush ImageSource="/Resources/Images/arrow-right.png" Stretch="None"/>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border CornerRadius="0,3,3,0" BorderThickness="1" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" Margin="{TemplateBinding Margin}">
+                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="TextBlock" x:Key="PopupHeader">
+        <Setter Property="FontFamily" Value="{StaticResource SegoeUI}"></Setter>
+        <Setter Property="FontSize" Value="18"></Setter>
+        <Setter Property="FontWeight" Value="SemiBold"></Setter>
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+        <Setter Property="Foreground" Value="#434445"></Setter>
+        <Setter Property="Margin" Value="20,0,0,0"></Setter>
+    </Style>
+
+    <Style TargetType="Button" BasedOn="{StaticResource ImageButton}" x:Key="CloseButton">
+        <Setter Property="Width" Value="13"></Setter>
+        <Setter Property="Height" Value="13"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Right"></Setter>
+        <Setter Property="Margin" Value="0,0,20,0"></Setter>
+        <Setter Property="Background">
+            <Setter.Value>
+                <ImageBrush ImageSource="/Resources/Images/close.png"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="TextBlock" x:Key="DarkTextBlock">
+        <Setter Property="FontFamily" Value="{StaticResource SegoeUI}"></Setter>
+        <Setter Property="FontSize" Value="14"></Setter>
+        <Setter Property="FontWeight" Value="Regular"></Setter>
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+        <Setter Property="Foreground" Value="#706E6E"></Setter>
+        <Setter Property="Margin" Value="0 10 0 5"></Setter>
+    </Style>
+
+    <Style TargetType="TextBlock" x:Key="LighTextBlock">
+        <Setter Property="FontFamily" Value="{StaticResource SegoeUI}"></Setter>
+        <Setter Property="FontSize" Value="16"></Setter>
+        <Setter Property="FontWeight" Value="SemiBold"></Setter>
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+        <Setter Property="Foreground" Value="#ffffff"></Setter>
+        <Setter Property="Margin" Value="15,0,0,0"></Setter>
+    </Style>
+
+    <Style TargetType="TextBlock" x:Key="TextBlockLabels">
+        <Setter Property="FontFamily" Value="{StaticResource SegoeUI}"></Setter>
+        <Setter Property="FontSize" Value="14"></Setter>
+        <Setter Property="FontWeight" Value="Regular"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+        <Setter Property="Foreground" Value="#706E6E"></Setter>
+        <Setter Property="Margin" Value="0 10 0 5"></Setter>
+    </Style>
+
+    <Style TargetType="TextBlock" x:Key="TextBlockHeading">
+        <Setter Property="FontFamily" Value="{StaticResource SegoeUI}"></Setter>
+        <Setter Property="FontSize" Value="15"></Setter>
+        <Setter Property="FontWeight" Value="Bold"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+        <Setter Property="Foreground" Value="Black"></Setter>
+        <Setter Property="Margin" Value="0 40 0 0"></Setter>
+    </Style>
+
+    <Style TargetType="Button" BasedOn="{StaticResource PrimaryButton}" x:Key="ProceedButton">
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Right"></Setter>
+        <Setter Property="Margin" Value="0,0,10,0"></Setter>
+        <Setter Property="Width" Value="130"></Setter>
+    </Style>
+
+    <Style TargetType="Button" BasedOn="{StaticResource btn}" x:Key="TextOnlyButton">
+        <Setter Property="Background" Value="Transparent"></Setter>
+        <Setter Property="Foreground" Value="#858789"></Setter>
+        <Setter Property="BorderThickness" Value="0"></Setter>
+        <Setter Property="BorderBrush" Value="Transparent"></Setter>
+        <Setter Property="Margin" Value="0,0,20,0"></Setter>
+        <Setter Property="Width" Value="Auto"></Setter>
+    </Style>
+
+    <Style TargetType="ProgressBar">
+        <Setter Property="Height" Value="6"/>
+        <Setter Property="Background" Value="#EBEDF0"/>
+        <Setter Property="Margin" Value="10"/>
+        <Setter Property="Foreground" Value="#105EEB"/>
+    </Style>
+
+    <Style TargetType="TextBox" x:Key="FormControl" BasedOn="{StaticResource TextBoxBase}">
+        <Setter Property="Width" Value="400"/>
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="Foreground" Value="#4E5052"/>
+        <Setter Property="FontFamily" Value="{StaticResource SegoeUI}"/>
+        <Setter Property="FontSize" Value="13"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+    </Style>
+
+    <Style TargetType="TextBlock" x:Key="ErrorText">
+        <Setter Property="FontFamily" Value="{StaticResource SegoeUI}"/>
+        <Setter Property="FontSize" Value="13"/>
+        <Setter Property="Foreground" Value="#ff0000"/>
+    </Style>
+
+    <Style TargetType="TextBlock" x:Key="MessageHeader">
+        <Setter Property="FontFamily" Value="{StaticResource SegoeUI}"></Setter>
+        <Setter Property="FontSize" Value="16"></Setter>
+        <Setter Property="FontWeight" Value="SemiBold"></Setter>
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+        <Setter Property="Foreground" Value="#5A5D61"></Setter>
+    </Style>
+
+    <Style TargetType="Image" x:Key="GreenTick">
+        <Setter Property="Source" Value="/Resources/Images/green-tick.png"></Setter>
+        <Setter Property="Stretch" Value="Uniform"></Setter>
+        <Setter Property="Width" Value="11"></Setter>
+        <Setter Property="Height" Value="8.5"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Right"></Setter>
+
+    </Style>
+
+    <Style TargetType="Image" x:Key="Error">
+        <Setter Property="Source" Value="/Resources/Images/error.png"></Setter>
+        <Setter Property="Stretch" Value="Uniform"></Setter>
+        <Setter Property="Width" Value="16"></Setter>
+        <Setter Property="Height" Value="15"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Right"></Setter>
+    </Style>
+
+    <Style TargetType="Image" x:Key="CSVIcon">
+        <Setter Property="Source" Value="/Resources/Images/csv.png"></Setter>
+        <Setter Property="Stretch" Value="Uniform"></Setter>
+        <Setter Property="Width" Value="48"></Setter>
+        <Setter Property="Height" Value="70"></Setter>
+        <Setter Property="Margin" Value="0,15,0,20"></Setter>
+    </Style>
+
+    <Style TargetType="Button" x:Key="DownloadButton" BasedOn="{StaticResource LightButton}">
+        <Setter Property="HorizontalAlignment" Value="Right"></Setter>
+        <Setter Property="Margin" Value="0,0,0,0"></Setter>
+    </Style>
+
+    <Style TargetType="StackPanel" x:Key="FormGroup">
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="Orientation" Value="Vertical"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+    </Style>
+    <Style TargetType="Button" x:Key="TransparentButton" BasedOn="{StaticResource btn}">
+        <Setter Property="Background" Value="Transparent"></Setter>
+        <Setter Property="Foreground" Value="#ffffff"/>
+        <Setter Property="BorderBrush" Value="#ffffff"/>
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="Width" Value="140"/>
+    </Style>
+
+    <Style TargetType="MenuItem">
+        <Setter Property="Background" Value="#ffffff"></Setter>
+        <Setter Property="Foreground" Value="#4E4C4C"/>
+        <Setter Property="FontFamily" Value="{StaticResource SegoeUI}"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Height" Value="35"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type MenuItem}">
+                    <Border x:Name="Bd" Padding="10,0,10,0" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0" Background="{TemplateBinding Background}" SnapsToDevicePixels="True" Uid="Border_38">
+                        <Grid HorizontalAlignment="Left">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="9*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Column="0" Width="20" Height="22"  
+                                   Source="{Binding RelativeSource={RelativeSource TemplatedParent},Path=Icon}"
+                                   Margin="0,0,10,0"
+                                   VerticalAlignment="Center"></Image>
+                            <ContentPresenter x:Name="ContentPresenter"  
+                                          Content="{TemplateBinding Header}" 
+                                          Grid.Column="1" 
+                                          ContentSource="Header" 
+                                          Margin="{TemplateBinding Padding}" 
+                                          RecognizesAccessKey="True" 
+                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                          VerticalAlignment="Center"
+                                          Uid="ContentPresenter_33"/>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsHighlighted" Value="True">
+                            <Setter Property="Background" TargetName="Bd" Value="#D2D2D2"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="Button" x:Key="LinkButton" BasedOn="{StaticResource TransparentButton}">
+        <Setter Property="Height" Value="Auto"/>
+        <Setter Property="Width" Value="Auto"/>
+        <Setter Property="Foreground" Value="#105EEB"/>
+    </Style>
+
+    <Style x:Key="FolderPathTextBox" TargetType="{x:Type TextBox}" BasedOn="{StaticResource {x:Type TextBox}}">
+        <Setter Property="FontFamily" Value="{StaticResource SegoeUI}" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="Width" Value="400" />
+        <Setter Property="Height" Value="40" />
+        <Setter Property="Foreground" Value="#706E6E" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="IsReadOnly" Value="True" />
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+                    <Border x:Name="border"
+                                CornerRadius="3"
+                                Background="#ffffff"
+                                BorderBrush="#DAD5C7"
+                                BorderThickness="1"
+                                Panel.ZIndex="2"
+                                SnapsToDevicePixels="True">
+                        <Grid VerticalAlignment="Center">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="7*"/>
+                                <ColumnDefinition Width="2*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button Style="{StaticResource FolderButton}" Grid.Column="0"/>
+
+                            <TextBlock Grid.Column="1" Text="{TemplateBinding Text}" 
+                                           TextTrimming="CharacterEllipsis"
+                                           ToolTip="{TemplateBinding Text}"/>
+
+                            <Button Style="{StaticResource LinkButton}" Grid.Column="2"
+                                    Content="Change"
+                                    Command="{Binding SelectPathCommand}"/>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsKeyboardFocused" Value="true">
+                            <Setter Property="BorderBrush" TargetName="border" Value="#105EEB"/>
+                            <Setter Property="BorderThickness" TargetName="border" Value="1"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="Button" BasedOn="{StaticResource ImageButton}" x:Key="TitleBarButton">
+        <Setter Property="Width" Value="14"/>
+        <Setter Property="Margin" Value="0,10,10,0"/>
+        <Setter Property="Cursor" Value="Hand"/>
+    </Style>
 </ResourceDictionary>

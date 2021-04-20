@@ -1,0 +1,79 @@
+﻿<UserControl x:Class="RCG.WPF.Views.IndexPathView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:RCG.WPF.Views"
+             mc:Ignorable="d" 
+             Height="255" Width="440"
+             xmlns:InteractionTrigger ="http://schemas.microsoft.com/xaml/behaviors">
+    <InteractionTrigger:Interaction.Triggers>
+        <InteractionTrigger:EventTrigger EventName="Loaded">
+            <InteractionTrigger:InvokeCommandAction Command="{Binding LoadedCommand}" CommandParameter="{Binding}" />
+        </InteractionTrigger:EventTrigger>
+    </InteractionTrigger:Interaction.Triggers>
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    </UserControl.Resources>
+    <Grid Background="#ffffff">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="52" />
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="97"/>
+        </Grid.RowDefinitions>
+        <Grid Background="#EBEDF0" Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Style="{StaticResource PopupHeader}" Text="Change Index Path"/>
+            <Button Grid.Column="1" Style="{StaticResource CloseButton}"
+                    Command="{Binding CancelCommand}"  
+                    CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=Window}}"/>
+        </Grid>
+        <Grid Grid.Row="1" Margin="0,20,0,5">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Style="{StaticResource FormGroup}">
+                <TextBlock HorizontalAlignment="Left" Style="{StaticResource DarkTextBlock}" Text="Folder Path"/>
+                <TextBox  Grid.Column="1" 
+                          Style="{StaticResource FolderPathTextBox}" 
+                          Text="{Binding SelectedPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" >
+                </TextBox>
+            </StackPanel>
+        </Grid>
+        <Grid Margin="18,0,15,0" Grid.Row="2" 
+              >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="90"/>
+                <ColumnDefinition Width="4"/>
+                <ColumnDefinition Width="90"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Row="0"
+                    Style="{StaticResource ErrorText}"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    DataContext="{Binding ErrorMessageViewModel}"
+                    Text="{Binding Message}"
+                    TextWrapping="Wrap"
+                    Visibility="{Binding HasMessage, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+            <Button Command="{Binding CancelCommand}"
+                    Grid.Column="1"
+                    CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=Window}}"
+                    Style="{StaticResource LightButton}" 
+                    Content="Cancel"
+                    Width="80"/>
+            <Button Command="{Binding SaveIndexFilePathCommand}"
+                    CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=Window}}"
+                    Grid.Column="3"
+                    Style="{StaticResource PrimaryButton}" Content="Save"
+                    Width="80">
+            </Button>
+        </Grid>
+    </Grid>
+</UserControl>

@@ -10,8 +10,9 @@ namespace RCG.WPF
         public MainWindow(object dataContext)
         {
             InitializeComponent();
-
-            DataContext = dataContext;
+            MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
+            MaxWidth = SystemParameters.MaximizedPrimaryScreenWidth;
+            this.DataContext = dataContext;
         }
     }
 }

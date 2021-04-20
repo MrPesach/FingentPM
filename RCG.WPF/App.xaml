@@ -18,8 +18,23 @@
             <DataTemplate DataType="{x:Type viewmodels:LoginViewModel}">
                 <views:LoginView />
             </DataTemplate>
-            <DataTemplate DataType="{x:Type viewmodels:RegisterViewModel}">
-                <views:RegisterView />
+            <DataTemplate DataType="{x:Type viewmodels:UserSetupViewModel}">
+                <views:UserSetupView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewmodels:ImportPriceListViewModel}">
+                <views:ImportPriceList />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewmodels:AddProductViewModel}">
+                <views:AddProductView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewmodels:UserSetupEditViewModel}">
+                <views:UserSetupEditView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewmodels:AlertViewModel}">
+                <views:AlertView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewmodels:IndexPathViewModel}">
+                <views:IndexPathView />
             </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>

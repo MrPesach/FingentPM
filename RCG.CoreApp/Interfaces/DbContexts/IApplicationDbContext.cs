@@ -1,4 +1,6 @@
 ﻿using System.Data;
+using System.Threading;
+using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using RCG.Domain.Entities;
 
@@ -11,5 +13,9 @@ namespace RCG.CoreApp.Interfaces.DbContexts
         DbSet<Users> Users { get; set; }
 
         DbSet<ProductMain> ProductMain { get; set; }
+
+        DbSet<Products> Products { get; set; }
+
+        DbSet<ApplConfigs> ApplConfigs { get; set; }
     }
 }

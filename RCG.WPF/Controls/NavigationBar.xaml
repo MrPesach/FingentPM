@@ -8,21 +8,83 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:nav="clr-namespace:RCG.WPF.State.Navigators"
     xmlns:vm="clr-namespace:RCG.WPF.ViewModels"
-    d:DesignHeight="450"
-    d:DesignWidth="800"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    d:Height="113"
+    d:Width="1366"
     mc:Ignorable="d">
     <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
         <converters:EqualValueToParameterConverter x:Key="EqualValueToParameterConverter" />
     </UserControl.Resources>
-    <Grid>
+    <Grid Height="113">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="100" />
+            <RowDefinition Height="30*"></RowDefinition>
+            <RowDefinition Height="70*"></RowDefinition>
         </Grid.RowDefinitions>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Resources/images/app-header-new.png" Stretch="None"/>
+        </Grid.Background>
+        <TextBlock Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" 
+                   Style="{StaticResource LighTextBlock}" Text="Product Manager"
+                   Margin="10,10,0,0"/>
+        <StackPanel Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal">
+            <Button Style="{StaticResource TitleBarButton}" Command="{Binding MinimizeAppCommand}"
+                    CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}}">
+                <Image Source="/Resources/Images/white-line.png"></Image>
+            </Button>
+            <!--<Button Style="{StaticResource TitleBarButton}" Command="{Binding MaximizeAppCommand}"
+                    CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}}">
+                <Image Source="/Resources/Images/white-rectangle.png"></Image>
+            </Button>-->
+            <Button Style="{StaticResource TitleBarButton}" Command="{Binding CloseAppCommand}">
+                <Image Source="/Resources/Images/white-close.png"></Image>
+            </Button>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="1"  Margin="0,0,30,0" 
+                    HorizontalAlignment="Right" 
+                    Orientation="Horizontal">
+            <Button Style="{StaticResource TransparentButton}"
+                    Visibility="{Binding IsAdmin, Converter={StaticResource BooleanToVisibilityConverter}}"
+                x:Name="MainButton" 
+                ContextMenuService.IsEnabled="False"
+                ContextMenuService.ShowOnDisabled="True"
+                Click="MainButton_Click"
+                HorizontalAlignment="Right">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Resources/Images/settings.png" Margin="0,0,10,0" Width="20" Height="22" />
+                    <TextBlock Text="Settings" />
+                    <Image Source="/Resources/Images/keyboard-arrow-down.png" Margin="20,0,0,0" Stretch="None" />
+                </StackPanel>
+                <Button.ContextMenu>
+                    <ContextMenu x:Name="MainContextMenu" Background="#ffffff">
+                        <MenuItem Header="Manage User Account" 
+                              Command="{Binding UserSettingsCommand}"
+                              Icon="/Resources/Images/user.png"/>
+                        <MenuItem Header="Change Index Path" 
+                                  Command="{Binding ChangeIndexPathCommand}"
+                        Icon="/Resources/Images/folder-open.png"/>
+                    </ContextMenu>
+                </Button.ContextMenu>
+            </Button>
 
-        <Grid Grid.Row="0" Background="{StaticResource BrushBlack}">
-            <Image Width="300" Source="/Resources/Images/royal_chain_white_logo.png">
-            </Image>
-            <!--<Image Source="/Resources/Images/royal_chain_white_logo.png" />-->
-        </Grid>
+            <Grid Margin="35,0,0,0">
+                <Ellipse Stroke="#ffffff" StrokeThickness="2" SnapsToDevicePixels="True"  Fill="{StaticResource BrushBlue}" Width="40" Height="40"/>
+                <TextBlock Style="{StaticResource LighTextBlock}" 
+                       Text="{Binding LoggedUserFirstLetter}"
+                       Margin="0"
+                       Foreground="{StaticResource BrushWhite}" FontSize="14" />
+            </Grid>
+            <TextBlock  Grid.Row="1" Grid.Column="3" 
+                        
+                        HorizontalAlignment="Center" 
+                        VerticalAlignment="Center"
+                        Style="{StaticResource LighTextBlock}"
+              Text="{Binding LoggedUserName}"  />
+        </StackPanel>
     </Grid>
+
 </UserControl>

@@ -26,7 +26,12 @@ namespace RCG.Data.Repositories
 
         public async Task<List<Users>> GetNonAdminListAsync()
         {
-            return await _repository.Entities.Where(p => p.IsAdmin == false).ToListAsync();
+            return await _repository.Entities.Where(p => !p.IsAdmin).ToListAsync();
+        }
+
+        public async Task<Users> GetNonAdminUserAsync()
+        {
+            return await _repository.Entities.Where(p => p.IsAdmin == false).FirstOrDefaultAsync();
         }
 
         public async Task<Users> GetByIdAsync(long id)
@@ -34,9 +39,16 @@ namespace RCG.Data.Repositories
             return await _repository.Entities.Where(p => p.Id == id).FirstOrDefaultAsync();
         }
 
-        public async Task<Users> GetByUsernameAsync(string username)
+        public async Task<Users> GetByUsernameAsync(long? id, string username)
         {
-            return await _repository.Entities.Where(p => p.Username == username).FirstOrDefaultAsync();
+            if (id == null)
+            {
+                return await _repository.Entities.Where(p => p.Username == username).FirstOrDefaultAsync();
+            }
+            else
+            {
+                return await _repository.Entities.Where(p => p.Id != id && p.Username == username).FirstOrDefaultAsync();
+            }
         }
 
         public async Task<long> InsertAsync(Users user)
@@ -45,15 +57,15 @@ namespace RCG.Data.Repositories
             return user.Id;
         }
 
-        public async Task UpdateAsync(Users User)
+        public async Task UpdateAsync(Users user)
         {
-            await _repository.UpdateAsync(User);
+            await _repository.UpdateAsync(user, user.Id);
         }
 
 
-        public async Task DeleteAsync(Users User)
+        public async Task DeleteAsync(Users user)
         {
-            await _repository.DeleteAsync(User);
+            await _repository.DeleteAsync(user);
         }
     }
 

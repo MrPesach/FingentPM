@@ -6,13 +6,17 @@
         xmlns:local="clr-namespace:RCG.WPF"
         xmlns:controls="clr-namespace:RCG.WPF.Controls"
         mc:Ignorable="d"
+        x:Name="MasterWindow"
+        WindowStyle="None"
+        ResizeMode="CanMinimize"
         Title="RCG - Product Manager" 
-        Height="450" Width="800"
-        MinWidth="600" MinHeight="500" ResizeMode="NoResize">
+        WindowStartupLocation="CenterScreen"
+        Width="1272" Height="592"
+        WindowState="{Binding WindowState}">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="85*"/>
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
