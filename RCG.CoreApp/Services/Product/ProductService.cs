@@ -88,7 +88,8 @@
                     TrimOptions = TrimOptions.Trim,
                 };
 
-                using (var reader = new StreamReader(filePath))
+                var stream = File.Open(filePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+                var reader = new StreamReader(stream);
                 using (var csv = new CsvReader(reader, config))
                 {
                     csv.Context.RegisterClassMap<PriceListMapper>();
@@ -246,7 +247,9 @@
                 PrepareHeaderForMatch = args => args.Header.ToLower(),
                 TrimOptions = TrimOptions.Trim,
             };
-            using (var reader = new StreamReader(fileName))
+
+            var stream = File.Open(fileName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+            var reader = new StreamReader(stream);
             using (var csv = new CsvReader(reader, config))
             {
                 csv.Read();
