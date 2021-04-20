@@ -1,0 +1,9 @@
+D:\Applications\RCGProductManager\RCG.Domain\bin\Debug\netstandard2.1\RCG.Domain.deps.json
+D:\Applications\RCGProductManager\RCG.Domain\bin\Debug\netstandard2.1\RCG.Domain.dll
+D:\Applications\RCGProductManager\RCG.Domain\bin\Debug\netstandard2.1\RCG.Domain.pdb
+D:\Applications\RCGProductManager\RCG.Domain\obj\Debug\netstandard2.1\RCG.Domain.AssemblyInfoInputs.cache
+D:\Applications\RCGProductManager\RCG.Domain\obj\Debug\netstandard2.1\RCG.Domain.AssemblyInfo.cs
+D:\Applications\RCGProductManager\RCG.Domain\obj\Debug\netstandard2.1\RCG.Domain.csproj.CoreCompileInputs.cache
+D:\Applications\RCGProductManager\RCG.Domain\obj\Debug\netstandard2.1\RCG.Domain.dll
+D:\Applications\RCGProductManager\RCG.Domain\obj\Debug\netstandard2.1\RCG.Domain.pdb
+D:\Applications\RCGProductManager\RCG.Domain\obj\Debug\netstandard2.1\RCG.Domain.csprojAssemblyReference.cache

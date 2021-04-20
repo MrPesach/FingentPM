@@ -1,0 +1,20 @@
+﻿Product Manager
+
+
+winexe
+C#
+.cs
+D:\Applications\RCGProductManager\RCG.WPF\obj\Debug\netcoreapp3.1\win10-x64\
+RCG.WPF
+none
+false
+TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
+D:\Applications\RCGProductManager\RCG.WPF\App.xaml
+14466963993
+
+53-715516938
+277-2063117956
+Controls\NavigationBar.xaml;MainWindow.xaml;Styles\Common.xaml;Styles\NavigationBar.xaml;Views\AddProductView.xaml;Views\AlertView.xaml;Views\DialogWindow.xaml;Views\ImportCompletedView.xaml;Views\ImportPriceListView.xaml;Views\IndexPathView.xaml;Views\LoginView.xaml;Views\ProductsView.xaml;Views\UserSetupEditView.xaml;Views\UserSetupView.xaml;
+
+False
+
