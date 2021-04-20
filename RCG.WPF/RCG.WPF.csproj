@@ -18,6 +18,9 @@
 			*.pdb;
 			*.xml
 		</AllowedReferenceRelatedFileExtensions>
+		<Copyright>Royal Chain Group</Copyright>
+		<Company>Royal Chain Group</Company>
+		<Authors>Royal Chain Group</Authors>
 	</PropertyGroup>
 	<ItemGroup>
 		<None Remove="app-icon.ico" />
