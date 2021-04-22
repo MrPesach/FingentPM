@@ -57,7 +57,7 @@
         <Setter Property="Height" Value="14"></Setter>
         <Setter Property="Background">
             <Setter.Value>
-                <ImageBrush ImageSource="/Resources/Images/search.png"/>
+                <ImageBrush ImageSource="/Resources/Images/search.png" Stretch="Fill"/>
             </Setter.Value>
         </Setter>
     </Style>
@@ -96,7 +96,7 @@
                             <ScrollViewer Grid.Column="0" x:Name="PART_ContentHost" Focusable="false" 
                                           HorizontalScrollBarVisibility="Hidden" 
                                           VerticalScrollBarVisibility="Hidden"/>
-                            <Button Style="{StaticResource SearchButton}" Grid.Column="1"></Button>
+                            <Button Style="{StaticResource SearchButton}" Grid.Column="1" Command="{Binding SearchCommand}"></Button>
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
