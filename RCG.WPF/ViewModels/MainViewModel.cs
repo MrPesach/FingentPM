@@ -164,7 +164,18 @@ namespace RCG.WPF.ViewModels
             OnPropertyChanged(nameof(CurrentViewModel));
             if (this.IsLoggedIn)
             {
-                this.WindowState = WindowState.Maximized;
+                var width = SystemParameters.PrimaryScreenWidth;
+                ////var height = SystemParameters.PrimaryScreenHeight;
+                ////double.TryParse(Resource.AppMaxHeight, out double appMaxHeight);
+                double.TryParse(Resource.AppMaxWidth, out double appMaxWidth);
+                if (width > appMaxWidth)
+                {
+                    this.WindowState = WindowState.Normal;
+                }
+                else
+                {
+                    this.WindowState = WindowState.Maximized;
+                }
             }
         }
 
