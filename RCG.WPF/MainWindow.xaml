@@ -12,7 +12,6 @@
         Title="RCG - Product Manager" 
         WindowStartupLocation="CenterScreen"
         Width="1272" Height="592"
-        MaxWidth="1272" MaxHeight="592"
         WindowState="{Binding WindowState}">
     <Grid>
         <Grid.RowDefinitions>
