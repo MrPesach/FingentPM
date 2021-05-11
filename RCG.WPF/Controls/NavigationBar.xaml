@@ -9,8 +9,10 @@
     xmlns:nav="clr-namespace:RCG.WPF.State.Navigators"
     xmlns:vm="clr-namespace:RCG.WPF.ViewModels"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
-    d:Height="113"
-    d:Width="1366"
+    Height="113"
+    Width="1366"
+    MaxHeight="113"
+    MaxWidth="1366"
     mc:Ignorable="d">
     <UserControl.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />

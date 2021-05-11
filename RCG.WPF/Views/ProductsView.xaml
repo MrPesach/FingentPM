@@ -9,8 +9,10 @@
              xmlns:local1="clr-namespace:RCG.Domain.Entities;assembly=RCG.Domain"
              xmlns:InteractionTrigger ="http://schemas.microsoft.com/xaml/behaviors"
              x:Name="ProductList"
-             Width="1370"
-             Height="600">
+             Width="1366"
+             Height="600"
+             MaxWidth="1366"
+             MaxHeight="600">
     <InteractionTrigger:Interaction.Triggers>
         <InteractionTrigger:EventTrigger EventName="Loaded">
             <InteractionTrigger:InvokeCommandAction Command="{Binding LoadedCommand}" />
