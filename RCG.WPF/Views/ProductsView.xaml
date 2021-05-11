@@ -10,9 +10,7 @@
              xmlns:InteractionTrigger ="http://schemas.microsoft.com/xaml/behaviors"
              x:Name="ProductList"
              Width="1366"
-             Height="600"
-             MaxWidth="1366"
-             MaxHeight="600">
+             Height="600">
     <InteractionTrigger:Interaction.Triggers>
         <InteractionTrigger:EventTrigger EventName="Loaded">
             <InteractionTrigger:InvokeCommandAction Command="{Binding LoadedCommand}" />
