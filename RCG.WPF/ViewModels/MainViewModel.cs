@@ -49,6 +49,10 @@ namespace RCG.WPF.ViewModels
         private string _loggedUserFirstLetter;
         private WindowState _windowState;
         private bool _isAdmin;
+        private double _maxWidth;
+        private double _maxHeight;
+        private double _width;
+        private double _height;
 
         public bool IsLoggedIn => _authenticator.IsLoggedIn;
         public ViewModelBase CurrentViewModel => _navigator.CurrentViewModel;
@@ -131,6 +135,30 @@ namespace RCG.WPF.ViewModels
             set { _isAdmin = value; this.OnPropertyChanged("IsAdmin"); }
         }
 
+        public double MaxWidth
+        {
+            get { return _maxWidth; }
+            set { _maxWidth = value; this.OnPropertyChanged("MaxWidth"); }
+        }
+
+        public double MaxHeight
+        {
+            get { return _maxHeight; }
+            set { _maxHeight = value; this.OnPropertyChanged("MaxHeight"); }
+        }
+
+        public double Width
+        {
+            get { return _width; }
+            set { _width = value; this.OnPropertyChanged("Width"); }
+        }
+
+        public double Height
+        {
+            get { return _height; }
+            set { _height = value; this.OnPropertyChanged("Height"); }
+        }
+
         private void UserSettings()
         {
             _userSetupEditViewModel.ErrorMessageViewModel.Dispose();
@@ -162,20 +190,31 @@ namespace RCG.WPF.ViewModels
         private void Navigator_StateChanged()
         {
             OnPropertyChanged(nameof(CurrentViewModel));
+            this.Height = 592;
+            this.Width = 1272;
+            this.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
+            this.MaxWidth = SystemParameters.MaximizedPrimaryScreenWidth;
             if (this.IsLoggedIn)
             {
-                ////var width = SystemParameters.PrimaryScreenWidth;
-                ////////var height = SystemParameters.PrimaryScreenHeight;
-                ////////double.TryParse(Resource.AppMaxHeight, out double appMaxHeight);
-                ////double.TryParse(Resource.AppMaxWidth, out double appMaxWidth);
-                ////if (width > appMaxWidth)
-                ////{
-                ////    this.WindowState = WindowState.Normal;
-                ////}
-                ////else
-                ////{
-                this.WindowState = WindowState.Maximized;
-                ////}
+                var width = SystemParameters.PrimaryScreenWidth;
+                ////var height = SystemParameters.PrimaryScreenHeight;
+                double.TryParse(Resource.AppMaxHeight, out double appMaxHeight);
+                double.TryParse(Resource.AppMaxWidth, out double appMaxWidth);
+                if (width > appMaxWidth)
+                {
+                    this.WindowState = WindowState.Normal;
+                    this.Height = appMaxHeight;
+                    this.Width = appMaxWidth;
+
+                    this.MaxHeight = appMaxHeight;
+                    this.MaxWidth = appMaxWidth;
+                }
+                else
+                {
+                    ////this.Height = SystemParameters.MaximizedPrimaryScreenHeight;
+                    ////this.Width = SystemParameters.MaximizedPrimaryScreenWidth;
+                    this.WindowState = WindowState.Maximized;
+                }
             }
         }
 

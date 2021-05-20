@@ -10,9 +10,11 @@
         WindowStyle="None"
         ResizeMode="CanMinimize"
         Title="RCG - Product Manager" 
+        Width="{Binding Width, Mode=TwoWay}" Height="{Binding Height, Mode=TwoWay}"
+        MaxWidth="{Binding MaxWidth}" MaxHeight="{Binding MaxHeight}"
         WindowStartupLocation="CenterScreen"
-        Width="1272" Height="592"
-        WindowState="{Binding WindowState}">
+        WindowState="{Binding WindowState}"
+        SizeChanged="MasterWindow_SizeChanged">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
