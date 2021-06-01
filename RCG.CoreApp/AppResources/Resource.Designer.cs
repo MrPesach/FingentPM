@@ -61,6 +61,24 @@ namespace RCG.CoreApp.AppResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 768.
+        /// </summary>
+        public static string AppMaxHeight {
+            get {
+                return ResourceManager.GetString("AppMaxHeight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 1366.
+        /// </summary>
+        public static string AppMaxWidth {
+            get {
+                return ResourceManager.GetString("AppMaxWidth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to -.
         /// </summary>
         public static string BlankEntryLbl {

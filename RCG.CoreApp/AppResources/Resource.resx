@@ -201,4 +201,10 @@
   <data name="PathDatabase" xml:space="preserve">
     <value>\RCG\Data\</value>
   </data>
+  <data name="AppMaxHeight" xml:space="preserve">
+    <value>768</value>
+  </data>
+  <data name="AppMaxWidth" xml:space="preserve">
+    <value>1366</value>
+  </data>
 </root>

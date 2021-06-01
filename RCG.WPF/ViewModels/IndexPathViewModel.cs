@@ -40,7 +40,7 @@ namespace RCG.WPF.ViewModels
             this.CancelCommand = new RelayCommand(o => this.CloseDialog(o));
             this.SelectPathCommand = new RelayCommand(o => this.SelectPath());
             this.LoadedCommand = new AsyncCommand(o => this.InitialLoadAsync());
-            this.SaveIndexFilePathCommand = new AsyncCommand(o => this.SaveIndexFilePathAsync(o), o => this.CanSave);
+            this.SaveIndexFilePathCommand = new AsyncCommand(o => this.SaveIndexFilePathAsync(o));
             this._settingsService = settingsService;
             this._dialogService = dialogService;
             this._userStore = userStore;

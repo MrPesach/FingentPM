@@ -1,4 +1,6 @@
-﻿using System.Windows.Controls;
+﻿using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace RCG.WPF.Controls
 {
@@ -26,6 +28,14 @@ namespace RCG.WPF.Controls
             button.ContextMenu.VerticalOffset = button.ActualHeight + 2;
             button.ContextMenu.IsOpen = true;
             e.Handled = true;
+        }
+
+        private void TextBlock_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                Application.Current.MainWindow.DragMove();
+            }
         }
     }
 }

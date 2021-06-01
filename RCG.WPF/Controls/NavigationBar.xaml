@@ -30,7 +30,7 @@
         </Grid.Background>
         <TextBlock Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" 
                    Style="{StaticResource LighTextBlock}" Text="Product Manager"
-                   Margin="10,10,0,0"/>
+                   Margin="10,10,0,0" PreviewMouseDown="TextBlock_PreviewMouseDown"/>
         <StackPanel Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal">
             <Button Style="{StaticResource TitleBarButton}" Command="{Binding MinimizeAppCommand}"
                     CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}}">
